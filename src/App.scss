@@ -1,0 +1,32 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+:root {
+    --clr-dark: #343434;
+    --clr-light: #d5d5d5;
+    --clr-accent-light: #494949;
+    --clr-accent-dark: #151515;
+}
+
+body {
+    font-family: sans-serif;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--clr-dark);
+    color: var(--clr-light);
+
+    .card-block {
+        display: flex;
+    }
+}
