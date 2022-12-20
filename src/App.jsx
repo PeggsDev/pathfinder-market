@@ -1,19 +1,16 @@
 import './App.scss';
 import NavBar from "./componenets/NavBar/NavBar";
-import SearchBar from "./componenets/SearchBar/SearchBar";
 import CardComponent from "./componenets/CardComponent/CardComponent";
 import CoreRulebook from './img/pathfinder-2e-core-rulebook.jpg'
 import PrimerBook from './img/pathfinder-primer.jpg'
 import Bestiary from './img/bestiary.jpg'
-import GamemateryGuide from './img/game-mastery.jpg'
+import GameMasteryGuide from './img/game-mastery.jpg'
 
 function App() {
 
     return (
         <div>
-            {/*<NavBar logo={''}>*/}
-            {/*    <SearchBar/>*/}
-            {/*</NavBar>*/}
+            <NavBar/>
             <div className={'card-block'}>
                 <CardComponent
                     price={'£34.99'}
@@ -34,7 +31,7 @@ function App() {
                 <CardComponent
                     price={'£34.99'}
                     bookName={'Gamemastery Guide'}
-                    imagePath={GamemateryGuide}
+                    imagePath={GameMasteryGuide}
                     summary={
                         `Whether you are a new Game Master or experienced storyteller, 
                         you can always find new ways to hone your craft.`

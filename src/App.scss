@@ -12,21 +12,38 @@ p {
 }
 
 :root {
-    --clr-dark: #343434;
+    --clr-dark: #202936;
     --clr-light: #d5d5d5;
-    --clr-accent-light: #494949;
-    --clr-accent-dark: #151515;
+    --clr-white: #ffffff;
+    --clr-accent-light: #6e6e73;
+    --clr-accent-dark: #262626;
+    --clr-dark-background: #181818;
+    --clr-dark-lowlight: #282828;
+
+    --border-radius: 1em;
+    --quadratic-transform: transform 150ms cubic-bezier(0.21, 0.1, 0.81, 0.1);
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     display: grid;
-    place-items: center;
     background: var(--clr-dark);
-    color: var(--clr-light);
+    color: var(--clr-white);
+    overflow-y: scroll;
 
     .card-block {
         display: flex;
+        justify-content: center;
     }
+}
+
+svg {
+    fill: var(--clr-white);
+    width: 1.2em;
+    cursor: pointer;
+}
+
+svg:hover {
+    transform: scale(1.2);
 }
