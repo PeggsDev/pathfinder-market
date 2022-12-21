@@ -51,7 +51,7 @@ body {
 
   .header {
     position: relative;
-    height: 75%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,7 +75,7 @@ body {
 }
 
 .foreground {
-  top: 18em;
+  top: 50%;
   transform: translateZ(-0.3em) scale(1.3);
 }
 
