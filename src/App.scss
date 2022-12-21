@@ -1,52 +1,83 @@
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
-    user-select: none;
+  box-sizing: border-box;
+  user-select: none;
+  margin: 0;
 }
 
 h1,
 h2,
 h3,
 p {
-    margin: 0;
+  margin: 0;
 }
 
 :root {
-    --clr-dark: #202936;
-    --clr-light: #d5d5d5;
-    --clr-white: #ffffff;
-    --clr-accent-light: #6e6e73;
-    --clr-accent-dark: #262626;
-    --clr-dark-background: #181818;
-    --clr-dark-lowlight: #282828;
+  --clr-dark: #202936;
+  --clr-light: #d5d5d5;
+  --clr-white: #ffffff;
+  --clr-accent-light: #6e6e73;
+  --clr-accent-dark: #262626;
+  --clr-dark-background: #181818;
+  --clr-dark-lowlight: #282828;
 
-    --border-radius: 1em;
-    --quadratic-transform: transform 150ms cubic-bezier(0.21, 0.1, 0.81, 0.1);
+  --border-radius: 1em;
+  --quadratic-transform: transform 150ms cubic-bezier(0.21, 0.1, 0.81, 0.1);
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    display: grid;
-    background: var(--clr-dark);
-    color: var(--clr-white);
-    overflow-y: scroll;
-
-    .card-block {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        padding-top: 20em;
-    }
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: grid;
+  background: var(--clr-dark);
+  color: var(--clr-white);
 }
 
+.card-block {
+  height: 25em;
+  width: 100vw;
+  background: rgba(255, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.parallax-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 1em;
+
+  .header {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    z-index: -1;
+
+    .background,
+    .foreground {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+  }
+}
+
+
+
 svg {
-    fill: var(--clr-white);
-    width: 1.2em;
-    cursor: pointer;
+  fill: var(--clr-white);
+  width: 1.2em;
+  cursor: pointer;
 }
 
 svg:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
