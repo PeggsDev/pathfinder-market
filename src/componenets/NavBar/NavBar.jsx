@@ -49,7 +49,7 @@ export default function NavBar() {
                 <ul id={'primary-navigation'} className={'primary-navigation'}>
                     <li>
                         <a href={'#'}>
-                            <HomeIcon/>
+                            <HomeIcon clssName={'inglorious-logo'}/>
                         </a>
                     </li>
                     <li>

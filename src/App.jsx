@@ -7,6 +7,7 @@ import Bestiary from './img/bestiary.jpg'
 import GameMasteryGuide from './img/game-mastery.jpg'
 
 import background from './img/parallax-background.jpg'
+import backgroundTwo from './img/background-two.jpg'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
             <NavBar/>
             <div className={'parallax-wrapper'}>
                 <section className={'header'}>
-                    <img src={background} alt="background" className={'background'}/>
+                    <img src={background} alt="background" className={'background fade-out'}/>
                     <div className={'foreground'}>
                         <section className={'card-block'}>
                             <CardComponent
@@ -48,6 +49,9 @@ function App() {
                                     including rules to create your own hero and tools to make your own amazing stories.`}/>
                         </section>
                     </div>
+                </section>
+                <section className={'body-content'}>
+                    <img src={backgroundTwo} alt="backgroundTwo" className={'background-2'}/>
                 </section>
             </div>
         </div>
