@@ -37,7 +37,7 @@ body {
 .card-block {
   height: 25em;
   width: 100vw;
-  background: rgba(255, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -59,8 +59,7 @@ body {
     transform-style: preserve-3d;
     z-index: -1;
 
-    .background,
-    .foreground {
+    .background {
       position: absolute;
       height: 100%;
       width: 100%;
@@ -70,7 +69,13 @@ body {
   }
 }
 
+.background {
+  transform: translateZ(-1em) scale(2);
+}
 
+.foreground {
+  transform: translateZ(-0.2em) scale(1.2);
+}
 
 svg {
   fill: var(--clr-white);

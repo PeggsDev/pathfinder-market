@@ -32,7 +32,7 @@ export default function CardComponent(props) {
                     {(price === '£0') ? null : <ShoppingBagIcon/>}
                 </div>
             </div>
-            <div className={'background'}/>
+            <div className={'card-background'}/>
         </div>
     )
 }
