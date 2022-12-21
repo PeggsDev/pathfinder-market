@@ -1,6 +1,0 @@
-.primary-navigation {
-    display: flex;
-    flex-direction: row;
-    background: var(--clr-dark-background);
-    height: 5rem;
-}
