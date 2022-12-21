@@ -36,7 +36,7 @@
       font-weight: 300;
       font-size: 0.9em;
       opacity: 0.8;
-      transition: opacity 250ms;
+      transition: var(--quadratic-transform)
     }
 
     li a:hover {
@@ -98,7 +98,7 @@
     height: 1.5em;
     width: 1.5em;
     opacity: 0.5;
-    transition: all 400ms;
+    transition: var(--quadratic-transform)
   }
 
   .link-close:hover {
