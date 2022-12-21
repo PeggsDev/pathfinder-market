@@ -14,8 +14,13 @@
     padding: 0 0.5em;
   }
 
-  nav.hide{
-    display: none;
+  nav li {
+    transition: all 450ms ease;
+  }
+
+  nav.hide li {
+    opacity: 0;
+    transform: scale(0.8);
     pointer-events: none;
   }
 
@@ -36,7 +41,7 @@
       font-weight: 300;
       font-size: 0.9em;
       opacity: 0.8;
-      transition: var(--quadratic-transform)
+      transition: all 450ms ease;
     }
 
     li a:hover {
@@ -51,17 +56,17 @@
 
 /* Search Container */
 
-.search-container.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .search-container {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 30%;
   margin: 0 auto;
   padding: 0 3em;
   z-index: 2;
+  opacity: 1;
+  transition: all 450ms ease;
 
   .search-bar {
     form {
@@ -98,7 +103,7 @@
     height: 1.5em;
     width: 1.5em;
     opacity: 0.5;
-    transition: var(--quadratic-transform)
+    transition: all 450ms ease;
   }
 
   .link-close:hover {
@@ -121,6 +126,10 @@
   height: 100vh;
   background: rgba(0, 0, 0, 0.48);
   z-index: 1;
+}
+
+.overlay {
+  transition: all 400ms ease;
 }
 
 /* Quick Links */
@@ -146,7 +155,7 @@
     padding: 0;
   }
 
-  ul li a{
+  ul li a {
     display: inline-block;
     width: 100%;
     padding: 0.5em 3em;
@@ -160,4 +169,67 @@
     color: var(--clr-accent-light);
     background: #c5c5c5;
   }
+}
+
+.nav-container {
+  nav li:nth-last-of-type(1),
+  nav.hide li:nth-last-of-type(9){
+    transition-delay: 0ms;
+  }
+
+  nav li:nth-last-of-type(2),
+  nav.hide li:nth-last-of-type(8){
+    transition-delay: 30ms;
+  }
+
+  nav li:nth-last-of-type(3),
+  nav.hide li:nth-last-of-type(7){
+    transition-delay: 60ms;
+  }
+  nav li:nth-last-of-type(4),
+  nav.hide li:nth-last-of-type(6){
+    transition-delay: 90ms;
+  }
+  nav li:nth-last-of-type(5),
+  nav.hide li:nth-last-of-type(5){
+    transition-delay: 120ms;
+  }
+  nav li:nth-last-of-type(6),
+  nav.hide li:nth-last-of-type(4){
+    transition-delay: 150ms;
+  }
+  nav li:nth-last-of-type(7),
+  nav.hide li:nth-last-of-type(3){
+    transition-delay: 180ms;
+  }
+  nav li:nth-last-of-type(8),
+  nav.hide li:nth-last-of-type(2){
+    transition-delay: 210ms;
+  }
+  nav li:nth-last-of-type(9),
+  nav.hide li:nth-last-of-type(1){
+    transition-delay: 240ms;
+  }
+}
+
+/* Search Container Animation */
+
+.search-container.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 450ms ease;
+
+  form,
+  .link-search {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+}
+
+.search-container form,
+.search-container .link-search {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 300ms;
+  transition: all 450ms ease;
 }

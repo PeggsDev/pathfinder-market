@@ -51,7 +51,7 @@ body {
 
   .header {
     position: relative;
-    height: 40em;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,47 +59,28 @@ body {
     transform-style: preserve-3d;
     z-index: -1;
 
-    .background,
-    .foreground {
+    .background {
       position: absolute;
+      top: 0;
+      left: 0;
       height: 100%;
       width: 100%;
       object-fit: cover;
       z-index: -1;
     }
   }
-  .body-content {
-    position: relative;
-    height: 40em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-    z-index: -1;
-  }
-  .background-2 {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
 }
 
 .background {
-  top: -10em;
   transform: translateZ(-0.8em) scale(1.8);
 }
 
 .foreground {
-  top: 8em;
   transform: translateZ(-0.2em) scale(1.2);
 
 }
 
 .background-2 {
-  top: 95em;
   transform: translateZ(-0.8em) scale(1.8);
 }
 

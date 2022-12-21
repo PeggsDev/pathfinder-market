@@ -50,9 +50,9 @@ function App() {
                         </section>
                     </div>
                 </section>
-                <section className={'body-content'}>
-                    <img src={backgroundTwo} alt="backgroundTwo" className={'background-2'}/>
-                </section>
+                {/*<section className={'body-content'}>*/}
+                {/*    <img src={backgroundTwo} alt="backgroundTwo" className={'background-2'}/>*/}
+                {/*</section>*/}
             </div>
         </div>
     );
