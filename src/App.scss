@@ -2,6 +2,7 @@
 *:before,
 *:after {
     box-sizing: border-box;
+    user-select: none;
 }
 
 h1,
@@ -35,6 +36,8 @@ body {
     .card-block {
         display: flex;
         justify-content: center;
+        flex-direction: row;
+        padding-top: 20em;
     }
 }
 

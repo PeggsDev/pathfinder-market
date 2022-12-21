@@ -7,7 +7,7 @@ import {useState} from "react";
 import {ReactComponent as XMarkIcon} from "./icons/xmark-solid.svg";
 
 export default function NavBar() {
-    const [isHidden, setHidden] = useState(true);
+    const [isHidden, setHidden] = useState(false);
 
     function SearchBox() {
         return (
@@ -95,7 +95,7 @@ export default function NavBar() {
                 </ul>
             </nav>
             <SearchBox />
-            <div className={`overlay ${isHidden ? 'show' : ''}`}/>
+            <div className={`overlay ${isHidden ? 'show' : ''}`} onClick={() => setHidden(!isHidden)} />
         </div>
     )
 }
