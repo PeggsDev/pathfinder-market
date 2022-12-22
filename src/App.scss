@@ -34,6 +34,18 @@ body {
   color: var(--clr-white);
 }
 
+.parallax-wrapper::-webkit-scrollbar {
+  width: 0.4em;
+  background: var(--clr-dark);
+  border-radius: var(--border-radius);
+}
+
+.parallax-wrapper::-webkit-scrollbar-thumb {
+  background: var(--clr-dark-background);
+  border-radius: 0.2em;
+}
+
+
 .card-block {
   height: 25em;
   width: 100vw;
@@ -72,7 +84,7 @@ body {
 
     .inglorious-dragons-text {
       position: absolute;
-      top: -50%;
+      top: -55%;
       left: 0;
       right: 0;
       height: 100%;
