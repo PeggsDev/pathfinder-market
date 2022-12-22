@@ -1,14 +1,20 @@
 import './pages/HomePage.scss';
 
 import NavBar from "./componenets/NavBar/NavBar";
-import Routes from "./Routes";
+import Pages from "./pages/Pages";
+
+import {
+    BrowserRouter
+} from 'react-router-dom'
 
 export default function App() {
 
     return (
         <div>
-            <NavBar/>
-            <Routes/>
+            <BrowserRouter>
+                <NavBar />
+                <Pages />
+            </BrowserRouter>
         </div>
     );
 }
