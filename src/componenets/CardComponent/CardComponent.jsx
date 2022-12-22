@@ -8,7 +8,9 @@ function checkOwnStatus({price}) {
 }
 
 export default function CardComponent(props) {
+
     const {imagePath, bookName, summary, price} = props;
+
     return (
         <div className={'card'}>
             <div className={'own-status'}>
