@@ -1,4 +1,4 @@
-import '../App.scss'
+import './HomePage.scss'
 import ingloriousDreagons from "../img/inglorious-dragons-text.png";
 import background from "../img/parallax-background.jpg";
 import CardComponent from "../componenets/CardComponent/CardComponent";

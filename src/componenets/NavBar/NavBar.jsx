@@ -94,8 +94,8 @@ export default function NavBar() {
                     </li>
                 </ul>
             </nav>
-            <SearchBox />
-            <div className={`overlay ${isHidden ? 'show' : ''}`} onClick={() => setHidden(!isHidden)} />
+            <SearchBox/>
+            <div className={`overlay ${isHidden ? 'show' : ''}`} onClick={() => setHidden(!isHidden)}/>
         </div>
     )
 }

@@ -1,11 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SourceBookDetailsPage from "./pages/SourceBookDetailsPage";
+import ErrorPage from "./pages/ErrorPage";
 
 export default function Routes() {
 
@@ -13,17 +13,16 @@ export default function Routes() {
         {
             path: "/",
             element: <HomePage/>,
+            errorElement: <ErrorPage/>
         },
         {
             path: "/source-book-details",
             element: <SourceBookDetailsPage/>,
+            errorElement: <ErrorPage/>
         },
     ]);
 
-    ReactDOM.createRoot(document.getElementById("root")).render(
-        <React.StrictMode>
-            <RouterProvider router={router}/>
-        </React.StrictMode>
+    return (
+        <RouterProvider router={router}/>
     )
-
 }
