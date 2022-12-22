@@ -71,8 +71,8 @@ body {
     }
 
     .inglorious-dragons-text {
-            position: absolute;
-    top: -50em;
+      position: absolute;
+      top: -50%;
       left: 0;
       right: 0;
       height: 100%;
@@ -93,7 +93,7 @@ body {
 }
 
 .inglorious-dragons-text {
-    transform: translateZ(-0.7em) scale(0.5);
+  transform: translateZ(-0.7em) scale(0.5);
 }
 
 svg {
