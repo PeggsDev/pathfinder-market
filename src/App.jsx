@@ -1,4 +1,5 @@
 import './pages/HomePage.scss';
+import './App.css'
 
 import NavBar from "./componenets/NavBar/NavBar";
 import Pages from "./pages/Pages";
