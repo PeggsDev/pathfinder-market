@@ -2,7 +2,7 @@ import './pages/HomePage.scss';
 import './App.css'
 
 import NavBar from "./componenets/NavBar/NavBar";
-import Pages from "./pages/Pages";
+import Router from "./Router";
 
 import {
     BrowserRouter
@@ -14,7 +14,7 @@ export default function App() {
         <div>
             <BrowserRouter>
                 <NavBar />
-                <Pages />
+                <Router />
             </BrowserRouter>
         </div>
     );
