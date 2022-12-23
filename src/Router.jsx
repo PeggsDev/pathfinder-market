@@ -8,8 +8,8 @@ import SourceBookDetailsPage from "./pages/SourceBookDetailsPage";
 export default function Router() {
     return (
         <Routes>
-            <Route exact path='/' element={<HomePage />} />
-            <Route exact path='/details' element={<SourceBookDetailsPage />} />
+            <Route path='/' element={<HomePage />} />
+            <Route path='/details' element={<SourceBookDetailsPage />} />
         </Routes>
     )
 }

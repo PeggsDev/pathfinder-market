@@ -1,15 +1,14 @@
 import './ThreeDimensionalCard.scss'
-import Character from '../../images/3d-card-pathfinder-character.png'
 
-export default function ThreeDimensionalCard() {
+export default function ThreeDimensionalCard({ title, image }) {
     return (
         <div className={'container'}>
             <div className={'card'}>
                 <div className={'character'}>
-                    <img src={Character} alt={'a character image'}/>
+                    <img src={image} alt={title} />
                 </div>
                 <div className={'info'}>
-                    <h3 className={'title'}>Create Your Character</h3>
+                    <h3 className={'title'}>{title}</h3>
                 </div>
             </div>
         </div>
