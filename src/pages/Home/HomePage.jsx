@@ -8,6 +8,7 @@ import GameMasteryGuide from "../../images/game-mastery.jpg";
 import PrimerBook from "../../images/pathfinder-primer.jpg";
 import React, {useEffect} from "react";
 import {useIntersectionObserver} from "react-intersection-observer-hook";
+import ThreeDimensionalCard from "../../componenets/3DCard/ThreeDimensionalCard";
 
 export default function HomePage() {
 
@@ -22,6 +23,9 @@ export default function HomePage() {
         <div className={'parallax-wrapper'} ref={rootRef}>
             <section className={'header'}>
                 <img src={ingloriousDreagons} alt='inglorious-dragons-text' className={'inglorious-dragons-text'}/>
+
+                <ThreeDimensionalCard/>
+
                 <img src={background} alt='background' className={'background'}/>
                 <div className={'foreground'}>
                     <section className={'card-block'} ref={ref}>
