@@ -1,0 +1,15 @@
+.details-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-image {
+    position: absolute;
+    left: 15em;
+    top: 8em;
+}
+
+.book-background {
+    width: 100vw;
+}
