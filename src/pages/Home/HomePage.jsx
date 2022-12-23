@@ -1,11 +1,11 @@
 import './HomePage.scss'
-import ingloriousDreagons from "../img/inglorious-dragons-text.png";
-import background from "../img/parallax-background.jpg";
-import CardComponent from "../componenets/CardComponent/CardComponent";
-import CoreRulebook from "../img/pathfinder-2e-core-rulebook.jpg";
-import Bestiary from "../img/bestiary.jpg";
-import GameMasteryGuide from "../img/game-mastery.jpg";
-import PrimerBook from "../img/pathfinder-primer.jpg";
+import ingloriousDreagons from "../../images/inglorious-dragons-text.png";
+import background from "../../images/parallax-background.jpg";
+import SlidingCard from "../../componenets/SlidingCard/SlidingCard";
+import CoreRulebook from "../../images/pathfinder-2e-core-rulebook.jpg";
+import Bestiary from "../../images/bestiary.jpg";
+import GameMasteryGuide from "../../images/game-mastery.jpg";
+import PrimerBook from "../../images/pathfinder-primer.jpg";
 import React, {useEffect} from "react";
 import {useIntersectionObserver} from "react-intersection-observer-hook";
 
@@ -25,28 +25,28 @@ export default function HomePage() {
                 <img src={background} alt='background' className={'background'}/>
                 <div className={'foreground'}>
                     <section className={'card-block'} ref={ref}>
-                        <CardComponent
+                        <SlidingCard
                             price={'£34.99'}
                             bookName={'Core Rulebook'}
                             imagePath={CoreRulebook}
                             summary={
                                 `This indispensable volume contains the core rules for players and Game Masters, 
                                     and is your first step on a heroic new journey!`}/>
-                        <CardComponent
+                        <SlidingCard
                             price={'£34.99'}
                             bookName={'Bestiary'}
                             imagePath={Bestiary}
                             summary={
                                 `Over 400 of fantasy's fiercest foes burst from the pages of this enormous compendium 
                                     of the most popular and commonly encountered creatures in the world of Pathfinder!`}/>
-                        <CardComponent
+                        <SlidingCard
                             price={'£34.99'}
                             bookName={'Gamemastery Guide'}
                             imagePath={GameMasteryGuide}
                             summary={
                                 `Whether you are a new Game Master or experienced storyteller, 
                                     you can always find new ways to hone your craft.`}/>
-                        <CardComponent
+                        <SlidingCard
                             price={'£0'}
                             bookName={'Pathfinder Primer'}
                             imagePath={PrimerBook}

@@ -2,7 +2,7 @@ import {
     Routes, Route
 } from 'react-router-dom'
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import SourceBookDetailsPage from "./pages/SourceBookDetailsPage";
 
 export default function Router() {

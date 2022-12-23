@@ -1,4 +1,4 @@
-import './CardComponent.scss'
+import './SlidingCard.scss'
 import { ReactComponent as ShoppingBagIcon } from './icons/bag-shopping-solid.svg';
 import { ReactComponent as ClosedLockIcon } from './icons/lock-solid.svg';
 import { ReactComponent as OpenLockIcon } from "./icons/lock-open-solid.svg";
@@ -11,7 +11,7 @@ function checkOwnStatus({ price }) {
 
 }
 
-export default function CardComponent(props) {
+export default function SlidingCard(props) {
 
     const { imagePath, bookName, summary, price } = props;
 

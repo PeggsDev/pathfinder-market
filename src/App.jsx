@@ -1,4 +1,4 @@
-import './pages/HomePage.scss';
+import './pages/Home/HomePage.scss';
 import './App.css'
 
 import NavBar from "./componenets/NavBar/NavBar";
