@@ -53,7 +53,7 @@ export default function NavBar() {
                     <li>
                         <a href={'#'}>
                             <Link to={'/'}>
-                                <HomeIcon clssName={'inglorious-logo'} />
+                                <HomeIcon className={'inglorious-logo'} />
                             </Link>
                         </a>
                     </li>
