@@ -1,3 +1,7 @@
+:root {
+  --clr-char-outline: #c40000;
+}
+
 .character-sheet {
   width: 100vw;
   height: 100vh;
@@ -109,9 +113,9 @@
   position: relative;
 
   .shield {
+    position: relative;
     top: 0;
     left: 0;
-    position: relative;
     z-index: -1;
   }
 
