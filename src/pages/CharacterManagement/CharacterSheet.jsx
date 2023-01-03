@@ -3,41 +3,51 @@ import React, { useState } from "react";
 
 import { ReactComponent as Armor } from "./svg/armor.svg";
 
-let abilityScoreData = [
-    {
-        'id': '1',
-        'ability': 'strength',
-        'score': '14'
-    },
-    {
-        'id': '2',
-        'ability': 'dexterity',
-        'score': '20'
-    },
-    {
-        'id': '3',
-        'ability': 'Constitution',
-        'score': '8'
-    },
-    {
-        'id': '4',
-        'ability': 'Intelligence',
-        'score': '14'
-    },
-    {
-        'id': '5',
-        'ability': 'Wisdom',
-        'score': '16'
-    },
-    {
-        'id': '6',
-        'ability': 'Charisma',
-        'score': '18'
-    }
-]
+const characterData = {
+    'id':'gsrwe4tegdfg90d',
+    'characterName': '',
+    'playerName': '',
+    'level': 1,
+    'armorClass': 25,
+    'experiencePoints': 800,
+    'ancestry': '',
+    'background':'',
+    'abilityScores': [
+        {
+            'id': '1',
+            'ability': 'strength',
+            'score': 12
+        },
+        {
+            'id': '2',
+            'ability': 'dexterity',
+            'score': 20
+        },
+        {
+            'id': '3',
+            'ability': 'constitution',
+            'score': 8
+        },
+        {
+            'id': '4',
+            'ability': 'intelligence',
+            'score': 14
+        },
+        {
+            'id': '5',
+            'ability': 'wisdom',
+            'score': 16
+        },
+        {
+            'id': '6',
+            'ability': 'charisma',
+            'score': 18
+        }
+    ]
+}
 
 function calculateModifier(value) {
-    let modifier = Math.floor((value - 10) / 2)
+    const modifier = Math.floor((value - 10) / 2)
     return modifier > 0 ? "+" + modifier : modifier.toString();
 }
 
@@ -85,7 +95,7 @@ export default function CharacterSheet() {
                     type="text"
                     disabled="disabled"
                     placeholder="disabled"
-                    value={10}
+                    value={characterData.armorClass}
                     readOnly />
                 <h3 className={'sub-title'}>CLASS</h3>
                 <Armor className={'shield'} />
@@ -93,7 +103,7 @@ export default function CharacterSheet() {
             <div className={'ability-scores'}>
                 <h1>ABILITY SCORES</h1>
                 <form className={'score-block'}>
-                    {abilityScoreData.map((ability) => {
+                    {characterData.abilityScores.map((ability) => {
                         return <AbilityScore key={ability.id}
                             ability={ability.ability}
                             score={ability.score} />
