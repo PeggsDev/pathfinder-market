@@ -43,6 +43,28 @@ const characterData = {
             'ability': 'charisma',
             'score': 18
         }
+    ],
+    'skills': [
+        {
+            'id':'1',
+            'skill': 'acrobatics',
+            'proficiencyLevel': 2
+        },
+        {
+            'id':'1',
+            'skill': 'arcana',
+            'proficiencyLevel': 0
+        },
+        {
+            'id':'1',
+            'skill': 'athletics',
+            'proficiencyLevel': 2
+        },
+        {
+            'id':'1',
+            'skill': 'deception',
+            'proficiencyLevel': 4
+        },
     ]
 }
 

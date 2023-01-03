@@ -116,7 +116,7 @@
     position: relative;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 0;
   }
 
   h3.title {
@@ -124,6 +124,7 @@
     top: 1rem;
     left: 1.9rem;
     font-size: 0.6rem;
+    z-index: 1;
   }
 
   h3.sub-title {
@@ -131,6 +132,7 @@
     top: 3.6rem;
     left: 2rem;
     font-size: 0.6rem;
+    z-index: 1;
   }
 
   input {
@@ -145,5 +147,6 @@
     background: none;
     font-weight: 800;
     color: var(--clr-white);
+    z-index: 1;
   }
 }
