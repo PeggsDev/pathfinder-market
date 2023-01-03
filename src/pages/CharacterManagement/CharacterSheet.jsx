@@ -8,7 +8,7 @@ const characterData = {
     'characterName': '',
     'playerName': '',
     'level': 1,
-    'armorClass': 25,
+    'armorClass': 125,
     'experiencePoints': 800,
     'ancestry': '',
     'background':'',
