@@ -34,6 +34,16 @@
   overflow-x: hidden;
   perspective: 1em;
 
+  svg {
+    fill: var(--clr-white);
+    width: 1.2em;
+    cursor: pointer;
+  }
+
+  svg:hover {
+    transform: scale(1.2);
+  }
+
   .header {
     position: relative;
     height: 100%;
@@ -78,16 +88,6 @@
 
 .inglorious-dragons-text {
   transform: translateZ(-0.7em) scale(0.5);
-}
-
-svg {
-  fill: var(--clr-white);
-  width: 1.2em;
-  cursor: pointer;
-}
-
-svg:hover {
-  transform: scale(1.2);
 }
 
 .fade-out {

@@ -7,6 +7,12 @@
   z-index: 3;
   background: var(--clr-dark-background);
 
+  svg {
+    fill: var(--clr-white);
+    width: 1.2em;
+    cursor: pointer;
+  }
+
   nav {
     width: 80em;
     height: 100%;
@@ -46,10 +52,6 @@
 
     li a:hover {
       opacity: 1;
-    }
-
-    li svg:hover {
-      transform: scale(1);
     }
   }
 }

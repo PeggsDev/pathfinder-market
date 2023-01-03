@@ -21,6 +21,7 @@ p {
   --clr-accent-dark: #262626;
   --clr-dark-background: #181818;
   --clr-dark-lowlight: #282828;
+  --clr-char-outline: #c40000;
 
   --border-radius: 1em;
   --quadratic-transform: transform 100ms cubic-bezier(0.21, 0.1, 0.81, 0.1);
