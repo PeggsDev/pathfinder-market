@@ -1,6 +1,4 @@
 .character-sheet {
-  position: relative;
-  top: 3rem;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -27,6 +25,7 @@
 
 }
 
+/* Ability Scores and Skill Modifiers */
 .ability-scores,
 .skill-modifiers {
   display: flex;
@@ -102,5 +101,45 @@
       background: none;
       color: var(--clr-white);
     }
+  }
+}
+
+/* Armor Class */
+.armor-class {
+  position: relative;
+
+  .shield {
+    top: 0;
+    left: 0;
+    position: relative;
+    z-index: -1;
+  }
+
+  h3.title {
+    position: absolute;
+    top: 1rem;
+    left: 1.9rem;
+    font-size: 0.6rem;
+  }
+
+  h3.sub-title {
+    position: absolute;
+    top: 3.6rem;
+    left: 2rem;
+    font-size: 0.6rem;
+  }
+
+  input {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.1rem;
+    font-size: 1.8rem;
+    text-align: center;
+    height: 3rem;
+    width: 3.5rem;
+    border: none;
+    background: none;
+    font-weight: 800;
+    color: var(--clr-white);
   }
 }

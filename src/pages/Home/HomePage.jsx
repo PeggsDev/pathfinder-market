@@ -25,7 +25,7 @@ export default function HomePage() {
             <section className={'header'}>
                 <img src={ingloriousDreagons} alt='inglorious-dragons-text' className={'inglorious-dragons-text'} />
 
-                <section className={'hero-card-block'}>
+                {/* { <section className={'hero-card-block'}>
                     <ThreeDimensionalCard
                         title={'Create Your Character'}
                         image={CharacterImg} />
@@ -35,7 +35,7 @@ export default function HomePage() {
                     <ThreeDimensionalCard
                         title={'Run Your Game'}
                         image={CharacterImg} />
-                </section>
+                </section> } */}
 
                 <img src={background} alt='background' className={'background'} />
                 <div className={'foreground'}>

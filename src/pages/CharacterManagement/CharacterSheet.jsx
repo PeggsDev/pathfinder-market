@@ -1,5 +1,5 @@
 import './CharacterSheet.scss'
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import { ReactComponent as Armor } from "./svg/armor.svg";
 
@@ -41,36 +41,36 @@ function calculateModifier(value) {
     return modifier > 0 ? "+" + modifier : modifier.toString();
 }
 
-function AbilityScore({ability, score}) {
+function AbilityScore({ ability, score }) {
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
             <input className={'modifier'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={calculateModifier(score)}
-                   readOnly/>
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={calculateModifier(score)}
+                readOnly />
             <input className={'score'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={score}
-                   readOnly/>
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={score}
+                readOnly />
         </div>
     )
 }
 
-function Skill({skill}) {
+function Skill({ skill }) {
     const [score, setScore] = useState(10)
     return (
         <div className={'skill'}>
             <input className={'modifier'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={calculateModifier(score)}
-                   readOnly/>
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={calculateModifier(score)}
+                readOnly />
             <h3>{skill.toUpperCase()}</h3>
         </div>
     )
@@ -80,32 +80,32 @@ export default function CharacterSheet() {
     return (
         <div className={'character-sheet'}>
             <div className={'armor-class'}>
-                <Armor className={'shield'} />
-                <h3>ARMOR</h3>
+                <h3 className={'title'}>ARMOR</h3>
                 <input className={'modifier'}
-                       type="text"
-                       disabled="disabled"
-                       placeholder="disabled"
-                       value={10}
-                       readOnly/>
-                <h3>CLASS</h3>
+                    type="text"
+                    disabled="disabled"
+                    placeholder="disabled"
+                    value={10}
+                    readOnly />
+                <h3 className={'sub-title'}>CLASS</h3>
+                <Armor className={'shield'} />
             </div>
             <div className={'ability-scores'}>
                 <h1>ABILITY SCORES</h1>
                 <form className={'score-block'}>
                     {abilityScoreData.map((ability) => {
                         return <AbilityScore key={ability.id}
-                                             ability={ability.ability}
-                                             score={ability.score}/>
+                            ability={ability.ability}
+                            score={ability.score} />
                     })}
                 </form>
             </div>
             <div className={'skill-modifiers'}>
                 <h1>SKILLS</h1>
                 <form className={'skills-block'}>
-                    <Skill skill={'Acrobatics'}/>
-                    <Skill skill={'Arcana'}/>
-                    <Skill skill={'Athletics'}/>
+                    <Skill skill={'Acrobatics'} />
+                    <Skill skill={'Arcana'} />
+                    <Skill skill={'Athletics'} />
                 </form>
             </div>
         </div>
