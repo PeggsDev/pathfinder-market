@@ -17,7 +17,7 @@ export default function CharacterBuilder() {
     }, []);
 
     return (
-        <div className='builder'>
+        <div className='character-builder'>
             <div className={'ancestry'}>
                 <select name={'ancestries'}> {
                     ancestries.map((ancestry) => {

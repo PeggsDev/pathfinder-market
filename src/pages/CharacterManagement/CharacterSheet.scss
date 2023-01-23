@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-self: center;
   align-items: center;
   justify-content: space-evenly;
@@ -35,7 +35,7 @@
   flex-direction: column;
   background: var(--clr-dark-background);
   border: 2px solid var(--clr-char-outline);
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   border-radius: 0.5rem;
   opacity: 0.8;
 
@@ -94,13 +94,31 @@
     }
 
     .modifier {
-      font-size: 0.8rem;
+      font-size: 1rem;
       text-align: center;
-      height: 3rem;
-      width: 3.5rem;
+      height: 2rem;
       border: none;
       background: none;
       color: var(--clr-white);
+    }
+  }
+
+  .proficiency-indicator-block {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    .proficiency-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    input[type="radio"]  {
+      accent-color: red;
     }
   }
 }
