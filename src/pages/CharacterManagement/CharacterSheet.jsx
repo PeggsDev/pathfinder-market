@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 
 import {ReactComponent as Armor} from "./svg/armor.svg";
-import {ReactComponent as ProficiencyIcon} from "./svg/award-solid.svg";
 
 const proficiencyEnum = {
     T: 2,
@@ -53,12 +52,14 @@ function Skill({skill, proficiencyIndicator, baseAbility}) {
             <label className={'base-ability-label'}>
                 {baseAbility}
             </label>
-            <label className={'skill-label'}>
-                {skill}
-            </label>
-            <label className={'skill-modifier'}>
-                {proficiencyValue > 0 ? "+" + proficiencyValue : '-'}
-            </label>
+            <div className={'skill-box'}>
+                <label className={'skill-label'}>
+                    {skill}
+                </label>
+                <label className={'skill-modifier'}>
+                    {proficiencyValue > 0 ? "+" + proficiencyValue : '-'}
+                </label>
+            </div>
         </div>
     )
 }
