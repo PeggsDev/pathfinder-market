@@ -13,8 +13,11 @@ const proficiencyEnum = {
 }
 
 function calculateModifier(value) {
-    const modifier = Math.floor((value - 10) / 2)
-    return modifier > 0 ? "+" + modifier : modifier.toString();
+    return Math.floor((value - 10) / 2)
+}
+
+function calculateSkillModifier(baseAbilityScore, level, proficiency) {
+    return calculateModifier(baseAbilityScore) + level + proficiency
 }
 
 function CharacterDetails(props) {
@@ -27,6 +30,7 @@ function CharacterDetails(props) {
 }
 
 function AbilityScore({ ability, score }) {
+    const modifier = (calculateModifier(score))
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
@@ -34,16 +38,14 @@ function AbilityScore({ ability, score }) {
                 type="text"
                 disabled="disabled"
                 placeholder="disabled"
-                value={calculateModifier(score)}
+                value={modifier > 0 ? "+" + modifier : modifier.toString()}
                 readOnly />
         </div>
     )
 }
 
 
-function Skill({ skill, proficiencyIndicator, baseAbility }) {
-
-    let proficiencyValue = proficiencyEnum[proficiencyIndicator]
+function Skill({ skill, proficiencyIndicator, proficiencyValue, baseAbility, skillModifier }) {
 
     return (
         <div className={'skill-box'}>
@@ -64,11 +66,11 @@ function Skill({ skill, proficiencyIndicator, baseAbility }) {
                     </label>
                 </div>
                 <div className={'skill-dice-roll'}>
-                    <DiceIcon className={'dice-icon'}/>
+                    <DiceIcon className={'dice-icon'} />
                 </div>
                 <div className={'skill-modifier'}>
                     <label>
-                        {proficiencyValue > 0 ? "+" + proficiencyValue : '+0'}
+                        {skillModifier > 0 ? "+" + skillModifier : '+0'}
                     </label>
                 </div>
             </div>
@@ -149,7 +151,15 @@ export default function CharacterSheet() {
                             return <Skill key={skill.id}
                                 skill={skill.skill}
                                 baseAbility={baseAbility.ability.slice(0, 3).toUpperCase()}
-                                proficiencyIndicator={skill.proficiencyLevel} />
+                                proficiencyIndicator={skill.proficiencyLevel}
+                                proficiencyValue={proficiencyEnum[skill.proficiencyLevel]}
+                                skillModifier={
+                                    calculateSkillModifier(
+                                        baseAbility.score,
+                                        characterData.level,
+                                        proficiencyEnum[skill.proficiencyLevel]
+                                    )
+                                } />
                         })
                     }
                 </form>
