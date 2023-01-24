@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 
 import {ReactComponent as Armor} from "./svg/armor.svg";
+import {ReactComponent as ProficiencyIcon} from "./svg/award-solid.svg";
 
 const proficiencyEnum = {
     T: 2,
@@ -35,56 +36,29 @@ function AbilityScore({ability, score}) {
                    placeholder="disabled"
                    value={calculateModifier(score)}
                    readOnly/>
-            <input className={'score'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={score}
-                   readOnly/>
         </div>
     )
 }
 
 
-function Skill({skill, proficiency}) {
+function Skill({skill, proficiencyIndicator, baseAbility}) {
 
-    let proficiencyValue = proficiencyEnum[proficiency]
+    let proficiencyValue = proficiencyEnum[proficiencyIndicator]
 
     return (
         <div className={'skill'}>
-
-            <h3>{skill.toUpperCase()}</h3>
-            <input className={'modifier'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={proficiencyValue > 0 ? "+" + proficiencyValue : '-'}
-                   readOnly/>
-            <ProficiencyIndicator proficiency={proficiency}
-                                  skill={skill}/>
-        </div>
-    )
-}
-
-function ProficiencyIndicator({proficiency, skill}) {
-    const proficiencyMap = ['T', 'E', 'M', 'L']
-
-    return (
-        <div className={'proficiency-indicator-block'}>
-            {
-                proficiencyMap.map((prof) => {
-                    return (
-                        <div className={'proficiency-indicator'}>
-                            <div className={'proficiency-indicator-name'}> {prof} </div>
-                            <input className={'proficiency-indicator-value'}
-                                   type={'radio'}
-                                   value={prof}
-                                   name={skill}
-                                   checked={prof === proficiency}/>
-                        </div>
-                    )
-                })
-            }
+            <label className={'proficiency-indicator-label'}>
+                {proficiencyIndicator}
+            </label>
+            <label className={'base-ability-label'}>
+                {baseAbility}
+            </label>
+            <label className={'skill-label'}>
+                {skill}
+            </label>
+            <label className={'skill-modifier'}>
+                {proficiencyValue > 0 ? "+" + proficiencyValue : '-'}
+            </label>
         </div>
     )
 }
@@ -102,12 +76,13 @@ export default function CharacterSheet() {
         'traits': '',
         'abilityScores': [{
             "id": '',
-            "ability": 'charisma',
+            "ability": '',
             "score": 0
         }],
         'skills': [{
             "id": '',
             "skill": '',
+            "ability": '',
             "proficiencyLevel": ''
         }]
     }
@@ -154,12 +129,14 @@ export default function CharacterSheet() {
             </div>
             <div className={'skill-modifiers'}>
                 <h1>SKILLS</h1>
-                <form className={'skills-block'}>
+                <form className={'skill-block'}>
                     {
-                        characterData.skills.map((skill) => {
-                            return <Skill id={skill.id}
+                        characterData.skills.map((skill, index) => {
+                            const baseAbility = characterData.abilityScores.find(item => item.ability === skill.ability)
+                            return <Skill key={skill.id}
                                           skill={skill.skill}
-                                          proficiency={skill.proficiencyLevel}/>
+                                          baseAbility={baseAbility.ability.slice(0, 3).toUpperCase()}
+                                          proficiencyIndicator={skill.proficiencyLevel}/>
                         })
                     }
                 </form>
