@@ -1,5 +1,6 @@
 :root {
   --clr-char-outline: #5a8f05;
+  --clr-dice-roll-hover: #f5a623;
 }
 
 .character-sheet {
@@ -136,13 +137,11 @@
             align-items: center;
             fill: var(--clr-accent-light);
             width: 1rem;
-
           }
         }
 
         .skill-dice-roll :hover {
-          fill: #f5a623;
-          //fill: var(--clr-char-outline);
+          fill: var(--clr-dice-roll-hover);
           cursor: pointer;
         }
 
