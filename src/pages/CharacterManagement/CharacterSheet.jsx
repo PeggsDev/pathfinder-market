@@ -2,6 +2,7 @@ import './CharacterSheet.scss'
 import React, { useEffect, useState } from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 
+import { ReactComponent as DiceIcon } from './svg/dice-d20-solid.svg';
 import { ReactComponent as Armor } from "./svg/armor.svg";
 
 const proficiencyEnum = {
@@ -62,9 +63,12 @@ function Skill({ skill, proficiencyIndicator, baseAbility }) {
                         {skill}
                     </label>
                 </div>
+                <div className={'skill-dice-roll'}>
+                    <DiceIcon className={'dice-icon'}/>
+                </div>
                 <div className={'skill-modifier'}>
                     <label>
-                        {proficiencyValue > 0 ? "+" + proficiencyValue : '-'}
+                        {proficiencyValue > 0 ? "+" + proficiencyValue : '+0'}
                     </label>
                 </div>
             </div>

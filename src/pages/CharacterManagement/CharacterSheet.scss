@@ -36,6 +36,7 @@
 
   h1 {
     font-size: 1rem;
+    padding-top: 0.5rem;
   }
 
   .score-block {
@@ -81,7 +82,6 @@
   .skill-block {
     padding-bottom: 2rem;
 
-
     .skill-box {
       display: flex;
       align-items: center;
@@ -104,7 +104,6 @@
         width: 1.5rem;
         align-items: center;
         justify-content: center;
-        padding-left: 0.5rem;
         text-align: center;
       }
 
@@ -120,21 +119,44 @@
         padding-right: 0.8rem;
 
         .skill-name {
-          width: 7rem;
+          width: 10rem;
 
           label {
+            font-size: 0.9rem;
             display: flex;
             text-transform: capitalize;
           }
         }
 
+        .skill-dice-roll {
+          width: 1.5rem;
+
+          .dice-icon {
+            display: flex;
+            align-items: center;
+            fill: var(--clr-accent-light);
+            width: 1rem;
+
+          }
+        }
+
+        .skill-dice-roll :hover {
+          fill: #f5a623;
+          //fill: var(--clr-char-outline);
+          cursor: pointer;
+        }
+
         .skill-modifier {
+          display: flex;
+          align-items: center;
           text-align: center;
           width: 1rem;
           height: 2rem;
-          font-size: 1rem;
           color: var(--clr-white);
 
+          label {
+            font-size: 1rem;
+          }
         }
       }
     }
