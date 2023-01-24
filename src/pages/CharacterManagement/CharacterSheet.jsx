@@ -1,8 +1,8 @@
 import './CharacterSheet.scss'
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 
-import {ReactComponent as Armor} from "./svg/armor.svg";
+import { ReactComponent as Armor } from "./svg/armor.svg";
 
 const proficiencyEnum = {
     T: 2,
@@ -19,46 +19,54 @@ function calculateModifier(value) {
 function CharacterDetails(props) {
     return (
         <div className={'character-details'}>
-            <img src={''} className={'character-profile-img'}/>
+            <img src={''} className={'character-profile-img'} />
             <label>{props.characterName}</label>
         </div>
     )
 }
 
-function AbilityScore({ability, score}) {
+function AbilityScore({ ability, score }) {
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
             <input className={'modifier'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={calculateModifier(score)}
-                   readOnly/>
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={calculateModifier(score)}
+                readOnly />
         </div>
     )
 }
 
 
-function Skill({skill, proficiencyIndicator, baseAbility}) {
+function Skill({ skill, proficiencyIndicator, baseAbility }) {
 
     let proficiencyValue = proficiencyEnum[proficiencyIndicator]
 
     return (
-        <div className={'skill'}>
-            <label className={'proficiency-indicator-label'}>
-                {proficiencyIndicator}
-            </label>
-            <label className={'base-ability-label'}>
-                {baseAbility}
-            </label>
-            <div className={'skill-box'}>
-                <label className={'skill-label'}>
-                    {skill}
+        <div className={'skill-box'}>
+            <div className={'proficiency-indicator'}>
+                <label>
+                    {proficiencyIndicator}
                 </label>
-                <label className={'skill-modifier'}>
-                    {proficiencyValue > 0 ? "+" + proficiencyValue : '-'}
+            </div>
+            <div className={'base-ability'}>
+                <label className={'base-ability-label'}>
+                    {baseAbility}
                 </label>
+            </div>
+            <div className={'skill'}>
+                <div className={'skill-name'}>
+                    <label>
+                        {skill}
+                    </label>
+                </div>
+                <div className={'skill-modifier'}>
+                    <label>
+                        {proficiencyValue > 0 ? "+" + proficiencyValue : '-'}
+                    </label>
+                </div>
             </div>
         </div>
     )
@@ -107,37 +115,37 @@ export default function CharacterSheet() {
             <div className={'armor-class'}>
                 <h3 className={'title'}>ARMOR</h3>
                 <input className={'modifier'}
-                       type="text"
-                       disabled="disabled"
-                       placeholder="disabled"
-                       value={characterData.armorClass}
-                       readOnly/>
+                    type="text"
+                    disabled="disabled"
+                    placeholder="disabled"
+                    value={characterData.armorClass}
+                    readOnly />
                 <h3 className={'sub-title'}>CLASS</h3>
-                <Armor className={'shield'}/>
+                <Armor className={'shield'} />
             </div>
             <div className={'ability-scores'}>
-                <h1>ABILITY SCORES</h1>
+                <h1>Ability Scores</h1>
                 <form className={'score-block'}>
                     {
                         characterData.abilityScores.map((ability) => {
                             return <AbilityScore key={ability.id}
-                                                 ability={ability.ability}
-                                                 score={ability.score}
+                                ability={ability.ability}
+                                score={ability.score}
                             />
                         })
                     }
                 </form>
             </div>
             <div className={'skill-modifiers'}>
-                <h1>SKILLS</h1>
+                <h1>Skills</h1>
                 <form className={'skill-block'}>
                     {
                         characterData.skills.map((skill, index) => {
                             const baseAbility = characterData.abilityScores.find(item => item.ability === skill.ability)
                             return <Skill key={skill.id}
-                                          skill={skill.skill}
-                                          baseAbility={baseAbility.ability.slice(0, 3).toUpperCase()}
-                                          proficiencyIndicator={skill.proficiencyLevel}/>
+                                skill={skill.skill}
+                                baseAbility={baseAbility.ability.slice(0, 3).toUpperCase()}
+                                proficiencyIndicator={skill.proficiencyLevel} />
                         })
                     }
                 </form>
