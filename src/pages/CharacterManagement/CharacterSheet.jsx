@@ -79,30 +79,8 @@ function Skill({ skill, proficiencyIndicator, proficiencyValue, baseAbility, ski
 }
 
 export default function CharacterSheet() {
-    const characterDto = {
-        'id': '',
-        'characterName': '',
-        'playerName': '',
-        'level': 0,
-        'armorClass': 0,
-        'experiencePoints': 0,
-        'ancestry': '',
-        'background': '',
-        'traits': '',
-        'abilityScores': [{
-            "id": '',
-            "ability": '',
-            "score": 0
-        }],
-        'skills': [{
-            "id": '',
-            "skill": '',
-            "ability": '',
-            "proficiencyLevel": ''
-        }]
-    }
 
-    const [characterData, setCharacterData] = useState(characterDto)
+    const [characterData, setCharacterData] = useState()
 
     useEffect(() => {
         (async () => {
@@ -124,7 +102,7 @@ export default function CharacterSheet() {
                     type="text"
                     disabled="disabled"
                     placeholder="disabled"
-                    value={characterData.armorClass}
+                    value={characterData?.armorClass}
                     readOnly />
                 <h3 className={'sub-title'}>CLASS</h3>
                 <Armor className={'shield'} />
@@ -133,7 +111,7 @@ export default function CharacterSheet() {
                 <h1>Ability Scores</h1>
                 <form className={'score-block'}>
                     {
-                        characterData.abilityScores.map((ability) => {
+                        characterData?.abilityScores.map((ability) => {
                             return <AbilityScore key={ability.id}
                                 ability={ability.ability}
                                 score={ability.score}
@@ -146,7 +124,7 @@ export default function CharacterSheet() {
                 <h1>Skills</h1>
                 <form className={'skill-block'}>
                     {
-                        characterData.skills.map((skill, index) => {
+                        characterData?.skills.map((skill, index) => {
                             const baseAbility = characterData.abilityScores.find(item => item.ability === skill.ability)
                             return <Skill key={skill.id}
                                 skill={skill.skill}
