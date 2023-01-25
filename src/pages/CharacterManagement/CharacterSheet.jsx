@@ -6,6 +6,7 @@ import { ReactComponent as DiceIcon } from './svg/dice-d20-solid.svg';
 import { ReactComponent as Armor } from "./svg/armor.svg";
 import SkillToolTip from "../../componenets/ToolTips/SkillToolTip";
 import {proficiencyEnum} from "../../App";
+import CharacterSheetBackground from "../../images/parallax-background.jpg";
 
 function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -99,7 +100,8 @@ export default function CharacterSheet() {
 
     return (
         <div className={'character-sheet'}>
-            <div className={'character-sheet-component grid-col-span-2 ability-scores'}>
+            {/*<img src={CharacterSheetBackground} className={'character-sheet-background'} />*/}
+            <div className={'character-sheet-component ability-scores'}>
                 <h1>Ability Scores</h1>
                 <form className={'score-block'}>
                     {
