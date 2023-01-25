@@ -68,13 +68,6 @@ export default function HomePage() {
                             summary={
                                 `This free resource contains everything you need to learn how to play Pathfinder,
                                     including rules to create your own hero and tools to make your own amazing stories.`} />
-                        <SlidingCard
-                            price={'£0'}
-                            bookName={'Pathfinder Primer'}
-                            imagePath={PrimerBook}
-                            summary={
-                                `This free resource contains everything you need to learn how to play Pathfinder,
-                                    including rules to create your own hero and tools to make your own amazing stories.`} />
                     </section>
                 </div>
             </section>
