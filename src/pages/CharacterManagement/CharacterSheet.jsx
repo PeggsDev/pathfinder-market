@@ -124,7 +124,7 @@ export default function CharacterSheet() {
                 <h1>Skills</h1>
                 <form className={'skill-block'}>
                     {
-                        characterData?.skills.map((skill, index) => {
+                        characterData?.skills.map((skill) => {
                             const baseAbility = characterData.abilityScores.find(item => item.ability === skill.ability)
                             return <Skill key={skill.id}
                                 skill={skill.skill}
