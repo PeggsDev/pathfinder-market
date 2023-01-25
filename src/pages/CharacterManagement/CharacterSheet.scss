@@ -1,16 +1,28 @@
 :root {
   --clr-char-outline: #5a8f05;
   --clr-dice-roll-hover: #f5a623;
+  --clr-skill-dice-roll-hover: #b55dff;
+}
+
+.grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.grid-row-span-2 {
+  grid-row: span 2;
 }
 
 .character-sheet {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  align-items: center;
-  justify-content: space-evenly;
+  padding-top: 5rem;
+  padding-left: 10%;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, 20rem);
+
+  .skill-modifiers {
+    grid-column-start: 2;
+    grid-row: 3 / span 6;
+  }
 
   .armor-class-box-svg {
     fill: var(--clr-dark-background);
@@ -141,7 +153,7 @@
         }
 
         .skill-dice-roll :hover {
-          fill: var(--clr-dice-roll-hover);
+          fill: var(--clr-skill-dice-roll-hover);
           cursor: pointer;
         }
 

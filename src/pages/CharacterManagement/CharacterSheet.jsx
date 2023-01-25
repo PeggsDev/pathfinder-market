@@ -6,6 +6,7 @@ import { ReactComponent as DiceIcon } from './svg/dice-d20-solid.svg';
 import { ReactComponent as Armor } from "./svg/armor.svg";
 
 const proficiencyEnum = {
+    U: 0,
     T: 2,
     E: 4,
     M: 6,
@@ -45,7 +46,7 @@ function AbilityScore({ ability, score }) {
 }
 
 
-function Skill({ skill, proficiencyIndicator, proficiencyValue, baseAbility, skillModifier }) {
+function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
 
     return (
         <div className={'skill-box'}>
@@ -96,18 +97,7 @@ export default function CharacterSheet() {
 
     return (
         <div className={'character-sheet'}>
-            <div className={'armor-class'}>
-                <h3 className={'title'}>ARMOR</h3>
-                <input className={'modifier'}
-                    type="text"
-                    disabled="disabled"
-                    placeholder="disabled"
-                    value={characterData?.armorClass}
-                    readOnly />
-                <h3 className={'sub-title'}>CLASS</h3>
-                <Armor className={'shield'} />
-            </div>
-            <div className={'ability-scores'}>
+            <div className={'character-sheet-component grid-col-span-2 ability-scores'}>
                 <h1>Ability Scores</h1>
                 <form className={'score-block'}>
                     {
@@ -120,7 +110,18 @@ export default function CharacterSheet() {
                     }
                 </form>
             </div>
-            <div className={'skill-modifiers'}>
+            <div className={'character-sheet-component armor-class'}>
+                <h3 className={'title'}>ARMOR</h3>
+                <input className={'modifier'}
+                       type="text"
+                       disabled="disabled"
+                       placeholder="disabled"
+                       value={characterData?.armorClass}
+                       readOnly />
+                <h3 className={'sub-title'}>CLASS</h3>
+                <Armor className={'shield'} />
+            </div>
+            <div className={'character-sheet-component skill-modifiers'}>
                 <h1>Skills</h1>
                 <form className={'skill-block'}>
                     {
@@ -130,7 +131,6 @@ export default function CharacterSheet() {
                                 skill={skill.skill}
                                 baseAbility={baseAbility.ability.slice(0, 3).toUpperCase()}
                                 proficiencyIndicator={skill.proficiencyLevel}
-                                proficiencyValue={proficiencyEnum[skill.proficiencyLevel]}
                                 skillModifier={
                                     calculateSkillModifier(
                                         baseAbility.score,
@@ -142,6 +142,11 @@ export default function CharacterSheet() {
                     }
                 </form>
             </div>
+
+            <div className={'character-sheet-component'}></div>
+            <div className={'character-sheet-component'}></div>
+            <div className={'character-sheet-component'}></div>
+            <div className={'character-sheet-component'}></div>
         </div>
     )
 }
