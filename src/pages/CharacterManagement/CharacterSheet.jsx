@@ -107,7 +107,7 @@ export default function CharacterSheet() {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch('http://localhost:3001/character/data');
+                const response = await fetch('http://localhost:3001/character/3');
                 const json = await response.json();
                 setCharacterData(json)
             } catch (error) {
