@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 
 import { ReactComponent as DiceIcon } from './svg/dice-d20-solid.svg';
-import { ReactComponent as Armor } from "./svg/armor.svg";
+import { ReactComponent as Armor } from "./svg/armor-class.svg";
 import SkillToolTip from "../../componenets/ToolTips/SkillToolTip";
 import {proficiencyEnum} from "../../App";
 import CharacterSheetBackground from "../../images/parallax-background.jpg";
