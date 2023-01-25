@@ -1,0 +1,17 @@
+.tooltip-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.tooltip-container {
+  position: absolute;
+  width: 10rem;
+  background: #5a8f05;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tooltip-container{
+  visibility: hidden;
+}

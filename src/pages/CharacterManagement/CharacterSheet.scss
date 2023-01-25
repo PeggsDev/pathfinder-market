@@ -16,8 +16,28 @@
   padding-top: 5rem;
   padding-left: 10%;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.8rem;
   grid-template-columns: repeat(4, 20rem);
+
+  .saving-throws{
+    background: var(--clr-dark-background);
+    border: 2px solid var(--clr-char-outline);
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    opacity: 0.8;
+    grid-column-start: 1;
+    grid-row: 3 / span 3;
+  }
+
+  .class-dc {
+    background: var(--clr-dark-background);
+    border: 2px solid var(--clr-char-outline);
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    opacity: 0.8;
+    grid-column-start: 1;
+    grid-row: 6 / span 3;
+  }
 
   .skill-modifiers {
     grid-column-start: 2;
@@ -94,6 +114,37 @@
 
   .skill-block {
     padding-bottom: 2rem;
+
+    .skill-block-titles {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex-direction: row;
+
+      div {
+        font-weight: bolder;
+        font-size: 0.7rem;
+        color: var(--clr-dice-roll-hover);
+      }
+      .skill-title-proficiency {
+        padding-right: 1rem;
+        width: 1.6rem;
+      }
+
+      .skill-title-ability {
+        padding-left: 0.5rem;
+        width: 1.5rem;
+      }
+
+      .skill-title-skill {
+        padding-left: 1.5rem;
+        width: 12.5rem;
+      }
+
+      .skill-title-bonus {
+      }
+
+    }
 
     .skill-box {
       display: flex;
@@ -190,7 +241,7 @@
   h3.title {
     position: absolute;
     top: 1rem;
-    left: 1.9rem;
+    left: 2rem;
     font-size: 0.6rem;
     z-index: 1;
   }
@@ -198,7 +249,7 @@
   h3.sub-title {
     position: absolute;
     top: 3.6rem;
-    left: 2rem;
+    left: 2.1rem;
     font-size: 0.6rem;
     z-index: 1;
   }
@@ -206,7 +257,7 @@
   input {
     position: absolute;
     top: 1.2rem;
-    left: 1.1rem;
+    left: 1.3rem;
     font-size: 1.5rem;
     text-align: center;
     height: 3rem;

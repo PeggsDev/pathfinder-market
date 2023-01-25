@@ -1,24 +1,18 @@
 import './CharacterSheet.scss'
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 
 import { ReactComponent as DiceIcon } from './svg/dice-d20-solid.svg';
 import { ReactComponent as Armor } from "./svg/armor.svg";
-
-const proficiencyEnum = {
-    U: 0,
-    T: 2,
-    E: 4,
-    M: 6,
-    L: 8
-}
+import SkillToolTip from "../../componenets/ToolTips/SkillToolTip";
+import {proficiencyEnum} from "../../App";
 
 function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
 }
 
 function calculateSkillModifier(baseAbilityScore, level, proficiency) {
-    return calculateModifier(baseAbilityScore) + level + proficiency
+    return calculateModifier(baseAbilityScore) + (proficiency > 0 ? level : 0) + proficiency
 }
 
 function CharacterDetails(props) {
@@ -69,11 +63,19 @@ function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
                 <div className={'skill-dice-roll'}>
                     <DiceIcon className={'dice-icon'} />
                 </div>
+                <SkillToolTip
+                    skill={skill}
+                    proficiency={''}
+                    baseAbility={baseAbility}
+                    abilityDescription={''}
+                    level={1}
+                    proficiencyLevel={proficiencyIndicator}>
                 <div className={'skill-modifier'}>
                     <label>
                         {skillModifier > 0 ? "+" + skillModifier : '+0'}
                     </label>
                 </div>
+                </SkillToolTip>
             </div>
         </div>
     )
@@ -121,9 +123,22 @@ export default function CharacterSheet() {
                 <h3 className={'sub-title'}>CLASS</h3>
                 <Armor className={'shield'} />
             </div>
+            <div className={'character-sheet-component saving-throws'}>
+                <h1>Saving Throws</h1>
+                <h3>Fortitude</h3>
+                <h3>Reflex</h3>
+                <h3>Will</h3>
+            </div>
+            <div className={'character-sheet-component class-dc'}></div>
             <div className={'character-sheet-component skill-modifiers'}>
                 <h1>Skills</h1>
                 <form className={'skill-block'}>
+                    <div className={'skill-block-titles'}>
+                        <div className={'skill-title-proficiency'}>PROF</div>
+                        <div className={'skill-title-ability'}>BASE</div>
+                        <div className={'skill-title-skill'}>SKILL</div>
+                        <div className={'skill-title-bonus'}>BONUS</div>
+                    </div>
                     {
                         characterData?.skills.map((skill) => {
                             const baseAbility = characterData.abilityScores.find(item => item.ability === skill.ability)
@@ -143,8 +158,6 @@ export default function CharacterSheet() {
                 </form>
             </div>
 
-            <div className={'character-sheet-component'}></div>
-            <div className={'character-sheet-component'}></div>
             <div className={'character-sheet-component'}></div>
             <div className={'character-sheet-component'}></div>
         </div>

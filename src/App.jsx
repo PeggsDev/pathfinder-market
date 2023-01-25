@@ -8,6 +8,14 @@ import {
     BrowserRouter
 } from 'react-router-dom'
 
+export const proficiencyEnum = {
+    U: 0,
+    T: 2,
+    E: 4,
+    M: 6,
+    L: 8
+}
+
 export default function App() {
 
     return (
