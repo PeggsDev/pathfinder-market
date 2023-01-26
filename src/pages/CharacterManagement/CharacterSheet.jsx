@@ -7,6 +7,7 @@ import {ReactComponent as Armor} from "./svg/armor-class.svg";
 import SkillToolTip from "../../componenets/ToolTips/SkillToolTip";
 import {proficiencyEnum} from "../../App";
 import CharacterSheetBackground from "../../images/parallax-background.jpg";
+import Weapon from "./components/Weapon/Weapon";
 
 function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -184,11 +185,22 @@ export default function CharacterSheet() {
                 <div className={'tab-content'}>
                     <div className={`content ${activeTab === 1 ? 'active-content' : ''}`}>
                         <div className={'tab-content actions title-block'}>
-                            <span>Actions</span>
+                            <div className={'title-underline'}>
+                                <span className={'tab-content actions title'}>Melee Strikes</span>
+                            </div>
+                            <div>
+                                <Weapon
+                                    weaponName={'Dagger'}
+                                    weaponType={'Simple Weapon'}
+                                    weaponTraits={'Agile, finesse, thrown 10ft, versatile'}/>
+                                <Weapon
+                                    weaponName={'Longsword'}
+                                    weaponType={'Martial Weapon'}
+                                    weaponTraits={'Versatile P'}/>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div className={'character-sheet-component'}></div>
         </div>

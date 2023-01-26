@@ -1,0 +1,39 @@
+.weapon-component {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row;
+  padding: 0.5rem 0;
+  border-bottom: 0.5px solid var(--clr-char-outline);
+
+  .weapon {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  .weapon-name {
+    font-size: 0.9rem;
+  }
+
+  .weapon-type {
+    font-size: 0.7rem;
+    color: var(--clr-accent-light);
+  }
+
+  .weapon-traits {
+    font-size: 0.8rem;
+    color: var(--clr-accent-light);
+    font-style: italic;
+    margin: auto;
+  }
+
+  .sword-icon-svg {
+    height: 1rem;
+    width: 1rem;
+
+    margin: 0.5rem;
+    fill: var(--clr-accent-light);
+  }
+}

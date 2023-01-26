@@ -4,6 +4,7 @@
   --clr-skill-dice-roll-hover: #b55dff;
 
   --font-size-medium: 0.8rem;
+  --opacity: 0.9;
 }
 
 .grid-col-span-2 {
@@ -39,7 +40,7 @@
     border: 2px solid var(--clr-char-outline);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
-    opacity: 0.8;
+    opacity: var(--opacity);
     grid-column: 3 / span 2;
     grid-row: 3 / span 3;
   }
@@ -49,7 +50,7 @@
     border: 2px solid var(--clr-char-outline);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
-    opacity: 0.8;
+    opacity: var(--opacity);
     grid-column: 3 / span 2;
     grid-row: 6 / span 3;
   }
@@ -61,7 +62,7 @@
 
   .armor-class-box-svg {
     fill: var(--clr-dark-background);
-    opacity: 0.8;
+    opacity: var(--opacity);
   }
 
   .armor-class-outline-svg {
@@ -80,7 +81,7 @@
   border: 2px solid var(--clr-char-outline);
   padding: 0 0.5rem;
   border-radius: 0.5rem;
-  opacity: 0.8;
+  opacity: var(--opacity);
 
   h1 {
     font-size: 1rem;
@@ -252,6 +253,7 @@
     top: 0;
     left: 0;
     z-index: 0;
+    opacity: var(--opacity);
   }
 
   h3.title {
@@ -295,7 +297,7 @@
   flex-direction: column;
   background: var(--clr-dark-background);
   padding: 0.5rem;
-  opacity: 0.8;
+  opacity: var(--opacity);
   background: var(--clr-dark-background);
   border: 2px solid var(--clr-char-outline);
   border-radius: 0.5rem;
@@ -308,6 +310,17 @@
     align-items: center;
     align-content: space-between;
     gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .tab-content.actions.title {
+    color: var(--clr-dice-roll-hover);
+    font-weight: bolder;
+    font-size: 0.8rem;
+  }
+
+  .title-underline {
+    border-bottom: 1px solid var(--clr-char-outline);
   }
 
   .tab.active-tab {
@@ -316,6 +329,7 @@
   }
 
   .content {
+    overflow-y: scroll;
     visibility: hidden;
   }
 
