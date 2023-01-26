@@ -20,15 +20,15 @@
   gap: 0.8rem;
   grid-template-columns: repeat(12, 1fr);
 
-  //.character-sheet-background {
-  //  position: absolute;
-  //  top: 0;
-  //  left: 0;
-  //  height: 100%;
-  //  width: 100%;
-  //  object-fit: cover;
-  //  z-index: -1;
-  //}
+  .character-sheet-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
 
   .ability-scores {
     grid-column: 3 / span 3;
@@ -256,24 +256,26 @@
 
   h3.title {
     position: absolute;
-    top: 1rem;
+    top: 2.1rem;
     left: 2rem;
     font-size: 0.6rem;
     z-index: 1;
+    color: var(--clr-white);
   }
 
   h3.sub-title {
     position: absolute;
-    top: 3.6rem;
-    left: 2.1rem;
+    top: 4.3rem;
+    left: 2rem;
     font-size: 0.6rem;
     z-index: 1;
+    color: var(--clr-white);
   }
 
   input {
     position: absolute;
-    top: 1.2rem;
-    left: 1.3rem;
+    top: 2.2rem;
+    left: 1.2rem;
     font-size: 1.5rem;
     text-align: center;
     height: 3rem;
@@ -283,5 +285,41 @@
     font-weight: 800;
     color: var(--clr-white);
     z-index: 1;
+  }
+}
+
+/* Tabbed Content Actions and Inventory */
+
+.tabbed-component {
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-dark-background);
+  padding: 0.5rem;
+  opacity: 0.8;
+  background: var(--clr-dark-background);
+  border: 2px solid var(--clr-char-outline);
+  border-radius: 0.5rem;
+  grid-column: 6 / span 4;
+  grid-row: 3 / span 6;
+
+  .tab-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-between;
+    gap: 1rem;
+  }
+
+  .tab.active-tab {
+    font-weight: bolder;
+    border-bottom: 3px solid var(--clr-char-outline);
+  }
+
+  .content {
+    visibility: hidden;
+  }
+
+  .content.active-content {
+    visibility: visible;
   }
 }

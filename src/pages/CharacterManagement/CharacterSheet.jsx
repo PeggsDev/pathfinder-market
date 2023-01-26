@@ -2,8 +2,8 @@ import './CharacterSheet.scss'
 import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 
-import { ReactComponent as DiceIcon } from './svg/dice-d20-solid.svg';
-import { ReactComponent as Armor } from "./svg/armor-class.svg";
+import {ReactComponent as DiceIcon} from './svg/dice-d20-solid.svg';
+import {ReactComponent as Armor} from "./svg/armor-class.svg";
 import SkillToolTip from "../../componenets/ToolTips/SkillToolTip";
 import {proficiencyEnum} from "../../App";
 import CharacterSheetBackground from "../../images/parallax-background.jpg";
@@ -19,29 +19,29 @@ function calculateSkillModifier(baseAbilityScore, level, proficiency) {
 function CharacterDetails(props) {
     return (
         <div className={'character-details'}>
-            <img src={''} className={'character-profile-img'} />
+            <img src={''} className={'character-profile-img'}/>
             <label>{props.characterName}</label>
         </div>
     )
 }
 
-function AbilityScore({ ability, score }) {
+function AbilityScore({ability, score}) {
     const modifier = (calculateModifier(score))
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
             <input className={'modifier'}
-                type="text"
-                disabled="disabled"
-                placeholder="disabled"
-                value={modifier > 0 ? "+" + modifier : modifier.toString()}
-                readOnly />
+                   type="text"
+                   disabled="disabled"
+                   placeholder="disabled"
+                   value={modifier > 0 ? "+" + modifier : modifier.toString()}
+                   readOnly/>
         </div>
     )
 }
 
 
-function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
+function Skill({skill, proficiencyIndicator, baseAbility, skillModifier}) {
 
     return (
         <div className={'skill-box'}>
@@ -62,7 +62,7 @@ function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
                     </label>
                 </div>
                 <div className={'skill-dice-roll'}>
-                    <DiceIcon className={'dice-icon'} />
+                    <DiceIcon className={'dice-icon'}/>
                 </div>
                 <SkillToolTip
                     skill={skill}
@@ -71,11 +71,11 @@ function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
                     abilityDescription={''}
                     level={1}
                     proficiencyLevel={proficiencyIndicator}>
-                <div className={'skill-modifier'}>
-                    <label>
-                        {skillModifier > 0 ? "+" + skillModifier : '+0'}
-                    </label>
-                </div>
+                    <div className={'skill-modifier'}>
+                        <label>
+                            {skillModifier > 0 ? "+" + skillModifier : '+0'}
+                        </label>
+                    </div>
                 </SkillToolTip>
             </div>
         </div>
@@ -85,6 +85,7 @@ function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
 export default function CharacterSheet() {
 
     const [characterData, setCharacterData] = useState()
+    const [activeTab, setActiveTab] = useState(1)
 
     useEffect(() => {
         (async () => {
@@ -100,15 +101,15 @@ export default function CharacterSheet() {
 
     return (
         <div className={'character-sheet'}>
-            {/*<img src={CharacterSheetBackground} className={'character-sheet-background'} />*/}
+            <img src={CharacterSheetBackground} className={'character-sheet-background'}/>
             <div className={'character-sheet-component ability-scores'}>
                 <h1>Ability Scores</h1>
                 <form className={'score-block'}>
                     {
                         characterData?.abilityScores.map((ability) => {
                             return <AbilityScore key={ability.id}
-                                ability={ability.ability}
-                                score={ability.score}
+                                                 ability={ability.ability}
+                                                 score={ability.score}
                             />
                         })
                     }
@@ -121,9 +122,9 @@ export default function CharacterSheet() {
                        disabled="disabled"
                        placeholder="disabled"
                        value={characterData?.armorClass}
-                       readOnly />
+                       readOnly/>
                 <h3 className={'sub-title'}>CLASS</h3>
-                <Armor className={'shield'} />
+                <Armor className={'shield'}/>
             </div>
             <div className={'character-sheet-component saving-throws'}>
                 <h1>Saving Throws</h1>
@@ -143,24 +144,52 @@ export default function CharacterSheet() {
                     </div>
                     {
                         characterData?.skills.map((skill) => {
-                            const baseAbility = characterData.abilityScores.find(item => item.ability === skill.ability)
-                            return <Skill key={skill.id}
-                                skill={skill.skill}
-                                baseAbility={baseAbility.ability.slice(0, 3).toUpperCase()}
-                                proficiencyIndicator={skill.proficiencyLevel}
-                                skillModifier={
-                                    calculateSkillModifier(
-                                        baseAbility.score,
-                                        characterData.level,
-                                        proficiencyEnum[skill.proficiencyLevel]
-                                    )
-                                } />
+                            const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
+                            return <Skill key={skill?.id}
+                                          skill={skill?.skill}
+                                          baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
+                                          proficiencyIndicator={skill?.proficiencyLevel}
+                                          skillModifier={
+                                              calculateSkillModifier(
+                                                  baseAbility?.score,
+                                                  characterData?.level,
+                                                  proficiencyEnum[skill?.proficiencyLevel]
+                                              )
+                                          }/>
                         })
                     }
                 </form>
             </div>
 
-            <div className={'character-sheet-component'}></div>
+
+            <div className={'character-sheet-component tabbed-component actions-and-inventory'}>
+                <div className={'tab-block'}>
+                    <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
+                         onClick={() => setActiveTab(1)}>
+                        Actions
+                    </div>
+                    <div className={`tab ${activeTab === 2 ? 'active-tab' : ''}`}
+                         onClick={() => setActiveTab(2)}>
+                        Inventory
+                    </div>
+                    <div className={`tab ${activeTab === 3 ? 'active-tab' : ''}`}
+                         onClick={() => setActiveTab(3)}>
+                        Feats & Abilities
+                    </div>
+                    <div className={`tab ${activeTab === 4 ? 'active-tab' : ''}`}
+                         onClick={() => setActiveTab(4)}>
+                        Notes
+                    </div>
+                </div>
+                <div className={'tab-content'}>
+                    <div className={`content ${activeTab === 1 ? 'active-content' : ''}`}>
+                        <div className={'tab-content actions title-block'}>
+                            <span>Actions</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div className={'character-sheet-component'}></div>
         </div>
     )
