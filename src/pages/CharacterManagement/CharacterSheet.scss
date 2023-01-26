@@ -2,6 +2,8 @@
   --clr-char-outline: #5a8f05;
   --clr-dice-roll-hover: #f5a623;
   --clr-skill-dice-roll-hover: #b55dff;
+
+  --font-size-medium: 0.8rem;
 }
 
 .grid-col-span-2 {
@@ -200,7 +202,7 @@
           width: 10rem;
 
           label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             display: flex;
             text-transform: capitalize;
           }
@@ -231,7 +233,7 @@
           color: var(--clr-white);
 
           label {
-            font-size: 1rem;
+            font-size: 0.8rem;
           }
         }
       }
