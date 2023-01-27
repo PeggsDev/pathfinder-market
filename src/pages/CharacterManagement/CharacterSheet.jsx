@@ -86,6 +86,7 @@ function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
 export default function CharacterSheet() {
 
     const [characterData, setCharacterData] = useState()
+    const [equipment, setEquipment] = useState()
     const [activeTab, setActiveTab] = useState(1)
 
     useEffect(() => {
@@ -99,6 +100,20 @@ export default function CharacterSheet() {
             }
         })();
     }, []);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch('http://localhost:3001/equipment');
+                const json = await response.json();
+                setEquipment(json)
+            } catch (error) {
+                console.log("error", error);
+            }
+        })();
+    }, []);
+
+    console.log(equipment)
 
     return (
         <div className={'character-sheet'}>
