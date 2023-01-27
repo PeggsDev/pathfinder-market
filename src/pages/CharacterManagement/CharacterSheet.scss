@@ -338,12 +338,12 @@
 
   .content {
     overflow-y: auto;
-    visibility: hidden;
+    display: none;
     max-height: 30rem;
   }
 
   .content.active-content {
-    visibility: visible;
+    display: block;
   }
 }
 

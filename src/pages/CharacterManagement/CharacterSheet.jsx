@@ -248,6 +248,21 @@ export default function CharacterSheet() {
                         </div>
                     </div>
                 </div>
+                <div className={'tab-content'}>
+                    <div className={`content ${activeTab === 2 ? 'active-content' : ''}`}>
+                        WIP
+                    </div>
+                </div>
+                <div className={'tab-content'}>
+                    <div className={`content ${activeTab === 3 ? 'active-content' : ''}`}>
+                        WIP
+                    </div>
+                </div>
+                <div className={'tab-content'}>
+                    <div className={`content ${activeTab === 4 ? 'active-content' : ''}`}>
+                        WIP
+                    </div>
+                </div>
             </div>
             <div className={'character-sheet-component'}></div>
         </div>
