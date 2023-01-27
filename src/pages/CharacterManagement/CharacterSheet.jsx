@@ -215,7 +215,7 @@ export default function CharacterSheet() {
                                             itemType={item?.type}
                                             itemRarity={system.traits.rarity}
                                             itemTraits={system.traits.value?.map((trait) => {
-                                                return trait
+                                                return trait + ' '
                                             })}
                                             diceFormula={system.damage.dice + system.damage.die}
                                             range={system.range}/>

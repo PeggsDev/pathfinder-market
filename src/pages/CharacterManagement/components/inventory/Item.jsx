@@ -4,8 +4,19 @@ import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 import {ReactComponent as SwordsIcon} from '../../svg/swords.svg';
 import {ReactComponent as BowAndArrowIcon} from "../../svg/bow-and-arrow.svg";
 
+
+//TODO - Pass in item data directly
 export default function Item(props) {
-    const {itemName, itemType, itemCategory, range, itemTraits, itemRarity, diceFormula} = props
+    const {
+        itemName, 
+        itemType, 
+        itemCategory, 
+        range, 
+        itemTraits, 
+        itemRarity, 
+        diceFormula
+    } = props
+
     return (
         <div className={'item-component'}>
             {
