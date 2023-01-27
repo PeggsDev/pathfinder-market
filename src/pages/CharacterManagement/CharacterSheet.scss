@@ -4,7 +4,7 @@
   --clr-skill-dice-roll-hover: #b55dff;
 
   --font-size-medium: 0.8rem;
-  --opacity: 0.9;
+  --opacity: 0.85;
 }
 
 .grid-col-span-2 {
@@ -339,10 +339,34 @@
   .content {
     overflow-y: auto;
     visibility: hidden;
-    max-height: 19rem;
+    max-height: 30rem;
   }
 
   .content.active-content {
     visibility: visible;
   }
+}
+
+/* Scrollbar Styles */
+/* width */
+::-webkit-scrollbar {
+  width: 0.3rem;
+  border-radius: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--clr-accent-light);
+  border-radius: 0.5rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background: var(--clr-char-outline);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-dice-roll-hover);
 }
