@@ -314,9 +314,17 @@
   }
 
   .tab-content.actions.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
     color: var(--clr-dice-roll-hover);
     font-weight: bolder;
     font-size: 0.8rem;
+  }
+
+  .tab-content.actions.strikes {
+    padding-bottom: 0.5rem;
   }
 
   .title-underline {
@@ -329,8 +337,9 @@
   }
 
   .content {
-    overflow-y: scroll;
+    overflow-y: auto;
     visibility: hidden;
+    max-height: 19rem;
   }
 
   .content.active-content {

@@ -6,11 +6,25 @@
   padding: 0.5rem 0;
   border-bottom: 0.5px solid var(--clr-char-outline);
 
-  .weapon {
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+
+  }
+
+  .weapon.title-box {
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: column;
+  }
+
+  .dice-formula {
+    max-width: 1rem;
+    padding-left: 1rem;
+    color: var(--clr-skill-dice-roll-hover);
   }
 
   .weapon-name {
@@ -24,16 +38,56 @@
 
   .weapon-traits {
     font-size: 0.8rem;
-    color: var(--clr-accent-light);
     font-style: italic;
+    color: var(--clr-accent-light);
     margin: auto;
   }
 
   .sword-icon-svg {
     height: 1rem;
     width: 1rem;
-
     margin: 0.5rem;
     fill: var(--clr-accent-light);
   }
+
+  .action-dice-roll {
+    display: flex;
+    justify-content: end;
+    width: 8rem;
+
+    .dice-icon {
+      fill: var(--clr-accent-light);
+      width: 1rem;
+    }
+  }
+
+  .action-dice-roll :hover {
+    fill: var(--clr-dice-roll-hover);
+    cursor: pointer;
+  }
+}
+
+.weapon-component:nth-child(even) {
+  background: #33333344;
+}
+
+/* Scrollbar Styles */
+/* width */
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--clr-accent-light);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--clr-char-outline);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
