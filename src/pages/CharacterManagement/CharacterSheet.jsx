@@ -1,11 +1,11 @@
 import './CharacterSheet.scss'
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
+import { IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, TheeDDiceAPI } from 'dddice-js';
 
-import {ReactComponent as DiceIcon} from './svg/dice-d20-solid.svg';
-import {ReactComponent as Armor} from "./svg/armor-class.svg";
-import SkillToolTip from "../../componenets/ToolTips/SkillToolTip";
-import {proficiencyEnum} from "../../App";
+import { ReactComponent as DiceIcon } from './svg/dice-d20-solid.svg';
+import { ReactComponent as Armor } from "./svg/armor-class.svg";
+import { proficiencyEnum } from "../../App";
 import CharacterSheetBackground from "../../images/parallax-background.jpg";
 import Item from "./components/inventory/Item";
 
@@ -20,29 +20,29 @@ function calculateSkillModifier(baseAbilityScore, level, proficiency) {
 function CharacterDetails(props) {
     return (
         <div className={'character-details'}>
-            <img src={''} className={'character-profile-img'}/>
+            <img src={''} className={'character-profile-img'} />
             <label>{props.characterName}</label>
         </div>
     )
 }
 
-function AbilityScore({ability, score}) {
+function AbilityScore({ ability, score }) {
     const modifier = (calculateModifier(score))
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
             <input className={'modifier'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={modifier > 0 ? "+" + modifier : modifier.toString()}
-                   readOnly/>
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={modifier > 0 ? "+" + modifier : modifier.toString()}
+                readOnly />
         </div>
     )
 }
 
 
-function Skill({skill, proficiencyIndicator, baseAbility, skillModifier}) {
+function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier }) {
 
     return (
         <div className={'skill-box'}>
@@ -63,27 +63,35 @@ function Skill({skill, proficiencyIndicator, baseAbility, skillModifier}) {
                     </label>
                 </div>
                 <div className={'skill-dice-roll'}>
-                    <DiceIcon className={'dice-icon'}/>
+                    <DiceIcon className={'dice-icon'} />
                 </div>
-                <SkillToolTip
-                    skill={skill}
-                    proficiency={''}
-                    baseAbility={baseAbility}
-                    abilityDescription={''}
-                    level={1}
-                    proficiencyLevel={proficiencyIndicator}>
-                    <div className={'skill-modifier'}>
-                        <label>
-                            {skillModifier > 0 ? "+" + skillModifier : '+0'}
-                        </label>
-                    </div>
-                </SkillToolTip>
             </div>
         </div>
     )
 }
 
 export default function CharacterSheet() {
+    const threeDDiceApiKey = 'kn4MfcKWqPq3WhVMhTVFPFmeW6sgUnpWmtOU3uKy'
+    const roomSlug = '-t_xEwM'
+
+    const threeDDiceRef = useRef(ThreeDDice)
+    const canvasRef = useRef()
+
+    useEffect(() => {
+        try {
+            threeDDiceRef.current = new ThreeDDice(canvasRef, threeDDiceApiKey)
+            threeDDiceRef.current.start();
+            threeDDiceRef.current.connect(roomSlug);
+            console.log('DDDICE INGLORIOUS DRAGONS');
+        } catch (error) {
+            console.log("error initializing ddDice", error);
+        }
+    }, [])
+
+    // threeDDiceRef.current.roll([{
+    //     theme: 'dddice-standard',
+    //     type: 'd20',
+    // }]);
 
     const [characterData, setCharacterData] = useState()
     const [equipment, setEquipment] = useState([])
@@ -115,16 +123,15 @@ export default function CharacterSheet() {
 
     return (
         <div className={'character-sheet'}>
-            <img src={CharacterSheetBackground} className={'character-sheet-background'}/>
+            <img src={CharacterSheetBackground} className={'character-sheet-background'} />
             <div className={'character-sheet-component ability-scores'}>
                 <h1>Ability Scores</h1>
                 <form className={'score-block'}>
                     {
                         characterData?.abilityScores.map((ability) => {
                             return <AbilityScore key={ability.id}
-                                                 ability={ability.ability}
-                                                 score={ability.score}
-                            />
+                                ability={ability.ability}
+                                score={ability.score}/>
                         })
                     }
                 </form>
@@ -132,13 +139,13 @@ export default function CharacterSheet() {
             <div className={'character-sheet-component armor-class'}>
                 <h3 className={'title'}>ARMOR</h3>
                 <input className={'modifier'}
-                       type="text"
-                       disabled="disabled"
-                       placeholder="disabled"
-                       value={characterData?.armorClass}
-                       readOnly/>
+                    type="text"
+                    disabled="disabled"
+                    placeholder="disabled"
+                    value={characterData?.armorClass}
+                    readOnly />
                 <h3 className={'sub-title'}>CLASS</h3>
-                <Armor className={'shield'}/>
+                <Armor className={'shield'} />
             </div>
             <div className={'character-sheet-component saving-throws'}>
                 {/*<h1>Saving Throws</h1>*/}
@@ -160,16 +167,16 @@ export default function CharacterSheet() {
                         characterData?.skills.map((skill) => {
                             const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
                             return <Skill key={skill?.id}
-                                          skill={skill?.skill}
-                                          baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
-                                          proficiencyIndicator={skill?.proficiencyLevel}
-                                          skillModifier={
-                                              calculateSkillModifier(
-                                                  baseAbility?.score,
-                                                  characterData?.level,
-                                                  proficiencyEnum[skill?.proficiencyLevel]
-                                              )
-                                          }/>
+                                skill={skill?.skill}
+                                baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
+                                proficiencyIndicator={skill?.proficiencyLevel}
+                                skillModifier={
+                                    calculateSkillModifier(
+                                        baseAbility?.score,
+                                        characterData?.level,
+                                        proficiencyEnum[skill?.proficiencyLevel]
+                                    )
+                                } />
                         })
                     }
                 </form>
@@ -178,19 +185,19 @@ export default function CharacterSheet() {
             <div className={'character-sheet-component tabbed-component actions-and-inventory'}>
                 <div className={'tab-block'}>
                     <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(1)}>
+                        onClick={() => setActiveTab(1)}>
                         Actions
                     </div>
                     <div className={`tab ${activeTab === 2 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(2)}>
+                        onClick={() => setActiveTab(2)}>
                         Inventory
                     </div>
                     <div className={`tab ${activeTab === 3 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(3)}>
+                        onClick={() => setActiveTab(3)}>
                         Feats & Abilities
                     </div>
                     <div className={`tab ${activeTab === 4 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(4)}>
+                        onClick={() => setActiveTab(4)}>
                         Notes
                     </div>
                 </div>
@@ -204,11 +211,10 @@ export default function CharacterSheet() {
                             </div>
                             <div className={'tab-content actions strikes'}>
                                 {equipment?.map((item) => {
-                                    console.log(item.system.range)
                                     const system = item?.system
                                     return (
-                                        !item.system.range &&
-                                        item.type === 'weapon' &&
+                                        !item?.system.range &&
+                                        item?.type === 'weapon' &&
                                         <Item
                                             itemName={item.name}
                                             itemCategory={system.category && system.category}
@@ -218,7 +224,7 @@ export default function CharacterSheet() {
                                                 return trait + ' '
                                             })}
                                             diceFormula={system.damage.dice + system.damage.die}
-                                            range={system.range}/>
+                                            range={system.range} />
                                     )
                                 })}
                             </div>
@@ -241,7 +247,7 @@ export default function CharacterSheet() {
                                                 return trait
                                             })}
                                             diceFormula={system.damage.dice + system.damage.die}
-                                            range={system.range}/>
+                                            range={system.range} />
                                     )
                                 })}
                             </div>
@@ -265,6 +271,8 @@ export default function CharacterSheet() {
                 </div>
             </div>
             <div className={'character-sheet-component'}></div>
+            <canvas className={'dd-dice-canvas'} ref={canvasRef}>
+            </canvas>
         </div>
     )
 }

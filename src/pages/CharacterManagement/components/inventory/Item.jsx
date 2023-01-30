@@ -41,6 +41,9 @@ export default function Item(props) {
                 <div className={'dice-formula'}>
                     {diceFormula}
                 </div>
+                <div className={'action-count-icon'}>
+                    
+                </div>
             </div>
             <div className={'item-traits'}>
                 {itemRarity}
