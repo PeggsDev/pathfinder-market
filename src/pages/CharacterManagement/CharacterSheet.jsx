@@ -3,17 +3,18 @@ import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, TheeDDiceAPI, IDieType} from 'dddice-js';
 
-import {ReactComponent as DiceIcon} from './svg/dice-d20-solid.svg';
 import {ReactComponent as Armor} from "./svg/armor-class.svg";
 import {proficiencyEnum} from "../../App";
 import CharacterSheetBackground from "../../images/parallax-background.jpg";
 import Item from "./components/inventory/Item";
 
-function calculateModifier(value) {
+import CharacterSkillBlock from './components/CharacterSkillBlock/CharacterSkillBlock';
+
+export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
 }
 
-function calculateSkillModifier(baseAbilityScore, level, proficiency) {
+export function calculateSkillModifier(baseAbilityScore, level, proficiency) {
     return calculateModifier(baseAbilityScore) + (proficiency > 0 ? level : 0) + proficiency
 }
 
@@ -41,42 +42,8 @@ function AbilityScore({ability, score}) {
     )
 }
 
-
-function Skill({skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
-
-    return (
-        <div className={'skill-box'}>
-            <div className={'proficiency-indicator'}>
-                <label>
-                    {proficiencyIndicator}
-                </label>
-            </div>
-            <div className={'base-ability'}>
-                <label className={'base-ability-label'}>
-                    {baseAbility}
-                </label>
-            </div>
-            <div className={'skill'}>
-                <div className={'skill-name'}>
-                    <label>
-                        {skill}
-                    </label>
-                </div>
-                <div className={'skill-dice-roll'}>
-                    <DiceIcon className={'dice-icon'}/>
-                </div>
-
-                <div classame={'skill-modifier'}>
-                    <label>
-                        {skillModifier > 0 ? "+" + skillModifier : '+0'}
-                    </label>
-                </div>
-            </div>
-        </div>
-    )
-}
-
 export default function CharacterSheet() {
+    /** TODO - Extract this to somewhere else and make it globally available */
     const threeDDiceApiKey = 'kn4MfcKWqPq3WhVMhTVFPFmeW6sgUnpWmtOU3uKy'
     const roomSlug = '-t_xEwM'
 
@@ -97,6 +64,8 @@ export default function CharacterSheet() {
             console.log("error initializing ddDice", error);
         }
     }, [])
+
+    /** -----------------------End TODO---------------------------- */
 
     const [characterData, setCharacterData] = useState()
     const [equipment, setEquipment] = useState([])
@@ -161,7 +130,8 @@ export default function CharacterSheet() {
             <div className={'character-sheet-component class-dc'}></div>
             <div className={'character-sheet-component skill-modifiers'}>
                 <h1>Skills</h1>
-                <form className={'skill-block'}>
+                <CharacterSkillBlock characterData={characterData}/>
+                {/* <form className={'skill-block'}>
                     <div className={'skill-block-titles'}>
                         <div className={'skill-title-proficiency'}>PROF</div>
                         <div className={'skill-title-ability'}>BASE</div>
@@ -184,7 +154,7 @@ export default function CharacterSheet() {
                             />
                         })
                     }
-                </form>
+                </form> */}
             </div>
 
             <div className={'character-sheet-component tabbed-component actions-and-inventory'}>
