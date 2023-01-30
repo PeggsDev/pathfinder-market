@@ -91,11 +91,6 @@ export default function CharacterSheet() {
             threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey)
             threeDDiceRef.current.start();
             threeDDiceRef.current.connect(roomSlug);
-
-            threeDDiceRef.current.roll([{
-                theme: 'dddice-old-school',
-                type: 'd20'
-            }])
             console.log('THREE-D-DICE INGLORIOUS DRAGONS');
 
         } catch (error) {
@@ -130,18 +125,6 @@ export default function CharacterSheet() {
             }
         })();
     }, []);
-
-    async function rollDice(die) {
-        console.log('DICE ROLL')
-        await threeDDiceRef.current.roll(
-            [
-                {
-                theme: 'dddice-standard',
-                type: die,
-                }
-            ]
-        );
-    }
 
     return (
         <div className={'character-sheet'}>
@@ -180,11 +163,7 @@ export default function CharacterSheet() {
                 <h1>Skills</h1>
                 <form className={'skill-block'}>
                     <div className={'skill-block-titles'}>
-                        <div className={'skill-title-proficiency'}
-
-                             onClick={() => rollDice(IDieType.D20)}>PROF
-                        </div>
-
+                        <div className={'skill-title-proficiency'}>PROF</div>
                         <div className={'skill-title-ability'}>BASE</div>
                         <div className={'skill-title-skill'}>SKILL</div>
                         <div className={'skill-title-bonus'}>BONUS</div>
@@ -249,7 +228,9 @@ export default function CharacterSheet() {
                                             itemTraits={system.traits.value?.map((trait) => {
                                                 return trait + ' '
                                             })}
-                                            diceFormula={system.damage.dice + system.damage.die}
+                                            diceClient={threeDDiceRef}
+                                            die={system.damage.die}
+                                            dieCount={system.damage.dice}
                                             range={system.range}/>
                                     )
                                 })}
@@ -272,7 +253,9 @@ export default function CharacterSheet() {
                                             itemTraits={system.traits.value?.map((trait) => {
                                                 return trait
                                             })}
-                                            diceFormula={system.damage.dice + system.damage.die}
+                                            diceClient={threeDDiceRef}
+                                            die={system.damage.die}
+                                            dieCount={system.damage.dice}
                                             range={system.range}/>
                                     )
                                 })}

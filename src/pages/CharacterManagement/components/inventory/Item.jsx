@@ -4,7 +4,6 @@ import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 import {ReactComponent as SwordsIcon} from '../../svg/swords.svg';
 import {ReactComponent as BowAndArrowIcon} from "../../svg/bow-and-arrow.svg";
 
-
 //TODO - Pass in item data directly
 export default function Item(props) {
     const {
@@ -14,8 +13,15 @@ export default function Item(props) {
         range,
         itemTraits,
         itemRarity,
-        diceFormula
+        die,
+        dieCount,
+        diceClient
     } = props
+
+    async function rollDice(client, die, dieCount, theme) {
+        //TODO - Create dice so we can roll the formula 4d12+3 for example
+        await client.current.roll([{theme: theme, type: die,}]);
+    }
 
     return (
         <div className={'item-component'}>
@@ -36,10 +42,16 @@ export default function Item(props) {
             </div>
             <div className={'dice'}>
                 <div className={'action-dice-roll'}>
-                    <DiceIcon className={'dice-icon'}/>
+                    <DiceIcon
+                        onClick={() => rollDice(
+                            diceClient,
+                            die,
+                            dieCount,
+                            'dddice-old-school')}
+                        className={'dice-icon'}/>
                 </div>
                 <div className={'dice-formula'}>
-                    {diceFormula}
+                    {dieCount + die}
                 </div>
                 <div className={'action-count-icon'}/>
             </div>
