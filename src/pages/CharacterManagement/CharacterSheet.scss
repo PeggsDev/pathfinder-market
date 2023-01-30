@@ -7,6 +7,12 @@
   --opacity: 0.85;
 }
 
+.dd-dice-canvas {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+}
+
 .grid-col-span-2 {
   grid-column: span 2;
 }

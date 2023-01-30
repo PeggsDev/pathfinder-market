@@ -75,11 +75,13 @@ export default function CharacterSheet() {
     const roomSlug = '-t_xEwM'
 
     const threeDDiceRef = useRef(ThreeDDice)
-    const canvasRef = useRef()
+    const canvasRef = useRef(null);
+    canvasRef.current = window.innerWidth;
+    canvasRef.current = window.innerHeight;
 
     useEffect(() => {
         try {
-            threeDDiceRef.current = new ThreeDDice(canvasRef, threeDDiceApiKey)
+            threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey)
             threeDDiceRef.current.start();
             threeDDiceRef.current.connect(roomSlug);
             console.log('DDDICE INGLORIOUS DRAGONS');
@@ -271,8 +273,7 @@ export default function CharacterSheet() {
                 </div>
             </div>
             <div className={'character-sheet-component'}></div>
-            <canvas className={'dd-dice-canvas'} ref={canvasRef}>
-            </canvas>
+            <canvas className={'dd-dice-canvas'} ref={canvasRef} />
         </div>
     )
 }
