@@ -137,12 +137,8 @@ export default function CharacterSheet() {
             [
                 {
                 theme: 'dddice-standard',
-                type: {die},
-                },
-                {
-                    theme: 'dddice-standard',
-                    type: {die},
-                },
+                type: die,
+                }
             ]
         );
     }
