@@ -8,12 +8,12 @@ import {ReactComponent as BowAndArrowIcon} from "../../svg/bow-and-arrow.svg";
 //TODO - Pass in item data directly
 export default function Item(props) {
     const {
-        itemName, 
-        itemType, 
-        itemCategory, 
-        range, 
-        itemTraits, 
-        itemRarity, 
+        itemName,
+        itemType,
+        itemCategory,
+        range,
+        itemTraits,
+        itemRarity,
         diceFormula
     } = props
 
@@ -41,9 +41,7 @@ export default function Item(props) {
                 <div className={'dice-formula'}>
                     {diceFormula}
                 </div>
-                <div className={'action-count-icon'}>
-                    
-                </div>
+                <div className={'action-count-icon'}/>
             </div>
             <div className={'item-traits'}>
                 {itemRarity}
