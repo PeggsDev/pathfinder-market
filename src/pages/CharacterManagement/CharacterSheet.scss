@@ -340,6 +340,28 @@
     border-bottom: 1px solid var(--clr-char-outline);
   }
 
+  .section-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
+    padding-top: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: bolder;
+
+    .section-header-label.attack {
+      width: 10rem;
+    }
+
+    .section-header-label.damage {
+      width: 9rem;
+    }
+
+    .section-header-label.type {
+      width: 5rem;
+    }
+  }
+
   .tab.active-tab {
     font-weight: bolder;
     border-bottom: 3px solid var(--clr-char-outline);

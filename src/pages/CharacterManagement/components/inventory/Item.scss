@@ -34,7 +34,7 @@
       color: var(--clr-skill-dice-roll-hover);
     }
 
-    .action-dice-roll {
+    .action-damage-dice-roll{
       display: flex;
       justify-content: end;
 
@@ -44,7 +44,7 @@
       }
     }
 
-    .action-dice-roll :hover {
+    .action-damage-dice-roll :hover {
       fill: var(--clr-dice-roll-hover);
       cursor: pointer;
     }
@@ -80,6 +80,10 @@
     width: 1rem;
     margin: 0.5rem;
     fill: var(--clr-accent-light);
+  }
+
+  .item-icon-svg :hover {
+    fill: var(--clr-dice-roll-hover);
   }
 }
 

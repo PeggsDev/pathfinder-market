@@ -214,6 +214,20 @@ export default function CharacterSheet() {
                                     <span>Melee Strikes</span>
                                 </div>
                             </div>
+                            <div className={'section-header'}>
+                                <div className={'section-header-label attack'}>
+                                <span>ATTACK</span>
+                                </div>
+                                <div className={'section-header-label damage'}>
+                                    <span>DAMAGE</span>
+                                </div>
+                                <div className={'section-header-label type'}>
+                                    <span>TYPE</span>
+                                </div>
+                                <div className={'section-header-label traits'}>
+                                    <span>TRAITS</span>
+                                </div>
+                            </div>
                             <div className={'tab-content actions strikes'}>
                                 {equipment?.map((item) => {
                                     const system = item?.system
