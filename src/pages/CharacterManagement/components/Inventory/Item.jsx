@@ -4,6 +4,7 @@ import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 import {ReactComponent as SwordsIcon} from '../../svg/swords.svg';
 import {ReactComponent as BowAndArrowIcon} from "../../svg/bow-and-arrow.svg";
 import {IDieType} from "dddice-js";
+import {rollDice} from "../../../../App";
 
 //TODO - Pass in item data directly
 export default function Item(props) {
@@ -18,16 +19,6 @@ export default function Item(props) {
         dieCount,
         diceClient
     } = props
-
-    async function rollDice(client, die, dieCount, theme) {
-        await client.current.roll(
-            [
-                {
-                    theme: theme,
-                    type: die,
-                }
-            ]);
-    }
 
     return (
         <div className={'item-component'}>

@@ -1,5 +1,5 @@
 :root {
-  --clr-char-outline: #029b49;
+  --clr-char-outline: #199803;
   --clr-dice-roll-hover: #f5a623;
   --clr-skill-dice-roll-hover: #b55dff;
 
@@ -79,8 +79,7 @@
 }
 
 /* Ability Scores and Skill Modifiers */
-.ability-scores,
-.skill-modifiers {
+.ability-scores, {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,119 +135,6 @@
     }
   }
 
-  .skill-block {
-    padding-bottom: 2rem;
-    width: 18rem;
-
-    .skill-block-titles {
-      display: flex;
-      align-items: center;
-      justify-content: start;
-      flex-direction: row;
-
-      div {
-        font-weight: bolder;
-        font-size: 0.7rem;
-        color: var(--clr-dice-roll-hover);
-      }
-
-      .skill-title-proficiency {
-        padding-right: 1rem;
-        width: 1.6rem;
-      }
-
-      .skill-title-ability {
-        padding-left: 0.5rem;
-        width: 1.5rem;
-      }
-
-      .skill-title-skill {
-        padding-left: 1.5rem;
-        width: 12.5rem;
-      }
-
-      .skill-title-bonus {
-      }
-
-    }
-
-    .skill-box {
-      display: flex;
-      align-items: center;
-      justify-content: start;
-      flex-direction: row;
-
-      label {
-        font-size: 0.8rem;
-      }
-
-      .base-ability-label {
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        color: var(--clr-accent-light);
-        font-weight: bolder;
-      }
-
-      .proficiency-indicator {
-        width: 1.5rem;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .base-ability {
-        width: 3rem;
-      }
-
-      .skill {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        border-bottom: 0.5px solid var(--clr-char-outline);
-        padding-right: 0.8rem;
-
-        .skill-name {
-          width: 10rem;
-
-          label {
-            font-size: 0.8rem;
-            display: flex;
-            text-transform: capitalize;
-          }
-        }
-
-        .skill-dice-roll {
-          width: 1.5rem;
-
-          .dice-icon {
-            display: flex;
-            align-items: center;
-            fill: var(--clr-accent-light);
-            width: 1rem;
-          }
-        }
-
-        .skill-dice-roll :hover {
-          fill: var(--clr-skill-dice-roll-hover);
-          cursor: pointer;
-        }
-
-        .skill-modifier {
-          display: flex;
-          align-items: center;
-          text-align: center;
-          width: 1rem;
-          height: 2rem;
-          color: var(--clr-white);
-
-          label {
-            font-size: 0.8rem;
-          }
-        }
-      }
-    }
-  }
 }
 
 /* Armor Class */
@@ -300,6 +186,33 @@
 }
 
 /* Tabbed Content Actions and Inventory */
+.actions-and-Inventory {
+  width: 45rem;
+
+  /* Scrollbar Styles */
+  /* width */
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--clr-accent-light);
+    border-radius: 0.5rem;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background: var(--clr-char-outline);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--clr-dice-roll-hover);
+  }
+}
 
 .tabbed-component {
   display: flex;
@@ -376,28 +289,4 @@
   .content.active-content {
     display: block;
   }
-}
-
-/* Scrollbar Styles */
-/* width */
-::-webkit-scrollbar {
-  width: 0.3rem;
-  border-radius: 0.5rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--clr-accent-light);
-  border-radius: 0.5rem;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  border-radius: 0.5rem;
-  background: var(--clr-char-outline);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--clr-dice-roll-hover);
 }

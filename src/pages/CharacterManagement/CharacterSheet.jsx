@@ -1,14 +1,13 @@
 import './CharacterSheet.scss'
 import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
-import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, TheeDDiceAPI, IDieType} from 'dddice-js';
+import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDieType} from 'dddice-js';
 
 import {ReactComponent as Armor} from "./svg/armor-class.svg";
-import {proficiencyEnum} from "../../App";
 import CharacterSheetBackground from "../../images/parallax-background.jpg";
-import Item from "./components/inventory/Item";
+import Item from "./components/Inventory/Item";
 
-import CharacterSkillBlock from './components/CharacterSkillBlock/CharacterSkillBlock';
+import Skills from './components/Skills/Skills';
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -38,6 +37,12 @@ function AbilityScore({ability, score}) {
                    placeholder="disabled"
                    value={modifier > 0 ? "+" + modifier : modifier.toString()}
                    readOnly/>
+            {/*<input className={'score'}*/}
+            {/*       type="text"*/}
+            {/*       disabled="disabled"*/}
+            {/*       placeholder="disabled"*/}
+            {/*       value={score}*/}
+            {/*       readOnly />*/}
         </div>
     )
 }
@@ -58,8 +63,8 @@ export default function CharacterSheet() {
             threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey)
             threeDDiceRef.current.start();
             threeDDiceRef.current.connect(roomSlug);
-            console.log('THREE-D-DICE INGLORIOUS DRAGONS');
 
+            console.log('THREE-D-DICE INGLORIOUS DRAGONS');
         } catch (error) {
             console.log("error initializing ddDice", error);
         }
@@ -122,42 +127,16 @@ export default function CharacterSheet() {
                 <Armor className={'shield'}/>
             </div>
             <div className={'character-sheet-component saving-throws'}>
-                {/*<h1>Saving Throws</h1>*/}
-                {/*<h3>Fortitude</h3>*/}
-                {/*<h3>Reflex</h3>*/}
-                {/*<h3>Will</h3>*/}
+                <h1>Saving Throws</h1>
             </div>
             <div className={'character-sheet-component class-dc'}></div>
             <div className={'character-sheet-component skill-modifiers'}>
                 <h1>Skills</h1>
-                <CharacterSkillBlock characterData={characterData}/>
-                {/* <form className={'skill-block'}>
-                    <div className={'skill-block-titles'}>
-                        <div className={'skill-title-proficiency'}>PROF</div>
-                        <div className={'skill-title-ability'}>BASE</div>
-                        <div className={'skill-title-skill'}>SKILL</div>
-                        <div className={'skill-title-bonus'}>BONUS</div>
-                    </div>
-                    {
-                        characterData?.skills.map((skill) => {
-                            const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
-                            return <Skill key={skill?.id}
-                                          skill={skill?.skill}
-                                          baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
-                                          proficiencyIndicator={skill?.proficiencyLevel}
-                                          skillModifier={
-                                              calculateSkillModifier(
-                                                  baseAbility?.score,
-                                                  characterData?.level,
-                                                  proficiencyEnum[skill?.proficiencyLevel]
-                                              )}
-                            />
-                        })
-                    }
-                </form> */}
+                <Skills
+                    characterData={characterData}
+                    diceClient={threeDDiceRef}/>
             </div>
-
-            <div className={'character-sheet-component tabbed-component actions-and-inventory'}>
+            <div className={'character-sheet-component tabbed-component actions-and-Inventory'}>
                 <div className={'tab-block'}>
                     <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
                          onClick={() => setActiveTab(1)}>

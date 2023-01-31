@@ -16,13 +16,23 @@ export const proficiencyEnum = {
     L: 8
 }
 
+export function rollDice(client, die, dieCount, theme) {
+    client.current.roll(
+        [
+            {
+                theme: theme,
+                type: die,
+            }
+        ]);
+}
+
 export default function App() {
 
     return (
         <div>
             <BrowserRouter>
-                <NavBar />
-                <Router />
+                <NavBar/>
+                <Router/>
             </BrowserRouter>
         </div>
     );
