@@ -42,7 +42,7 @@
 
   .ability-scores {
     width: 41rem;
-    grid-column: 3 / span 2;
+    grid-column: 4 / span 2;
   }
 
   .saving-throws {
@@ -51,7 +51,7 @@
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     opacity: var(--opacity);
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 3 / span 3;
   }
 
@@ -61,13 +61,13 @@
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     opacity: var(--opacity);
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 6 / span 3;
   }
 
   .skill-modifiers {
     width: 20rem;
-    grid-column: 4;
+    grid-column: 5;
     grid-row: 3 / span 6;
   }
 
@@ -227,7 +227,7 @@
   background: var(--clr-dark-background);
   border: 2px solid var(--clr-char-outline);
   border-radius: 0.5rem;
-  grid-column: 5 / span 4;
+  grid-column: 6 / span 4;
   grid-row: 3 / span 6;
 
   .tab-block {
