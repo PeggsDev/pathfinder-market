@@ -171,7 +171,7 @@ export default function CharacterSheet() {
                                     <span>DAMAGE</span>
                                 </div>
                                 <div className={'section-header-label type'}>
-                                    <span>CATEGORY</span>
+                                    <span>RARITY</span>
                                 </div>
                                 <div className={'section-header-label traits'}>
                                     <span>TRAITS</span>
@@ -209,7 +209,7 @@ export default function CharacterSheet() {
                                     <span>DAMAGE</span>
                                 </div>
                                 <div className={'section-header-label type'}>
-                                    <span>CATEGORY</span>
+                                    <span>RARITY</span>
                                 </div>
                                 <div className={'section-header-label traits'}>
                                     <span>TRAITS</span>

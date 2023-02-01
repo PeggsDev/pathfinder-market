@@ -23,7 +23,7 @@ export default function Item(props) {
     return (
         <div className={'item-component'}>
             {
-                <>
+                <div className={'attack-dice-roll'}>
                     {range && <BowAndArrowIcon
                         className={'item-icon-svg'}
                         onClick={() => rollDice(
@@ -38,7 +38,7 @@ export default function Item(props) {
                             IDieType.D20,
                             dieCount,
                             'dddice-old-school')}/>}
-                </>
+                </div>
             }
             <div className={'action'}>
                 <div className={'item-title-box'}>

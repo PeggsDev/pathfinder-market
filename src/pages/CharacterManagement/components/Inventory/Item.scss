@@ -69,7 +69,7 @@
   }
 
   .item-rarity {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     width: 5rem;
     margin-right: 2.5rem;
   }
@@ -80,7 +80,7 @@
     flex-wrap: wrap;
 
     .item-trait {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: bolder;
       color: var(--clr-accent-dark);
       margin: 0.2rem;
@@ -97,7 +97,8 @@
     fill: var(--clr-accent-light);
   }
 
-  .item-icon-svg :hover {
+  .attack-dice-roll :hover {
+    cursor: pointer;
     fill: var(--clr-dice-roll-hover);
   }
 }
