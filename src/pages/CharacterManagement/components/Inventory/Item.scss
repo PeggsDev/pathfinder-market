@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: start;
     flex-direction: row;
-    width: 8rem;
+    width: 10rem;
   }
 
   .item.title-box {
@@ -68,11 +68,26 @@
     display:none;
   }
 
-  .item-traits {
+  .item-rarity {
     font-size: 0.8rem;
-    font-style: italic;
-    color: var(--clr-accent-light);
-    margin: auto;
+    width: 5rem;
+    margin-right: 2.5rem;
+  }
+
+  .item-traits {
+    width: 20rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    .item-trait {
+      font-size: 0.8rem;
+      font-weight: bolder;
+      color: var(--clr-accent-dark);
+      margin: 0.2rem;
+      padding: 0.1rem 0.3rem;
+      background: var(--clr-dice-roll-hover);
+      border-radius: 0.3rem;
+    }
   }
 
   .item-icon-svg {

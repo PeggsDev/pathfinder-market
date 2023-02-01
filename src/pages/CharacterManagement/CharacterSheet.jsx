@@ -188,9 +188,7 @@ export default function CharacterSheet() {
                                             itemCategory={system.category && system.category}
                                             itemType={item?.type}
                                             itemRarity={system.traits.rarity}
-                                            itemTraits={system.traits.value?.map((trait) => {
-                                                return trait + ' '
-                                            })}
+                                            itemTraits={system.traits.value}
                                             diceClient={threeDDiceRef}
                                             die={system.damage.die}
                                             dieCount={system.damage.dice}
@@ -201,6 +199,20 @@ export default function CharacterSheet() {
                             <div className={'title-underline'}>
                                 <div className={'tab-content actions title'}>
                                     <span>Ranged Strikes</span>
+                                </div>
+                            </div>
+                            <div className={'section-header'}>
+                                <div className={'section-header-label attack'}>
+                                    <span>ATTACK</span>
+                                </div>
+                                <div className={'section-header-label damage'}>
+                                    <span>DAMAGE</span>
+                                </div>
+                                <div className={'section-header-label type'}>
+                                    <span>CATEGORY</span>
+                                </div>
+                                <div className={'section-header-label traits'}>
+                                    <span>TRAITS</span>
                                 </div>
                             </div>
                             <div className={'tab-content actions ranged'}>

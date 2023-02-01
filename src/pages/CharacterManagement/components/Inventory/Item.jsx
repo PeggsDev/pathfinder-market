@@ -64,11 +64,15 @@ export default function Item(props) {
                 </div>
                 <div className={'action-count-icon'}/>
             </div>
-            <div className={'item-traits'}>
+            <div className={'item-rarity'}>
                 {itemRarity}
             </div>
             <div className={'item-traits'}>
-                {itemTraits}
+                {itemTraits.map((item) => {
+                    return (
+                        <span className={'item-trait'}>{item}</span>
+                    )
+                })}
             </div>
         </div>
     )
