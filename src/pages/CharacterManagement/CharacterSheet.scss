@@ -1,7 +1,7 @@
 :root {
-  --clr-char-outline: #ffaeee;
+  --clr-char-outline: #E8B8DF;
   --clr-dice-roll-hover: #f5a623;
-  --clr-skill-dice-roll-hover: #b55dff;
+  --clr-skill-dice-roll-hover: #87cb00;
 
   --font-size-medium: 0.8rem;
   --opacity: 0.85;
@@ -239,7 +239,8 @@
     padding-bottom: 1rem;
   }
 
-  .tab-content.actions.title {
+  .tab-content.actions.title,
+  .tab-content.notes.title {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -251,6 +252,22 @@
 
   .tab-content.actions.strikes {
     padding-bottom: 0.5rem;
+  }
+
+  .tab-notes {
+    background: none;
+    border: none;
+    color: var(--clr-light);
+    font-size: 0.8rem;
+    margin: 0.5rem;
+    width: 42rem;
+    min-height: 3rem;
+    flex-wrap: wrap;
+    overflow:hidden;
+  }
+
+  .tab-notes:focus {
+    outline:none;
   }
 
   .title-underline {

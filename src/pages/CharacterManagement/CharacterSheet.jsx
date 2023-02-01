@@ -249,9 +249,42 @@ export default function CharacterSheet() {
                             WIP
                         </div>
                     </div>
-                    <div className={'tab-content'}>
+                    <div className={'tab-content notes'}>
                         <div className={`content ${activeTab === 4 ? 'active-content' : ''}`}>
-                            WIP
+                            <div className={'title-underline'}>
+                                <div className={'tab-content notes title'}>
+                                    <span>Organisations</span>
+                                </div>
+                            </div>
+                            <div contentEditable className={'tab-notes'}/>
+
+                            <div className={'title-underline'}>
+                                <div className={'tab-content notes title'}>
+                                    <span>Allies</span>
+                                </div>
+                            </div>
+                            <div contentEditable className={'tab-notes'}/>
+
+                            <div className={'title-underline'}>
+                                <div className={'tab-content notes title'}>
+                                    <span>Enemies</span>
+                                </div>
+                            </div>
+                            <div contentEditable className={'tab-notes'}/>
+
+                            <div className={'title-underline'}>
+                                <div className={'tab-content notes title'}>
+                                    <span>Backstory</span>
+                                </div>
+                            </div>
+                            <div contentEditable className={'tab-notes'}/>
+
+                            <div className={'title-underline'}>
+                                <div className={'tab-content notes title'}>
+                                    <span>Other</span>
+                                </div>
+                            </div>
+                            <div contentEditable className={'tab-notes'}/>
                         </div>
                     </div>
                 </div>
