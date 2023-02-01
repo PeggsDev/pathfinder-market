@@ -4,7 +4,7 @@ import '../../componenets/SlidingCard/SlidingCard.scss'
 import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDieType} from 'dddice-js';
 
 import {ReactComponent as Armor} from "./svg/armor-class.svg";
-import CharacterSheetBackground from "../../images/parallax-background.jpg";
+import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 import Item from "./components/Inventory/Item";
 
 import Skills from './components/Skills/Skills';
@@ -102,160 +102,162 @@ export default function CharacterSheet() {
 
     return (
         <div className={'character-sheet'}>
-            <img src={CharacterSheetBackground} className={'character-sheet-background'}/>
-            <div className={'character-sheet-component ability-scores'}>
-                <h1>Ability Scores</h1>
-                <form className={'score-block'}>
-                    {
-                        characterData?.abilityScores.map((ability) => {
-                            return <AbilityScore key={ability.id}
-                                                 ability={ability.ability}
-                                                 score={ability.score}/>
-                        })
-                    }
-                </form>
-            </div>
-            <div className={'character-sheet-component armor-class'}>
-                <h3 className={'title'}>ARMOR</h3>
-                <input className={'modifier'}
-                       type="text"
-                       disabled="disabled"
-                       placeholder="disabled"
-                       value={characterData?.armorClass}
-                       readOnly/>
-                <h3 className={'sub-title'}>CLASS</h3>
-                <Armor className={'shield'}/>
-            </div>
-            <div className={'character-sheet-component saving-throws'}>
-                <h1>Saving Throws</h1>
-            </div>
-            <div className={'character-sheet-component class-dc'}></div>
-            <div className={'character-sheet-component skill-modifiers'}>
-                <h1>Skills</h1>
-                <Skills
-                    characterData={characterData}
-                    diceClient={threeDDiceRef}/>
-            </div>
-            <div className={'character-sheet-component tabbed-component actions-and-Inventory'}>
-                <div className={'tab-block'}>
-                    <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(1)}>
-                        Actions
-                    </div>
-                    <div className={`tab ${activeTab === 2 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(2)}>
-                        Inventory
-                    </div>
-                    <div className={`tab ${activeTab === 3 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(3)}>
-                        Feats & Abilities
-                    </div>
-                    <div className={`tab ${activeTab === 4 ? 'active-tab' : ''}`}
-                         onClick={() => setActiveTab(4)}>
-                        Notes
-                    </div>
+            <section className={'character-sheet-grid'}>
+                <img src={CharacterSheetBackground} className={'character-sheet-background'}/>
+                <div className={'character-sheet-component ability-scores'}>
+                    <h1>Ability Scores</h1>
+                    <form className={'score-block'}>
+                        {
+                            characterData?.abilityScores.map((ability) => {
+                                return <AbilityScore key={ability.id}
+                                                     ability={ability.ability}
+                                                     score={ability.score}/>
+                            })
+                        }
+                    </form>
                 </div>
-                <div className={'tab-content'}>
-                    <div className={`content ${activeTab === 1 ? 'active-content' : ''}`}>
-                        <div className={'tab-content actions title-block'}>
-                            <div className={'title-underline'}>
-                                <div className={'tab-content actions title'}>
-                                    <span>Melee Strikes</span>
+                <div className={'character-sheet-component armor-class'}>
+                    <h3 className={'title'}>ARMOR</h3>
+                    <input className={'modifier'}
+                           type="text"
+                           disabled="disabled"
+                           placeholder="disabled"
+                           value={characterData?.armorClass}
+                           readOnly/>
+                    <h3 className={'sub-title'}>CLASS</h3>
+                    <Armor className={'shield'}/>
+                </div>
+                <div className={'character-sheet-component saving-throws'}>
+                    <h1>Saving Throws</h1>
+                </div>
+                <div className={'character-sheet-component class-dc'}></div>
+                <div className={'character-sheet-component skill-modifiers'}>
+                    <h1>Skills</h1>
+                    <Skills
+                        characterData={characterData}
+                        diceClient={threeDDiceRef}/>
+                </div>
+                <div className={'character-sheet-component tabbed-component actions-and-Inventory'}>
+                    <div className={'tab-block'}>
+                        <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
+                             onClick={() => setActiveTab(1)}>
+                            Actions
+                        </div>
+                        <div className={`tab ${activeTab === 2 ? 'active-tab' : ''}`}
+                             onClick={() => setActiveTab(2)}>
+                            Inventory
+                        </div>
+                        <div className={`tab ${activeTab === 3 ? 'active-tab' : ''}`}
+                             onClick={() => setActiveTab(3)}>
+                            Feats & Abilities
+                        </div>
+                        <div className={`tab ${activeTab === 4 ? 'active-tab' : ''}`}
+                             onClick={() => setActiveTab(4)}>
+                            Notes
+                        </div>
+                    </div>
+                    <div className={'tab-content'}>
+                        <div className={`content ${activeTab === 1 ? 'active-content' : ''}`}>
+                            <div className={'tab-content actions title-block'}>
+                                <div className={'title-underline'}>
+                                    <div className={'tab-content actions title'}>
+                                        <span>Melee Strikes</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={'section-header'}>
-                                <div className={'section-header-label attack'}>
-                                <span>ATTACK</span>
+                                <div className={'section-header'}>
+                                    <div className={'section-header-label attack'}>
+                                        <span>ATTACK</span>
+                                    </div>
+                                    <div className={'section-header-label damage'}>
+                                        <span>DAMAGE</span>
+                                    </div>
+                                    <div className={'section-header-label type'}>
+                                        <span>RARITY</span>
+                                    </div>
+                                    <div className={'section-header-label traits'}>
+                                        <span>TRAITS</span>
+                                    </div>
                                 </div>
-                                <div className={'section-header-label damage'}>
-                                    <span>DAMAGE</span>
+                                <div className={'tab-content actions strikes'}>
+                                    {equipment?.map((item) => {
+                                        const system = item?.system
+                                        return (
+                                            !item?.system.range &&
+                                            item?.type === 'weapon' &&
+                                            <Item
+                                                itemName={item.name}
+                                                itemCategory={system.category && system.category}
+                                                itemType={item?.type}
+                                                itemRarity={system.traits.rarity}
+                                                itemTraits={system.traits.value}
+                                                diceClient={threeDDiceRef}
+                                                die={system.damage.die}
+                                                dieCount={system.damage.dice}
+                                                range={system.range}/>
+                                        )
+                                    })}
                                 </div>
-                                <div className={'section-header-label type'}>
-                                    <span>RARITY</span>
+                                <div className={'title-underline'}>
+                                    <div className={'tab-content actions title'}>
+                                        <span>Ranged Strikes</span>
+                                    </div>
                                 </div>
-                                <div className={'section-header-label traits'}>
-                                    <span>TRAITS</span>
+                                <div className={'section-header'}>
+                                    <div className={'section-header-label attack'}>
+                                        <span>ATTACK</span>
+                                    </div>
+                                    <div className={'section-header-label damage'}>
+                                        <span>DAMAGE</span>
+                                    </div>
+                                    <div className={'section-header-label type'}>
+                                        <span>RARITY</span>
+                                    </div>
+                                    <div className={'section-header-label traits'}>
+                                        <span>TRAITS</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={'tab-content actions strikes'}>
-                                {equipment?.map((item) => {
-                                    const system = item?.system
-                                    return (
-                                        !item?.system.range &&
-                                        item?.type === 'weapon' &&
-                                        <Item
-                                            itemName={item.name}
-                                            itemCategory={system.category && system.category}
-                                            itemType={item?.type}
-                                            itemRarity={system.traits.rarity}
-                                            itemTraits={system.traits.value}
-                                            diceClient={threeDDiceRef}
-                                            die={system.damage.die}
-                                            dieCount={system.damage.dice}
-                                            range={system.range}/>
-                                    )
-                                })}
-                            </div>
-                            <div className={'title-underline'}>
-                                <div className={'tab-content actions title'}>
-                                    <span>Ranged Strikes</span>
+                                <div className={'tab-content actions ranged'}>
+                                    {equipment?.map((item) => {
+                                        const system = item?.system
+                                        return (
+                                            item.system.range && item.type === 'weapon' &&
+                                            <Item
+                                                itemName={item.name}
+                                                itemCategory={system.category && system.category}
+                                                itemType={item?.type}
+                                                itemRarity={system.traits.rarity}
+                                                itemTraits={system.traits.value?.map((trait) => {
+                                                    return trait
+                                                })}
+                                                diceClient={threeDDiceRef}
+                                                die={system.damage.die}
+                                                dieCount={system.damage.dice}
+                                                range={system.range}/>
+                                        )
+                                    })}
                                 </div>
-                            </div>
-                            <div className={'section-header'}>
-                                <div className={'section-header-label attack'}>
-                                    <span>ATTACK</span>
-                                </div>
-                                <div className={'section-header-label damage'}>
-                                    <span>DAMAGE</span>
-                                </div>
-                                <div className={'section-header-label type'}>
-                                    <span>RARITY</span>
-                                </div>
-                                <div className={'section-header-label traits'}>
-                                    <span>TRAITS</span>
-                                </div>
-                            </div>
-                            <div className={'tab-content actions ranged'}>
-                                {equipment?.map((item) => {
-                                    const system = item?.system
-                                    return (
-                                        item.system.range && item.type === 'weapon' &&
-                                        <Item
-                                            itemName={item.name}
-                                            itemCategory={system.category && system.category}
-                                            itemType={item?.type}
-                                            itemRarity={system.traits.rarity}
-                                            itemTraits={system.traits.value?.map((trait) => {
-                                                return trait
-                                            })}
-                                            diceClient={threeDDiceRef}
-                                            die={system.damage.die}
-                                            dieCount={system.damage.dice}
-                                            range={system.range}/>
-                                    )
-                                })}
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={'tab-content'}>
-                    <div className={`content ${activeTab === 2 ? 'active-content' : ''}`}>
-                        WIP
+                    <div className={'tab-content'}>
+                        <div className={`content ${activeTab === 2 ? 'active-content' : ''}`}>
+                            WIP
+                        </div>
+                    </div>
+                    <div className={'tab-content'}>
+                        <div className={`content ${activeTab === 3 ? 'active-content' : ''}`}>
+                            WIP
+                        </div>
+                    </div>
+                    <div className={'tab-content'}>
+                        <div className={`content ${activeTab === 4 ? 'active-content' : ''}`}>
+                            WIP
+                        </div>
                     </div>
                 </div>
-                <div className={'tab-content'}>
-                    <div className={`content ${activeTab === 3 ? 'active-content' : ''}`}>
-                        WIP
-                    </div>
-                </div>
-                <div className={'tab-content'}>
-                    <div className={`content ${activeTab === 4 ? 'active-content' : ''}`}>
-                        WIP
-                    </div>
-                </div>
-            </div>
-            <div className={'character-sheet-component'}></div>
-            <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
+                <div className={'character-sheet-component'}></div>
+                <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
+            </section>
         </div>
     )
 }

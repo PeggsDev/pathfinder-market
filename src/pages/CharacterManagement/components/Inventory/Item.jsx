@@ -22,24 +22,24 @@ export default function Item(props) {
 
     return (
         <div className={'item-component'}>
-            {
-                <div className={'attack-dice-roll'}>
-                    {range && <BowAndArrowIcon
-                        className={'item-icon-svg'}
-                        onClick={() => rollDice(
-                            diceClient,
-                            IDieType.D20,
-                            dieCount,
-                            'dddice-old-school')}/>}
-                    {!range && <SwordsIcon
-                        className={'item-icon-svg'}
-                        onClick={() => rollDice(
-                            diceClient,
-                            IDieType.D20,
-                            dieCount,
-                            'dddice-old-school')}/>}
-                </div>
-            }
+
+            <div className={'attack-dice-roll'}>
+                {range && <BowAndArrowIcon
+                    className={'item-icon-svg'}
+                    onClick={() => rollDice(
+                        diceClient,
+                        IDieType.D20,
+                        dieCount,
+                        'dddice-old-school')}/>}
+                {!range && <SwordsIcon
+                    className={'item-icon-svg'}
+                    onClick={() => rollDice(
+                        diceClient,
+                        IDieType.D20,
+                        dieCount,
+                        'dddice-old-school')}/>}
+            </div>
+
             <div className={'action'}>
                 <div className={'item-title-box'}>
                     <div className={'item-name'}>{itemName}</div>
