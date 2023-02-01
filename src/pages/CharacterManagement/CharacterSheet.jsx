@@ -156,7 +156,7 @@ export default function CharacterSheet() {
                             Notes
                         </div>
                     </div>
-                    <div className={'tab-content'}>
+                    <div className={'tab-content actions'}>
                         <div className={`content ${activeTab === 1 ? 'active-content' : ''}`}>
                             <div className={'tab-content actions title-block'}>
                                 <div className={'title-underline'}>
