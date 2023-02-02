@@ -129,23 +129,39 @@ export default function CharacterSheet() {
                         {/*<div className={'character-info traits'}>Traits</div>*/}
                         {/*<div className={'character-info xp'}>Experience Points</div>*/}
                     </div>
+                    <section className={'character-sheet-component ability-scores'}>
+                        <h1>Ability Scores</h1>
+                        <form className={'score-block'}>
+                            {
+                                characterData?.abilityScores.map((ability) => {
+                                    return <AbilityScore
+                                        key={ability.id}
+                                        ability={ability.ability}
+                                        score={ability.score}/>
+                                })
+                            }
+                        </form>
+                    </section>
+                    <section className={'character-sheet-component armor-class'}>
+                        <ACShield armorClass={characterData?.armorClass}/>
+                    </section>
                 </section>
-                <section className={'character-sheet-component ability-scores'}>
-                    <h1>Ability Scores</h1>
-                    <form className={'score-block'}>
-                        {
-                            characterData?.abilityScores.map((ability) => {
-                                return <AbilityScore
-                                    key={ability.id}
-                                    ability={ability.ability}
-                                    score={ability.score}/>
-                            })
-                        }
-                    </form>
-                </section>
-                <section className={'character-sheet-component armor-class'}>
-                    <ACShield armorClass={characterData?.armorClass}/>
-                </section>
+                {/*<section className={'character-sheet-component ability-scores'}>*/}
+                {/*    <h1>Ability Scores</h1>*/}
+                {/*    <form className={'score-block'}>*/}
+                {/*        {*/}
+                {/*            characterData?.abilityScores.map((ability) => {*/}
+                {/*                return <AbilityScore*/}
+                {/*                    key={ability.id}*/}
+                {/*                    ability={ability.ability}*/}
+                {/*                    score={ability.score}/>*/}
+                {/*            })*/}
+                {/*        }*/}
+                {/*    </form>*/}
+                {/*</section>*/}
+                {/*<section className={'character-sheet-component armor-class'}>*/}
+                {/*    <ACShield armorClass={characterData?.armorClass}/>*/}
+                {/*</section>*/}
                 <section className={'character-sheet-component saving-throws'}>
                     {/*<h1>Saving Throws</h1>*/}
                 </section>
