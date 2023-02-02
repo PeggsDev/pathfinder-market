@@ -1,0 +1,50 @@
+.ac-wrapper {
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: auto 0;
+
+  .shield {
+    height: 6rem;
+    width: 6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: var(--opacity);
+  }
+
+  .title {
+    position: absolute;
+    top: 2.1rem;
+    left: 1.9rem;
+    font-size: 0.6rem;
+    z-index: 1;
+    color: var(--clr-white);
+  }
+
+  .sub-title {
+    position: absolute;
+    top: 4.3rem;
+    left: 2rem;
+    font-size: 0.6rem;
+    z-index: 1;
+    color: var(--clr-white);
+  }
+
+  input {
+    position: absolute;
+    top: 2.2rem;
+    left: 1.1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    height: 3rem;
+    width: 3.5rem;
+    border: none;
+    background: none;
+    font-weight: 800;
+    color: var(--clr-white);
+    z-index: 1;
+  }
+}

@@ -1,7 +1,7 @@
 :root {
   --clr-char-outline: #E8B8DF;
   --clr-dice-roll-hover: #f5a623;
-  --clr-skill-dice-roll-hover: #87cb00;
+  --clr-skill-dice-roll-hover: #96f134;
 
   --font-size-medium: 0.8rem;
   --opacity: 0.85;
@@ -137,64 +137,6 @@
       color: var(--clr-white);
     }
   }
-
-}
-
-/* Armor Class */
-.ac-wrapper {
-  position: absolute;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  margin: auto 0;
-}
-
-.armor-class {
-  position: relative;
-
-
-  .shield {
-    height: 6rem;
-    width: 6rem;
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    opacity: var(--opacity);
-  }
-
-  h3.title {
-    position: absolute;
-    top: 2.1rem;
-    left: 1.9rem;
-    font-size: 0.6rem;
-    z-index: 1;
-    color: var(--clr-white);
-  }
-
-  h3.sub-title {
-    position: absolute;
-    top: 4.3rem;
-    left: 2rem;
-    font-size: 0.6rem;
-    z-index: 1;
-    color: var(--clr-white);
-  }
-
-  input {
-    position: absolute;
-    top: 2.2rem;
-    left: 1.1rem;
-    font-size: 1.5rem;
-    text-align: center;
-    height: 3rem;
-    width: 3.5rem;
-    border: none;
-    background: none;
-    font-weight: 800;
-    color: var(--clr-white);
-    z-index: 1;
-  }
 }
 
 /* Tabbed Content Actions and Inventory */
@@ -271,11 +213,11 @@
     width: 42rem;
     min-height: 3rem;
     flex-wrap: wrap;
-    overflow:hidden;
+    overflow: hidden;
   }
 
   .tab-notes:focus {
-    outline:none;
+    outline: none;
   }
 
   .title-underline {
@@ -317,5 +259,76 @@
 
   .content.active-content {
     display: block;
+  }
+}
+
+.character-info-section {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  grid-column: 4 / span 6;
+  grid-row: 1;
+  background: var(--clr-dark-background);
+  //border: 2px solid var(--clr-char-outline);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  opacity: var(--opacity);
+
+  .character-info-block {
+    padding-top: 0.5rem;
+  }
+
+  .character-info.image {
+    //border: 2px solid var(--clr-char-outline);
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0.5rem;
+    object-fit: cover;
+    object-position: top left;
+    border-radius: 50%;
+  }
+  .ancestry-block,
+  .background-block {
+    height: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
+    color: var(--clr-dice-roll-hover);
+
+    .character-info-entry-left {
+      min-width: 4rem;
+    }
+
+    .character-info-entry-center {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+      color: var(--clr-accent-light);
+
+    }
+  }
+
+  .character-name {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: var(--clr-white);
+  }
+
+  .ancestry-and-heritage {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    font-size: 0.8rem;
+    color: var(--clr-accent-light);
+  }
+
+  .ancestry-and-heritage.ancestry-block {
+    width: 3rem;
+  }
+
+  .level {
+    padding-top: 0.2rem;
+    font-size: 0.6rem;
+    color: var(--clr-white);
   }
 }

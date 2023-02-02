@@ -3,11 +3,11 @@ import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDieType} from 'dddice-js';
 
-import {ReactComponent as Armor} from "./svg/armor-class.svg";
 import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 import Item from "./components/Inventory/Item";
 
 import Skills from './components/Skills/Skills';
+import ACShield from "./components/ACShield/ACShield";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -103,41 +103,62 @@ export default function CharacterSheet() {
     return (
         <div className={'character-sheet'}>
             <section className={'character-sheet-grid'}>
-                <img src={CharacterSheetBackground} className={'character-sheet-background'}/>
-                <div className={'character-sheet-component ability-scores'}>
+                <img className={'character-sheet-background'} src={CharacterSheetBackground}/>
+                <section className={'character-sheet-component character-info-section'}>
+                    <img className={'character-info image'}
+                          src={'https://i.etsystatic.com/38129871/r/il/0cfdbb/4237591548/il_340x270.4237591548_5j9h.jpg'}
+                         alt={''}/>
+                    <div className={'character-info-block'}>
+                        <div className={'character-info character-name'}>{characterData?.characterName}</div>
+                        <div className={'character-info ancestry-and-heritage'}>
+                            <div className={'ancestry-block'}>
+                                <div className={'character-info-entry-left'}> {characterData?.ancestry} </div>
+                                <div className={'character-info-entry-center'}>|</div>
+                                <div className={'character-info-entry-right'}> {characterData?.heritage}</div>
+                            </div>
+                            <div className={'background-block'}>
+                                <div className={'character-info-entry-left'}> {characterData?.class} </div>
+                                <div className={'character-info-entry-center'}>|</div>
+                                <div className={'character-info-entry-right'}> {characterData?.background}</div>
+                            </div>
+                        </div>
+                        <div className={'character-info level'}>Level {characterData?.level}</div>
+
+                        {/*<div className={'character-info size'}>Size</div>*/}
+                        {/*<div className={'character-info alignment'}>Alignment</div>*/}
+                        {/*<div className={'character-info traits'}>Traits</div>*/}
+                        {/*<div className={'character-info xp'}>Experience Points</div>*/}
+                    </div>
+                </section>
+                <section className={'character-sheet-component ability-scores'}>
                     <h1>Ability Scores</h1>
                     <form className={'score-block'}>
                         {
                             characterData?.abilityScores.map((ability) => {
-                                return <AbilityScore key={ability.id}
-                                                     ability={ability.ability}
-                                                     score={ability.score}/>
+                                return <AbilityScore
+                                    key={ability.id}
+                                    ability={ability.ability}
+                                    score={ability.score}/>
                             })
                         }
                     </form>
-                </div>
-                <div className={'character-sheet-component armor-class'}>
-                    <h3 className={'title'}>ARMOR</h3>
-                    <input className={'modifier'}
-                           type="text"
-                           disabled="disabled"
-                           placeholder="disabled"
-                           value={characterData?.armorClass}
-                           readOnly/>
-                    <h3 className={'sub-title'}>CLASS</h3>
-                    <Armor className={'shield'}/>
-                </div>
-                <div className={'character-sheet-component saving-throws'}>
-                    <h1>Saving Throws</h1>
-                </div>
-                <div className={'character-sheet-component class-dc'}></div>
-                <div className={'character-sheet-component skill-modifiers'}>
+                </section>
+                <section className={'character-sheet-component armor-class'}>
+                    <ACShield armorClass={characterData?.armorClass}/>
+                </section>
+                <section className={'character-sheet-component saving-throws'}>
+                    {/*<h1>Saving Throws</h1>*/}
+                </section>
+                <section className={'character-sheet-component class-dc'}>
+
+                </section>
+                <section className={'character-sheet-component skill-modifiers'}>
                     <h1>Skills</h1>
                     <Skills
                         characterData={characterData}
                         diceClient={threeDDiceRef}/>
-                </div>
-                <div className={'character-sheet-component tabbed-component actions-and-Inventory'}>
+                </section>
+                <section className={'character-sheet-component tabbed-component actions-and-Inventory'}>
                     <div className={'tab-block'}>
                         <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
                              onClick={() => setActiveTab(1)}>
@@ -287,8 +308,7 @@ export default function CharacterSheet() {
                             <div contentEditable className={'tab-notes'}/>
                         </div>
                     </div>
-                </div>
-                <div className={'character-sheet-component'}></div>
+                </section>
                 <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
             </section>
         </div>
