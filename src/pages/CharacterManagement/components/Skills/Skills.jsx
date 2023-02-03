@@ -1,6 +1,6 @@
 import './Skills.scss'
 import {proficiencyEnum} from "../../../../App";
-import {calculateSkillModifier} from "../../CharacterSheet";
+import {calculateAbilityBasedModifier} from "../../CharacterSheet";
 import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 
 import {IDieType} from "dddice-js";
@@ -66,7 +66,7 @@ export default function Skills({characterData, diceClient}) {
                               skill={skill?.skill}
                               baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
                               proficiencyIndicator={skill?.proficiencyLevel}
-                              skillModifier={calculateSkillModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])}/>
+                              skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])}/>
             })}
         </form>
     )
