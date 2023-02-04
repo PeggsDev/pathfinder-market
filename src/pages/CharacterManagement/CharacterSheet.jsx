@@ -3,7 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
 import { IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDieType } from 'dddice-js';
 
-import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
+//import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
+import CharacterSheetBackground from "../../images/splash-8.jpg";
+
 import Item from "./components/Inventory/Item";
 
 import Skills from './components/Skills/Skills';
@@ -29,12 +31,12 @@ function AbilityScore({ ability, score }) {
                 placeholder="disabled"
                 value={modifier > 0 ? "+" + modifier : modifier.toString()}
                 readOnly />
-            {/*<input className={'score'}*/}
-            {/*       type="text"*/}
-            {/*       disabled="disabled"*/}
-            {/*       placeholder="disabled"*/}
-            {/*       value={score}*/}
-            {/*       readOnly />*/}
+            <input className={'score'}
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={score}
+                readOnly />
         </div>
     )
 }
@@ -116,11 +118,7 @@ export default function CharacterSheet() {
                         </div>
                         <div className={'character-info level'}>Level {characterData?.level}</div>
                     </div>
-                    <section className={'character-sheet-component saving-throws'}>
-                        <SavingThrows
-                            characterData={characterData}
-                            diceClient={threeDDiceRef} />
-                    </section>
+                    <div className='vertical-line'/>
                     <section className={'character-sheet-component ability-scores'}>
                         <h1>Ability Scores</h1>
                         <form className={'score-block'}>
@@ -134,32 +132,29 @@ export default function CharacterSheet() {
                             }
                         </form>
                     </section>
+                    <div className='vertical-line'/>
+                    <section className={'character-sheet-component saving-throws'}>
+                        <SavingThrows
+                            characterData={characterData}
+                            diceClient={threeDDiceRef} />
+                    </section>
+                    <div className='vertical-line'/>
+
                     {/*<div className={'character-info size'}>Size</div>*/}
                     {/*<div className={'character-info alignment'}>Alignment</div>*/}
                     {/*<div className={'character-info traits'}>Traits</div>*/}
                     {/*<div className={'character-info xp'}>Experience Points</div>*/}
                     <section className={'character-sheet-component armor-class'}>
-                        <ACShield armorClass={characterData?.armorClass} />
+                        <ACShield 
+                                armorBonus={1}
+                                shieldBonus={0}
+                                dexterity={characterData?.abilityScores[1].score}
+                                aditionalMods={0}
+                        armorClass={characterData?.armorClass} />
                     </section>
                 </section>
-                {/*<section className={'character-sheet-component ability-scores'}>*/}
-                {/*    <h1>Ability Scores</h1>*/}
-                {/*    <form className={'score-block'}>*/}
-                {/*        {*/}
-                {/*            characterData?.abilityScores.map((ability) => {*/}
-                {/*                return <AbilityScore*/}
-                {/*                    key={ability.id}*/}
-                {/*                    ability={ability.ability}*/}
-                {/*                    score={ability.score}/>*/}
-                {/*            })*/}
-                {/*        }*/}
-                {/*    </form>*/}
-                {/*</section>*/}
-                {/*<section className={'character-sheet-component armor-class'}>*/}
-                {/*    <ACShield armorClass={characterData?.armorClass}/>*/}
-                {/*</section>*/}
                 <section className={'character-sheet-component conditions'}>
-                    {/*<h1>Saving Throws</h1>*/}
+                    {/*<h1>Conditions</h1>*/}
                 </section>
                 <section className={'character-sheet-component class-dc'}>
 

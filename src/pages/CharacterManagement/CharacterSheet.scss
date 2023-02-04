@@ -40,7 +40,6 @@
     z-index: -1;
   }
 
-
   .conditions {
     width: 20rem;
     background: var(--clr-dark-background);
@@ -69,9 +68,17 @@
   }
 }
 
+.vertical-line {
+  margin: auto 0;
+  height: 5rem;
+  border-left: 2px solid var(--clr-char-outline);
+  border-radius: 0.1rem;
+}
+
 .character-sheet-component.armor-class {
   padding-top: 0.5rem;
-  margin: 0 auto;
+  //margin: 0 auto;
+  margin: 0 3rem;
 }
 
 /* Ability Scores and Skill Modifiers */
@@ -82,8 +89,9 @@
   flex-direction: column;
   background: var(--clr-dark-background);
   //border: 2px solid var(--clr-char-outline);
-  padding: 0 0.5rem;
-  border-radius: 0.5rem;
+  // padding: 0 0.5rem;
+  // border-radius: 0.5rem;
+  padding: 0 2rem;
   opacity: var(--opacity);
 
   h1 {
@@ -262,12 +270,13 @@
   grid-column: 4 / span 6;
   grid-row: 1;
   background: var(--clr-dark-background);
-  //border: 2px solid var(--clr-char-outline);
+  border: 2px solid var(--clr-char-outline);
   border-radius: 0.5rem;
   padding: 0.5rem;
   opacity: var(--opacity);
 
   .character-info-block {
+    max-width: 15rem;
     padding-top: 0.75rem;
   }
 

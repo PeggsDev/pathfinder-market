@@ -84,7 +84,7 @@ export default function NavBar() {
                     </li>
                     <li>
                         <a href={'#'}>
-                            Market Place
+                            Marketplace
                         </a>
                     </li>
                     <li>

@@ -3,9 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 1rem;
-    border-radius: 0.5rem;
-    opacity: var(--opacity);
+    padding: 0 2rem;
   
     h1 {
       font-size: 1rem;
@@ -104,7 +102,7 @@
           }
   
           .save-dice-roll :hover {
-            fill: var(--clr-save-dice-roll-hover);
+            fill: var(--clr-dice-roll-hover);
             cursor: pointer;
           }
   
