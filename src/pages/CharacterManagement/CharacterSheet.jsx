@@ -32,12 +32,12 @@ function AbilityScore({ ability, score }) {
                 placeholder="disabled"
                 value={modifier > 0 ? "+" + modifier : modifier.toString()}
                 readOnly />
-            {/* <input className={'score'}
+            <input className={'score'}
                 type="text"
                 disabled="disabled"
                 placeholder="disabled"
                 value={score}
-                readOnly /> */}
+                readOnly />
         </div>
     )
 }

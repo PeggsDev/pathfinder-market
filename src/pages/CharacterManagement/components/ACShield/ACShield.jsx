@@ -3,7 +3,7 @@ import React from "react";
 import { ReactComponent as Armor } from "../../svg/armor-class.svg";
 import { calculateModifier } from '../../CharacterSheet';
 
-//TODO - Figure this out as it needs a bunch of things that are currently missing
+//TODO - Attach a context of some kind to subscribe to changes that affect AC i.e. new Armor
 function calculateArmorClass(armor, dexCap, shield, dexterity, aditionalMods) {
     return (10 + armor + shield + calculateModifier(dexterity) + aditionalMods) - dexCap;
 }
