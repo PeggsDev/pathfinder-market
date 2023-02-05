@@ -1,7 +1,7 @@
 import './CharacterSheet.scss'
 import React, { useEffect, useRef, useState } from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
-import { IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDieType } from 'dddice-js';
+import { IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceConfig } from 'dddice-js';
 
 //import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 import CharacterSheetBackground from "../../images/splash-8.jpg";
@@ -11,6 +11,7 @@ import Item from "./components/Inventory/Item";
 import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
+import { ReactComponent as CameraIcon } from './svg/camera-solid.svg'
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -31,12 +32,12 @@ function AbilityScore({ ability, score }) {
                 placeholder="disabled"
                 value={modifier > 0 ? "+" + modifier : modifier.toString()}
                 readOnly />
-            <input className={'score'}
+            {/* <input className={'score'}
                 type="text"
                 disabled="disabled"
                 placeholder="disabled"
                 value={score}
-                readOnly />
+                readOnly /> */}
         </div>
     )
 }
@@ -58,7 +59,10 @@ export default function CharacterSheet() {
             threeDDiceRef.current.start();
             threeDDiceRef.current.connect(roomSlug);
 
-            console.log('THREE-D-DICE INGLORIOUS DRAGONS');
+            const diceApi = ThreeDDiceAPI
+            diceApi.
+
+                console.log('THREE-D-DICE INGLORIOUS DRAGONS');
         } catch (error) {
             console.log("error initializing ddDice", error);
         }
@@ -94,14 +98,21 @@ export default function CharacterSheet() {
         })();
     }, []);
 
+    const [uploadImage, setImage] = useState(false)
+
     return (
         <div className={'character-sheet'}>
             <section className={'character-sheet-grid'}>
                 <img className={'character-sheet-background'} src={CharacterSheetBackground} />
                 <section className={'character-sheet-component character-info-section'}>
-                    <img className={'character-info image'}
-                        src={characterData?.characterImage}
-                        alt={''} />
+                    <div className={'character-image-wrapper'}>
+                        <img className={'character-info image'}
+                         onMouseEnter={() => {setImage(true)}} 
+                         onMouseLeave={() => {setImage(false)}} 
+                            src={characterData?.characterImage}
+                            alt={''} />
+                        <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
+                    </div>
                     <div className={'character-info-block'}>
                         <div className={'character-info character-name'}>{characterData?.characterName}</div>
                         <div className={'character-info ancestry-and-heritage'}>
@@ -118,7 +129,7 @@ export default function CharacterSheet() {
                         </div>
                         <div className={'character-info level'}>Level {characterData?.level}</div>
                     </div>
-                    <div className='vertical-line'/>
+                    <div className='vertical-line' />
                     <section className={'character-sheet-component ability-scores'}>
                         <h1>Ability Scores</h1>
                         <form className={'score-block'}>
@@ -132,25 +143,26 @@ export default function CharacterSheet() {
                             }
                         </form>
                     </section>
-                    <div className='vertical-line'/>
+                    <div className='vertical-line' />
                     <section className={'character-sheet-component saving-throws'}>
+                        {/* <h1>Saving Throws</h1> */}
                         <SavingThrows
                             characterData={characterData}
                             diceClient={threeDDiceRef} />
                     </section>
-                    <div className='vertical-line'/>
+                    <div className='vertical-line' />
 
                     {/*<div className={'character-info size'}>Size</div>*/}
                     {/*<div className={'character-info alignment'}>Alignment</div>*/}
                     {/*<div className={'character-info traits'}>Traits</div>*/}
                     {/*<div className={'character-info xp'}>Experience Points</div>*/}
                     <section className={'character-sheet-component armor-class'}>
-                        <ACShield 
-                                armorBonus={1}
-                                shieldBonus={0}
-                                dexterity={characterData?.abilityScores[1].score}
-                                aditionalMods={0}
-                        armorClass={characterData?.armorClass} />
+                        <ACShield
+                            armor={{ "acBonus": 0, "dexCap": 0 }}
+                            shield={{ "acBonus": 0 }}
+                            dexterity={characterData?.abilityScores[1].score}
+                            aditionalMods={0}
+                            armorClass={characterData?.armorClass} />
                     </section>
                 </section>
                 <section className={'character-sheet-component conditions'}>

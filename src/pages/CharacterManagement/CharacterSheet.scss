@@ -289,6 +289,27 @@
     object-position: top left;
     border-radius: 50%;
   }
+
+  .character-image-wrapper {
+    position: relative;
+  }
+
+  .upload-image-svg.show-icon {
+    pointer-events: none;
+    position: absolute;
+    fill: var(--clr-white);
+    height: 1.3rem;
+    width: 1.3rem;
+    top: 2.8rem;
+    left: 2.6rem;
+    display: block;
+  }
+
+  .upload-image-svg {
+    display: none;
+  }
+
+
   .ancestry-block,
   .background-block {
     height: 1rem;

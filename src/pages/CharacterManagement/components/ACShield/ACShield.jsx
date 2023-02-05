@@ -4,14 +4,14 @@ import { ReactComponent as Armor } from "../../svg/armor-class.svg";
 import { calculateModifier } from '../../CharacterSheet';
 
 //TODO - Figure this out as it needs a bunch of things that are currently missing
-function calculateArmorClass(armorBonus, shieldBonus, dexterity, aditionalMods) {
-    return 10 + armorBonus + shieldBonus + calculateModifier(dexterity) + aditionalMods;
+function calculateArmorClass(armor, dexCap, shield, dexterity, aditionalMods) {
+    return (10 + armor + shield + calculateModifier(dexterity) + aditionalMods) - dexCap;
 }
 
 export default function ACShield(props) {
     const {
-        armorBonus,
-        shieldBonus,
+        armor,
+        shield,
         dexterity,
         aditionalMods
     } = props
@@ -27,10 +27,12 @@ export default function ACShield(props) {
                 placeholder="disabled"
                 value={
                     calculateArmorClass(
-                        armorBonus,
-                        shieldBonus,
+                        armor?.acBonus,
+                        armor?.dexCap,
+                        shield?.acBonus,
                         dexterity,
-                        aditionalMods)
+                        aditionalMods
+                        )
                 }
                 readOnly />
             <h3 className={'sub-title'}>CLASS</h3>
