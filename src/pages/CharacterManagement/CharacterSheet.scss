@@ -1,5 +1,5 @@
 :root {
-  --clr-char-outline: #E8B8DF;
+  --clr-char-outline: #c777a8;
   --clr-dice-roll-hover: #f5a623;
   --clr-skill-dice-roll-hover: #96f134;
 
@@ -20,7 +20,7 @@
   align-self: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 8rem;
+  padding-top: 6rem;
 }
 
 .character-sheet-grid {
@@ -356,7 +356,7 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
-    gap: 2rem;
+    gap: 1rem;
 
     .ac-shield {
       padding-left: 0.3rem;
@@ -365,13 +365,13 @@
     .ac-stats {
       margin: 0 auto;
       padding-top: 0.5rem;
-      padding-left: 5rem;
+      padding-left: 4.5rem;
       font-size: 0.7rem;
     }
   }
 
   .armor-class-stat {
-    width: 4rem;
+    width: 5.5rem;
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -380,9 +380,10 @@
     .title {
       color: var(--clr-dice-roll-hover);
       font-weight: bolder;
+      margin: auto;
     }
     .value {
-      align-self: flex-end;
+      justify-content: end;
     }
   }
 
@@ -391,17 +392,17 @@
     padding-top: 0.5rem;
     text-transform: capitalize;
     columns: auto 2;
+    font-size: 0.7rem;
 
     .armor-proficiency-box {
       display: flex;
       flex-direction: row;
       justify-content: left;
       align-content: center;
-      font-size: 0.7rem;
       border-bottom: 1px solid var(--clr-char-outline);
     }
 
-    .armor-modifier {
+    .armor-type {
       padding-right: 0.5rem;
       margin-right: auto;
     }

@@ -1,7 +1,7 @@
 import './CharacterSheet.scss'
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
-import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceConfig} from 'dddice-js';
+import { IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceConfig } from 'dddice-js';
 
 //import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 import CharacterSheetBackground from "../../images/splash-8.jpg";
@@ -11,8 +11,8 @@ import Item from "./components/Inventory/Item";
 import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
-import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
-import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
+import { ReactComponent as CameraIcon } from './svg/camera-solid.svg'
+import { ReactComponent as PotionHPIcon } from "./svg/HP Potion Bottle.svg";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -22,23 +22,23 @@ export function calculateAbilityBasedModifier(baseAbilityScore, level, proficien
     return calculateModifier(baseAbilityScore) + (proficiency > 0 ? level : 0) + proficiency
 }
 
-function AbilityScore({ability, score}) {
+function AbilityScore({ ability, score }) {
     const modifier = (calculateModifier(score))
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
             <input className={'modifier'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={modifier > 0 ? "+" + modifier : modifier.toString()}
-                   readOnly/>
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={modifier > 0 ? "+" + modifier : modifier.toString()}
+                readOnly />
             <input className={'score'}
-                   type="text"
-                   disabled="disabled"
-                   placeholder="disabled"
-                   value={score}
-                   readOnly/>
+                type="text"
+                disabled="disabled"
+                placeholder="disabled"
+                value={score}
+                readOnly />
         </div>
     )
 }
@@ -102,19 +102,19 @@ export default function CharacterSheet() {
     return (
         <div className={'character-sheet'}>
             <section className={'character-sheet-grid'}>
-                <img className={'character-sheet-background'} src={CharacterSheetBackground}/>
+                <img className={'character-sheet-background'} src={CharacterSheetBackground} />
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
-                             onMouseEnter={() => {
-                                 setImage(true)
-                             }}
-                             onMouseLeave={() => {
-                                 setImage(false)
-                             }}
-                             src={characterData?.characterImage}
-                             alt={''}/>
-                        <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
+                            onMouseEnter={() => {
+                                setImage(true)
+                            }}
+                            onMouseLeave={() => {
+                                setImage(false)
+                            }}
+                            src={characterData?.characterImage}
+                            alt={''} />
+                        <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`} />
                     </div>
                     <div className={'character-info-block'}>
                         <div className={'character-info character-name'}>{characterData?.characterName}</div>
@@ -132,7 +132,7 @@ export default function CharacterSheet() {
                         </div>
                         <div className={'character-info level'}>Level {characterData?.level}</div>
                     </div>
-                    <div className='vertical-line'/>
+                    <div className='vertical-line' />
                     <section className={'character-sheet-component ability-scores'}>
                         <h1>Ability Scores</h1>
                         <form className={'score-block'}>
@@ -141,19 +141,19 @@ export default function CharacterSheet() {
                                     return <AbilityScore
                                         key={ability.id}
                                         ability={ability.ability}
-                                        score={ability.score}/>
+                                        score={ability.score} />
                                 })
                             }
                         </form>
                     </section>
-                    <div className='vertical-line'/>
+                    <div className='vertical-line' />
                     <section className={'character-sheet-component saving-throws'}>
                         {/* <h1>Saving Throws</h1> */}
                         <SavingThrows
                             characterData={characterData}
-                            diceClient={threeDDiceRef}/>
+                            diceClient={threeDDiceRef} />
                     </section>
-                    <div className='vertical-line'/>
+                    <div className='vertical-line' />
 
                     {/*<div className={'character-info size'}>Size</div>*/}
                     {/*<div className={'character-info alignment'}>Alignment</div>*/}
@@ -163,28 +163,44 @@ export default function CharacterSheet() {
                         <div className={'ac-section'}>
                             <div className={'ac-shield'}>
                                 <ACShield
-                                    armor={{"acBonus": 0, "dexCap": 0}}
-                                    shield={{"acBonus": 0}}
+                                    armor={{ "acBonus": 0, "dexCap": 0 }}
+                                    shield={{ "acBonus": 0 }}
                                     dexterity={characterData?.abilityScores[1].score}
                                     aditionalMods={0}
-                                    armorClass={characterData?.armorClass}/>
+                                    armorClass={characterData?.armorClass} />
                             </div>
                             <div className={'ac-stats'}>
                                 <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>BASE</div>
-                                    <div className={'armor-class-stat value'}>10</div>
+                                    <div className={'armor-class-stat title'}>
+                                        BASE
+                                    </div>
+                                    <div className={'armor-class-stat value'}>
+                                        10
+                                    </div>
                                 </span>
                                 <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>ITEM</div>
-                                    <div className={'armor-class-stat value'}>+1</div>
+                                    <div className={'armor-class-stat title'}>
+                                        ITEM
+                                    </div>
+                                    <div className={'armor-class-stat value'}>
+                                        +1
+                                    </div>
                                 </span>
                                 <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>DEX</div>
-                                    <div className={'armor-class-stat value'}>+5</div>
+                                    <div className={'armor-class-stat title'}>
+                                        DEX
+                                    </div>
+                                    <div className={'armor-class-stat value'}>
+                                        +5
+                                    </div>
                                 </span>
                                 <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>PROF</div>
-                                    <div className={'armor-class-stat value'}>+3</div>
+                                    <div className={'armor-class-stat title'}>
+                                        PROF
+                                    </div>
+                                    <div className={'armor-class-stat value'}>
+                                        +3
+                                    </div>
                                 </span>
                             </div>
                         </div>
@@ -192,13 +208,12 @@ export default function CharacterSheet() {
                             {characterData?.armorProficiencies?.map((armorType, index) => {
                                 return (
                                     <div className={'armor-proficiency-box'} key={index}>
-                                        <div className={'armor-modifier'}>{armorType?.proficiencyLevel}</div>
-                                        <div>{armorType?.armorType}</div>
+                                        <div className={'armor-type'}>{armorType?.armorType}</div>
+                                        <div>{armorType?.proficiencyLevel}</div>
                                     </div>
                                 )
                             })}
                         </div>
-
                     </section>
                 </section>
                 <section className={'character-sheet-component conditions'}>
@@ -211,24 +226,24 @@ export default function CharacterSheet() {
                     <h1>Skills</h1>
                     <Skills
                         characterData={characterData}
-                        diceClient={threeDDiceRef}/>
+                        diceClient={threeDDiceRef} />
                 </section>
                 <section className={'character-sheet-component tabbed-component actions-and-Inventory'}>
                     <div className={'tab-block'}>
                         <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(1)}>
+                            onClick={() => setActiveTab(1)}>
                             Actions
                         </div>
                         <div className={`tab ${activeTab === 2 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(2)}>
+                            onClick={() => setActiveTab(2)}>
                             Inventory
                         </div>
                         <div className={`tab ${activeTab === 3 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(3)}>
+                            onClick={() => setActiveTab(3)}>
                             Feats & Abilities
                         </div>
                         <div className={`tab ${activeTab === 4 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(4)}>
+                            onClick={() => setActiveTab(4)}>
                             Notes
                         </div>
                     </div>
@@ -269,7 +284,7 @@ export default function CharacterSheet() {
                                                 diceClient={threeDDiceRef}
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
-                                                range={system.range}/>
+                                                range={system.range} />
                                         )
                                     })}
                                 </div>
@@ -308,7 +323,7 @@ export default function CharacterSheet() {
                                                 diceClient={threeDDiceRef}
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
-                                                range={system.range}/>
+                                                range={system.range} />
                                         )
                                     })}
                                 </div>
@@ -332,39 +347,39 @@ export default function CharacterSheet() {
                                     <span>Organisations</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} />
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Allies</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} />
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Enemies</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} />
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Backstory</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} />
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Other</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} />
                         </div>
                     </div>
                 </section>
-                <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
+                <canvas className={'dd-dice-canvas'} ref={canvasRef} />
             </section>
         </div>
     )
