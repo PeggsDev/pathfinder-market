@@ -12,6 +12,7 @@ import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
 import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
+import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -159,14 +160,33 @@ export default function CharacterSheet() {
                     {/*<div className={'character-info traits'}>Traits</div>*/}
                     {/*<div className={'character-info xp'}>Experience Points</div>*/}
                     <section className={'character-sheet-component armor-class'}>
-                        <div className={''}>
-                            <ACShield
-                                className={'shield'}
-                                armor={{"acBonus": 0, "dexCap": 0}}
-                                shield={{"acBonus": 0}}
-                                dexterity={characterData?.abilityScores[1].score}
-                                aditionalMods={0}
-                                armorClass={characterData?.armorClass}/>
+                        <div className={'ac-section'}>
+                            <div className={'ac-shield'}>
+                                <ACShield
+                                    armor={{"acBonus": 0, "dexCap": 0}}
+                                    shield={{"acBonus": 0}}
+                                    dexterity={characterData?.abilityScores[1].score}
+                                    aditionalMods={0}
+                                    armorClass={characterData?.armorClass}/>
+                            </div>
+                            <div className={'ac-stats'}>
+                                <span className={'armor-class-stat'}>
+                                    <div className={'armor-class-stat title'}>BASE</div>
+                                    <div className={'armor-class-stat value'}>10</div>
+                                </span>
+                                <span className={'armor-class-stat'}>
+                                    <div className={'armor-class-stat title'}>ITEM</div>
+                                    <div className={'armor-class-stat value'}>+1</div>
+                                </span>
+                                <span className={'armor-class-stat'}>
+                                    <div className={'armor-class-stat title'}>DEX</div>
+                                    <div className={'armor-class-stat value'}>+5</div>
+                                </span>
+                                <span className={'armor-class-stat'}>
+                                    <div className={'armor-class-stat title'}>PROF</div>
+                                    <div className={'armor-class-stat value'}>+3</div>
+                                </span>
+                            </div>
                         </div>
                         <div className={'armor-proficiencies'}>
                             {characterData?.armorProficiencies?.map((armorType, index) => {
