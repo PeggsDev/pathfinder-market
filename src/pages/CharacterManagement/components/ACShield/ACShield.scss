@@ -1,13 +1,14 @@
 .ac-wrapper {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
   position: relative;
   display: flex;
   align-content: center;
   justify-content: center;
-  margin: auto 0;
 
   .shield {
-    height: 6rem;
-    width: 6rem;
+    height: 4rem;
+    width: 4rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -15,28 +16,10 @@
     opacity: var(--opacity);
   }
 
-  .title {
+  .modifier {
     position: absolute;
-    top: 2.1rem;
-    left: 1.9rem;
-    font-size: 0.6rem;
-    z-index: 1;
-    color: var(--clr-white);
-  }
-
-  .sub-title {
-    position: absolute;
-    top: 4.3rem;
-    left: 2rem;
-    font-size: 0.6rem;
-    z-index: 1;
-    color: var(--clr-white);
-  }
-
-  input {
-    position: absolute;
-    top: 2.2rem;
-    left: 1.1rem;
+    top: 0.9rem;
+    left: 0.15rem;
     font-size: 1.5rem;
     text-align: center;
     height: 3rem;

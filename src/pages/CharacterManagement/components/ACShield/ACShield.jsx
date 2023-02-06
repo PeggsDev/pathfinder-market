@@ -20,7 +20,6 @@ export default function ACShield(props) {
     return (
         <div className={'ac-wrapper'}>
             <Armor className={'shield'} />
-            <h3 className={'title'}>ARMOR</h3>
             <input className={'modifier'}
                 type="text"
                 disabled="disabled"
@@ -35,7 +34,6 @@ export default function ACShield(props) {
                         )
                 }
                 readOnly />
-            <h3 className={'sub-title'}>CLASS</h3>
         </div>
     )
 }

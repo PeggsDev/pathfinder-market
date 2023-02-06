@@ -61,7 +61,7 @@ export default function SavingThrows({ characterData, diceClient }) {
                 <div className={'save-title-save'}>SAVE</div>
                 <div className={'save-title-bonus title'}>BONUS</div>
             </div>
-            {characterData?.savingThrows.map((save) => {
+            {characterData?.savingThrows?.map((save) => {
                 const baseAbility = characterData?.abilityScores.find(item => item.ability === save.ability)
                 return <Skill key={save?.id}
                     diceClient={diceClient}
