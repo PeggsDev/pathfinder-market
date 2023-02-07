@@ -6,7 +6,7 @@ import { IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceCon
 import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 //import CharacterSheetBackground from "../../images/splash-8.jpg";
 
-import Item from "./components/Inventory/Item";
+import WeaponItem from "./components/Inventory/WeaponItem";
 
 import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
@@ -279,7 +279,7 @@ export default function CharacterSheet() {
                                         return (
                                             !item?.system.range &&
                                             item?.type === 'weapon' &&
-                                            <Item
+                                            <WeaponItem
                                                 itemName={item.name}
                                                 itemCategory={system.category && system.category}
                                                 itemType={item?.type}
@@ -316,7 +316,7 @@ export default function CharacterSheet() {
                                         const system = item?.system
                                         return (
                                             item.system.range && item.type === 'weapon' &&
-                                            <Item
+                                            <WeaponItem
                                                 itemName={item.name}
                                                 itemCategory={system.category && system.category}
                                                 itemType={item?.type}
@@ -334,14 +334,39 @@ export default function CharacterSheet() {
                             </div>
                         </div>
                     </div>
-                    <div className={'tab-content'}>
+                    <div className={'tab-content spells'}>
                         <div className={`content ${activeTab === 2 ? 'active-content' : ''}`}>
-                            WIP
+                            <div className={'title-underline'}>
+                                <div className={'tab-content actions title'}>
+                                    <span>Cantrips</span>
+                                </div>
+                            </div>
+                            <div className={'section-header'}>
+                                <div className={'section-header-label spell-name'}>
+                                    <span>NAME</span>
+                                </div>
+                                <div className={'section-header-label cast'}>
+                                    <span>TIME</span>
+                                </div>
+                                <div className={'section-header-label save'}>
+                                    <span>SAVE</span>
+                                </div>
+                                <div className={'section-header-label range'}>
+                                    <span>RANGE</span>
+                                </div>
+                                <div className={'section-header-label traits'}>
+                                    <span>TRAITS</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className={'tab-content'}>
+                    <div className={'tab-content inventory'}>
                         <div className={`content ${activeTab === 3 ? 'active-content' : ''}`}>
-                            WIP
+                            <div className={'title-underline'}>
+                                <div className={'tab-content actions title'}>
+                                    <span>Equipment</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className={'tab-content'}>
