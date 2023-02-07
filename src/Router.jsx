@@ -12,8 +12,8 @@ export default function Router() {
         <Routes>
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/details'} element={<SourceBookDetailsPage />} />
-            <Route path={'/character/build'} element={<CharacterBuilder />} />
-            <Route path={'/character/character-sheet'} element={<CharacterSheet />} />
+            <Route path={'/alchemy-workbench/build'} element={<CharacterBuilder />} />
+            <Route path={'/alchemy-workbench/character-sheet'} element={<CharacterSheet />} />
         </Routes>
     )
 }
