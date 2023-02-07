@@ -50,6 +50,7 @@
       cursor: pointer;
     }
   }
+
   .item-name {
     font-size: 0.9rem;
   }
@@ -99,6 +100,10 @@
     fill: var(--clr-accent-light);
   }
 
+  .attack-dice-roll {
+
+  }
+
   .attack-dice-roll :hover {
     cursor: pointer;
     fill: var(--clr-dice-roll-hover);
@@ -106,5 +111,7 @@
 }
 
 .item-component:nth-child(even) {
+  justify-content: center;
+  align-items: center;
   background: #33333344;
 }

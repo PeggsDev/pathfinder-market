@@ -1,4 +1,10 @@
 :root {
+  font-size: 0.9rem;
+
+  @media only screen and (min-width: 2560px) {
+    font-size: 1.5rem;
+  }
+
   --clr-char-outline: #c777a8;
   --clr-dice-roll-hover: #f5a623;
   --clr-skill-dice-roll-hover: #96f134;
@@ -21,6 +27,7 @@
   justify-content: center;
   flex-direction: column;
   padding-top: 6rem;
+  font-size: 0.8rem;
 }
 
 .character-sheet-grid {
@@ -383,6 +390,7 @@
       margin: auto;
     }
     .value {
+      font-weight: bolder;
       justify-content: end;
     }
   }
@@ -405,6 +413,7 @@
     .armor-type {
       padding-right: 0.5rem;
       margin-right: auto;
+      font-weight: bolder;
     }
   }
 }

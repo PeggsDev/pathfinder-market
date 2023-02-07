@@ -235,16 +235,20 @@ export default function CharacterSheet() {
                             Actions
                         </div>
                         <div className={`tab ${activeTab === 2 ? 'active-tab' : ''}`}
-                            onClick={() => setActiveTab(2)}>
-                            Inventory
+                             onClick={() => setActiveTab(2)}>
+                            Spells
                         </div>
                         <div className={`tab ${activeTab === 3 ? 'active-tab' : ''}`}
                             onClick={() => setActiveTab(3)}>
-                            Feats & Abilities
+                            Inventory
                         </div>
                         <div className={`tab ${activeTab === 4 ? 'active-tab' : ''}`}
                             onClick={() => setActiveTab(4)}>
-                            Notes
+                            Feats & Abilities
+                        </div>
+                        <div className={`tab ${activeTab === 5 ? 'active-tab' : ''}`}
+                            onClick={() => setActiveTab(5)}>
+                            Journal
                         </div>
                     </div>
                     <div className={'tab-content actions'}>
@@ -340,8 +344,13 @@ export default function CharacterSheet() {
                             WIP
                         </div>
                     </div>
-                    <div className={'tab-content notes'}>
+                    <div className={'tab-content'}>
                         <div className={`content ${activeTab === 4 ? 'active-content' : ''}`}>
+                            WIP
+                        </div>
+                    </div>
+                    <div className={'tab-content notes'}>
+                        <div className={`content ${activeTab === 5 ? 'active-content' : ''}`}>
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Organisations</span>
