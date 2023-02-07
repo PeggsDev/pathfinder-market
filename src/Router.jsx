@@ -13,8 +13,6 @@ export default function Router() {
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/details'} element={<SourceBookDetailsPage />} />
             <Route path={'/alchemy-workbench/build'} element={<CharacterBuilder />} />
-
-            <!-- Perhaps Goblins Guild? -->
             <Route path={'/alchemy-workbench/character-sheet'} element={<CharacterSheet />} />
         </Routes>
     )
