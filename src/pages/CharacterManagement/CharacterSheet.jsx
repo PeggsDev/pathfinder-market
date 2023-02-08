@@ -378,24 +378,24 @@ export default function CharacterSheet() {
                                 </div>
                             </div>
                             {characterData?.spells?.map((spell, key) => {
-                                const spellDamage = spell.system.damage.value[0]
-                                const damageDiceArray = spellDamage.value.split('d');
-                                const damageDiceCount = damageDiceArray[0]
-                                const damageDieType = 'd' + damageDiceArray[1];
+                                const spellDamage = spell.system.damage?.value[0]
+                                const damageDiceArray = spellDamage?.value.split('d');
+                                const damageDiceCount = damageDiceArray?.[0]
+                                const damageDieType = 'd' + damageDiceArray?.[1];
 
-                                const spellSave = spell.system.save.value
+                                const spellSave = spell.system.save?.value
                                 return (
                                     <Spell
                                         key={key}
                                         spellName={spell.name}
-                                        spellSchool={spell.system.school.value}
-                                        spellType={spell.system.spellType.value}
-                                        castTime={spell.system.time.value}
+                                        spellSchool={spell.system.school?.value}
+                                        spellType={spell.system.spellType?.value}
+                                        castTime={spell.system.time?.value}
                                         spellSave={spellSave === '' ? '-' : spellSave}
                                         components={spell.system.components}
-                                        damageType={spellDamage.type.value}
+                                        damageType={spellDamage?.type?.value}
                                         range={''}
-                                        spellTraits={spell.system.traits.value}
+                                        spellTraits={spell.system.traits?.value}
                                         diceClient={threeDDiceRef}
                                         die={damageDieType}
                                         dieCount={damageDiceCount}/>
@@ -428,24 +428,24 @@ export default function CharacterSheet() {
                                 </div>
                             </div>
                             {characterData?.spells?.map((spell, key) => {
-                                const spellDamage = spell.system.damage.value[0]
-                                const damageDiceArray = spellDamage.value.split('d');
-                                const damageDiceCount = damageDiceArray[0]
-                                const damageDieType = 'd' + damageDiceArray[1];
+                                const spellDamage = spell.system.damage?.value[0]
+                                const damageDiceArray = spellDamage?.value.split('d');
+                                const damageDiceCount = damageDiceArray?.[0]
+                                const damageDieType = 'd' + damageDiceArray?.[1];
 
-                                const spellSave = spell.system.save.value
+                                const spellSave = spell.system.save?.value
                                 return (
                                     <Spell
                                         key={key}
                                         spellName={spell.name}
-                                        spellSchool={spell.system.school.value}
-                                        spellType={spell.system.spellType.value}
-                                        castTime={spell.system.time.value}
+                                        spellSchool={spell.system.school?.value}
+                                        spellType={spell.system.spellType?.value}
+                                        castTime={spell.system.time?.value}
                                         spellSave={spellSave === '' ? '-' : spellSave}
                                         components={spell.system.components}
-                                        damageType={spellDamage.type.value}
-                                        range={''}
-                                        spellTraits={spell.system.traits.value}
+                                        damageType={spellDamage?.type?.value}
+                                        range={spell.system.range?.value}
+                                        spellTraits={spell.system.traits?.value}
                                         diceClient={threeDDiceRef}
                                         die={damageDieType}
                                         dieCount={damageDiceCount}/>

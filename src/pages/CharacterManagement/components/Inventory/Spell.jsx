@@ -3,7 +3,6 @@ import './Spell.scss'
 import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 import {ReactComponent as SpellIcon} from '../../svg/wand-sparkles-solid.svg';
 
-import {IDieType} from "dddice-js";
 import {rollDice} from "../../../../App";
 
 //TODO - Pass in item data directly
@@ -45,23 +44,33 @@ export default function Spell(props) {
                         <div className={'spell-type'}>{spellType}</div>
                     </div>
                 </div>
-                <div className={'spell-cast-time'}>{castTime}</div>
-                <div className={'spell-save'}>{spellSave}</div>
-            </div>
-            <div className={'dice'}>
-                <div className={'action-damage-dice-roll'}>
-                    <DiceIcon
-                        onClick={() => rollDice(
-                            diceClient,
-                            die,
-                            dieCount,
-                            'dddice-old-school')}
-                        className={'dice-icon'}/>
+                <div className={'spell-cast-time'}
+                     style={{
+                         fontFamily: castTime.match(/^[a-zA-Z0-9]+$/) ? 'Pathfinder2eActions' : 'sans-serif',
+                         fontSize: castTime.match(/^[a-zA-Z0-9]+$/) ? '1.3rem' : '0.9rem'
+                     }}>
+                    {castTime}
                 </div>
-                <div className={'dice-formula'}>
-                    {dieCount + die}
+                <div className={'spell-save'}>
+                    {spellSave}
                 </div>
             </div>
+            {
+                damageType && <div className={'dice'}>
+                    <div className={'action-damage-dice-roll'}>
+                        <DiceIcon
+                            onClick={() => rollDice(
+                                diceClient,
+                                die,
+                                dieCount,
+                                'dddice-old-school')}
+                            className={'dice-icon'}/>
+                    </div>
+                    <div className={'dice-formula'}>
+                        {dieCount + die}
+                    </div>
+                </div>
+            }
             <div className={'damage-type'}>
                 {damageType}
             </div>

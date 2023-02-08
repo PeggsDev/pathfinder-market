@@ -24,6 +24,7 @@
   .damage-type {
     width: 5rem;
     margin-left: 0.2rem;
+    text-transform: capitalize;
   }
 
   .dice {
@@ -61,7 +62,7 @@
   }
 
   .spell-title-box {
-    width: 10.5rem;
+    width: 8.5rem;
   }
 
   .spell-info {
@@ -75,23 +76,17 @@
     text-transform: capitalize;
   }
 
-  .spell-rarity {
-    font-size: 0.7rem;
-    width: 5rem;
-    margin-right: 2.5rem;
+  .spell-cast-time {
+    width: 4.5rem;
+    text-align: center;
     text-transform: capitalize;
   }
 
-  .spell-cast-time {
-    font-family: Pathfinder2eActions;
-    font-size: 1.3rem;
-    width: 3rem;
+  .spell-save {
+    text-align: center;
+    text-transform: capitalize;
   }
 
-  .spell-save {
-    width: 2rem;
-    text-align: center;
-  }
   .spell-traits {
     width: 10rem;
     display: flex;
