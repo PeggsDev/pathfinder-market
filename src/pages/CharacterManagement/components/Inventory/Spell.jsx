@@ -13,6 +13,7 @@ export default function Spell(props) {
         spellSchool,
         spellType,
         castTime,
+        spellSave,
         components,
         damageType,
         range,
@@ -28,23 +29,24 @@ export default function Spell(props) {
             <div className={'attack-dice-roll'}>
                 <SpellIcon
                     className={'spell-icon-svg'}
-                    onClick={() => rollDice(
-                        diceClient,
-                        IDieType.D20,
-                        dieCount,
-                        'dddice-old-school')}/>
+                    onClick={() => {
+                        //TODO - Add functionality to burn a spell slot
+                        {
+                            console.log("Spell has been cast")
+                        }
+                    }}/>
             </div>
 
-            <div className={'action'}>
+            <div className={'spell'}>
                 <div className={'spell-title-box'}>
                     <div className={'spell-name'}>{spellName}</div>
-                    <div className={'spell'}>
+                    <div className={'spell-info'}>
                         <div className={'spell-school'}>{spellSchool}</div>
                         <div className={'spell-type'}>{spellType}</div>
                     </div>
-
-                    <div className={'spell-cast-time'}>{castTime}</div>
                 </div>
+                <div className={'spell-cast-time'}>{castTime}</div>
+                <div className={'spell-save'}>{spellSave}</div>
             </div>
             <div className={'dice'}>
                 <div className={'action-damage-dice-roll'}>
@@ -59,9 +61,9 @@ export default function Spell(props) {
                 <div className={'dice-formula'}>
                     {dieCount + die}
                 </div>
-                <div className={'damage-type'}>
-                    {damageType}
-                </div>
+            </div>
+            <div className={'damage-type'}>
+                {damageType}
             </div>
             <div className={'spell-range'}>
                 {range}

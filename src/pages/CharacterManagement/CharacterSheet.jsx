@@ -72,7 +72,7 @@ export default function CharacterSheet() {
 
     const [characterData, setCharacterData] = useState()
     const [equipment, setEquipment] = useState([])
-    const [activeTab, setActiveTab] = useState(1)
+    const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
 
     useEffect(() => {
         (async () => {
@@ -231,29 +231,44 @@ export default function CharacterSheet() {
                 </section>
                 <section className={'character-sheet-component tabbed-component actions-and-Inventory'}>
                     <div className={'tab-block'}>
-                        <div className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(1)}>
+                        <div className={`tab ${activeTab === '1' ? 'active-tab' : ''}`}
+                             onClick={() => {
+                                 setActiveTab('1')
+                                 localStorage.setItem('activeTab', '1');
+                             }}>
                             Actions
                         </div>
-                        <div className={`tab ${activeTab === 2 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(2)}>
+                        <div className={`tab ${activeTab === '2' ? 'active-tab' : ''}`}
+                             onClick={() => {
+                                 setActiveTab('2')
+                                 localStorage.setItem('activeTab', '2');
+                             }}>
                             Spells
                         </div>
-                        <div className={`tab ${activeTab === 3 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(3)}>
+                        <div className={`tab ${activeTab === '3' ? 'active-tab' : ''}`}
+                             onClick={() => {
+                                 setActiveTab('3')
+                                 localStorage.setItem('activeTab', '3');
+                             }}>
                             Inventory
                         </div>
-                        <div className={`tab ${activeTab === 4 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(4)}>
+                        <div className={`tab ${activeTab === '4' ? 'active-tab' : ''}`}
+                             onClick={() => {
+                                 setActiveTab('4')
+                                 localStorage.setItem('activeTab', '4');
+                             }}>
                             Feats & Abilities
                         </div>
-                        <div className={`tab ${activeTab === 5 ? 'active-tab' : ''}`}
-                             onClick={() => setActiveTab(5)}>
+                        <div className={`tab ${activeTab === '5' ? 'active-tab' : ''}`}
+                             onClick={() => {
+                                 setActiveTab('5')
+                                 localStorage.setItem('activeTab', '5');
+                             }}>
                             Journal
                         </div>
                     </div>
                     <div className={'tab-content actions'}>
-                        <div className={`content ${activeTab === 1 ? 'active-content' : ''}`}>
+                        <div className={`content ${localStorage.getItem('activeTab') === '1' ? 'active-content' : ''}`}>
                             <div className={'tab-content actions title-block'}>
                                 <div className={'title-underline'}>
                                     <div className={'tab-content actions title'}>
@@ -336,7 +351,7 @@ export default function CharacterSheet() {
                         </div>
                     </div>
                     <div className={'tab-content spells'}>
-                        <div className={`content ${activeTab === 2 ? 'active-content' : ''}`}>
+                        <div className={`content ${localStorage.getItem('activeTab') === '2' ? 'active-content' : ''}`}>
                             <div className={'title-underline'}>
                                 <div className={'tab-content actions title'}>
                                     <span>Cantrips</span>
@@ -344,16 +359,19 @@ export default function CharacterSheet() {
                             </div>
                             <div className={'section-header'}>
                                 <div className={'section-header-label spell-name'}>
-                                    <span>SPELL</span>
+                                    <span>SPELL NAME</span>
                                 </div>
                                 <div className={'section-header-label cast-time'}>
-                                    <span>CAST</span>
+                                    <span>CASTING</span>
                                 </div>
-                                <div className={'section-header-label save'}>
+                                <div className={'section-header-label spell-save'}>
                                     <span>SAVE</span>
                                 </div>
-                                <div className={'section-header-label range'}>
-                                    <span>RANGE</span>
+                                <div className={'section-header-label spell-damage'}>
+                                    <span>DAMAGE</span>
+                                </div>
+                                <div className={'section-header-label spell-damage-type'}>
+                                    <span>TYPE</span>
                                 </div>
                                 <div className={'section-header-label traits'}>
                                     <span>TRAITS</span>
@@ -365,6 +383,7 @@ export default function CharacterSheet() {
                                 const damageDiceCount = damageDiceArray[0]
                                 const damageDieType = 'd' + damageDiceArray[1];
 
+                                const spellSave = spell.system.save.value
                                 return (
                                     <Spell
                                         key={key}
@@ -372,6 +391,57 @@ export default function CharacterSheet() {
                                         spellSchool={spell.system.school.value}
                                         spellType={spell.system.spellType.value}
                                         castTime={spell.system.time.value}
+                                        spellSave={spellSave === '' ? '-' : spellSave}
+                                        components={spell.system.components}
+                                        damageType={spellDamage.type.value}
+                                        range={''}
+                                        spellTraits={spell.system.traits.value}
+                                        diceClient={threeDDiceRef}
+                                        die={damageDieType}
+                                        dieCount={damageDiceCount}/>
+                                )
+                            })}
+
+                            <div className={'title-underline'}>
+                                <div className={'tab-content actions title'}>
+                                    <span>Level 1</span>
+                                </div>
+                            </div>
+                            <div className={'section-header'}>
+                                <div className={'section-header-label spell-name'}>
+                                    <span>SPELL NAME</span>
+                                </div>
+                                <div className={'section-header-label cast-time'}>
+                                    <span>CASTING</span>
+                                </div>
+                                <div className={'section-header-label spell-save'}>
+                                    <span>SAVE</span>
+                                </div>
+                                <div className={'section-header-label spell-damage'}>
+                                    <span>DAMAGE</span>
+                                </div>
+                                <div className={'section-header-label spell-damage-type'}>
+                                    <span>TYPE</span>
+                                </div>
+                                <div className={'section-header-label traits'}>
+                                    <span>TRAITS</span>
+                                </div>
+                            </div>
+                            {characterData?.spells?.map((spell, key) => {
+                                const spellDamage = spell.system.damage.value[0]
+                                const damageDiceArray = spellDamage.value.split('d');
+                                const damageDiceCount = damageDiceArray[0]
+                                const damageDieType = 'd' + damageDiceArray[1];
+
+                                const spellSave = spell.system.save.value
+                                return (
+                                    <Spell
+                                        key={key}
+                                        spellName={spell.name}
+                                        spellSchool={spell.system.school.value}
+                                        spellType={spell.system.spellType.value}
+                                        castTime={spell.system.time.value}
+                                        spellSave={spellSave === '' ? '-' : spellSave}
                                         components={spell.system.components}
                                         damageType={spellDamage.type.value}
                                         range={''}
@@ -384,7 +454,7 @@ export default function CharacterSheet() {
                         </div>
                     </div>
                     <div className={'tab-content inventory'}>
-                        <div className={`content ${activeTab === 3 ? 'active-content' : ''}`}>
+                        <div className={`content ${localStorage.getItem('activeTab') === '3' ? 'active-content' : ''}`}>
                             <div className={'title-underline'}>
                                 <div className={'tab-content actions title'}>
                                     <span>Equipment</span>
@@ -393,12 +463,12 @@ export default function CharacterSheet() {
                         </div>
                     </div>
                     <div className={'tab-content'}>
-                        <div className={`content ${activeTab === 4 ? 'active-content' : ''}`}>
+                        <div className={`content ${localStorage.getItem('activeTab') === '4' ? 'active-content' : ''}`}>
                             WIP
                         </div>
                     </div>
                     <div className={'tab-content notes'}>
-                        <div className={`content ${activeTab === 5 ? 'active-content' : ''}`}>
+                        <div className={`content ${localStorage.getItem('activeTab') === '5' ? 'active-content' : ''}`}>
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Organisations</span>
