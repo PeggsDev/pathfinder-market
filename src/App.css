@@ -13,6 +13,11 @@ p {
   margin: 0;
 }
 
+@font-face {
+  font-family: 'Pathfinder2eActions';
+  src: url('/public/fonts/Pathfinder2eActions.ttf') format('truetype');
+}
+
 :root {
   --clr-dark: #202936;
   --clr-light: #d5d5d5;
