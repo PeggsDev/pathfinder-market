@@ -4,6 +4,8 @@ import './App.css'
 import NavBar from "./componenets/NavBar/NavBar";
 import Router from "./Router";
 
+
+
 import {
     BrowserRouter
 } from 'react-router-dom'
@@ -16,14 +18,21 @@ export const proficiencyEnum = {
     L: 8
 }
 
+// export const pathfinderActionIconsEnum = {
+//     0: <FreeActionIcon />
+// }
+
 export function rollDice(client, die, dieCount, theme) {
-    client.current.roll(
-        [
+    const rollArray = []
+    for (let i = 0; i < dieCount; i++) {
+        rollArray.push(
             {
                 theme: theme,
                 type: die,
             }
-        ]);
+        )
+    }
+    client.current.roll(rollArray);
 }
 
 export default function App() {

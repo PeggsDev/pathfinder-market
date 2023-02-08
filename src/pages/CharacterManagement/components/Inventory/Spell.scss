@@ -1,4 +1,4 @@
-.item-component {
+.spell-component {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -14,7 +14,7 @@
     width: 10rem;
   }
 
-  .item.title-box {
+  .spell.title-box {
     display: flex;
     align-items: start;
     justify-content: start;
@@ -51,11 +51,11 @@
     }
   }
 
-  .item-name {
+  .spell-name {
     font-size: 0.9rem;
   }
 
-  .item {
+  .spell {
     display: flex;
     align-items: start;
     justify-content: start;
@@ -66,23 +66,23 @@
     text-transform: capitalize;
   }
 
-  .item-category:empty {
+  .spell-cast-time:empty {
     display:none;
   }
 
-  .item-rarity {
+  .spell-rarity {
     font-size: 0.7rem;
     width: 5rem;
     margin-right: 2.5rem;
     text-transform: capitalize;
   }
 
-  .item-traits {
+  .spell-traits {
     width: 20rem;
     display: flex;
     flex-wrap: wrap;
 
-    .item-trait {
+    .spell-trait {
       font-size: 0.7rem;
       font-weight: bolder;
       color: var(--clr-accent-dark);
@@ -93,7 +93,7 @@
     }
   }
 
-  .item-icon-svg {
+  .spell-icon-svg {
     height: 1rem;
     width: 1rem;
     margin: 0.5rem;
@@ -110,8 +110,7 @@
   }
 }
 
-.item-component:nth-child(even) {
-  justify-content: center;
+.spell-component:nth-child(even) {
   align-items: center;
   background: #33333344;
 }

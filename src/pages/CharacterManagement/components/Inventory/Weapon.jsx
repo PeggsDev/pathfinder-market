@@ -1,4 +1,4 @@
-import './WeaponItem.scss'
+import './Weapon.scss'
 
 import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 import {ReactComponent as SwordsIcon} from '../../svg/swords.svg';
@@ -7,32 +7,32 @@ import {IDieType} from "dddice-js";
 import {rollDice} from "../../../../App";
 
 //TODO - Pass in item data directly
-export default function WeaponItem(props) {
+export default function Weapon(props) {
     const {
-        itemName,
-        itemType,
-        itemCategory,
-        range,
-        itemTraits,
-        itemRarity,
+        weaponName,
+        weaponType,
+        weaponCategory,
+        weaponRange,
+        weaponTraits,
+        weaponRarity,
         die,
         dieCount,
         diceClient
     } = props
 
     return (
-        <div className={'item-component'}>
+        <div className={'weapon-component'}>
 
             <div className={'attack-dice-roll'}>
-                {range && <BowAndArrowIcon
-                    className={'item-icon-svg'}
+                {weaponRange && <BowAndArrowIcon
+                    className={'weapon-icon-svg'}
                     onClick={() => rollDice(
                         diceClient,
                         IDieType.D20,
                         dieCount,
                         'dddice-old-school')}/>}
-                {!range && <SwordsIcon
-                    className={'item-icon-svg'}
+                {!weaponRange && <SwordsIcon
+                    className={'weapon-icon-svg'}
                     onClick={() => rollDice(
                         diceClient,
                         IDieType.D20,
@@ -41,11 +41,11 @@ export default function WeaponItem(props) {
             </div>
 
             <div className={'action'}>
-                <div className={'item-title-box'}>
-                    <div className={'item-name'}>{itemName}</div>
-                    <div className={'item'}>
-                        <div className={'item-category'}>{itemCategory}</div>
-                        <div className={'item-type'}>{itemType}</div>
+                <div className={'weapon-title-box'}>
+                    <div className={'weapon-name'}>{weaponName}</div>
+                    <div className={'weapon'}>
+                        <div className={'weapon-category'}>{weaponCategory}</div>
+                        <div className={'weapon-type'}>{weaponType}</div>
                     </div>
                 </div>
             </div>
@@ -64,13 +64,13 @@ export default function WeaponItem(props) {
                 </div>
                 <div className={'action-count-icon'}/>
             </div>
-            <div className={'item-rarity'}>
-                {itemRarity}
+            <div className={'weapon-rarity'}>
+                {weaponRarity}
             </div>
-            <div className={'item-traits'}>
-                {itemTraits.map((item) => {
+            <div className={'weapon-traits'}>
+                {weaponTraits?.map((trait) => {
                     return (
-                        <span className={'item-trait'}>{item}</span>
+                        <span className={'weapon-trait'}>{trait}</span>
                     )
                 })}
             </div>
