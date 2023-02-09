@@ -380,7 +380,7 @@ export default function CharacterSheet() {
                                     <span>TRADITIONS</span>
                                 </div>
                             </div>
-                            {characterData?.spells?.map((spell, key) => {
+                            {characterData?.spells?.cantrip?.map((spell, index) => {
                                 const spellDamage = spell.system.damage?.value[0]
                                 const damageDiceArray = spellDamage?.value.split('d');
                                 const damageDiceCount = damageDiceArray?.[0]
@@ -392,7 +392,7 @@ export default function CharacterSheet() {
                                         //TODO - Add spells to a map (spellLevel, spell) check for cantrip (.includes(cantrip))
 
                                     <Spell
-                                        key={key}
+                                        key={index}
                                         spellName={spell.name}
                                         spellSchool={spell.system.school?.value}
                                         spellType={spell.system.spellType?.value}
