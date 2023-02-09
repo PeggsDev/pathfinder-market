@@ -13,7 +13,9 @@ import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
 import { ReactComponent as CameraIcon } from './svg/camera-solid.svg'
 import { ReactComponent as PotionHPIcon } from "./svg/HP Potion Bottle.svg";
-import Spell from "./components/Inventory/Spell";
+import Spell from "./components/Inventory/Spells/Spell";
+import SpellBlock from "./components/Inventory/Spells/SpellBlock";
+
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -352,48 +354,60 @@ export default function CharacterSheet() {
                     </div>
                     <div className={'tab-content spells'}>
                         <div className={`content ${localStorage.getItem('activeTab') === '2' ? 'active-content' : ''}`}>
-                            <div className={'title-underline'}>
-                                <div className={'tab-content actions title'}>
-                                    <span>Cantrips</span>
-                                </div>
-                            </div>
-                            <div className={'section-header'}>
-                                <div className={'section-header-label spell-name'}>
-                                    <span>SPELL NAME</span>
-                                </div>
-                                <div className={'section-header-label cast-time'}>
-                                    <span>CASTING</span>
-                                </div>
-                                <div className={'section-header-label spell-save'}>
-                                    <span>SAVE</span>
-                                </div>
-                                <div className={'section-header-label spell-damage'}>
-                                    <span>DAMAGE</span>
-                                </div>
-                                <div className={'section-header-label spell-damage-type'}>
-                                    <span>TYPE</span>
-                                </div>
-                                <div className={'section-header-label spell-range'}>
-                                    <span>RANGE</span>
-                                </div>
-                                <div className={'section-header-label traits'}>
-                                    <span>TRADITIONS</span>
-                                </div>
-                            </div>
-                            {characterData?.spells?.cantrip?.map((spell, index) => {
-                                return (
-                                    <Spell
-                                        key={index}
-                                        spell={spell}
-                                        diceClient={threeDDiceRef} />
-                                )
-                            })}
-
-                            <div className={'title-underline'}>
-                                <div className={'tab-content actions title'}>
-                                    <span>Level 1</span>
-                                </div>
-                            </div>
+                            {/* {
+                                Object.keys(characterData?.spells).map((spellType) => {
+                                    <SpellBlock spellBlockName={spellType}>
+                                        {characterData?.spells[spellType].map((spell, index) => {
+                                            return (
+                                                <Spell
+                                                    key={index}
+                                                    spell={spell}
+                                                    diceClient={threeDDiceRef} />
+                                            )
+                                        })}
+                                    </SpellBlock>
+                                })
+                            } */}
+                            <SpellBlock spellBlockName={'Cantrips'}>
+                                {characterData?.spells['cantrip'].map((spell, index) => {
+                                    return (
+                                        <Spell
+                                            key={index}
+                                            spell={spell}
+                                            diceClient={threeDDiceRef} />
+                                    )
+                                })}
+                            </SpellBlock>
+                            <SpellBlock spellBlockName={'Level 1'}>
+                                {characterData?.spells['level 1']?.map((spell, index) => {
+                                    return (
+                                        <Spell
+                                            key={index}
+                                            spell={spell}
+                                            diceClient={threeDDiceRef} />
+                                    )
+                                })}
+                            </SpellBlock>
+                            <SpellBlock spellBlockName={'Level 2'}>
+                                {characterData?.spells['level 2']?.map((spell, index) => {
+                                    return (
+                                        <Spell
+                                            key={index}
+                                            spell={spell}
+                                            diceClient={threeDDiceRef} />
+                                    )
+                                })}
+                            </SpellBlock>
+                            <SpellBlock spellBlockName={'Level 3'}>
+                                {characterData?.spells['level 3']?.map((spell, index) => {
+                                    return (
+                                        <Spell
+                                            key={index}
+                                            spell={spell}
+                                            diceClient={threeDDiceRef} />
+                                    )
+                                })}
+                            </SpellBlock>
                         </div>
                     </div>
                     <div className={'tab-content inventory'}>
