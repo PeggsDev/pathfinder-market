@@ -4,8 +4,8 @@ import { ReactComponent as Armor } from "../../svg/armor-class.svg";
 import { calculateModifier } from '../../CharacterSheet';
 
 //TODO - Attach a context of some kind to subscribe to changes that affect AC i.e. new Armor
-function calculateArmorClass(armor, dexCap, shield, dexterity, aditionalMods) {
-    return (10 + armor + shield + calculateModifier(dexterity) + aditionalMods) - dexCap;
+function calculateArmorClass(armor, dexCap, shield, dexterity, additionalMods) {
+    return (10 + armor + shield + calculateModifier(dexterity) + additionalMods) - dexCap;
 }
 
 export default function ACShield(props) {
@@ -13,7 +13,7 @@ export default function ACShield(props) {
         armor,
         shield,
         dexterity,
-        aditionalMods
+        additionalMods
     } = props
 
 
@@ -30,7 +30,7 @@ export default function ACShield(props) {
                         armor?.dexCap,
                         shield?.acBonus,
                         dexterity,
-                        aditionalMods
+                        additionalMods
                         )
                 }
                 readOnly />

@@ -6,7 +6,7 @@
   }
 
   @media only screen and (min-width: 3600px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   --clr-char-outline: #c777a8;
@@ -271,6 +271,9 @@
     width: 4rem;
   }
 
+  .spell-damage-type {
+    width: 4rem;
+  }
 
   .tab.active-tab {
     font-weight: bolder;
@@ -443,10 +446,4 @@
       font-weight: bolder;
     }
   }
-}
-
-
-/* Potion HP Icon */
-.potion-bottle-hp-svg {
-  height: 4rem;
 }

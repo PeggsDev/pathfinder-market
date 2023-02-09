@@ -16,7 +16,7 @@ export default function Spell(props) {
         components,
         damageType,
         range,
-        spellTraits,
+        spellTraditions,
         die,
         dieCount,
         diceClient
@@ -24,14 +24,13 @@ export default function Spell(props) {
 
     return (
         <div className={'spell-component'}>
-
             <div className={'attack-dice-roll'}>
                 <SpellIcon
                     className={'spell-icon-svg'}
                     onClick={() => {
                         //TODO - Add functionality to burn a spell slot
                         {
-                            console.log("Spell has been cast")
+                           console.log("Spell has been cast")
                         }
                     }}/>
             </div>
@@ -44,6 +43,7 @@ export default function Spell(props) {
                         <div className={'spell-type'}>{spellType}</div>
                     </div>
                 </div>
+                 {/* TODO - Review this, we should look to pull values from ActionEnum */}
                 <div className={'spell-cast-time'}
                      style={{
                          fontFamily: castTime.match(/^[a-zA-Z0-9]+$/) ? 'Pathfinder2eActions' : 'sans-serif',
@@ -78,7 +78,7 @@ export default function Spell(props) {
                 {range}
             </div>
             <div className={'spell-traits'}>
-                {spellTraits?.map((trait) => {
+                {spellTraditions?.map((trait) => {
                     return (
                         <span className={'spell-trait'}>{trait}</span>
                     )

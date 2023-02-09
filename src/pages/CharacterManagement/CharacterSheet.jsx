@@ -167,13 +167,13 @@ export default function CharacterSheet() {
                                     armor={{"acBonus": 0, "dexCap": 0}}
                                     shield={{"acBonus": 0}}
                                     dexterity={characterData?.abilityScores[1].score}
-                                    aditionalMods={0}
+                                    additionalMods={0}
                                     armorClass={characterData?.armorClass}/>
                             </div>
                             <div className={'ac-stats'}>
                                 <span className={'armor-class-stat'}>
                                     <div className={'armor-class-stat title'}>
-                                        BASE
+                                        BASE {/* TODO - Remove base and replace with Dex Cap */}
                                     </div>
                                     <div className={'armor-class-stat value'}>
                                         10
@@ -373,8 +373,11 @@ export default function CharacterSheet() {
                                 <div className={'section-header-label spell-damage-type'}>
                                     <span>TYPE</span>
                                 </div>
+                                <div className={'section-header-label spell-range'}>
+                                    <span>RANGE</span>
+                                </div>
                                 <div className={'section-header-label traits'}>
-                                    <span>TRAITS</span>
+                                    <span>TRADITIONS</span>
                                 </div>
                             </div>
                             {characterData?.spells?.map((spell, key) => {
@@ -382,9 +385,12 @@ export default function CharacterSheet() {
                                 const damageDiceArray = spellDamage?.value.split('d');
                                 const damageDiceCount = damageDiceArray?.[0]
                                 const damageDieType = 'd' + damageDiceArray?.[1];
+                                const isCantrip = spell.system?.traits?.value.includes('cantrip') //checks for cantrip
 
                                 const spellSave = spell.system.save?.value
                                 return (
+                                        //TODO - Add spells to a map (spellLevel, spell) check for cantrip (.includes(cantrip))
+
                                     <Spell
                                         key={key}
                                         spellName={spell.name}
@@ -394,8 +400,8 @@ export default function CharacterSheet() {
                                         spellSave={spellSave === '' ? '-' : spellSave}
                                         components={spell.system.components}
                                         damageType={spellDamage?.type?.value}
-                                        range={''}
-                                        spellTraits={spell.system.traits?.value}
+                                        range={spell.system?.range.value}
+                                        spellTraditions={spell.system.traditions?.value}
                                         diceClient={threeDDiceRef}
                                         die={damageDieType}
                                         dieCount={damageDiceCount}/>
@@ -407,50 +413,6 @@ export default function CharacterSheet() {
                                     <span>Level 1</span>
                                 </div>
                             </div>
-                            <div className={'section-header'}>
-                                <div className={'section-header-label spell-name'}>
-                                    <span>SPELL NAME</span>
-                                </div>
-                                <div className={'section-header-label cast-time'}>
-                                    <span>CASTING</span>
-                                </div>
-                                <div className={'section-header-label spell-save'}>
-                                    <span>SAVE</span>
-                                </div>
-                                <div className={'section-header-label spell-damage'}>
-                                    <span>DAMAGE</span>
-                                </div>
-                                <div className={'section-header-label spell-damage-type'}>
-                                    <span>TYPE</span>
-                                </div>
-                                <div className={'section-header-label traits'}>
-                                    <span>TRAITS</span>
-                                </div>
-                            </div>
-                            {characterData?.spells?.map((spell, key) => {
-                                const spellDamage = spell.system.damage?.value[0]
-                                const damageDiceArray = spellDamage?.value.split('d');
-                                const damageDiceCount = damageDiceArray?.[0]
-                                const damageDieType = 'd' + damageDiceArray?.[1];
-
-                                const spellSave = spell.system.save?.value
-                                return (
-                                    <Spell
-                                        key={key}
-                                        spellName={spell.name}
-                                        spellSchool={spell.system.school?.value}
-                                        spellType={spell.system.spellType?.value}
-                                        castTime={spell.system.time?.value}
-                                        spellSave={spellSave === '' ? '-' : spellSave}
-                                        components={spell.system.components}
-                                        damageType={spellDamage?.type?.value}
-                                        range={spell.system.range?.value}
-                                        spellTraits={spell.system.traits?.value}
-                                        diceClient={threeDDiceRef}
-                                        die={damageDieType}
-                                        dieCount={damageDiceCount}/>
-                                )
-                            })}
                         </div>
                     </div>
                     <div className={'tab-content inventory'}>
