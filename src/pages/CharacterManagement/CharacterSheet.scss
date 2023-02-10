@@ -387,8 +387,9 @@
 
 /* armor class section */
 .character-sheet-component.armor-class {
-  padding-top: 0.5rem;
-  padding-left: 1rem;
+  //padding-top: 0.5rem;
+  //padding-left: 1rem;
+  margin: auto;
 
   .ac-section {
     display: flex;
