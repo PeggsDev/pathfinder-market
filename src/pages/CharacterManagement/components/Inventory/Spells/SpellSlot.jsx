@@ -1,10 +1,10 @@
 import './SpellSlot.scss'
 
-export default function SpellSlot({slotCount}) {
+export default function SpellSlot({slotCount, spellLevel}) {
     const spellSlots = []
-    for (let i = 0; i < slotCount; i++) {
+    for (let index = 0; index < slotCount; index++) {
         spellSlots.push(
-            <div className={'spell-slot'}/>
+            <div className={'spell-slot'} id={spellLevel + '-' + index}/>
         )
     }
 
