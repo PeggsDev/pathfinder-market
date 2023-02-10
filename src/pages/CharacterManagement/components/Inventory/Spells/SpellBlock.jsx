@@ -1,4 +1,5 @@
 import './SpellBlock.scss'
+import SpellSlot from "./SpellSlot";
 
 export default function SpellBlock(props) {
     return (
@@ -6,6 +7,7 @@ export default function SpellBlock(props) {
             <div className={'title-underline'}>
                 <div className={'tab-content actions title'}>
                     <span>{props.spellBlockName}</span>
+                    <SpellSlot slotCount={5}/>
                 </div>
             </div>
             <div className={'section-header'}>

@@ -1,0 +1,29 @@
+.spell-slots {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-bottom: 0.4rem;
+  margin-right: 0.4rem;
+
+  .spell-slot {
+    width: 1rem;
+    height: 1rem;
+    outline: 1px solid var(--clr-char-outline);
+    outline-offset: -0.1rem;
+    border-radius: 0.2rem;
+  }
+
+  .spell-slot.burnt {
+    background: var(--clr-char-outline);
+    outline: 1px solid var(--clr-dark-background);
+    outline-offset: -0.15rem;
+    border-radius: 0.2rem;
+  }
+
+  .spell-slots-label {
+    text-transform: capitalize;
+  }
+}
