@@ -336,7 +336,7 @@ export default function CharacterSheet() {
                                         <span>TRAITS</span>
                                     </div>
                                 </div>
-                                <div className={'tab-content actions ranged'}>
+                                <div className={'tab-content actions strikes'}>
                                     {characterData?.equipment?.map((item) => {
                                         const system = item?.system
                                         return (

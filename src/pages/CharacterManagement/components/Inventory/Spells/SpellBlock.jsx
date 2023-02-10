@@ -31,7 +31,9 @@ export default function SpellBlock(props) {
                     <span>TRADITIONS</span>
                 </div>
             </div>
-            {props.children}
+            <div className={'tab-content actions spells'}>
+                {props.children}
+            </div>
         </>
     )
 }
