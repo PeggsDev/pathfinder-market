@@ -57,12 +57,14 @@
     }
   }
 
-  .spell-name {
-    font-size: 0.9rem;
-  }
-
   .spell-title-box {
     width: 8.5rem;
+
+    .spell-name {
+      font-size: 0.9rem;
+      width: 10rem;
+    }
+
   }
 
   .spell-range {

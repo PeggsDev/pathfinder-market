@@ -9,7 +9,7 @@ export default function SpellBlock(props) {
                 </div>
             </div>
             <div className={'section-header'}>
-                <div className={'section-header-label spell-name'}>
+                <div className={'section-header-label spell-name-label'}>
                     <span>SPELL NAME</span>
                 </div>
                 <div className={'section-header-label cast-time'}>
