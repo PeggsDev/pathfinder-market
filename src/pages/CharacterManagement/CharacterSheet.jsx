@@ -104,8 +104,10 @@ export default function CharacterSheet() {
 
     return (
         <div className={'character-sheet'}>
+
             <section className={'character-sheet-grid'}>
                 <img className={'character-sheet-background'} src={CharacterSheetBackground} />
+
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
@@ -123,7 +125,7 @@ export default function CharacterSheet() {
                         <div className={'character-info character-name'}>{characterData?.characterName}</div>
                         <div className={'character-info ancestry-and-heritage'}>
                             <div className={'ancestry-block'}>
-                                <div className={'character-info-entry-left'}> {characterData?.ancestry} </div>
+                                <div className={'character-info-entry-left'}>{characterData?.ancestry} </div>
                                 <div className={'character-info-entry-center'}>|</div>
                                 <div className={'character-info-entry-right'}> {characterData?.heritage}</div>
                             </div>
@@ -134,6 +136,10 @@ export default function CharacterSheet() {
                             </div>
                         </div>
                         <div className={'character-info level'}>Level {characterData?.level}</div>
+                        {/* <div className={'character-info size'}>{characterData?.size}</div>
+                        <div className={'character-info alignment'}>{characterData?.alignment}</div> */}
+                        {/*<div className={'character-info traits'}>Traits</div>*/}
+                        {/*<div className={'character-info xp'}>Experience Points</div>*/}
                     </div>
                     <div className='vertical-line' />
                     <section className={'character-sheet-component ability-scores'}>
@@ -149,19 +155,17 @@ export default function CharacterSheet() {
                             }
                         </form>
                     </section>
+
                     <div className='vertical-line' />
+
                     <section className={'character-sheet-component saving-throws'}>
-                        {/* <h1>Saving Throws</h1> */}
                         <SavingThrows
                             characterData={characterData}
                             diceClient={threeDDiceRef} />
                     </section>
+
                     <div className='vertical-line' />
 
-                    {/*<div className={'character-info size'}>Size</div>*/}
-                    {/*<div className={'character-info alignment'}>Alignment</div>*/}
-                    {/*<div className={'character-info traits'}>Traits</div>*/}
-                    {/*<div className={'character-info xp'}>Experience Points</div>*/}
                     <section className={'character-sheet-component armor-class'}>
                         <div className={'ac-section'}>
                             <div className={'ac-shield'}>
@@ -173,14 +177,6 @@ export default function CharacterSheet() {
                                     armorClass={characterData?.armorClass} />
                             </div>
                             <div className={'ac-stats'}>
-                                <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>
-                                        BASE {/* TODO - Remove base and replace with Dex Cap */}
-                                    </div>
-                                    <div className={'armor-class-stat value'}>
-                                        10
-                                    </div>
-                                </span>
                                 <span className={'armor-class-stat'}>
                                     <div className={'armor-class-stat title'}>
                                         ITEM
@@ -195,6 +191,14 @@ export default function CharacterSheet() {
                                     </div>
                                     <div className={'armor-class-stat value'}>
                                         +5
+                                    </div>
+                                </span>
+                                <span className={'armor-class-stat'}>
+                                    <div className={'armor-class-stat title'}>
+                                        DEX CAP
+                                    </div>
+                                    <div className={'armor-class-stat value'}>
+                                        +4
                                     </div>
                                 </span>
                                 <span className={'armor-class-stat'}>
@@ -219,9 +223,11 @@ export default function CharacterSheet() {
                         </div>
                     </section>
                 </section>
+
                 <section className={'character-sheet-component conditions'}>
                     {/*<h1>Conditions</h1>*/}
                 </section>
+
                 <section className={'character-sheet-component class-dc'}>
 
                 </section>
@@ -231,6 +237,7 @@ export default function CharacterSheet() {
                         characterData={characterData}
                         diceClient={threeDDiceRef} />
                 </section>
+
                 <section className={'character-sheet-component tabbed-component actions-and-Inventory'}>
                     <div className={'tab-block'}>
                         <div className={`tab ${activeTab === '1' ? 'active-tab' : ''}`}
@@ -255,10 +262,10 @@ export default function CharacterSheet() {
                             Equipment
                         </div>
                         <div className={`tab ${activeTab === '4' ? 'active-tab' : ''}`}
-                             onClick={() => {
-                                 setActiveTab('4')
-                                 localStorage.setItem('activeTab', '4');
-                             }}>
+                            onClick={() => {
+                                setActiveTab('4')
+                                localStorage.setItem('activeTab', '4');
+                            }}>
                             Actions
                         </div>
                         <div className={`tab ${activeTab === '5' ? 'active-tab' : ''}`}
@@ -276,6 +283,7 @@ export default function CharacterSheet() {
                             Journal
                         </div>
                     </div>
+
                     <div className={'tab-content armory'}>
                         <div className={`content ${localStorage.getItem('activeTab') === '1' ? 'active-content' : ''}`}>
                             <div className={'tab-content actions title-block'}>

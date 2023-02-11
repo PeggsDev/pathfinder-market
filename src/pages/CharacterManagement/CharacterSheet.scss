@@ -162,12 +162,12 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
     border-radius: 0.5rem;
-    background: var(--clr-char-outline);
+    background: var(--clr-dice-roll-hover);
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--clr-dice-roll-hover);
+    background: var(--clr-char-outline);
   }
 }
 
@@ -420,6 +420,7 @@
       color: var(--clr-dice-roll-hover);
       font-weight: bolder;
       margin: auto;
+      white-space: nowrap;
     }
     .value {
       font-weight: bolder;
