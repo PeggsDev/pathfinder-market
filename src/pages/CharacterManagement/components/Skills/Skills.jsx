@@ -36,7 +36,7 @@ export default function Skills({ characterData, diceClient }) {
                         rollDice(
                             diceClient,
                             IDieType.D20,
-                            0,
+                            1,
                             'dddice-old-school')
                     }} />
                 </div>

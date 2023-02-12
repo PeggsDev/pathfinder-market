@@ -59,7 +59,7 @@ export default function CharacterSheet() {
 
     useEffect(() => {
         try {
-            threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey)
+            threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey, { dice: { drawOutlines: false } })
             threeDDiceRef.current.start();
             threeDDiceRef.current.connect(roomSlug);
 
