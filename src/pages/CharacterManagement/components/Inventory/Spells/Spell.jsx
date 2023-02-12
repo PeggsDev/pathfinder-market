@@ -77,9 +77,9 @@ export default function Spell({spell, diceClient}) {
                 {spell.system?.range.value}
             </div>
             <div className={'spell-traits'}>
-                {spell.system.traditions?.value?.map((trait) => {
+                {spell.system.traditions?.value?.map((trait, index) => {
                     return (
-                        <span className={'spell-trait'}>{trait}</span>
+                        <span key={index} className={'spell-trait'}>{trait}</span>
                     )
                 })}
             </div>

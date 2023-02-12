@@ -146,9 +146,9 @@ export default function CharacterSheet() {
                         <h1>Ability Scores</h1>
                         <form className={'score-block'}>
                             {
-                                characterData?.abilityScores.map((ability) => {
+                                characterData?.abilityScores.map((ability, index) => {
                                     return <AbilityScore
-                                        key={ability.id}
+                                        key={index}
                                         ability={ability.ability}
                                         score={ability.score} />
                                 })
@@ -307,12 +307,13 @@ export default function CharacterSheet() {
                                     </div>
                                 </div>
                                 <div className={'tab-content actions strikes'}>
-                                    {characterData?.equipment?.map((item) => {
+                                    {characterData?.equipment?.map((item, index) => {
                                         const system = item?.system
                                         return (
                                             !item?.system.range &&
                                             item?.type === 'weapon' &&
                                             <Weapon
+                                                key={index}
                                                 weaponName={item.name}
                                                 weaponCategory={system.category && system.category}
                                                 weaponType={item?.type}
@@ -345,11 +346,12 @@ export default function CharacterSheet() {
                                     </div>
                                 </div>
                                 <div className={'tab-content actions strikes'}>
-                                    {characterData?.equipment?.map((item) => {
+                                    {characterData?.equipment?.map((item, index) => {
                                         const system = item?.system
                                         return (
                                             item.system.range && item.type === 'weapon' &&
                                             <Weapon
+                                                key={index}
                                                 weaponName={item.name}
                                                 weaponCategory={system.category && system.category}
                                                 weaponType={item?.type}

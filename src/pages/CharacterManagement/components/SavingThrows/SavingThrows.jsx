@@ -61,14 +61,17 @@ export default function SavingThrows({ characterData, diceClient }) {
                 <div className={'save-title-save'}>SAVE</div>
                 <div className={'save-title-bonus title'}>BONUS</div>
             </div>
-            {characterData?.savingThrows?.map((save) => {
+            {characterData?.savingThrows?.map((save, index) => {
                 const baseAbility = characterData?.abilityScores.find(item => item.ability === save.ability)
-                return <Skill key={save?.id}
-                    diceClient={diceClient}
-                    save={save?.save}
-                    baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
-                    proficiencyIndicator={save?.proficiencyLevel}
-                    saveModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[save?.proficiencyLevel])} />
+                return (
+                    <Skill
+                        key={index}
+                        diceClient={diceClient}
+                        save={save?.save}
+                        baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
+                        proficiencyIndicator={save?.proficiencyLevel}
+                        saveModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[save?.proficiencyLevel])} />
+                )
             })}
         </form>
     )

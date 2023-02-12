@@ -68,9 +68,9 @@ export default function Weapon(props) {
                 {weaponRarity}
             </div>
             <div className={'weapon-traits'}>
-                {weaponTraits?.map((trait) => {
+                {weaponTraits?.map((trait, index) => {
                     return (
-                        <span className={'weapon-trait'}>{trait}</span>
+                        <span className={'weapon-trait'} key={index}>{trait}</span>
                     )
                 })}
             </div>
