@@ -29,14 +29,14 @@ export default function Weapon(props) {
                     onClick={() => rollDice(
                         diceClient,
                         IDieType.D20,
-                        dieCount,
+                        1,
                         'dddice-old-school')}/>}
                 {!weaponRange && <SwordsIcon
                     className={'weapon-icon-svg'}
                     onClick={() => rollDice(
                         diceClient,
                         IDieType.D20,
-                        dieCount,
+                        1,
                         'dddice-old-school')}/>}
             </div>
 
