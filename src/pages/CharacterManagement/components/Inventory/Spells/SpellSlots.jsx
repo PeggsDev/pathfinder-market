@@ -14,7 +14,7 @@ export default function SpellSlots({ slotCount, spellLevel }) {
         for (let index = 0; index < slotCount; index++) {
             const key = spellLevel.toLowerCase().replace(/\s/g, '-') + '-slot-' + index
             spellSlots.splice(index, 1,
-                <div key={key} className={'spell-slot'} id={key} onClick={(e) => burnSpellSlot(e.target.id)} />)
+                <div role="checkbox" key={key} className={'spell-slot'} id={key} onClick={(e) => burnSpellSlot(e.target.id)} />)
         }
     }, [])
 
@@ -24,7 +24,7 @@ export default function SpellSlots({ slotCount, spellLevel }) {
         const spellSlot = spellSlots[slotId.slice(-1)]
 
         spellSlots.splice(slotId.slice(-1), 1,
-            <div key={spellSlot.key}
+            <div role="checkbox" key={spellSlot.key}
                 className={`spell-slot ${spellSlot.props.className.includes('burnt') ? '' : 'burnt'}`}
                 id={spellSlot.props.id}
                 onClick={(e) => burnSpellSlot(e.target.id)} />)

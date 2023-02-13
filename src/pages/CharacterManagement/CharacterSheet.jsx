@@ -394,7 +394,7 @@ export default function CharacterSheet() {
                             {/*        </SpellBlock>*/}
                             {/*    })*/}
                             {/*}*/}
-                            <SpellBlock spellBlockName={'Cantrips'} spellSlots={5}>
+                            {characterData?.level >= 1 && <SpellBlock spellBlockName={'Cantrips'} spellSlots={5}>
                                 {characterData?.spells['cantrip'].map((spell, index) => {
                                     return (
                                         <Spell
@@ -403,9 +403,9 @@ export default function CharacterSheet() {
                                             diceClient={threeDDiceRef} />
                                     )
                                 })}
-                            </SpellBlock>
-                            {/*//TODO - Remove the hard coded code here and ass it from the backend data*/}
-                            <SpellBlock spellBlockName={'Level 1'} spellSlots={2}>
+                            </SpellBlock>}
+                            {/*//TODO - add a calculate spell slots based on level and class*/}
+                            {characterData?.level >= 1 && <SpellBlock spellBlockName={'Level 1'} spellSlots={3}>
                                 {characterData?.spells['level 1']?.map((spell, index) => {
                                     return (
                                         <Spell
@@ -414,8 +414,8 @@ export default function CharacterSheet() {
                                             diceClient={threeDDiceRef} />
                                     )
                                 })}
-                            </SpellBlock>
-                            <SpellBlock spellBlockName={'Level 2'} spellSlots={1}>
+                            </SpellBlock>}
+                            {characterData?.level >= 3 && <SpellBlock spellBlockName={'Level 2'} spellSlots={2}>
                                 {characterData?.spells['level 2']?.map((spell, index) => {
                                     return (
                                         <Spell
@@ -424,8 +424,8 @@ export default function CharacterSheet() {
                                             diceClient={threeDDiceRef} />
                                     )
                                 })}
-                            </SpellBlock>
-                            <SpellBlock spellBlockName={'Level 3'} spellSlots={1}>
+                            </SpellBlock>}
+                            {characterData?.level >= 5 && <SpellBlock spellBlockName={'Level 3'} spellSlots={2}>
                                 {characterData?.spells['level 3']?.map((spell, index) => {
                                     return (
                                         <Spell
@@ -434,7 +434,7 @@ export default function CharacterSheet() {
                                             diceClient={threeDDiceRef} />
                                     )
                                 })}
-                            </SpellBlock>
+                            </SpellBlock>}
                         </div>
                     </div>
                     <div className={'tab-content actions'}>

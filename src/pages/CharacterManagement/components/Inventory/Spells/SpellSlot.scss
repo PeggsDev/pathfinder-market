@@ -3,25 +3,25 @@
   justify-content: center;
   align-content: center;
   flex-direction: row;
-  gap: 0.5rem;
+  gap: 0.3rem;
   margin-left: auto;
-  margin-bottom: 0.4rem;
-  margin-right: 0.4rem;
+  margin-bottom: 0.1rem;
+  margin-right: 0.2rem;
 
   .spell-slot {
-    width: 1rem;
-    height: 1rem;
+    width: 0.9rem;
+    height: 0.9rem;
     outline: 1px solid var(--clr-char-outline);
     background: black;
     outline-offset: -0.1rem;
-    border-radius: 0.2rem;
+    border-radius: 0.1rem;
   }
 
   .spell-slot.burnt {
     background: var(--clr-char-outline);
     outline: 1px solid var(--clr-dark-background);
-    outline-offset: -0.15rem;
-    border-radius: 0.2rem;
+    outline-offset: -0.2rem;
+    border-radius: 0.1rem;
   }
 
   .spell-slots-label {
