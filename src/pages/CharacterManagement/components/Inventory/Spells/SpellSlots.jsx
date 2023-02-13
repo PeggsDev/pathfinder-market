@@ -8,7 +8,6 @@ export default function SpellSlots({slotCount, spellLevel}) {
 
     useEffect(() => {
         setSpellSlots(spellSlots)
-        console.log('ref changed')
     },[burnSpell])
 
     useEffect(() => {
@@ -21,8 +20,12 @@ export default function SpellSlots({slotCount, spellLevel}) {
 
     function burnSpellSlot(slotId) {
         setBurn(slotId)
-        console.log(burnSpell)
+
         const spellSlot = spellSlots[slotId.slice(-1)]
+
+        console.log(spellSlot.props.className.includes('burnt'))
+
+
         spellSlots.splice(slotId.slice(-1), 1,
             <div key={spellSlot.key}
                  className={'spell-slot burnt'}

@@ -394,7 +394,7 @@ export default function CharacterSheet() {
                             {/*        </SpellBlock>*/}
                             {/*    })*/}
                             {/*}*/}
-                            <SpellBlock spellBlockName={'Cantrips'}>
+                            <SpellBlock spellBlockName={'Cantrips'} spellSlots={5}>
                                 {characterData?.spells['cantrip'].map((spell, index) => {
                                     return (
                                         <Spell
@@ -404,7 +404,8 @@ export default function CharacterSheet() {
                                     )
                                 })}
                             </SpellBlock>
-                            <SpellBlock spellBlockName={'Level 1'}>
+                            {/*//TODO - Remove the hard coded code here and ass it from the backend data*/}
+                            <SpellBlock spellBlockName={'Level 1'} spellSlots={2}>
                                 {characterData?.spells['level 1']?.map((spell, index) => {
                                     return (
                                         <Spell
@@ -414,7 +415,7 @@ export default function CharacterSheet() {
                                     )
                                 })}
                             </SpellBlock>
-                            <SpellBlock spellBlockName={'Level 2'}>
+                            <SpellBlock spellBlockName={'Level 2'} spellSlots={1}>
                                 {characterData?.spells['level 2']?.map((spell, index) => {
                                     return (
                                         <Spell
@@ -424,7 +425,7 @@ export default function CharacterSheet() {
                                     )
                                 })}
                             </SpellBlock>
-                            <SpellBlock spellBlockName={'Level 3'}>
+                            <SpellBlock spellBlockName={'Level 3'} spellSlots={1}>
                                 {characterData?.spells['level 3']?.map((spell, index) => {
                                     return (
                                         <Spell

@@ -8,7 +8,7 @@ export default function SpellBlock(props) {
             <div className={'title-underline'}>
                 <div className={'tab-content actions title'}>
                     <span>{props.spellBlockName}</span>
-                    <SpellSlots slotCount={5} spellLevel={props.spellBlockName}/>
+                    <SpellSlots slotCount={props.spellSlots} spellLevel={props.spellBlockName}/>
                 </div>
             </div>
             <div className={'section-header'}>
