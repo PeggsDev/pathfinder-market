@@ -8,6 +8,8 @@ import { rollDice } from "../../../../App";
 
 export default function Skills({ characterData, diceClient }) {
 
+    const skillsList = characterData?.skills
+
     function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier, diceClient }) {
 
         return (<div className={'skill-box'}>
@@ -59,7 +61,7 @@ export default function Skills({ characterData, diceClient }) {
                 <div className={'skill-title-skill'}>SKILL</div>
                 <div className={'skill-title-bonus title'}>BONUS</div>
             </div>
-            {characterData?.skills.map((skill, index) => {
+            {skillsList?.map((skill, index) => {
                 const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
                 return (
                     <Skill
@@ -72,7 +74,7 @@ export default function Skills({ characterData, diceClient }) {
                 )
             })}
             <div>
-                <div className='skill-block manage-skills'>Manage Lore</div>
+                <div className='skill-block manage-skills'>Add Lore Skill</div>
             </div>
         </form>
     )
