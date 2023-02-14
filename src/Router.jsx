@@ -1,5 +1,5 @@
 import {
-    Routes, Route
+    Routes, Route, useParams
 } from 'react-router-dom'
 
 import HomePage from "./pages/Home/HomePage";
@@ -13,7 +13,7 @@ export default function Router() {
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/details'} element={<SourceBookDetailsPage />} />
             <Route path={'/goblins-cauldron/build'} element={<CharacterBuilder />} />
-            <Route path={'/goblins-cauldron/character-sheet'} element={<CharacterSheet />} />
+            <Route path={'/goblins-cauldron/character-sheet/:id'} element={<CharacterSheet />} />
             {/*<Route path={'/alchemy-workbench/character-sheet'} element={<CharacterSheet />} />*/}
         </Routes>
     )

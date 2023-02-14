@@ -1,41 +1,38 @@
 import './SpellSlot.scss'
-import { useEffect, useState } from "react";
+import {useState} from "react";
 
-export default function SpellSlots({ slotCount, spellLevel }) {
+export default function SpellSlots(props) {
 
-    const [spellSlots, setSpellSlots] = useState(Array(slotCount))
-    const [burnSpell, setBurn] = useState('');
+    const {spells, spellLevel} = props
+    const [spellSlotBurnStatus, setSpellSlotBurnStatus] = useState(false)
 
-    useEffect(() => {
-        for (let index = 0; index < slotCount; index++) {
-            const key = spellLevel.toLowerCase().replace(/\s/g, '-') + '-slot-' + index
-            spellSlots.splice(index, 1,
-                <div role="checkbox" key={key} className={'spell-slot'} id={key}
-                     onClick={(e) => burnSpellSlot(e.target.id)}/>)
-        }
-    }, [])
-
-    useEffect(() => {
-        //setSpellSlots(spellSlots)
-    }, [burnSpell])
-
-    function burnSpellSlot(slotId) {
-        const slotNumber = slotId.slice(-1)
-        const spellSlot = spellSlots[slotNumber]
-        setBurn(slotId)
-
-        spellSlots.splice(slotNumber, 1,
-            <div role="checkbox" key={spellSlot.key}
-                className={`spell-slot ${spellSlot.props.className.includes('burnt') ? '' : 'burnt'}`}
-                id={spellSlot.props.id}
-                onClick={(e) => burnSpellSlot(e.target.id)}/>)
+    function burnSlot(spellSlot, slotId) {
+        setSpellSlotBurnStatus(!spellSlotBurnStatus)
+        // console.log(slotId)
+        // const requestOptions = {
+        //     method: 'POST',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify(
+        //         {"spellSlotId": slotId, "burnt": spellSlotBurnStatus}
+        //     )
+        // };
+        // const response = fetch(`http://localhost:3001/character/spells/spell-slots/${spells.level}/${slotId}`, requestOptions);
+        // return response.json();
     }
 
     return (
         <div className={'spell-slots'}>
-            {[...spellSlots]}
+            {spells.spellSlots.map((spellSlot, index) => {
+                return (
+                    <div
+                        role="checkbox"
+                        key={index}
+                        className={`spell-slot ${spellSlot.burnt ? 'burnt' : ''}`}
+                        id={spellSlot.spellSlotId}
+                        onClick={(e) => burnSlot(spellSlot, e.target.id)}/>
+                )
+            })}
             <div className={'spell-slots-label'}>Slots</div>
         </div>
-
     )
 }

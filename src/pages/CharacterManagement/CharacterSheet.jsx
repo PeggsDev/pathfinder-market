@@ -15,6 +15,7 @@ import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
 import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
+import {useParams} from "react-router-dom";
 
 
 export function calculateModifier(value) {
@@ -47,6 +48,8 @@ function AbilityScore({ability, score}) {
 }
 
 export default function CharacterSheet() {
+
+    let { id } = useParams()
     /** TODO - Extract this to somewhere else and make it globally available */
     const threeDDiceApiKey = 'kn4MfcKWqPq3WhVMhTVFPFmeW6sgUnpWmtOU3uKy'
     const roomSlug = '-t_xEwM'
@@ -79,7 +82,7 @@ export default function CharacterSheet() {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch('http://localhost:3001/character/3');
+                const response = await fetch(`http://localhost:3001/character/${id}`);
                 const json = await response.json();
                 setCharacterData(json)
             } catch (error) {
@@ -383,12 +386,11 @@ export default function CharacterSheet() {
                             {
                                 characterData?.spells?.map((spellsByLevel, index) => {
                                     const spellType = spellsByLevel.level === 0 ? 'Cantrips' : 'Level ' + spellsByLevel.level
-                                    const spellSlots = spellsByLevel.spellSlots
                                     const spellLevelByLevel = Math.ceil(characterData?.level / 2)
 
                                     return (
                                         spellsByLevel.level <= spellLevelByLevel &&
-                                        <SpellBlock key={index} spellBlockName={spellType} spellSlots={spellSlots.length}>
+                                        <SpellBlock key={index} spellBlockName={spellType} spells={spellsByLevel}>
                                             {spellsByLevel.spells?.map((spell, index) => {
                                                 return (
                                                     <Spell key={index}
