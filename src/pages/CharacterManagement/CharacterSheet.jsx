@@ -1,7 +1,7 @@
 import './CharacterSheet.scss'
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
-import { IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceConfig } from 'dddice-js';
+import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceConfig} from 'dddice-js';
 
 import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 //import CharacterSheetBackground from "../../images/splash-8.jpg";
@@ -11,8 +11,8 @@ import Weapon from "./components/Inventory/Weapon";
 import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
-import { ReactComponent as CameraIcon } from './svg/camera-solid.svg'
-import { ReactComponent as PotionHPIcon } from "./svg/HP Potion Bottle.svg";
+import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
+import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
 
@@ -25,23 +25,23 @@ export function calculateAbilityBasedModifier(baseAbilityScore, level, proficien
     return calculateModifier(baseAbilityScore) + (proficiency > 0 ? level : 0) + proficiency
 }
 
-function AbilityScore({ ability, score }) {
+function AbilityScore({ability, score}) {
     const modifier = (calculateModifier(score))
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
             <input className={'modifier'}
-                type="text"
-                disabled="disabled"
-                placeholder="disabled"
-                value={modifier > 0 ? "+" + modifier : modifier.toString()}
-                readOnly />
+                   type="text"
+                   disabled="disabled"
+                   placeholder="disabled"
+                   value={modifier > 0 ? "+" + modifier : modifier.toString()}
+                   readOnly/>
             <input className={'score'}
-                type="text"
-                disabled="disabled"
-                placeholder="disabled"
-                value={score}
-                readOnly />
+                   type="text"
+                   disabled="disabled"
+                   placeholder="disabled"
+                   value={score}
+                   readOnly/>
         </div>
     )
 }
@@ -59,7 +59,7 @@ export default function CharacterSheet() {
 
     useEffect(() => {
         try {
-            threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey, { dice: { drawOutlines: false } })
+            threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey, {dice: {drawOutlines: false}})
             threeDDiceRef.current.start();
             threeDDiceRef.current.connect(roomSlug);
 
@@ -106,20 +106,20 @@ export default function CharacterSheet() {
         <div className={'character-sheet'}>
 
             <section className={'character-sheet-grid'}>
-                <img className={'character-sheet-background'} src={CharacterSheetBackground} />
+                <img className={'character-sheet-background'} src={CharacterSheetBackground}/>
 
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
-                            onMouseEnter={() => {
-                                setImage(true)
-                            }}
-                            onMouseLeave={() => {
-                                setImage(false)
-                            }}
-                            src={characterData?.characterImage}
-                            alt={''} />
-                        <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`} />
+                             onMouseEnter={() => {
+                                 setImage(true)
+                             }}
+                             onMouseLeave={() => {
+                                 setImage(false)
+                             }}
+                             src={characterData?.characterImage}
+                             alt={''}/>
+                        <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
                     </div>
                     <div className={'character-info-block'}>
                         <div className={'character-info character-name'}>{characterData?.characterName}</div>
@@ -141,7 +141,7 @@ export default function CharacterSheet() {
                         {/*<div className={'character-info traits'}>Traits</div>*/}
                         {/*<div className={'character-info xp'}>Experience Points</div>*/}
                     </div>
-                    <div className='vertical-line' />
+                    <div className='vertical-line'/>
                     <section className={'character-sheet-component ability-scores'}>
                         <h1>Ability Scores</h1>
                         <form className={'score-block'}>
@@ -150,31 +150,31 @@ export default function CharacterSheet() {
                                     return <AbilityScore
                                         key={index}
                                         ability={ability.ability}
-                                        score={ability.score} />
+                                        score={ability.score}/>
                                 })
                             }
                         </form>
                     </section>
 
-                    <div className='vertical-line' />
+                    <div className='vertical-line'/>
 
                     <section className={'character-sheet-component saving-throws'}>
                         <SavingThrows
                             characterData={characterData}
-                            diceClient={threeDDiceRef} />
+                            diceClient={threeDDiceRef}/>
                     </section>
 
-                    <div className='vertical-line' />
+                    <div className='vertical-line'/>
 
                     <section className={'character-sheet-component armor-class'}>
                         <div className={'ac-section'}>
                             <div className={'ac-shield'}>
                                 <ACShield
-                                    armor={{ "acBonus": 0, "dexCap": 0 }}
-                                    shield={{ "acBonus": 0 }}
+                                    armor={{"acBonus": 0, "dexCap": 0}}
+                                    shield={{"acBonus": 0}}
                                     dexterity={characterData?.abilityScores[1].score}
                                     additionalMods={0}
-                                    armorClass={characterData?.armorClass} />
+                                    armorClass={characterData?.armorClass}/>
                             </div>
                             <div className={'ac-stats'}>
                                 <span className={'armor-class-stat'}>
@@ -235,51 +235,51 @@ export default function CharacterSheet() {
                     <h1>Skills</h1>
                     <Skills
                         characterData={characterData}
-                        diceClient={threeDDiceRef} />
+                        diceClient={threeDDiceRef}/>
                 </section>
 
                 <section className={'character-sheet-component tabbed-component actions-and-Inventory'}>
                     <div className={'tab-block'}>
                         <div className={`tab ${activeTab === '1' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('1')
-                                localStorage.setItem('activeTab', '1');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('1')
+                                 localStorage.setItem('activeTab', '1');
+                             }}>
                             Armory
                         </div>
                         <div className={`tab ${activeTab === '2' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('2')
-                                localStorage.setItem('activeTab', '2');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('2')
+                                 localStorage.setItem('activeTab', '2');
+                             }}>
                             Spells
                         </div>
                         <div className={`tab ${activeTab === '3' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('3')
-                                localStorage.setItem('activeTab', '3');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('3')
+                                 localStorage.setItem('activeTab', '3');
+                             }}>
                             Equipment
                         </div>
                         <div className={`tab ${activeTab === '4' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('4')
-                                localStorage.setItem('activeTab', '4');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('4')
+                                 localStorage.setItem('activeTab', '4');
+                             }}>
                             Actions
                         </div>
                         <div className={`tab ${activeTab === '5' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('5')
-                                localStorage.setItem('activeTab', '5');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('5')
+                                 localStorage.setItem('activeTab', '5');
+                             }}>
                             Feats & Abilities
                         </div>
                         <div className={`tab ${activeTab === '6' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('6')
-                                localStorage.setItem('activeTab', '6');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('6')
+                                 localStorage.setItem('activeTab', '6');
+                             }}>
                             Journal
                         </div>
                     </div>
@@ -322,7 +322,7 @@ export default function CharacterSheet() {
                                                 diceClient={threeDDiceRef}
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
-                                                weaponRange={system.range} />
+                                                weaponRange={system.range}/>
                                         )
                                     })}
                                 </div>
@@ -362,7 +362,7 @@ export default function CharacterSheet() {
                                                 diceClient={threeDDiceRef}
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
-                                                weaponRange={system.range} />
+                                                weaponRange={system.range}/>
                                         )
                                     })}
                                 </div>
@@ -380,61 +380,26 @@ export default function CharacterSheet() {
                     </div>
                     <div className={'tab-content spells'}>
                         <div className={`content ${localStorage.getItem('activeTab') === '2' ? 'active-content' : ''}`}>
-                            {/*{*/}
-                            {/*    characterData?.spells && Object.keys(characterData?.spells).map((spellType) => {*/}
-                            {/*        <SpellBlock spellBlockName={spellType}>*/}
-                            {/*            {characterData?.spells[spellType].map((spell, index) => {*/}
-                            {/*                return (*/}
-                            {/*                    <Spell*/}
-                            {/*                        key={index}*/}
-                            {/*                        spell={spell}*/}
-                            {/*                        diceClient={threeDDiceRef} />*/}
-                            {/*                )*/}
-                            {/*            })}*/}
-                            {/*        </SpellBlock>*/}
-                            {/*    })*/}
-                            {/*}*/}
-                            {characterData?.level >= 1 && <SpellBlock spellBlockName={'Cantrips'} spellSlots={5}>
-                                {characterData?.spells['cantrip'].map((spell, index) => {
+                            {
+                                characterData?.spells?.map((spellsByLevel, index) => {
+                                    const spellType = spellsByLevel.level === 0 ? 'Cantrips' : 'Level ' + spellsByLevel.level
+                                    const spellSlots = spellsByLevel.spellSlots
+                                    const spellLevelByLevel = Math.ceil(characterData?.level / 2)
+
                                     return (
-                                        <Spell
-                                            key={index}
-                                            spell={spell}
-                                            diceClient={threeDDiceRef} />
+                                        spellsByLevel.level <= spellLevelByLevel &&
+                                        <SpellBlock key={index} spellBlockName={spellType} spellSlots={spellSlots.length}>
+                                            {spellsByLevel.spells?.map((spell, index) => {
+                                                return (
+                                                    <Spell key={index}
+                                                           spell={spell}
+                                                           diceClient={threeDDiceRef}/>
+                                                )
+                                            })}
+                                        </SpellBlock>
                                     )
-                                })}
-                            </SpellBlock>}
-                            {/*//TODO - add a calculate spell slots based on level and class*/}
-                            {characterData?.level >= 1 && <SpellBlock spellBlockName={'Level 1'} spellSlots={3}>
-                                {characterData?.spells['level 1']?.map((spell, index) => {
-                                    return (
-                                        <Spell
-                                            key={index}
-                                            spell={spell}
-                                            diceClient={threeDDiceRef} />
-                                    )
-                                })}
-                            </SpellBlock>}
-                            {characterData?.level >= 3 && <SpellBlock spellBlockName={'Level 2'} spellSlots={2}>
-                                {characterData?.spells['level 2']?.map((spell, index) => {
-                                    return (
-                                        <Spell
-                                            key={index}
-                                            spell={spell}
-                                            diceClient={threeDDiceRef} />
-                                    )
-                                })}
-                            </SpellBlock>}
-                            {characterData?.level >= 5 && <SpellBlock spellBlockName={'Level 3'} spellSlots={2}>
-                                {characterData?.spells['level 3']?.map((spell, index) => {
-                                    return (
-                                        <Spell
-                                            key={index}
-                                            spell={spell}
-                                            diceClient={threeDDiceRef} />
-                                    )
-                                })}
-                            </SpellBlock>}
+                                })
+                            }
                         </div>
                     </div>
                     <div className={'tab-content actions'}>
@@ -454,39 +419,39 @@ export default function CharacterSheet() {
                                     <span>Locations</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'} />
+                            <div contentEditable className={'tab-notes'}/>
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Allies</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'} />
+                            <div contentEditable className={'tab-notes'}/>
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Enemies</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'} />
+                            <div contentEditable className={'tab-notes'}/>
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Backstory</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'} />
+                            <div contentEditable className={'tab-notes'}/>
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Notes</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'} />
+                            <div contentEditable className={'tab-notes'}/>
                         </div>
                     </div>
                 </section>
-                <canvas className={'dd-dice-canvas'} ref={canvasRef} />
+                <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
             </section>
         </div>
     )
