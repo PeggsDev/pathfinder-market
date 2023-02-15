@@ -5,14 +5,13 @@
   flex-direction: row;
   gap: 0.3rem;
   margin-left: auto;
-  margin-bottom: 0.1rem;
   margin-right: 0.2rem;
+  text-align: center;
 
   .spell-slot {
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 0.8rem;
+    height: 0.8rem;
     outline: 1px solid var(--clr-char-outline);
-    background: black;
     outline-offset: -0.1rem;
     border-radius: 0.1rem;
   }
@@ -27,8 +26,8 @@
   .spell-slots-label {
     text-transform: uppercase;
     color: var(--clr-white);
-    font-weight: bolder;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     margin-right: 0.5rem;
+    padding-bottom: 0.1rem;
   }
 }

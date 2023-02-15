@@ -14,9 +14,9 @@ export default function SpellSlots({spells}) {
                 {"spellSlotId": slotId, "burnt": spellSlotBurnStatus}
             )
         };
-        const response = fetch(`http://localhost:3001/character/spells/spell-slots/${spells.level}/${slotId}`, requestOptions);
+        fetch(`http://localhost:3001/character/spells/spell-slots/${spells.level}/${slotId}`, requestOptions);
+    
         window.location.reload()
-        return response.json();
     }
 
     return (
