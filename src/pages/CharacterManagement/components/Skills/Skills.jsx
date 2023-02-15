@@ -5,13 +5,35 @@ import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 
 import {IDieType} from "dddice-js";
 import {rollDice} from "../../../../App";
+import {useEffect, useState} from "react";
 
 export default function Skills({characterData, diceClient}) {
 
     const skillsList = characterData?.skills
 
+    const [skills, setSkills] = useState(skillsList)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                setSkills(skillsList)
+            } catch (error) {
+                console.log("error", error);
+            }
+        })();
+    }, []);
+
+
     function addLore() {
+        setSkills([...skills,
+            {
+                "skill": "Lore",
+                "ability": "dexterity",
+                "proficiencyLevel": "T"
+            }
+        ])
         console.log('LORE ADDED')
+        console.log(JSON.stringify(skills))
         return ''
     }
 
@@ -59,25 +81,27 @@ export default function Skills({characterData, diceClient}) {
     }
 
     return (
-        <form className={'skill-block'}>
-            <div className={'skill-block-titles'}>
-                <div className={'skill-title-proficiency'}>PROF</div>
-                <div className={'skill-title-ability'}>BASE</div>
-                <div className={'skill-title-skill'}>SKILL</div>
-                <div className={'skill-title-bonus title'}>BONUS</div>
-            </div>
-            {skillsList?.map((skill, index) => {
-                const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
-                return (
-                    <Skill
-                        key={index}
-                        diceClient={diceClient}
-                        skill={skill?.skill}
-                        baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
-                        proficiencyIndicator={skill?.proficiencyLevel}
-                        skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])}/>
-                )
-            })}
+        <>
+            <form className={'skill-block'}>
+                <div className={'skill-block-titles'}>
+                    <div className={'skill-title-proficiency'}>PROF</div>
+                    <div className={'skill-title-ability'}>BASE</div>
+                    <div className={'skill-title-skill'}>SKILL</div>
+                    <div className={'skill-title-bonus title'}>BONUS</div>
+                </div>
+                {skills?.map((skill, index) => {
+                    const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
+                    return (
+                        <Skill
+                            key={index}
+                            diceClient={diceClient}
+                            skill={skill?.skill}
+                            baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
+                            proficiencyIndicator={skill?.proficiencyLevel}
+                            skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])}/>
+                    )
+                })}
+            </form>
             <div>
                 <div className={'lore-wrapper'}>
                     <div className='manage-lore' onClick={() => addLore()}>
@@ -88,6 +112,6 @@ export default function Skills({characterData, diceClient}) {
                     </div>
                 </div>
             </div>
-        </form>
+        </>
     )
 }
