@@ -76,6 +76,7 @@ export default function CharacterSheet() {
     /** -----------------------End TODO---------------------------- */
 
     const [characterData, setCharacterData] = useState()
+    const [skills, setSkills] = useState()
     const [refreshCharacterData, triggerCharacterDataRefresh] = useState(0)
     const [equipment, setEquipment] = useState([])
     const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
@@ -86,6 +87,7 @@ export default function CharacterSheet() {
                 const response = await fetch(`http://localhost:3001/character/${id}`);
                 const json = await response.json();
                 setCharacterData(json)
+                setSkills(json.skills)
             } catch (error) {
                 console.log("error", error);
             }
@@ -239,6 +241,9 @@ export default function CharacterSheet() {
                     <h1>Skills</h1>
                     <Skills
                         characterData={characterData}
+                        skills={skills}
+                        skillsCallback={setSkills}
+                        refreshData={triggerCharacterDataRefresh}
                         diceClient={threeDDiceRef}/>
                 </section>
 

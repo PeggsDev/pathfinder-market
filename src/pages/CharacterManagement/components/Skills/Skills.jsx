@@ -5,27 +5,13 @@ import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 
 import {IDieType} from "dddice-js";
 import {rollDice} from "../../../../App";
-import {useEffect, useState} from "react";
 
-export default function Skills({characterData, diceClient}) {
+export default function Skills(props) {
 
-    const skillsList = characterData?.skills
-
-    const [skills, setSkills] = useState(skillsList)
-
-    useEffect(() => {
-        (async () => {
-            try {
-                setSkills(skillsList)
-            } catch (error) {
-                console.log("error", error);
-            }
-        })();
-    }, []);
-
+    const {characterData, skills, skillsCallback, diceClient, refreshData} = props
 
     function addLore() {
-        setSkills([...skills,
+        skillsCallback([...skills,
             {
                 "skill": "Lore",
                 "ability": "dexterity",
@@ -34,7 +20,6 @@ export default function Skills({characterData, diceClient}) {
         ])
         console.log('LORE ADDED')
         console.log(JSON.stringify(skills))
-        return ''
     }
 
     function Skill({skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
