@@ -425,35 +425,43 @@ export default function CharacterSheet() {
                                     <span>Locations</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
-
+                            <div contentEditable className={'tab-notes'}
+                                 suppressContentEditableWarning={true}
+                                 dangerouslySetInnerHTML={{__html: characterData?.journal[0].locations}}/>
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Allies</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
-
+                            <div contentEditable className={'tab-notes'}
+                                 suppressContentEditableWarning={true}
+                                 dangerouslySetInnerHTML={{__html: characterData?.journal[0].allies}} />
                             <div className={'title-underline'}>
-                                <div className={'tab-content notes title'}>
+                                <div className={'tab-content notes title'} >
                                     <span>Enemies</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} suppressContentEditableWarning={true}>
+                                {characterData?.journal[0].enemies}
+                            </div>
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Backstory</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} suppressContentEditableWarning={true}>
+                                {characterData?.journal[0].backstory}
+                            </div>
 
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Notes</span>
                                 </div>
                             </div>
-                            <div contentEditable className={'tab-notes'}/>
+                            <div contentEditable className={'tab-notes'} suppressContentEditableWarning={true}>
+                                {characterData?.journal[0].notes}
+                            </div>
                         </div>
                     </div>
                 </section>

@@ -48,7 +48,6 @@
       }
     }
 
-
     .skill-title-bonus.title {
       padding-right: 0.4rem;
     }
@@ -130,4 +129,27 @@
       }
     }
   }
+}
+
+.lore-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 2rem;
+
+  .manage-lore {
+    margin-top: 0.2rem;
+    color: var(--clr-dice-roll-hover)
+  }
+
+  .plus-symbol {
+    font-size: 1.2rem;
+  }
+}
+
+.lore-wrapper:hover {
+  cursor: pointer;
+  font-weight: bolder;
 }

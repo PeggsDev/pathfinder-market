@@ -1,16 +1,21 @@
 import './Skills.scss'
-import { proficiencyEnum } from "../../../../App";
-import { calculateAbilityBasedModifier } from "../../CharacterSheet";
-import { ReactComponent as DiceIcon } from '../../svg/dice-d20-solid.svg';
+import {proficiencyEnum} from "../../../../App";
+import {calculateAbilityBasedModifier} from "../../CharacterSheet";
+import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 
-import { IDieType } from "dddice-js";
-import { rollDice } from "../../../../App";
+import {IDieType} from "dddice-js";
+import {rollDice} from "../../../../App";
 
-export default function Skills({ characterData, diceClient }) {
+export default function Skills({characterData, diceClient}) {
 
     const skillsList = characterData?.skills
 
-    function Skill({ skill, proficiencyIndicator, baseAbility, skillModifier, diceClient }) {
+    function addLore() {
+        console.log('LORE ADDED')
+        return ''
+    }
+
+    function Skill({skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
 
         return (<div className={'skill-box'}>
             <div className={'skill-title-proficiency'}>
@@ -40,7 +45,7 @@ export default function Skills({ characterData, diceClient }) {
                             IDieType.D20,
                             1,
                             'dddice-old-school')
-                    }} />
+                    }}/>
                 </div>
                 <div className={'skill-title-bonus'}>
                     <div className={'skill-modifier'}>
@@ -70,11 +75,18 @@ export default function Skills({ characterData, diceClient }) {
                         skill={skill?.skill}
                         baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
                         proficiencyIndicator={skill?.proficiencyLevel}
-                        skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])} />
+                        skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])}/>
                 )
             })}
             <div>
-                <div className='skill-block manage-skills'>Add Lore Skill</div>
+                <div className={'lore-wrapper'}>
+                    <div className='manage-lore' onClick={() => addLore()}>
+                        Add Lore
+                    </div>
+                    <div className={'plus-symbol'}>
+                        +
+                    </div>
+                </div>
             </div>
         </form>
     )
