@@ -99,4 +99,5 @@ export default function Skills(props) {
             </div>
         </>
     )
+    //.sort((a, b) => a.itemM > b.itemM ? 1 : -1)
 }

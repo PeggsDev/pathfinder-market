@@ -282,15 +282,12 @@
   }
 
   .content {
-    overflow: hidden;
+    //overflow: hidden;
     display: none;
     max-height: 36rem;
+    overflow-y: auto;
   }
 
-  .content:hover {
-    overflow-y: scroll;
-
-  }
   .content.active-content {
     display: block;
   }
