@@ -49,7 +49,7 @@ function AbilityScore({ability, score}) {
 
 export default function CharacterSheet() {
 
-    let { id } = useParams()
+    let {id} = useParams()
     /** TODO - Extract this to somewhere else and make it globally available */
     const threeDDiceApiKey = 'kn4MfcKWqPq3WhVMhTVFPFmeW6sgUnpWmtOU3uKy'
     const roomSlug = '-t_xEwM'
@@ -76,6 +76,7 @@ export default function CharacterSheet() {
     /** -----------------------End TODO---------------------------- */
 
     const [characterData, setCharacterData] = useState()
+    const [refreshCharacterData, triggerCharacterDataRefresh] = useState(0)
     const [equipment, setEquipment] = useState([])
     const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
 
@@ -89,7 +90,7 @@ export default function CharacterSheet() {
                 console.log("error", error);
             }
         })();
-    }, []);
+    }, [refreshCharacterData]);
 
     useEffect(() => {
         (async () => {
@@ -390,7 +391,10 @@ export default function CharacterSheet() {
 
                                     return (
                                         spellsByLevel.level <= spellLevelByLevel &&
-                                        <SpellBlock key={index} spellBlockName={spellType} spells={spellsByLevel}>
+                                        <SpellBlock key={index}
+                                                    spellBlockName={spellType}
+                                                    spells={spellsByLevel}
+                                                    triggerCharacterDataRefresh={triggerCharacterDataRefresh}>
                                             {spellsByLevel.spells?.map((spell, index) => {
                                                 return (
                                                     <Spell key={index}
