@@ -25,8 +25,8 @@ export default function Spell({ spell, diceClient }) {
                 <SpellIcon
                     className={'spell-icon-svg'}
                     onClick={() => {
-                        //TODO - Add functionality to burn a spell slot
-                        console.log("Spell has been cast")
+                        //TODO - Add functionality to burn a spell slot from here
+                        console.log("Spell has been cast " + spell.name)
                     }} />
             </div>
 
@@ -38,7 +38,6 @@ export default function Spell({ spell, diceClient }) {
                         <div className={'spell-type'}>{spell.system.spellType?.value}</div>
                     </div>
                 </div>
-                {/* TODO - Review this, we should look to pull values from ActionEnum */}
                 <div className={'spell-cast-time'}
                     style={{
                         fontFamily: castTime.match(/^[a-zA-Z0-9]+$/) ? 'Pathfinder2eActions' : 'sans-serif',
