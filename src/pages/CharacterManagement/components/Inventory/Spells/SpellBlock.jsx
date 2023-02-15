@@ -3,13 +3,14 @@ import SpellSlots from "./SpellSlots";
 
 export default function SpellBlock(props) {
 
+    const {spellBlockName, spells, triggerCharacterDataRefresh} = props
+
     return (
         <>
             <div className={'title-underline'}>
                 <div className={'tab-content actions title'}>
-                    <span>{props.spellBlockName}</span>
-                    <SpellSlots spells={props.spells}
-                                triggerCharacterDataRefresh={props.triggerCharacterDataRefresh} />
+                    <span>{spellBlockName}</span>
+                    <SpellSlots spells={spells} triggerCharacterDataRefresh={triggerCharacterDataRefresh}/>
                 </div>
             </div>
             <div className={'section-header'}>

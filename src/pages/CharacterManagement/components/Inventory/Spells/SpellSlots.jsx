@@ -1,7 +1,8 @@
 import './SpellSlot.scss'
-import {useState} from "react";
 
-export default function SpellSlots({spells, triggerCharacterDataRefresh}) {
+export default function SpellSlots(props) {
+
+    const {spells, triggerCharacterDataRefresh} = props
 
     function burnSlot(spellSlot, slotId) {
         const requestOptions = {
