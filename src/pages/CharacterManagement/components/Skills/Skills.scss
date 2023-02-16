@@ -16,23 +16,28 @@
   ::-webkit-scrollbar {
     width: 0.3rem;
     border-radius: 0.5rem;
+    opacity: 0.6;
+    display: none;
   }
 
   /* Track */
   ::-webkit-scrollbar-track {
     background: var(--clr-accent-light);
     border-radius: 0.5rem;
+    opacity: 0.6;
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
     border-radius: 0.5rem;
     background: var(--clr-dice-roll-hover);
+    opacity: 0.6;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: var(--clr-char-outline);
+    opacity: 0.6;
   }
 
   h1 {
@@ -178,4 +183,8 @@
 .lore-wrapper:hover {
   cursor: pointer;
   font-weight: bolder;
+}
+
+.skill-box:nth-child(even) {
+  background: #33333344;
 }

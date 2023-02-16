@@ -149,26 +149,27 @@
   /* Scrollbar Styles */
   /* width */
   ::-webkit-scrollbar {
-    width: 0.3rem;
-    border-radius: 0.5rem;
+    display: none;
+    //width: 0.3rem;
+    //border-radius: 0.5rem;
   }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: var(--clr-accent-light);
-    border-radius: 0.5rem;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    border-radius: 0.5rem;
-    background: var(--clr-dice-roll-hover);
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--clr-char-outline);
-  }
+  //
+  ///* Track */
+  //::-webkit-scrollbar-track {
+  //  background: var(--clr-accent-light);
+  //  border-radius: 0.5rem;
+  //}
+  //
+  ///* Handle */
+  //::-webkit-scrollbar-thumb {
+  //  border-radius: 0.5rem;
+  //  background: var(--clr-dice-roll-hover);
+  //}
+  //
+  ///* Handle on hover */
+  //::-webkit-scrollbar-thumb:hover {
+  //  background: var(--clr-char-outline);
+  //}
 }
 
 .tabbed-component {
@@ -190,6 +191,10 @@
     align-content: space-between;
     gap: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .tab {
+    cursor: pointer;
   }
 
   .tab-content.actions.title,
@@ -282,7 +287,6 @@
   }
 
   .content {
-    //overflow: hidden;
     display: none;
     max-height: 36rem;
     overflow-y: auto;
