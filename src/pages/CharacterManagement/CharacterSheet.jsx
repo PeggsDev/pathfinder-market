@@ -16,6 +16,7 @@ import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
 import {useParams} from "react-router-dom";
+import HealthPoints from "./components/HealthPoints/HealthPoints";
 
 
 export function calculateModifier(value) {
@@ -81,6 +82,11 @@ export default function CharacterSheet() {
     const [equipment, setEquipment] = useState([])
     const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
 
+    /* Health Points */
+    const [currentHealth, setCurrentHealth] = useState(0)
+    const [maxHealth, setMaxHealth] = useState(0)
+    const [tempHealth, setTemHealth] = useState(0)
+
     useEffect(() => {
         (async () => {
             try {
@@ -88,6 +94,11 @@ export default function CharacterSheet() {
                 const json = await response.json();
                 setCharacterData(json)
                 setSkills(json.skills)
+
+                setCurrentHealth(json.hp.current)
+                setMaxHealth(json.hp.max)
+                setTemHealth(json.hp.temp)
+
             } catch (error) {
                 console.log("error", error);
             }
@@ -230,8 +241,17 @@ export default function CharacterSheet() {
                     </section>
                 </section>
 
+                <section className={'character-sheet-component hit-points'}>
+                    <HealthPoints
+                        current={currentHealth}
+                        updateCurrentHealth={setCurrentHealth}
+                        max={maxHealth}
+                        temp={tempHealth}
+                        updateTempHealth={setTemHealth}/>
+                </section>
+
                 <section className={'character-sheet-component conditions'}>
-                    {/*<h1>Conditions</h1>*/}
+
                 </section>
 
                 <section className={'character-sheet-component class-dc'}>
@@ -440,9 +460,9 @@ export default function CharacterSheet() {
                             </div>
                             <div contentEditable className={'tab-notes'}
                                  suppressContentEditableWarning={true}
-                                 dangerouslySetInnerHTML={{__html: characterData?.journal[0].allies}} />
+                                 dangerouslySetInnerHTML={{__html: characterData?.journal[0].allies}}/>
                             <div className={'title-underline'}>
-                                <div className={'tab-content notes title'} >
+                                <div className={'tab-content notes title'}>
                                     <span>Enemies</span>
                                 </div>
                             </div>

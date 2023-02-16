@@ -51,18 +51,32 @@
     z-index: -1;
   }
 
-  .conditions {
+  .hit-points {
     width: 20rem;
+    height: 7rem;
     background: var(--clr-dark-background);
     border: 2px solid var(--clr-char-outline);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     opacity: var(--opacity);
     grid-column: 9;
-    grid-row: 3 / span 3;
+    grid-row: 3 / span 1;
+  }
+
+  .conditions {
+    width: 20rem;
+    height: 20rem;
+    background: var(--clr-dark-background);
+    border: 2px solid var(--clr-char-outline);
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    opacity: var(--opacity);
+    grid-column: 9;
+    grid-row: 4 / span 2;
   }
 
   .class-dc {
+    height: 13rem;
     background: var(--clr-dark-background);
     border: 2px solid var(--clr-char-outline);
     padding: 0 0.5rem;
@@ -455,3 +469,14 @@
     }
   }
 }
+
+///* Hit Points */
+//.character-sheet-component.hit-points {
+//  display: flex;
+//  flex-direction: column;
+//  align-content: center;
+//  justify-content: start;
+//  text-align: center;
+//  padding: 0.5rem;
+//  height: 8rem;
+//}
