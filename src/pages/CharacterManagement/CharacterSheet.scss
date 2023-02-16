@@ -470,13 +470,8 @@
   }
 }
 
-///* Hit Points */
-//.character-sheet-component.hit-points {
-//  display: flex;
-//  flex-direction: column;
-//  align-content: center;
-//  justify-content: start;
-//  text-align: center;
-//  padding: 0.5rem;
-//  height: 8rem;
-//}
+/* Hit Points */
+.character-sheet-component.hit-points {
+  padding: 0.5rem;
+  height: 7.5rem;
+}

@@ -1,5 +1,5 @@
 import './HitPoints.scss'
-import {useState} from "react";
+import { useState } from "react";
 
 export default function HealthPoints(props) {
     const {
@@ -46,18 +46,19 @@ export default function HealthPoints(props) {
                     <div className={'hit-point temp-hp'}>
                         <div className={'hp-label'}>Temp</div>
                         <input className={'hp-value temp-hp-input'}
-                               type={'number'}
-                               value={temp}
-                               onChange={(e) => updateTempHitPoints(Number(e.target.value))}/>
+                            type={'number'}
+                            value={temp === 0 ? '' : temp}
+                            onChange={(e) => updateTempHitPoints(Number(e.target.value))} />
                         {/*<div className={'hp-value'}>{temp === 0 ? '--' : temp}</div>*/}
                     </div>
                 </div>
             </div>
+            <div className='vertical-line-hp'/>
             <div className={'hit-point manage-hp'}>
                 <button className={'heal-button'} onClick={() => healHP()}>heal</button>
                 <input className={'hit-point-input'}
-                       type={'number'}
-                       onChange={(e) => setHp(Number(e.target.value))}/>
+                    type={'number'}
+                    onChange={(e) => setHp(Number(e.target.value))} />
                 <button className={'damage-button'} onClick={() => takeDamage()}>damage</button>
             </div>
         </div>
