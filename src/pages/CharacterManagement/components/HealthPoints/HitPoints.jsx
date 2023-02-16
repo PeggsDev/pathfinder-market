@@ -1,4 +1,4 @@
-import './HealthPoints.scss'
+import './HitPoints.scss'
 import {useState} from "react";
 
 export default function HealthPoints(props) {
@@ -6,15 +6,15 @@ export default function HealthPoints(props) {
         current,
         max,
         temp,
-        updateCurrentHealth,
-        updateTempHealth
+        updateCurrentHitPoints,
+        updateTempHitPoints
     } = props
 
     const [hp, setHp] = useState(0)
 
     function healHP() {
         const returnValue = current + Number(hp)
-        updateCurrentHealth(returnValue <= max ? returnValue : max)
+        updateCurrentHitPoints(returnValue <= max ? returnValue : max)
     }
 
     function takeDamage() {
@@ -22,10 +22,10 @@ export default function HealthPoints(props) {
         let total = current + temp
 
         if (Number(hp) <= temp) {
-            updateTempHealth(temp - Number(hp))
+            updateTempHitPoints(temp - Number(hp))
         } else {
-            updateTempHealth(0)
-            updateCurrentHealth(total - Number(hp) <= 0 ? 0 : total - Number(hp))
+            updateTempHitPoints(0)
+            updateCurrentHitPoints(total - Number(hp) <= 0 ? 0 : total - Number(hp))
         }
     }
 
@@ -48,7 +48,7 @@ export default function HealthPoints(props) {
                         <input className={'hp-value temp-hp-input'}
                                type={'number'}
                                value={temp}
-                               onChange={(e) => updateTempHealth(Number(e.target.value))}/>
+                               onChange={(e) => updateTempHitPoints(Number(e.target.value))}/>
                         {/*<div className={'hp-value'}>{temp === 0 ? '--' : temp}</div>*/}
                     </div>
                 </div>

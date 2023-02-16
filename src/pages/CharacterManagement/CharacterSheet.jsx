@@ -16,7 +16,7 @@ import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
 import {useParams} from "react-router-dom";
-import HealthPoints from "./components/HealthPoints/HealthPoints";
+import HealthPoints from "./components/HealthPoints/HitPoints";
 
 
 export function calculateModifier(value) {
@@ -83,9 +83,9 @@ export default function CharacterSheet() {
     const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
 
     /* Health Points */
-    const [currentHealth, setCurrentHealth] = useState(0)
-    const [maxHealth, setMaxHealth] = useState(0)
-    const [tempHealth, setTemHealth] = useState(0)
+    const [currentHitPoints, setCurrentHitPoints] = useState(0)
+    const [maxHitPoints, setMaxHitPoints] = useState(0)
+    const [tempHitPoints, setTempHitPoints] = useState(0)
 
     useEffect(() => {
         (async () => {
@@ -95,9 +95,9 @@ export default function CharacterSheet() {
                 setCharacterData(json)
                 setSkills(json.skills)
 
-                setCurrentHealth(json.hp.current)
-                setMaxHealth(json.hp.max)
-                setTemHealth(json.hp.temp)
+                setCurrentHitPoints(json.hp.current)
+                setMaxHitPoints(json.hp.max)
+                setTempHitPoints(json.hp.temp)
 
             } catch (error) {
                 console.log("error", error);
@@ -243,11 +243,11 @@ export default function CharacterSheet() {
 
                 <section className={'character-sheet-component hit-points'}>
                     <HealthPoints
-                        current={currentHealth}
-                        updateCurrentHealth={setCurrentHealth}
-                        max={maxHealth}
-                        temp={tempHealth}
-                        updateTempHealth={setTemHealth}/>
+                        current={currentHitPoints}
+                        updateCurrentHitPoints={setCurrentHitPoints}
+                        max={maxHitPoints}
+                        temp={tempHitPoints}
+                        updateTempHitPoints={setTempHitPoints}/>
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
