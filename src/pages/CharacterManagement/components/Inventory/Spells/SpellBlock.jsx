@@ -33,7 +33,7 @@ export default function SpellBlock(props) {
                     <span>RANGE</span>
                 </div>
                 <div className={'section-header-label traits'}>
-                    <span>TRADITIONS</span>
+                    <span>TRAITS</span>
                 </div>
             </div>
             <div className={'tab-content actions spells'}>

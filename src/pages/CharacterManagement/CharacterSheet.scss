@@ -9,9 +9,14 @@
     font-size: 1.2rem;
   }
 
-  --clr-char-outline: #c777a8;
-  --clr-dice-roll-hover: #f5a623;
-  --clr-skill-dice-roll-hover: #96f134;
+   --clr-char-outline: #c777a8;
+   --clr-dice-roll-hover: #f5a623;
+   --clr-skill-dice-roll-hover: #96f134;
+
+  /* Ice Theme */
+  //--clr-char-outline: #346bfc;
+  //--clr-dice-roll-hover: #a6f7ff;
+  //--clr-skill-dice-roll-hover: #f5a623;
 
   --font-size-medium: 0.8rem;
   --opacity: 0.85;
@@ -288,7 +293,7 @@
   }
 
   .spell-damage {
-    width: 4rem;
+    width: 5rem;
   }
 
   .spell-damage-type {

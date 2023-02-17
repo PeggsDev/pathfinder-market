@@ -4,6 +4,8 @@ import '../../componenets/SlidingCard/SlidingCard.scss'
 import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceConfig} from 'dddice-js';
 
 import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
+//import CharacterSheetBackground from "../../images/andreas-rocha-theicecastle03.jpg";
+//import CharacterSheetBackground from "../../images/andreas-rocha-electrichues02.jpg";
 //import CharacterSheetBackground from "../../images/splash-8.jpg";
 
 import Weapon from "./components/Inventory/Weapon";
