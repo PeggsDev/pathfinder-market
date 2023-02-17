@@ -9,6 +9,15 @@
     font-size: 1.2rem;
   }
 
+  //TODO - Update colour names so that Character sheet has its own
+  //--clr-dark: #b0b0b0;
+  //--clr-light: #342e2e;
+  //--clr-white: #000000;
+  //--clr-accent-light: #37373a;
+  //--clr-accent-dark: #949393;
+  //--clr-dark-background: #c0bdbd;
+  //--clr-dark-lowlight: #9a9898;
+
    --clr-char-outline: #c777a8;
    --clr-dice-roll-hover: #f5a623;
    --clr-skill-dice-roll-hover: #96f134;
@@ -17,6 +26,10 @@
   //--clr-char-outline: #346bfc;
   //--clr-dice-roll-hover: #a6f7ff;
   //--clr-skill-dice-roll-hover: #f5a623;
+
+  //--clr-char-outline: #212121;
+  //--clr-dice-roll-hover: #754602;
+  //--clr-skill-dice-roll-hover: #85024c;
 
   --font-size-medium: 0.8rem;
   --opacity: 0.85;
