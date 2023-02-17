@@ -51,7 +51,7 @@ export default function Skills(props) {
                             diceClient,
                             IDieType.D20,
                             1,
-                            'dddice-old-school')
+                            'romance-le465f6j')
                     }}/>
                 </div>
                 <div className={'skill-title-bonus'}>

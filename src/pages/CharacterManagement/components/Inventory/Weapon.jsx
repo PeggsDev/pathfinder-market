@@ -30,14 +30,14 @@ export default function Weapon(props) {
                         diceClient,
                         IDieType.D20,
                         1,
-                        'dddice-old-school')}/>}
+                        'romance-le465f6j')}/>}
                 {!weaponRange && <SwordsIcon
                     className={'weapon-icon-svg'}
                     onClick={() => rollDice(
                         diceClient,
                         IDieType.D20,
                         1,
-                        'dddice-old-school')}/>}
+                        'romance-le465f6j')}/>}
             </div>
 
             <div className={'action'}>
@@ -56,7 +56,7 @@ export default function Weapon(props) {
                             diceClient,
                             die,
                             dieCount,
-                            'dddice-old-school')}
+                            'romance-le465f6j')}
                         className={'dice-icon'}/>
                 </div>
                 <div className={'dice-formula'}>
