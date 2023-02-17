@@ -18,7 +18,8 @@ import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
 import {useParams} from "react-router-dom";
-import HealthPoints from "./components/HealthPoints/HitPoints";
+import HealthPoints from "./components/HitPoints/HitPoints";
+import Conditions from "./components/Conditions/Conditions";
 
 
 export function calculateModifier(value) {
@@ -130,10 +131,14 @@ export default function CharacterSheet() {
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
-                             onMouseEnter={() => {setImage(true)}}
-                             onMouseLeave={() => {setImage(false)}}
+                             onMouseEnter={() => {
+                                 setImage(true)
+                             }}
+                             onMouseLeave={() => {
+                                 setImage(false)
+                             }}
                              src={characterData?.characterImage}
-                             alt={'Character Image'}/>
+                             alt={'TODO - Add alternative character image'}/>
                         <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
                     </div>
                     <div className={'character-info-block'}>
@@ -249,7 +254,7 @@ export default function CharacterSheet() {
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
-
+                    <Conditions/>
                 </section>
 
                 <section className={'character-sheet-component class-dc'}>
