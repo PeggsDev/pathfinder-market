@@ -130,14 +130,10 @@ export default function CharacterSheet() {
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
-                             onMouseEnter={() => {
-                                 setImage(true)
-                             }}
-                             onMouseLeave={() => {
-                                 setImage(false)
-                             }}
+                             onMouseEnter={() => {setImage(true)}}
+                             onMouseLeave={() => {setImage(false)}}
                              src={characterData?.characterImage}
-                             alt={''}/>
+                             alt={'Character Image'}/>
                         <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
                     </div>
                     <div className={'character-info-block'}>
