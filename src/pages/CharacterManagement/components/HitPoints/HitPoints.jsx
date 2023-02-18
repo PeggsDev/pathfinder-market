@@ -47,7 +47,7 @@ export default function HealthPoints(props) {
                         <div className={'hp-label'}>Temp</div>
                         <input className={'hp-value temp-hp-input'}
                             type={'number'}
-                            value={temp <= 0 ? '--' : temp}
+                            value={temp <= 0 ? '' : temp}
                             onChange={(e) => updateTempHitPoints(Number(e.target.value))} />
                         {/*<div className={'hp-value'}>{temp === 0 ? '--' : temp}</div>*/}
                     </div>
@@ -58,7 +58,6 @@ export default function HealthPoints(props) {
                 <button className={'heal-button'} onClick={() => healHP()}>heal</button>
                 <input className={'hit-point-input'}
                     type={'number'}
-                    value={0}
                     onChange={(e) => setHp(Number(e.target.value))} />
                 <button className={'damage-button'} onClick={() => takeDamage()}>damage</button>
             </div>
