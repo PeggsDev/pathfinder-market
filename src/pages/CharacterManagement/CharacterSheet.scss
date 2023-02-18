@@ -18,9 +18,9 @@
   //--clr-dark-background: #c0bdbd;
   //--clr-dark-lowlight: #9a9898;
 
-   --clr-char-outline: #c777a8;
-   --clr-dice-roll-hover: #f5a623;
-   --clr-skill-dice-roll-hover: #96f134;
+  --clr-char-outline: #c777a8;
+  --clr-dice-roll-hover: #f5a623;
+  --clr-skill-dice-roll-hover: #96f134;
 
   /* Ice Theme */
   //--clr-char-outline: #346bfc;
@@ -185,6 +185,7 @@
     //width: 0.3rem;
     //border-radius: 0.5rem;
   }
+
   //
   ///* Track */
   //::-webkit-scrollbar-track {
@@ -401,16 +402,24 @@
 
     .character-info-entry-center {
       padding-right: 0.5rem;
-      padding-left: 0.5rem;
+      padding-left: 0.6rem;
       color: var(--clr-accent-light);
 
     }
   }
 
   .character-name {
+    border: none;
+    background: none;
+    margin-left: -0.2rem;
     font-size: 1.5rem;
     font-weight: bolder;
     color: var(--clr-white);
+    cursor: pointer;
+  }
+
+  .character-name:focus {
+    outline: none;
   }
 
   .ancestry-and-heritage {
@@ -469,6 +478,7 @@
       margin: auto;
       white-space: nowrap;
     }
+
     .value {
       font-weight: bolder;
       justify-content: end;
