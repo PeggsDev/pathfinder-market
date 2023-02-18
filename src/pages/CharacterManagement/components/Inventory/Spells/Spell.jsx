@@ -58,7 +58,7 @@ export default function Spell({ spell, diceClient }) {
                                     diceClient,
                                     die,
                                     dieCount,
-                                    'romance-le465f6j')}
+                                    'dark-dadinhos-le6bwsgb')}
                                 className={'dice-icon'} />
                         </div>
                         <div className={'dice-formula'}>

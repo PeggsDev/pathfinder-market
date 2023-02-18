@@ -83,6 +83,7 @@ export default function CharacterSheet() {
     const [skills, setSkills] = useState()
     const [refreshCharacterData, triggerCharacterDataRefresh] = useState(0)
     const [equipment, setEquipment] = useState([])
+    const [conditions, setConditions] = useState([])
     const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
 
     /* Health Points */
@@ -114,6 +115,18 @@ export default function CharacterSheet() {
                 const response = await fetch('http://localhost:3001/equipment');
                 const json = await response.json();
                 setEquipment(json)
+            } catch (error) {
+                console.log("error", error);
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch('http://localhost:3001/conditions');
+                const json = await response.json();
+                setConditions(json)
             } catch (error) {
                 console.log("error", error);
             }
@@ -254,7 +267,7 @@ export default function CharacterSheet() {
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
-                    <Conditions/>
+                    <Conditions conditions={conditions} />
                 </section>
 
                 <section className={'character-sheet-component class-dc'}>

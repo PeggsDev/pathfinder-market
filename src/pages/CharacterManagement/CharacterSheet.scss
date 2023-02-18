@@ -354,6 +354,7 @@
     height: 5.5rem;
     overflow: hidden;
     border: 2px solid var(--clr-char-outline);
+    cursor: pointer;
 
     .character-info.image {
       position: absolute;
@@ -365,7 +366,7 @@
 
     .character-info.image:hover {
       filter: brightness(50%);
-      transition: all 250ms ease-in-out;
+      transition: filter 250ms ease-in-out;
     }
   }
 
@@ -501,4 +502,13 @@
 .character-sheet-component.hit-points {
   padding: 0.5rem;
   height: 7.5rem;
+}
+
+/* Conditions */
+.character-sheet-component.conditions {
+  padding: 0.5rem;
+  columns: auto 2;
+  overflow: hidden;
+  overflow-x: auto;
+
 }
