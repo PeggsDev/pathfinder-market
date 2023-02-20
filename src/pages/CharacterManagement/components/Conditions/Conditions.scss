@@ -4,17 +4,48 @@
   align-content: center;
   text-align: center;
   padding: 0.5rem;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.current-conditions {
+.current-conditions-wrapper {
+  columns: auto 2;
+  
 
-  div {
-    padding: 0.25rem;
-    margin: 0.25rem;
-    border-radius: 0.25rem;
-    background: var(--clr-dice-roll-hover);
-    font-weight: bolder;
-    color: var(--clr-accent-dark);
+  .current-conditions {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid var(--clr-char-outline);
+    gap: 0.25rem;
+
+
+    .condition {
+      margin: 0.25rem;
+      color: var(--clr-white);
+      flex-grow: 1;
+      font-weight: bolder;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .condition-count {
+      font-weight: bolder;
+      color: var(--clr-dice-roll-hover);
+      padding-right: 0.25rem;
+    }
+
+    .remove-condition-icon {
+      margin-left: auto;
+      height: 0.8rem;
+      padding-right: 0.25rem;
+      fill: var(--clr-accent-light);
+      cursor: pointer;
+
+      &:hover {
+        fill: var(--clr-remove-item-hover);
+        scale: 1.1;
+      }
+    }
   }
 }

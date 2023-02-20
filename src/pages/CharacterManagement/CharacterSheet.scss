@@ -21,6 +21,7 @@
   --clr-char-outline: #c777a8;
   --clr-dice-roll-hover: #f5a623;
   --clr-skill-dice-roll-hover: #96f134;
+  --clr-remove-item-hover: #ff422a;
 
   /* Ice Theme */
   //--clr-char-outline: #346bfc;
@@ -33,6 +34,12 @@
 
   --font-size-medium: 0.8rem;
   --opacity: 0.85;
+
+  ::-webkit-scrollbar {
+    display: none;
+    //width: 0.3rem;
+    //border-radius: 0.5rem;
+  }
 }
 
 .dd-dice-canvas {
@@ -518,6 +525,5 @@
 .character-sheet-component.conditions {
   padding: 0.5rem;
   overflow: hidden;
-  overflow-x: auto;
-
+  overflow-y: auto;
 }

@@ -39,7 +39,7 @@ export default function SavingThrows({ characterData, diceClient }) {
                                 diceClient,
                                 IDieType.D20,
                                 1,
-                                'dark-dadinhos-le6bwsgb')
+                                'pink-skull-leddyaze')
                         }} />
                     </div>
                     <div className={'save-title-bonus'}>
