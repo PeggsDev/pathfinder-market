@@ -8,7 +8,7 @@ import GameMasteryGuide from "../../images/game-mastery.jpg";
 import PrimerBook from "../../images/pathfinder-primer.jpg";
 import React, { useEffect } from "react";
 import { useIntersectionObserver } from "react-intersection-observer-hook";
-import ThreeDimensionalCard from "../../componenets/3DCard/ThreeDimensionalCard";
+import ThreeDimensionalCard from "../../componenets/ThreeDCard/ThreeDimensionalCard";
 import CharacterImg from '../../images/3d-card-pathfinder-character.png'
 
 export default function HomePage() {

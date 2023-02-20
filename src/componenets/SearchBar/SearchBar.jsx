@@ -1,6 +1,6 @@
 import './SearchBar.scss'
-import {ReactComponent as XMarkIcon} from "./icons/xmark-solid.svg";
-import {ReactComponent as SearchIcon} from "./icons/magnifying-glass-solid.svg";
+import {ReactComponent as XMarkIcon} from "../icons/xmark-solid.svg";
+import {ReactComponent as SearchIcon} from "../icons/magnifying-glass-solid.svg";
 
 
 export default function SearchBar({isVisible, setVisibility}) {

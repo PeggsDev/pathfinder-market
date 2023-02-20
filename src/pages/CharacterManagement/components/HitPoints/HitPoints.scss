@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   align-content: center;
-  justify-content: center;
   text-align: center;
   padding: 0.5rem;
   gap: 1rem;
@@ -102,21 +101,18 @@
 
   .hit-point-input {
     border-radius: 0.2rem;
-    background: var(--clr-accent-dark);
+    margin: 0.2rem 0;
     font-size: 1.5rem;
+    text-align: center;
     padding: 0.25rem 0;
+    color: var(--clr-white);
+    background: var(--clr-accent-dark);
     border: 1px dashed var(--clr-accent-light);
     cursor: pointer;
   }
 
   .hit-point-input:focus {
     outline: none;
-  }
-
-  .hit-point-input {
-    text-align: center;
-    color: var(--clr-white);
-    margin: 0.2rem 0;
   }
 
   /* Chrome, Safari, Edge, Opera */
