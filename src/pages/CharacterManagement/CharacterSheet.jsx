@@ -89,6 +89,7 @@ export default function CharacterSheet() {
     /* Condition Management */
     const [conditionData, setConditionData] = useState([])
     const [currentConditions, applyConditions] = useState([])
+
     /* Health Points */
     const [currentHitPoints, setCurrentHitPoints] = useState(0)
     const [maxHitPoints, setMaxHitPoints] = useState(0)

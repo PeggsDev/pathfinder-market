@@ -1,8 +1,20 @@
 .conditions-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-content: center;
   text-align: center;
   padding: 0.5rem;
   gap: 1rem;
+}
+
+.current-conditions {
+
+  div {
+    padding: 0.25rem;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    background: var(--clr-dice-roll-hover);
+    font-weight: bolder;
+    color: var(--clr-accent-dark);
+  }
 }

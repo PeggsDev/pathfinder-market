@@ -14,7 +14,8 @@ export default function Conditions({conditionData, currentConditions, applyCondi
             <SearchableBox
                 placeHolder={'Search Conditions...'}
                 data={conditionData}
-                selectedItems={applyConditions}/>
+                selectedItems={currentConditions}
+                addItems={applyConditions}/>
 
             <div className={'current-conditions'}>
                 {currentConditions?.map((condition, index) => {
