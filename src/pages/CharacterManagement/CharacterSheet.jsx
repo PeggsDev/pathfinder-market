@@ -20,6 +20,7 @@ import SpellBlock from "./components/Inventory/Spells/SpellBlock";
 import {useParams} from "react-router-dom";
 import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
+import {proficiencyColourEnum} from "../../App";
 
 
 export function calculateModifier(value) {
@@ -257,7 +258,11 @@ export default function CharacterSheet() {
                                 return (
                                     <div className={'armor-proficiency-box'} key={index}>
                                         <div className={'armor-type'}>{armorType?.armorType}</div>
-                                        <div>{armorType?.proficiencyLevel}</div>
+                                        <div className={'armor-proficiency'} style={
+                                            {color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}`}
+                                        }>
+                                            {armorType?.proficiencyLevel}
+                                        </div>
                                     </div>
                                 )
                             })}

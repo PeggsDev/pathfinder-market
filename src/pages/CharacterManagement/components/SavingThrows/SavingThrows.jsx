@@ -1,6 +1,6 @@
 import './SavingThrows.scss'
 
-import { proficiencyEnum } from "../../../../App";
+import { proficiencyEnum, proficiencyColourEnum} from "../../../../App";
 import { calculateAbilityBasedModifier } from "../../CharacterSheet";
 import { ReactComponent as DiceIcon } from '../../svg/dice-d20-solid.svg';
 
@@ -15,7 +15,9 @@ export default function SavingThrows({ characterData, diceClient }) {
             <div className={'save-box'}>
                 <div className={'save-title-proficiency'}>
                     <div className={'proficiency-indicator'}>
-                        <label>
+                        <label style={
+                            {color: `${proficiencyColourEnum[proficiencyIndicator]}`}
+                        }>
                             {proficiencyIndicator}
                         </label>
                     </div>

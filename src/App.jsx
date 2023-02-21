@@ -18,6 +18,13 @@ export const proficiencyEnum = {
     L: 8
 }
 
+export const proficiencyColourEnum = {
+    'U': '#0C4767',
+    'T': '#566E3D',
+    'E': '#B9A44C',
+    'M': '#FE9920',
+    'L': '#FA7921'
+}
 // export const pathfinderActionIconsEnum = {
 //     0: <FreeActionIcon />
 // }
