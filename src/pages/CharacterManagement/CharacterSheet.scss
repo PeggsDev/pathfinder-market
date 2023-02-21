@@ -18,6 +18,12 @@
   //--clr-dark-background: #c0bdbd;
   //--clr-dark-lowlight: #9a9898;
 
+  --clr-proficiency-untrained: #1880b7;
+  --clr-proficiency-trained: #25a815;
+  --clr-proficiency-expert: #d7bf59;
+  --clr-proficiency-master: #FE9920;
+  --clr-proficiency-legendary: #FA7921;
+
   --clr-char-outline: #c777a8;
   --clr-dice-roll-hover: #f5a623;
   --clr-skill-dice-roll-hover: #96f134;
@@ -450,8 +456,6 @@
 
 /* armor class section */
 .character-sheet-component.armor-class {
-  //padding-top: 0.5rem;
-  //padding-left: 1rem;
   margin: auto;
 
   .ac-section {
