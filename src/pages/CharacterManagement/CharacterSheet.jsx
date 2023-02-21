@@ -80,6 +80,7 @@ export default function CharacterSheet() {
 
     /** -----------------------End TODO---------------------------- */
 
+    const [uploadImage, setImage] = useState(false)
     const [characterData, setCharacterData] = useState()
     const [characterName, setCharacterName] = useState('')
     const [skills, setSkills] = useState()
@@ -91,7 +92,7 @@ export default function CharacterSheet() {
     const [conditionData, setConditionData] = useState([])
     const [currentConditions, applyConditions] = useState([])
 
-    /* Health Points */
+    /* Hit Points */
     const [currentHitPoints, setCurrentHitPoints] = useState(0)
     const [maxHitPoints, setMaxHitPoints] = useState(0)
     const [tempHitPoints, setTempHitPoints] = useState(0)
@@ -138,8 +139,6 @@ export default function CharacterSheet() {
             }
         })();
     }, []);
-
-    const [uploadImage, setImage] = useState(false)
 
     return (
         <div className={'character-sheet'}>

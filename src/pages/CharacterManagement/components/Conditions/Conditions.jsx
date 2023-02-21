@@ -1,30 +1,39 @@
 import './Conditions.scss'
 import SearchableBox from "../../../../componenets/SearchableBox/SearchableBox";
-import { ReactComponent as RemoveConditionIcon } from "../../../../componenets/icons/xmark-solid.svg";
-import { useState } from 'react';
+import {ReactComponent as RemoveConditionIcon} from "../../../../componenets/icons/xmark-solid.svg";
+import {useState} from 'react';
 
-export default function Conditions({ conditionData, currentConditions, applyConditions }) {
+export default function Conditions({conditionData, currentConditions, applyConditions}) {
 
-    const [displayIcon, setDisplayIcon] = useState(false)
+    const [displayIcon, setDisplayIcon] = useState()
+    const reducedConditions = removeAndCountDuplicates(currentConditions)
 
     function removeAndCountDuplicates(conditions) {
-
-
-        //TODO - Clean up this function - its not clear what it does by variable names
-        const answer = Object.values(conditions.reduce((p, v) => {
-            const old = p[v.name];
-            if (!old)
-                p[v.name] = { ...v, count: 0 };
-            else if (old.sort > v.sort)
-                p[v.name] = { ...v, count: old.count + 1 };
+        return Object.values(conditions.reduce((previous, current) => {
+            const reducedConditions = previous[current.name];
+            if (!reducedConditions)
+                previous[current.name] = {...current, count: 0};
+            else if (reducedConditions.sort > current.sort)
+                previous[current.name] = {...current, count: reducedConditions.count + 1};
             else
-                p[v.name].count++;
-            return p;
+                previous[current.name].count++;
+            return previous;
         }, {}));
-
-        return answer
     }
 
+    function incrementConditionCount(condition) {
+        if (condition.count <= 8) {
+            applyConditions([...currentConditions, condition])
+        }
+    }
+
+    function decrementConditionCount(condition) {
+        const index = currentConditions.findIndex(
+            currentCondition => currentCondition.name === condition.name
+        );
+        currentConditions.splice(index, 1)
+        applyConditions(currentConditions)
+    }
 
     return (
         <div className={'conditions-wrapper'}>
@@ -38,22 +47,28 @@ export default function Conditions({ conditionData, currentConditions, applyCond
                 placeHolder={'Search Conditions...'}
                 data={conditionData}
                 selectedItems={currentConditions}
-                addItems={applyConditions} />
+                addItems={applyConditions}/>
 
             <div className={'current-conditions-wrapper'}>
-                {removeAndCountDuplicates(currentConditions)?.map((condition, index) => {
+                {reducedConditions?.map((condition, index) => {
                     return (
-                        <div className={'current-condition'} onMouseLeave={() => setDisplayIcon(false)}>
+                        <div
+                            key={index}
+                            className={'current-condition'}
+                            onMouseOver={() => setDisplayIcon(true)}
+                            onMouseLeave={() => setDisplayIcon(false)}>
                             {
-                                displayIcon && <RemoveConditionIcon className={'remove-condition-icon'} />
+                                displayIcon && <RemoveConditionIcon
+                                    className={'remove-condition-icon'}
+                                    onClick={() => decrementConditionCount(condition)}/>
                             }
-                            <div
-                                key={index}
-                                className={'condition'}
-                                onMouseOver={() => setDisplayIcon(true)}>
+                            <div key={index} className={'condition'}
+                                 onClick={() => incrementConditionCount(condition)}>
                                 {condition.name}
                             </div>
-                            <div className={'condition-count'}>{condition.count}</div>
+                            <div className={'condition-count'}>
+                                {condition.count === 0 ? '' : condition.count}
+                            </div>
                         </div>
                     )
                 })}
