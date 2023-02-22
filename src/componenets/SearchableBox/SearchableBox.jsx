@@ -39,14 +39,13 @@ export default function SearchableBox({placeHolder, data, selectedItems, addItem
                     value={searchItem}/>
                 <ClearSearchIcon
                     className={'clear-search-icon'}
-                    onClick={clearInput}
-                />
+                    onClick={clearInput}/>
             </div>
-            {
-                filteredData.length !== 0 && <div className={'search-results'}>
-                    {filteredData?.map((item, index) => {
-                        return (
-                            <span>
+            {filteredData.length !== 0 &&
+            <div className={'search-results'}>
+                {filteredData?.map((item, index) => {
+                    return (
+                        <span>
                                 <p
                                     className={'search-item'}
                                     key={index}
@@ -54,10 +53,9 @@ export default function SearchableBox({placeHolder, data, selectedItems, addItem
                                     {item.name}
                                 </p>
                         </span>
-                        )
-                    })}
-                </div>
-            }
+                    )
+                })}
+            </div>}
         </div>
     )
 }
