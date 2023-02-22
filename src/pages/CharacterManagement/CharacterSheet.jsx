@@ -130,7 +130,6 @@ export default function CharacterSheet() {
     }, []);
 
     return (
-        <ConditionsDataProvider>
         <div className={'character-sheet'}>
 
             <section className={'character-sheet-grid'}>
@@ -512,6 +511,5 @@ export default function CharacterSheet() {
                 <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
             </section>
         </div>
-</ConditionsDataProvider>
     )
 }
