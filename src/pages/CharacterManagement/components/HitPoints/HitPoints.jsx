@@ -1,18 +1,10 @@
 import './HitPoints.scss'
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
 
 export default function HealthPoints(props) {
 
     const {conditionData, currentConditions, applyConditions} = useContext(ConditionsCtx)
-
-    const dying = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
-    const blinded = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'blinded'.toLowerCase())]
-    const flatFooted = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'flat-footed'.toLowerCase())]
-    const unconscious = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'unconscious'.toLowerCase())]
-
-    console.log(JSON.stringify(currentConditions))
-
     const {
         current,
         max,
@@ -23,6 +15,15 @@ export default function HealthPoints(props) {
 
     const [hp, setHp] = useState(0)
 
+    function applyZeroHitPointConditions() {
+        const dying = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
+        const blinded = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'blinded'.toLowerCase())]
+        const flatFooted = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'flat-footed'.toLowerCase())]
+        const unconscious = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'unconscious'.toLowerCase())]
+
+        applyConditions(JSON.parse(JSON.stringify([...currentConditions, dying, dying, blinded, flatFooted, unconscious])))
+    }
+
     function healHP() {
         const returnValue = current + Number(hp)
         updateCurrentHitPoints(returnValue <= max ? returnValue : max)
@@ -31,17 +32,15 @@ export default function HealthPoints(props) {
     function takeDamage() {
         let total = current + temp
 
-        if (current <= 0) {
-            console.log(true)
-            applyConditions(JSON.parse(JSON.stringify([...currentConditions, dying, dying, blinded, flatFooted, unconscious])))
-            console.log(JSON.stringify(currentConditions))
-        }
-
         if (Number(hp) <= temp) {
             updateTempHitPoints(temp - Number(hp))
         } else {
             updateTempHitPoints(0)
-            updateCurrentHitPoints(total - Number(hp) <= 0 ? 0 : total - Number(hp))
+            let newCurrent = total - Number(hp) <= 0 ? 0 : total - Number(hp)
+            if (newCurrent <= 0) {
+                applyZeroHitPointConditions()
+            }
+            updateCurrentHitPoints(newCurrent)
         }
     }
 
