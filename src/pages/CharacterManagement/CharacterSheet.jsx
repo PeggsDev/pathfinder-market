@@ -89,10 +89,6 @@ export default function CharacterSheet() {
     const [equipment, setEquipment] = useState([])
     const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
 
-    /* Condition Management */
-    // const [conditionData, setConditionData] = useState([])
-    // const [currentConditions, applyConditions] = useState([])
-
     /* Hit Points */
     const [currentHitPoints, setCurrentHitPoints] = useState(0)
     const [maxHitPoints, setMaxHitPoints] = useState(0)
@@ -200,10 +196,10 @@ export default function CharacterSheet() {
                         <div className={'ac-section'}>
                             <div className={'ac-shield'}>
                                 <ACShield
-                                    armor={{"acBonus": 0, "dexCap": 0}}
-                                    shield={{"acBonus": 0}}
+                                    armor={{"acBonus": 5, "dexCap": 6}}
+                                    shield={{"acBonus": 2}}
                                     dexterity={characterData?.abilityScores[1].score}
-                                    additionalMods={0}
+                                    additionalMods={2}
                                     armorClass={characterData?.armorClass}/>
                             </div>
                             <div className={'ac-stats'}>

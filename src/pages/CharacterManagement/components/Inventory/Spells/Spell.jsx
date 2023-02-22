@@ -25,7 +25,7 @@ export default function Spell({ spell, diceClient }) {
                 <SpellIcon
                     className={'spell-icon-svg'}
                     onClick={() => {
-                        //TODO - Add functionality to burn a spell slot from here
+                        //TODO - Add functionality to burn a spell slot from here using context api
                         console.log("Spell has been cast " + spell.name)
                     }} />
             </div>
