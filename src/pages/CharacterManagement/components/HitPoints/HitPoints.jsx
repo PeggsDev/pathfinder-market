@@ -36,11 +36,11 @@ export default function HealthPoints(props) {
             updateTempHitPoints(temp - Number(hp))
         } else {
             updateTempHitPoints(0)
-            let newCurrent = total - Number(hp) <= 0 ? 0 : total - Number(hp)
-            if (newCurrent <= 0) {
+            let newTotal = total - Number(hp) <= 0 ? 0 : total - Number(hp)
+            if (newTotal <= 0) {
                 applyZeroHitPointConditions()
             }
-            updateCurrentHitPoints(newCurrent)
+            updateCurrentHitPoints(newTotal)
         }
     }
 
