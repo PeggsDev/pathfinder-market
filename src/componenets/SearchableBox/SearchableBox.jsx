@@ -10,8 +10,9 @@ export default function SearchableBox({placeHolder, data, selectedItems, addItem
     const [selected, setSelected] = useState([])
 
     function addSelectedItem(item) {
-        setSelected([...selected, item])
-        addItems(JSON.parse(JSON.stringify(selected)))
+        const selectedItem = [...selected, item]
+        setSelected(selectedItem)
+        addItems(selectedItem)
     }
 
     function handleFilter(event) {
