@@ -52,6 +52,11 @@ export default function NavBar() {
                         </a>
                     </li>
                     <li>
+                        <Link to={'/login'}>
+                            <a>Login</a>
+                        </Link>
+                    </li>
+                    <li>
                         <a href={'#'}>
                             <SearchIcon onClick={() => setHidden(!isHidden)}/>
                         </a>

@@ -6,7 +6,7 @@ import {useState} from "react";
 export default function SearchableBox({placeHolder, data, selectedItems, addItems}) {
 
     const [filteredData, setFilteredData] = useState([])
-    const [searchItem, setSearchItem] = useState('')
+    const [searchItem, setSearchItem] = useState()
     const [selected, setSelected] = useState([])
 
     function addSelectedItem(item) {
@@ -17,11 +17,12 @@ export default function SearchableBox({placeHolder, data, selectedItems, addItem
 
     function handleFilter(event) {
         const searchTerm = event.target.value
-        setSearchItem(searchTerm)
         const filterResult = data.filter((item) => {
-            return item.name.toLowerCase().includes(searchItem.toLowerCase())
+            return item.name.toLowerCase().includes(searchTerm.toLowerCase())
         })
-        searchItem === '' ? setFilteredData([]) : setFilteredData(filterResult)
+
+        searchTerm === '' ? setFilteredData([]) : setFilteredData(filterResult)
+        setSearchItem(searchTerm)
     }
 
     function clearInput() {
