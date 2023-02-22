@@ -7,22 +7,19 @@ export default function SearchableBox({placeHolder, data, selectedItems, addItem
 
     const [filteredData, setFilteredData] = useState([])
     const [searchItem, setSearchItem] = useState()
-    const [selected, setSelected] = useState([])
 
     function addSelectedItem(item) {
-        const selectedItem = [...selected, item]
-        setSelected(selectedItem)
-        addItems(selectedItem)
+        const items = [...selectedItems, item]
+        addItems(items)
     }
 
     function handleFilter(event) {
         const searchTerm = event.target.value
-        const filterResult = data.filter((item) => {
-            return item.name.toLowerCase().includes(searchTerm.toLowerCase())
-        })
-
-        searchTerm === '' ? setFilteredData([]) : setFilteredData(filterResult)
         setSearchItem(searchTerm)
+        const filterResult = data.filter((item) => {
+            return item.name.toLowerCase().includes(searchItem.toLowerCase())
+        })
+        searchItem === '' ? setFilteredData([]) : setFilteredData(filterResult)
     }
 
     function clearInput() {
