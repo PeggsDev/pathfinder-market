@@ -10,6 +10,16 @@ export default function Skills(props) {
 
     const {characterData, skills, skillsCallback, diceClient, refreshData} = props
 
+    function compareBySkill( a, b ) {
+        if ( a.skill.toLowerCase() < b.skill.toLowerCase() ){
+            return -1;
+        }
+        if ( a.skill.toLowerCase() > b.skill.toLowerCase() ){
+            return 1;
+        }
+        return 0;
+    }
+
     function addLore() {
         skillsCallback([...skills,
             {
@@ -18,8 +28,6 @@ export default function Skills(props) {
                 "proficiencyLevel": "T"
             }
         ])
-        console.log('LORE ADDED')
-        console.log(JSON.stringify(skills))
     }
 
     function Skill({skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
@@ -27,9 +35,7 @@ export default function Skills(props) {
         return (<div className={'skill-box'}>
             <div className={'skill-title-proficiency'}>
                 <div className={'proficiency-indicator'}>
-                    <label style={
-                        {color: `${proficiencyColourEnum[proficiencyIndicator]}`}
-                    }>
+                    <label style={{color: `${proficiencyColourEnum[proficiencyIndicator]}`}}>
                         {proficiencyIndicator}
                     </label>
                 </div>
@@ -76,7 +82,7 @@ export default function Skills(props) {
                     <div className={'skill-title-skill'}>SKILL</div>
                     <div className={'skill-title-bonus title'}>BONUS</div>
                 </div>
-                {skills?.map((skill, index) => {
+                {skills?.sort(compareBySkill).map((skill, index) => {
                     const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
                     return (
                         <Skill
@@ -101,5 +107,4 @@ export default function Skills(props) {
             </div>
         </>
     )
-    //.sort((a, b) => a.itemM > b.itemM ? 1 : -1)
 }
