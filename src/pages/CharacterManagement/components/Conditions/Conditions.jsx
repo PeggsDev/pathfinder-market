@@ -1,11 +1,9 @@
 import './Conditions.scss'
 import SearchableBox from "../../../../componenets/SearchableBox/SearchableBox";
 import {ReactComponent as RemoveConditionIcon} from "../../../../componenets/icons/xmark-solid.svg";
-import {useState} from 'react';
 
 export default function Conditions({conditionData, currentConditions, applyConditions}) {
 
-    const [displayIcon, setDisplayIcon] = useState()
     const reducedConditions = removeAndCountDuplicates(currentConditions)
 
     function removeAndCountDuplicates(conditions) {
@@ -32,7 +30,7 @@ export default function Conditions({conditionData, currentConditions, applyCondi
             currentCondition => currentCondition.name === condition.name
         );
         currentConditions.splice(index, 1)
-        applyConditions(currentConditions)
+        applyConditions(JSON.parse(JSON.stringify(currentConditions)))
     }
 
     return (
@@ -54,14 +52,10 @@ export default function Conditions({conditionData, currentConditions, applyCondi
                     return (
                         <div
                             key={index}
-                            className={'current-condition'}
-                            onMouseOver={() => setDisplayIcon(true)}
-                            onMouseLeave={() => setDisplayIcon(false)}>
-                            {
-                                displayIcon && <RemoveConditionIcon
-                                    className={'remove-condition-icon'}
-                                    onClick={() => decrementConditionCount(condition)}/>
-                            }
+                            className={'current-condition'}>
+                            <RemoveConditionIcon
+                                className={'remove-condition-icon'}
+                                onClick={() => decrementConditionCount(condition)}/>
                             <div key={index} className={'condition'}
                                  onClick={() => incrementConditionCount(condition)}>
                                 {condition.name}
