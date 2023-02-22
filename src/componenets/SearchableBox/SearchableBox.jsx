@@ -11,8 +11,7 @@ export default function SearchableBox({placeHolder, data, selectedItems, addItem
 
     function addSelectedItem(item) {
         setSelected([...selected, item])
-        addItems(selected)
-        console.log(selected)
+        addItems(JSON.parse(JSON.stringify(selected)))
     }
 
     function handleFilter(event) {
