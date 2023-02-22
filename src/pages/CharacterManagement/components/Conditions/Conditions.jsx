@@ -4,7 +4,15 @@ import {ReactComponent as RemoveConditionIcon} from "../../../../componenets/ico
 
 export default function Conditions({conditionData, currentConditions, applyConditions}) {
 
-    const reducedConditions = removeAndCountDuplicates(currentConditions)
+    function compareByName( a, b ) {
+        if ( a.name < b.name ){
+            return -1;
+        }
+        if ( a.name > b.name ){
+            return 1;
+        }
+        return 0;
+    }
 
     function removeAndCountDuplicates(conditions) {
         return Object.values(conditions.reduce((previous, current) => {
@@ -35,11 +43,6 @@ export default function Conditions({conditionData, currentConditions, applyCondi
 
     return (
         <div className={'conditions-wrapper'}>
-            {/* Army Conditions: Attitudes: Friendly, Helpful, Hostile, Indifferent, Unfriendly
-            Death and Dying: Doomed, Dying, Unconscious, Wounded
-            Degrees of Detection: Hidden, Observed, Undetected, Unnoticed
-            Lowered Abilities: Clumsy, Drained, Enfeebled, Stupefied
-            Senses: Blinded, Concealed, Dazzled, Deafened, Invisible */}
 
             <SearchableBox
                 placeHolder={'Search Conditions...'}
@@ -48,7 +51,7 @@ export default function Conditions({conditionData, currentConditions, applyCondi
                 addItems={applyConditions}/>
 
             <div className={'current-conditions-wrapper'}>
-                {reducedConditions?.map((condition, index) => {
+                {removeAndCountDuplicates(currentConditions)?.sort(compareByName).map((condition, index) => {
                     return (
                         <div
                             key={index}
