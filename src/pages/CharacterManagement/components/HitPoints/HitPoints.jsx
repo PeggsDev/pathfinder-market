@@ -1,7 +1,18 @@
 import './HitPoints.scss'
-import { useState } from "react";
+import {useContext, useState} from "react";
+import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
 
 export default function HealthPoints(props) {
+
+    const {conditionData, currentConditions, applyConditions} = useContext(ConditionsCtx)
+
+    const dying = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
+    const blinded = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'blinded'.toLowerCase())]
+    const flatFooted = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'flat-footed'.toLowerCase())]
+    const unconscious = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'unconscious'.toLowerCase())]
+
+    console.log(JSON.stringify(currentConditions))
+
     const {
         current,
         max,
@@ -18,8 +29,13 @@ export default function HealthPoints(props) {
     }
 
     function takeDamage() {
-
         let total = current + temp
+
+        if (current <= 0) {
+            console.log(true)
+            applyConditions(JSON.parse(JSON.stringify([...currentConditions, dying, dying, blinded, flatFooted, unconscious])))
+            console.log(JSON.stringify(currentConditions))
+        }
 
         if (Number(hp) <= temp) {
             updateTempHitPoints(temp - Number(hp))
@@ -31,7 +47,6 @@ export default function HealthPoints(props) {
 
     return (
         <div className={'hp-section'}>
-
             <div className={'hp-wrapper'}>
                 <div className={'hp-section-title'}>Hit Points</div>
                 <div className={'hit-point-info-wrapper'}>
@@ -46,18 +61,18 @@ export default function HealthPoints(props) {
                     <div className={'hit-point temp-hp'}>
                         <div className={'hp-label'}>Temp</div>
                         <input className={'hp-value temp-hp-input'}
-                            type={'number'}
-                            value={temp <= 0 ? '' : temp}
-                            onChange={(e) => updateTempHitPoints(Number(e.target.value))} />
+                               type={'number'}
+                               value={temp <= 0 ? '' : temp}
+                               onChange={(e) => updateTempHitPoints(Number(e.target.value))}/>
                     </div>
                 </div>
             </div>
-            <div className='vertical-line-hp' />
+            <div className='vertical-line-hp'/>
             <div className={'hit-point manage-hp'}>
                 <button className={'heal-button'} onClick={() => healHP()}>heal</button>
                 <input className={'hit-point-input'}
-                    type={'number'}
-                    onChange={(e) => setHp(Number(e.target.value))} />
+                       type={'number'}
+                       onChange={(e) => setHp(Number(e.target.value))}/>
                 <button className={'damage-button'} onClick={() => takeDamage()}>damage</button>
             </div>
         </div>

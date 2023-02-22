@@ -43,7 +43,6 @@ export function rollDice(client, die, dieCount, theme) {
 }
 
 export default function App() {
-
     return (
         <div>
             <BrowserRouter>

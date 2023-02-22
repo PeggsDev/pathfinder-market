@@ -21,6 +21,7 @@ import {useParams} from "react-router-dom";
 import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
 import {proficiencyColourEnum} from "../../App";
+import {ConditionsCtx, ConditionsDataProvider} from "../../contexts/ConditionsCtx";
 
 
 export function calculateModifier(value) {
@@ -89,8 +90,8 @@ export default function CharacterSheet() {
     const [activeTab, setActiveTab] = useState((localStorage.getItem('activeTab')))
 
     /* Condition Management */
-    const [conditionData, setConditionData] = useState([])
-    const [currentConditions, applyConditions] = useState([])
+    // const [conditionData, setConditionData] = useState([])
+    // const [currentConditions, applyConditions] = useState([])
 
     /* Hit Points */
     const [currentHitPoints, setCurrentHitPoints] = useState(0)
@@ -128,19 +129,8 @@ export default function CharacterSheet() {
         })();
     }, []);
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await fetch('http://localhost:3001/conditions');
-                const json = await response.json();
-                setConditionData(json)
-            } catch (error) {
-                console.log("error", error);
-            }
-        })();
-    }, []);
-
     return (
+        <ConditionsDataProvider>
         <div className={'character-sheet'}>
 
             <section className={'character-sheet-grid'}>
@@ -270,19 +260,17 @@ export default function CharacterSheet() {
                 </section>
 
                 <section className={'character-sheet-component hit-points'}>
-                    <HealthPoints
-                        current={currentHitPoints}
-                        updateCurrentHitPoints={setCurrentHitPoints}
-                        max={maxHitPoints}
-                        temp={tempHitPoints}
-                        updateTempHitPoints={setTempHitPoints}/>
+                        <HealthPoints
+                            current={currentHitPoints}
+                            updateCurrentHitPoints={setCurrentHitPoints}
+                            max={maxHitPoints}
+                            temp={tempHitPoints}
+                            updateTempHitPoints={setTempHitPoints}/>
+
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
-                    <Conditions
-                        conditionData={conditionData}
-                        currentConditions={currentConditions}
-                        applyConditions={applyConditions}/>
+                        <Conditions/>
                 </section>
 
                 <section className={'character-sheet-component class-dc'}>
@@ -524,5 +512,6 @@ export default function CharacterSheet() {
                 <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
             </section>
         </div>
+</ConditionsDataProvider>
     )
 }

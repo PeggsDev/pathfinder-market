@@ -1,8 +1,14 @@
 import './Conditions.scss'
 import SearchableBox from "../../../../componenets/SearchableBox/SearchableBox";
 import {ReactComponent as RemoveConditionIcon} from "../../../../componenets/icons/xmark-solid.svg";
+import {useContext} from "react";
+import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
 
-export default function Conditions({conditionData, currentConditions, applyConditions}) {
+export default function Conditions() {
+
+   const  {conditionData, currentConditions, applyConditions} = useContext(ConditionsCtx)
+
+    console.log(currentConditions)
 
     function compareByName( a, b ) {
         if ( a.name.toLowerCase() < b.name.toLowerCase() ){
