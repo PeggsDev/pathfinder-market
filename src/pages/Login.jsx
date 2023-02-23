@@ -1,6 +1,6 @@
 import './Login.scss'
 import {FcGoogle} from "react-icons/fc";
-import {BsTwitch} from "react-icons/bs";
+import {AiFillApple} from "react-icons/ai";
 import {GoogleAuthProvider, signInWithRedirect} from 'firebase/auth'
 import {auth} from '../config/firebase'
 
@@ -29,10 +29,10 @@ export default function Login() {
                         <FcGoogle className={'google-logo'}/>
                         Login with Google
                     </button>
-                    {/*<button className={'login-btn twitch'} onClick={GoogleLogin}>*/}
-                    {/*    <BsTwitch className={'twitch-logo'}/>*/}
-                    {/*    Login with Twitch*/}
-                    {/*</button>*/}
+                    <button className={'login-btn apple'} onClick={GoogleLogin}>
+                       <AiFillApple className={'apple-logo'}/>
+                       Login with Apple
+                    </button>
                 </div>
             </div>
         </div>

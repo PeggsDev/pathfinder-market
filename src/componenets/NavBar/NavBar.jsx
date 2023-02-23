@@ -1,13 +1,13 @@
 import './NavBar.scss'
 
-import {ReactComponent as HomeIcon} from "./icons/house-solid.svg";
-import {ReactComponent as SearchIcon} from "./icons/magnifying-glass-solid.svg";
-import {ReactComponent as ShoppingBagIcon} from "./icons/bag-shopping-solid.svg";
-import {useState} from "react";
-import {Link} from 'react-router-dom'
+import { ReactComponent as HomeIcon } from "./icons/house-solid.svg";
+import { ReactComponent as SearchIcon } from "./icons/magnifying-glass-solid.svg";
+import { ReactComponent as ShoppingBagIcon } from "./icons/bag-shopping-solid.svg";
+import { useState } from "react";
+import { Link } from 'react-router-dom'
 import SearchBar from "../SearchBar/SearchBar";
-import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from '../../config/firebase'
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from '../../config/firebase'
 
 export default function NavBar() {
     const [isHidden, setHidden] = useState(false);
@@ -20,7 +20,7 @@ export default function NavBar() {
                     <li>
                         <a href={'#'}>
                             <Link to={'/'}>
-                                <HomeIcon className={'inglorious-logo'}/>
+                                <HomeIcon className={'inglorious-logo'} />
                             </Link>
                         </a>
                     </li>
@@ -45,9 +45,9 @@ export default function NavBar() {
                         </a>
                     </li>
                     <li>
-                        <a href={'#'}>
+                        <Link to={'/goblins-cauldron/character-sheet/gsrwe4tegdfg90d#'}>
                             Tools
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href={'#'}>
@@ -56,18 +56,18 @@ export default function NavBar() {
                     </li>
                     <li>
                         <a href={'#'}>
-                            <SearchIcon onClick={() => setHidden(!isHidden)}/>
+                            <SearchIcon onClick={() => setHidden(!isHidden)} />
                         </a>
                     </li>
                     <li>
                         <a href={'#'}>
-                            <ShoppingBagIcon/>
+                            <ShoppingBagIcon />
                         </a>
                     </li>
                 </ul>
                 {!user && (
-                    <Link to={'/auth/login'}>
-                        <a className={'nav-bar-login-btm'}>Login</a>
+                    <Link to={'/auth/login'} className={'nav-bar-login-btm'}>
+                        Login
                     </Link>
                 )}
                 {user && (
@@ -75,12 +75,12 @@ export default function NavBar() {
                         <img
                             className={'nav-bar-login-img'} src={user.photoURL}
                             alt={'avatar'}
-                            referrerPolicy={'no-referrer'}/>
+                            referrerPolicy={'no-referrer'} />
                     </Link>
                 )}
             </nav>
-            <SearchBar isVisible={isHidden} setVisibility={setHidden}/>
-            <div className={`overlay ${isHidden ? 'show' : ''}`} onClick={() => setHidden(!isHidden)}/>
+            <SearchBar isVisible={isHidden} setVisibility={setHidden} />
+            <div className={`overlay ${isHidden ? 'show' : ''}`} onClick={() => setHidden(!isHidden)} />
         </div>
     )
 }

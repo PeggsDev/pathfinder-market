@@ -136,6 +136,8 @@ export default function CharacterSheet() {
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
+                             alt={'avatar'} 
+                             referrerPolicy={'no-referrer'}
                              onMouseEnter={() => {
                                  setImage(true)
                              }}
