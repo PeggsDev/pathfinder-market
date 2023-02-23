@@ -1,6 +1,6 @@
 import './Login.scss'
 import {FcGoogle} from "react-icons/fc";
-import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+import {GoogleAuthProvider, signInWithRedirect} from 'firebase/auth'
 import {auth} from '../config/firebase'
 
 export default function Login() {
@@ -9,7 +9,7 @@ export default function Login() {
 
     async function GoogleLogin() {
         try {
-            const result = await signInWithPopup(auth, googleProvider)
+            const result = await signInWithRedirect(auth, googleProvider)
             console.log(result.user)
         } catch (error) {
             console.log(error)
