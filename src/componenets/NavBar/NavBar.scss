@@ -20,6 +20,42 @@
     padding: 0 0.5em;
   }
 
+  .nav-bar-login-btm {
+    top: 0;
+    right: 0;
+    position: fixed;
+    margin-top: 1.25rem;
+    margin-right: 2rem;
+    color: var(--clr-white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: all 450ms ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .nav-bar-login-img {
+    top: 0;
+    right: 0;
+    position: fixed;
+    margin-top: 0.75rem;
+    margin-right: 2rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    border: 2px solid var(--clr-white);
+    opacity: 0.8;
+    transition: all 450ms ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   nav li {
     transition: all 450ms ease;
   }
@@ -41,7 +77,7 @@
       list-style: none;
     }
 
-    li a {
+    a {
       color: var(--clr-white);
       text-decoration: none;
       font-weight: bold;

@@ -6,9 +6,12 @@ import {ReactComponent as ShoppingBagIcon} from "./icons/bag-shopping-solid.svg"
 import {useState} from "react";
 import {Link} from 'react-router-dom'
 import SearchBar from "../SearchBar/SearchBar";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from '../../config/firebase'
 
 export default function NavBar() {
     const [isHidden, setHidden] = useState(false);
+    const [user, loading] = useAuthState(auth)
 
     return (
         <div className={'nav-container'}>
@@ -52,11 +55,6 @@ export default function NavBar() {
                         </a>
                     </li>
                     <li>
-                        <Link to={'/auth/login'}>
-                            <a>Login</a>
-                        </Link>
-                    </li>
-                    <li>
                         <a href={'#'}>
                             <SearchIcon onClick={() => setHidden(!isHidden)}/>
                         </a>
@@ -67,6 +65,19 @@ export default function NavBar() {
                         </a>
                     </li>
                 </ul>
+                {!user && (
+                    <Link to={'/auth/login'}>
+                        <a className={'nav-bar-login-btm'}>Login</a>
+                    </Link>
+                )}
+                {user && (
+                    <Link to={'/dashboard'}>
+                        <img
+                            className={'nav-bar-login-img'} src={user.photoURL}
+                            alt={'avatar'}
+                            referrerPolicy={'no-referrer'}/>
+                    </Link>
+                )}
             </nav>
             <SearchBar isVisible={isHidden} setVisibility={setHidden}/>
             <div className={`overlay ${isHidden ? 'show' : ''}`} onClick={() => setHidden(!isHidden)}/>
