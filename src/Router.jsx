@@ -13,7 +13,7 @@ export default function Router() {
     return (
         <Routes>
             <Route path={'/'} element={<HomePage/>}/>
-            <Route path={'/login'} element={<Login/>}/>
+            <Route path={'/auth/login'} element={<Login/>}/>
             <Route path={'/details'} element={<SourceBookDetailsPage/>}/>
             <Route path={'/goblins-cauldron/build'} element={<CharacterBuilder/>}/>
             <Route path={'/goblins-cauldron/character-sheet/:id'} element={

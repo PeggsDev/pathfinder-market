@@ -60,6 +60,8 @@ export default function CharacterSheet() {
     const threeDDiceApiKey = process.env.REACT_APP_THREE_D_DICE_API_KEY
     const roomSlug = process.env.REACT_APP_THREE_D_DICE_ROOM_SLUG
 
+    console.log(process.env)
+
     const threeDDiceRef = useRef(ThreeDDice)
     const canvasRef = useRef(null);
 

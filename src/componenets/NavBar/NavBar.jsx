@@ -52,7 +52,7 @@ export default function NavBar() {
                         </a>
                     </li>
                     <li>
-                        <Link to={'/login'}>
+                        <Link to={'/auth/login'}>
                             <a>Login</a>
                         </Link>
                     </li>
