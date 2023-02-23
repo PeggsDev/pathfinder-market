@@ -136,8 +136,6 @@ export default function CharacterSheet() {
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
-                             alt={'avatar'} 
-                             referrerPolicy={'no-referrer'}
                              onMouseEnter={() => {
                                  setImage(true)
                              }}
@@ -145,7 +143,8 @@ export default function CharacterSheet() {
                                  setImage(false)
                              }}
                              src={characterData?.characterImage}
-                             alt={'TODO - Add alternative character image'}/>
+                             alt={'avatar'} 
+                             referrerPolicy={'no-referrer'}/>
                         <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
                     </div>
                     <div className={'character-info-block'}>
