@@ -56,9 +56,9 @@ function AbilityScore({ability, score}) {
 export default function CharacterSheet() {
 
     let {id} = useParams()
-    /** TODO - Extract this to somewhere else and make it globally available */
-    const threeDDiceApiKey = 'kn4MfcKWqPq3WhVMhTVFPFmeW6sgUnpWmtOU3uKy'
-    const roomSlug = '-t_xEwM'
+
+    const threeDDiceApiKey = process.env.REACT_APP_THREE_D_DICE_API_KEY
+    const roomSlug = process.env.REACT_APP_THREE_D_DICE_ROOM_SLUG
 
     const threeDDiceRef = useRef(ThreeDDice)
     const canvasRef = useRef(null);
