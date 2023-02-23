@@ -1,4 +1,5 @@
 import './Login.scss'
+import {FcGoogle} from "react-icons/fc";
 
 export default function Login() {
     return (
@@ -9,7 +10,10 @@ export default function Login() {
                     <h3>Sign in with one of these providers</h3>
                 </div>
                 <div>
-                    <button>Sign in with Google</button>
+                    <button>
+                        <FcGoogle/>
+                        Sign in with Google
+                    </button>
                 </div>
             </div>
         </div>
