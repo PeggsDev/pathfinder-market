@@ -33,8 +33,5 @@ p {
 
 body {
   font-family: 'Poppins', sans-serif;
-  min-height: 100vh;
   display: grid;
-  background: var(--clr-dark);
-  color: var(--clr-white);
 }

@@ -32,6 +32,8 @@
   overflow-y: auto;
   overflow-x: hidden;
   perspective: 1em;
+  background: var(--clr-dark);
+  color: var(--clr-white);
 
   svg {
     fill: var(--clr-white);

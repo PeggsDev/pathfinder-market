@@ -1,0 +1,8 @@
+.account-login-page,
+.account-registration-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--clr-white);
+}

@@ -22,6 +22,9 @@ import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
 import {proficiencyColourEnum} from "../../App";
 
+import {ConditionsCtx, ConditionsDataProvider} from "../../contexts/ConditionsCtx";
+import {GiCampfire, GiChoppedSkull, GiGoblinCamp} from "react-icons/gi";
+
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -168,6 +171,16 @@ export default function CharacterSheet() {
                         <div className={'character-info alignment'}>{characterData?.alignment}</div> */}
                         {/*<div className={'character-info traits'}>Traits</div>*/}
                         {/*<div className={'character-info xp'}>Experience Points</div>*/}
+
+                        {/*Short Rest*/}
+                        {/*<GiCampfire />*/}
+
+                        {/*Long Rest*/}
+                        {/*<GiGoblinCamp/>*/}
+
+                        {/*Death Saves*/}
+                        {/*<GiChoppedSkull />*/}
+
                     </div>
                     <div className='vertical-line'/>
                     <section className={'character-sheet-component ability-scores'}>
