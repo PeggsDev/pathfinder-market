@@ -1,7 +1,7 @@
 import './CharacterSheet.scss'
 import React, {useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
-import {IRoll, ThreeDDiceRollEvent, ThreeDDice, ITheme, ThreeDDiceAPI, IDiceConfig} from 'dddice-js';
+import {ThreeDDice, ThreeDDiceAPI} from 'dddice-js';
 
 import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 //import CharacterSheetBackground from "../../images/andreas-rocha-theicecastle03.jpg";
@@ -14,14 +14,13 @@ import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
 import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
-import {ReactComponent as PotionHPIcon} from "./svg/HP Potion Bottle.svg";
+
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
 import {useParams} from "react-router-dom";
 import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
 import {proficiencyColourEnum} from "../../App";
-import {ConditionsCtx, ConditionsDataProvider} from "../../contexts/ConditionsCtx";
 
 
 export function calculateModifier(value) {
