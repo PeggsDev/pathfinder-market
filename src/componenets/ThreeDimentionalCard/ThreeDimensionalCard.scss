@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  //background: lightblue;
   margin-top: auto;
   margin-bottom: auto;
   min-width: 35rem;
@@ -68,6 +67,30 @@
     font-weight: lighter;
     text-align: center;
     color: var(--clr-accent-light);
+  }
+
+  h4 {
+    font-size: 0.7rem;
+    padding: 0.5rem 0 0 0;
+    font-weight: lighter;
+    text-align: center;
+    color: var(--clr-accent-light);
+    line-height: 50%;
+
+    a {
+      font-weight: bold;
+      color: #520876;
+      text-decoration: none;
+    }
+
+    b {
+      font-weight: lighter;
+      margin: 0 0.2rem;
+    }
+  }
+
+  .legal-section {
+    margin-top: 1rem;
   }
 
   .login-btn {

@@ -1,11 +1,12 @@
 import './ThreeDimensionalCard.scss'
-import {FcGoogle} from "react-icons/fc";
-import {AiFillApple} from "react-icons/ai";
-import {GoogleAuthProvider, signInWithRedirect} from 'firebase/auth'
-import {auth} from '../../config/firebase'
-import {useRef, useState} from "react";
+import { FcGoogle } from "react-icons/fc";
+import { AiFillApple } from "react-icons/ai";
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth'
+import { auth } from '../../config/firebase'
+import { useState } from "react";
+import { Link } from 'react-router-dom'
 
-export default function ThreeDimensionalCard({title, subTitle, circleImage, image}) {
+export default function ThreeDimensionalCard({ title, subTitle, circleImage, image }) {
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -60,24 +61,24 @@ export default function ThreeDimensionalCard({title, subTitle, circleImage, imag
 
     return (
         <div className={'container'}
-             onMouseMove={containerAnimation}
-             onMouseEnter={handleOnMouseEnter}
-             onMouseLeave={resetContainerAnimation}>
+            onMouseMove={containerAnimation}
+            onMouseEnter={handleOnMouseEnter}
+            onMouseLeave={resetContainerAnimation}>
             <div className={'three-d-card'}
-                 style={{
-                     transform: `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`,
-                     transition: `${transition}`
-                 }}>
+                style={{
+                    transform: `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`,
+                    transition: `${transition}`
+                }}>
                 <div className={'character'}>
                     {/*<img className={'background-circle'} src={circleImage}/>*/}
                     <img className={'goblin'} src={image} alt={title}
-                         style={{
-                             transform: `translateZ(${popImage}rem)`
-                         }}/>
+                        style={{
+                            transform: `translateZ(${popImage}rem)`
+                        }} />
                 </div>
                 <div
                     className={'info'}
-                    style={{transform: `translateZ(${popTitle}rem)`}}>
+                    style={{ transform: `translateZ(${popTitle}rem)` }}>
                     <h2 className={'title'}>
                         {title}
                     </h2>
@@ -91,17 +92,35 @@ export default function ThreeDimensionalCard({title, subTitle, circleImage, imag
                     style={{
                         transform: `translateZ(${popButton}rem)`
                     }}>
-                    <FcGoogle className={'google-logo'}/>
+                    <FcGoogle className={'google-logo'} />
                     Login with Google
                 </button>
                 <button className={'login-btn apple'}
-                        onClick={AppleLogin}
-                        style={{
-                            transform: `translateZ(${popButton}rem)`
-                        }}>
-                    <AiFillApple className={'apple-logo'}/>
+                    onClick={AppleLogin}
+                    style={{
+                        transform: `translateZ(${popButton}rem)`
+                    }}>
+                    <AiFillApple className={'apple-logo'} />
                     Login with Apple
                 </button>
+                <div className={'legal-section'}>
+                    <h4>By registering, you agree to inglorious dragons's</h4>
+                    <h4>
+                        <Link to={'/temrs-of-service'}>
+                            <a>
+                                Terms of Service
+                            </a>
+                        </Link>
+                        <b>
+                        and
+                        </b>
+                        <Link to={'/end-user-license-agreement'}>
+                            <a>
+                                End User License Agreement.
+                            </a>
+                        </Link>
+                    </h4>
+                </div>
             </div>
         </div>
     )
