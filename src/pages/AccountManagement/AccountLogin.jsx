@@ -1,5 +1,4 @@
 import './Account.scss'
-import Goblin from '../../images/Goblin_GoblinWarrior.png'
 import GoblinPyro from '../../images/goblin-pyro.png'
 import CircleImage from '../../images/parallax-background.png'
 import ThreeDimensionalCard from "../../componenets/ThreeDimentionalCard/ThreeDimensionalCard";

@@ -5,7 +5,8 @@
   //background: lightblue;
   margin-top: auto;
   margin-bottom: auto;
-  width: 35rem;
+  min-width: 35rem;
+  perspective: 1000px;
 
   .three-d-card {
     display: flex;
@@ -18,6 +19,7 @@
     border-radius: 2rem;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2),
     0 0 2rem rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
   }
 
   .character{
@@ -28,6 +30,7 @@
     height: 20rem;
     margin-bottom: 4rem;
     position: relative;
+    transform-style: preserve-3d;
   }
 
   .background-circle {
@@ -42,6 +45,11 @@
   .goblin {
     min-height: 30rem;
     z-index: 2;
+    transition: all 0.2s ease-out;
+  }
+
+  .info {
+    transition: all 0.2s ease-out;
   }
 
   h2,
@@ -58,6 +66,7 @@
     font-size: 0.8rem;
     padding: 0 0 0.5rem 0;
     font-weight: lighter;
+    text-align: center;
     color: var(--clr-accent-light);
   }
 
@@ -78,6 +87,7 @@
     opacity: 0.9;
     border: none;
     cursor: pointer;
+    transition: all 0.2s ease-out;
 
     &:hover {
       background: var(--clr-accent-light);
