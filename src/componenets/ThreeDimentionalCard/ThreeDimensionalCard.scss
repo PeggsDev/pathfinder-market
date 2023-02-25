@@ -54,6 +54,7 @@
   h2,
   h3 {
     color: var(--clr-dark);
+    text-align: center;
   }
 
   h2 {
@@ -102,11 +103,10 @@
     height: 3rem;
     width: 18rem;
     border-radius: 1.5rem;
-    gap: 1.2rem;
+    gap: 3rem;
     color: var(--clr-white);
     background: var(--clr-accent-dark);
-    font-size: 1rem;
-    font-weight: bold;
+    font-weight: lighter;
     opacity: 0.9;
     border: none;
     cursor: pointer;

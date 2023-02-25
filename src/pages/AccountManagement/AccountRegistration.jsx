@@ -8,7 +8,7 @@ export default function AccountRegistration() {
         <div className={'account-registration-page'}>
             <ThreeDimensionalCard
                 title={'Creat an Account'}
-                subTitle={'Create with one of these providers'}
+                subTitle={'Create with one of these popular providers'}
                 circleImage={CircleImage}
                 image={Goblin}
             />

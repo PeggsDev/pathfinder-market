@@ -38,7 +38,7 @@ export default function ThreeDimensionalCard({ title, subTitle, circleImage, ima
     /* Animation Functions */
     function containerAnimation(event) {
         setXAxis((window.innerWidth / 2 - event.pageX) / 15)
-        setYAxis((window.innerHeight / 2 - event.pageY) / 15)
+        setYAxis((window.innerHeight / 2 - event.pageY) / 40)
     }
 
     function handleOnMouseEnter(event) {
@@ -70,7 +70,6 @@ export default function ThreeDimensionalCard({ title, subTitle, circleImage, ima
                     transition: `${transition}`
                 }}>
                 <div className={'character'}>
-                    {/*<img className={'background-circle'} src={circleImage}/>*/}
                     <img className={'goblin'} src={image} alt={title}
                         style={{
                             transform: `translateZ(${popImage}rem)`
@@ -93,15 +92,16 @@ export default function ThreeDimensionalCard({ title, subTitle, circleImage, ima
                         transform: `translateZ(${popButton}rem)`
                     }}>
                     <FcGoogle className={'google-logo'} />
-                    Login with Google
+                    Signup with Google
                 </button>
-                <button className={'login-btn apple'}
+                <button
+                    className={'login-btn apple'}
                     onClick={AppleLogin}
                     style={{
                         transform: `translateZ(${popButton}rem)`
                     }}>
                     <AiFillApple className={'apple-logo'} />
-                    Login with Apple
+                    Signup with Apple
                 </button>
                 <div className={'legal-section'}>
                     <h4>By registering, you agree to inglorious dragons's</h4>
@@ -112,7 +112,7 @@ export default function ThreeDimensionalCard({ title, subTitle, circleImage, ima
                             </a>
                         </Link>
                         <b>
-                        and
+                            and
                         </b>
                         <Link to={'/end-user-license-agreement'}>
                             <a>
