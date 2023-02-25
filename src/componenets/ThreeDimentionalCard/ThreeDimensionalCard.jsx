@@ -6,7 +6,7 @@ import { auth } from '../../config/firebase'
 import { useState } from "react";
 import { Link } from 'react-router-dom'
 
-export default function ThreeDimensionalCard({ title, subTitle, circleImage, image }) {
+export default function ThreeDimensionalCard({ title, subTitle, cardType, image }) {
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -88,20 +88,18 @@ export default function ThreeDimensionalCard({ title, subTitle, circleImage, ima
                 <button
                     className={'login-btn google'}
                     onClick={GoogleLogin}
-                    style={{
-                        transform: `translateZ(${popButton}rem)`
-                    }}>
+                    style={{transform: `translateZ(${popButton}rem)`}}>
+
                     <FcGoogle className={'google-logo'} />
-                    Signup with Google
+                    <div className='button-text-wrapper'>{cardType} with Google</div>
                 </button>
                 <button
                     className={'login-btn apple'}
                     onClick={AppleLogin}
-                    style={{
-                        transform: `translateZ(${popButton}rem)`
-                    }}>
+                    style={{transform: `translateZ(${popButton}rem)`}}>
+
                     <AiFillApple className={'apple-logo'} />
-                    Signup with Apple
+                    <div className='button-text-wrapper'>{cardType} with Apple</div>
                 </button>
                 <div className={'legal-section'}>
                     <h4>By registering, you agree to inglorious dragons's</h4>
