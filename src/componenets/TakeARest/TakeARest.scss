@@ -1,0 +1,31 @@
+.rest-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  margin-right: 1.5rem;
+  gap: 1rem;
+}
+
+.rest-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+
+  & h4 {
+    font-size: 0.7rem;
+    color: var(--clr-dice-roll-hover);
+  }
+}
+
+.rest-button-svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+
+  &:hover {
+    fill: var(--clr-dice-roll-hover);
+  }
+}

@@ -22,8 +22,7 @@ import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
 import {proficiencyColourEnum} from "../../App";
 
-import {ConditionsCtx, ConditionsDataProvider} from "../../contexts/ConditionsCtx";
-import {GiCampfire, GiChoppedSkull, GiGoblinCamp} from "react-icons/gi";
+import TakeARest from "../../componenets/TakeARest/TakeARest";
 
 
 export function calculateModifier(value) {
@@ -145,7 +144,7 @@ export default function CharacterSheet() {
                                  setImage(false)
                              }}
                              src={characterData?.characterImage}
-                             alt={'avatar'} 
+                             alt={'avatar'}
                              referrerPolicy={'no-referrer'}/>
                         <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
                     </div>
@@ -171,13 +170,7 @@ export default function CharacterSheet() {
                         <div className={'character-info alignment'}>{characterData?.alignment}</div> */}
                         {/*<div className={'character-info traits'}>Traits</div>*/}
                         {/*<div className={'character-info xp'}>Experience Points</div>*/}
-
-                        {/*Short Rest*/}
-                        {/*<GiCampfire />*/}
-
-                        {/*Long Rest*/}
-                        {/*<GiGoblinCamp/>*/}
-
+                        <TakeARest/>
                         {/*Death Saves*/}
                         {/*<GiChoppedSkull />*/}
 
@@ -270,17 +263,17 @@ export default function CharacterSheet() {
                 </section>
 
                 <section className={'character-sheet-component hit-points'}>
-                        <HealthPoints
-                            current={currentHitPoints}
-                            updateCurrentHitPoints={setCurrentHitPoints}
-                            max={maxHitPoints}
-                            temp={tempHitPoints}
-                            updateTempHitPoints={setTempHitPoints}/>
+                    <HealthPoints
+                        current={currentHitPoints}
+                        updateCurrentHitPoints={setCurrentHitPoints}
+                        max={maxHitPoints}
+                        temp={tempHitPoints}
+                        updateTempHitPoints={setTempHitPoints}/>
 
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
-                        <Conditions/>
+                    <Conditions/>
                 </section>
 
                 <section className={'character-sheet-component class-dc'}>

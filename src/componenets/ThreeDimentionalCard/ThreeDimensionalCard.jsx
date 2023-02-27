@@ -1,12 +1,12 @@
 import './ThreeDimensionalCard.scss'
-import { FcGoogle } from "react-icons/fc";
-import { AiFillApple } from "react-icons/ai";
-import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth'
-import { auth } from '../../config/firebase'
-import { useState } from "react";
-import { Link } from 'react-router-dom'
+import {FcGoogle} from "react-icons/fc";
+import {AiFillApple} from "react-icons/ai";
+import {GoogleAuthProvider, signInWithRedirect} from 'firebase/auth'
+import {auth} from '../../config/firebase'
+import {useState} from "react";
+import {Link} from 'react-router-dom'
 
-export default function ThreeDimensionalCard({ title, subTitle, cardType, image }) {
+export default function ThreeDimensionalCard({title, subTitle, cardType, image}) {
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -61,23 +61,23 @@ export default function ThreeDimensionalCard({ title, subTitle, cardType, image 
 
     return (
         <div className={'container'}
-            onMouseMove={containerAnimation}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={resetContainerAnimation}>
+             onMouseMove={containerAnimation}
+             onMouseEnter={handleOnMouseEnter}
+             onMouseLeave={resetContainerAnimation}>
             <div className={'three-d-card'}
-                style={{
-                    transform: `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`,
-                    transition: `${transition}`
-                }}>
+                 style={{
+                     transform: `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`,
+                     transition: `${transition}`
+                 }}>
                 <div className={'character'}>
                     <img className={'goblin'} src={image} alt={title}
-                        style={{
-                            transform: `translateZ(${popImage}rem)`
-                        }} />
+                         style={{
+                             transform: `translateZ(${popImage}rem)`
+                         }}/>
                 </div>
                 <div
                     className={'info'}
-                    style={{ transform: `translateZ(${popTitle}rem)` }}>
+                    style={{transform: `translateZ(${popTitle}rem)`}}>
                     <h2 className={'title'}>
                         {title}
                     </h2>
@@ -90,7 +90,7 @@ export default function ThreeDimensionalCard({ title, subTitle, cardType, image 
                     onClick={GoogleLogin}
                     style={{transform: `translateZ(${popButton}rem)`}}>
 
-                    <FcGoogle className={'google-logo'} />
+                    <FcGoogle className={'google-logo'}/>
                     <div className='button-text-wrapper'>{cardType} with Google</div>
                 </button>
                 <button
@@ -98,7 +98,7 @@ export default function ThreeDimensionalCard({ title, subTitle, cardType, image 
                     onClick={AppleLogin}
                     style={{transform: `translateZ(${popButton}rem)`}}>
 
-                    <AiFillApple className={'apple-logo'} />
+                    <AiFillApple className={'apple-logo'}/>
                     <div className='button-text-wrapper'>{cardType} with Apple</div>
                 </button>
                 <div className={'legal-section'}>
