@@ -1,6 +1,7 @@
 import './HitPoints.scss'
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
+import TakeARest from "../../../../componenets/TakeARest/TakeARest";
 
 export default function HealthPoints(props) {
 

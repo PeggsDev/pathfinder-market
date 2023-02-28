@@ -21,9 +21,7 @@ import {useParams} from "react-router-dom";
 import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
 import {proficiencyColourEnum} from "../../App";
-
 import TakeARest from "../../componenets/TakeARest/TakeARest";
-
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -166,11 +164,13 @@ export default function CharacterSheet() {
                             </div>
                         </div>
                         <div className={'character-info level'}>Level {characterData?.level}</div>
+                        <div className={'hp-rest-button'}>
+                            <TakeARest/>
+                        </div>
                         {/* <div className={'character-info size'}>{characterData?.size}</div>
                         <div className={'character-info alignment'}>{characterData?.alignment}</div> */}
                         {/*<div className={'character-info traits'}>Traits</div>*/}
                         {/*<div className={'character-info xp'}>Experience Points</div>*/}
-                        <TakeARest/>
                         {/*Death Saves*/}
                         {/*<GiChoppedSkull />*/}
 
@@ -373,7 +373,8 @@ export default function CharacterSheet() {
                                                 diceClient={threeDDiceRef}
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
-                                                weaponRange={system.range}/>
+                                                weaponRange={system.range}
+                                                damageType={system.damage.damageType}/>
                                         )
                                     })}
                                 </div>
@@ -413,7 +414,8 @@ export default function CharacterSheet() {
                                                 diceClient={threeDDiceRef}
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
-                                                weaponRange={system.range}/>
+                                                weaponRange={system.range}
+                                                damageType={system.damage.damageType}/>
                                         )
                                     })}
                                 </div>

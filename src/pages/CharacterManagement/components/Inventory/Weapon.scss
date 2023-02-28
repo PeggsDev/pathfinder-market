@@ -23,16 +23,33 @@
 
   .dice {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: start;
-    flex-direction: row;
     font-size: 0.9rem;
     width: 5rem;
     gap: 0.5rem;
 
     .dice-formula {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: start;
       font-weight: bolder;
       color: var(--clr-skill-dice-roll-hover);
+    }
+
+    .damage-type-icons {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      width: 1.5rem;
+
+      svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        fill: var(--clr-accent-light);
+      }
     }
 
     .action-damage-dice-roll{

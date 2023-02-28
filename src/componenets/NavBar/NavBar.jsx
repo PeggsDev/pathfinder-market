@@ -66,7 +66,7 @@ export default function NavBar() {
                     </li>
                 </ul>
                 {!user && (
-                    <Link to={'/auth/login'} className={'nav-bar-login-btm'}>
+                    <Link to={'/account/login'} className={'nav-bar-login-btm'}>
                         Login
                     </Link>
                 )}
