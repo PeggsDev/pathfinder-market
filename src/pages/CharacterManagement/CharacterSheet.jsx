@@ -14,23 +14,17 @@ import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
 import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
 import {useParams} from "react-router-dom";
 import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
 import {proficiencyColourEnum} from "../../App";
-<<<<<<< Updated upstream
-import TakeARest from "../../componenets/TakeARest/TakeARest";
-=======
-import {ConditionsCtx, ConditionsDataProvider} from "../../contexts/ConditionsCtx";
-import {GiCampfire, GiGoblinCamp} from "react-icons/gi";
 
->>>>>>> Stashed changes
+import TakeARest from "../../componenets/TakeARest/TakeARest";
+
+import {GiCampfire, GiGoblinCamp} from "react-icons/gi";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
