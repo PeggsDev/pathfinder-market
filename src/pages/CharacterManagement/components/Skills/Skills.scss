@@ -47,9 +47,10 @@
   }
 
   .skill-block {
+    position: relative;
     justify-content: start;
     width: 18rem;
-    height: 35rem;
+    height: 37rem;
     overflow-y: auto;
 
     .skill-block-titles {
@@ -184,6 +185,12 @@
 .lore-wrapper:hover {
   cursor: pointer;
   font-weight: bolder;
+}
+
+.lore-skill-panel-wrapper {
+  position: absolute;
+  top: 0;
+  background: #96f134;
 }
 
 .skill-box:nth-child(even) {

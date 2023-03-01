@@ -107,7 +107,6 @@ export default function Skills(props) {
                             skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])}/>
                     )
                 })}
-            </form>
             <div>
                 <div className={'lore-wrapper'}>
                     {isManageLore && <div className={'lore-skill-panel-wrapper'}>
@@ -137,6 +136,7 @@ export default function Skills(props) {
                     </div>
                 </div>
             </div>
+            </form>
         </>
     )
 }
