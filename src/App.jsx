@@ -5,7 +5,6 @@ import NavBar from "./componenets/NavBar/NavBar";
 import Router from "./Router";
 
 
-
 import {
     BrowserRouter
 } from 'react-router-dom'
@@ -25,9 +24,24 @@ export const proficiencyColourEnum = {
     'M': '#FE9920',
     'L': '#FA7921'
 }
-// export const pathfinderActionIconsEnum = {
-//     0: <FreeActionIcon />
-// }
+
+export const proficiencies = [
+    {value: 'U', label: 'Untrained'},
+    {value: 'T', label: 'Trained'},
+    {value: 'E', label: 'Expert'},
+    {value: 'M', label: 'Master'},
+    {value: 'L', label: 'Legendary'}
+]
+
+export const abilities = [
+    {value: 'strength', label: 'Strength'},
+    {value: 'dexterity', label: 'Dexterity'},
+    {value: 'constitution', label: 'Constitution'},
+    {value: 'intelligence', label: 'Intelligence'},
+    {value: 'wisdom', label: 'Wisdom'},
+    {value: 'charisma', label: 'Charisma'}
+
+]
 
 export function rollDice(client, die, dieCount, theme) {
     const rollArray = []

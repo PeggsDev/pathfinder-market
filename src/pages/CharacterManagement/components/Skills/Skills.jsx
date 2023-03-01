@@ -1,36 +1,44 @@
 import './Skills.scss'
-import {proficiencyEnum, proficiencyColourEnum} from "../../../../App";
+import {proficiencyEnum, proficiencyColourEnum, proficiencies, abilities} from "../../../../App";
 import {calculateAbilityBasedModifier} from "../../CharacterSheet";
 import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 
 import {IDieType} from "dddice-js";
 import {rollDice} from "../../../../App";
+import {useState} from "react";
+import {FaFeatherAlt} from "react-icons/fa";
+import CustomSelect from "../../../../componenets/CustomSelect/CustomSelect";
 
 export default function Skills(props) {
 
     const {characterData, skills, skillsCallback, diceClient, refreshData} = props
+    const [isManageLore, setManageLoreStatus] = useState(false)
+    const [loreTitle, setLoreTitle] = useState('')
+    const [loreAbility, setLoreAbility] = useState()
+    const [loreProficiency, setLoreProficiency] = useState()
 
-    function compareBySkill( a, b ) {
-        if ( a.skill.toLowerCase() < b.skill.toLowerCase() ){
+    function compareBySkill(a, b) {
+        if (a.skill.toLowerCase() < b.skill.toLowerCase()) {
             return -1;
         }
-        if ( a.skill.toLowerCase() > b.skill.toLowerCase() ){
+        if (a.skill.toLowerCase() > b.skill.toLowerCase()) {
             return 1;
         }
         return 0;
     }
 
-    function addLore() {
+    function addLore(title, ability, proficiency) {
         skillsCallback([...skills,
             {
-                "skill": "Lore",
-                "ability": "dexterity",
-                "proficiencyLevel": "T"
+                "type": "Lore",
+                "skill": title,
+                "ability": ability,
+                "proficiencyLevel": proficiency
             }
         ])
     }
 
-    function Skill({skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
+    function Skill({type, skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
 
         return (<div className={'skill-box'}>
             <div className={'skill-title-proficiency'}>
@@ -49,7 +57,11 @@ export default function Skills(props) {
             </div>
             <div className={'skill'}>
                 <div className={'skill-name'}>
-                    <label>
+                    <label className={'skill-label-wrapper'}
+                           style={{
+                               fontStyle: type === '' ? '' : 'italic',
+                               color: type === '' ? '' : 'var(--clr-dice-roll-hover)'}}>
+                        {type !== '' && <FaFeatherAlt/>}
                         {skill}
                     </label>
                 </div>
@@ -73,6 +85,21 @@ export default function Skills(props) {
         </div>)
     }
 
+    const selectStyles = {
+        control: (styles) => ({
+            ...styles,
+            background: 'var(--clr-accent-dark)',
+            color: 'var(--clr-dice-roll-hover)',
+            outline: 'none',
+            border: '1px solid var(--clr-dice-roll-hover)',
+            height: '1rem'
+        }),
+        option: (styles) => ({
+            ...styles,
+            background: 'var(--clr-accent-dark)',
+            color: 'var(--clr-dice-roll-hover)'
+        }),
+    }
     return (
         <>
             <form className={'skill-block'}>
@@ -88,6 +115,7 @@ export default function Skills(props) {
                         <Skill
                             key={index}
                             diceClient={diceClient}
+                            type={skill?.type !== `Lore` ? '' : skill?.type}
                             skill={skill?.skill}
                             baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
                             proficiencyIndicator={skill?.proficiencyLevel}
@@ -97,7 +125,26 @@ export default function Skills(props) {
             </form>
             <div>
                 <div className={'lore-wrapper'}>
-                    <div className='manage-lore' onClick={() => addLore()}>
+                    {isManageLore && <div className={'lore-skill-panel-wrapper'}>
+                        <div className={`lore-skill-panel ${isManageLore ? '' : 'hidden'}`}>
+                           <CustomSelect
+                                placeHolder={'Ability'}
+                                data={abilities}
+                                onSelectItem={setLoreAbility}/>
+                            <CustomSelect
+                                placeHolder={'Proficiency'}
+                                data={proficiencies}
+                                onSelectItem={setLoreProficiency}/>
+                            <input className={'lore-skill-title'}
+                                   onChange={(event) => setLoreTitle(event.target.value)}/>
+                            <button
+                                className={'lore-skill-save-btn'}
+                                onClick={() => addLore(loreTitle, loreAbility, loreProficiency)}>
+                                save
+                            </button>
+                        </div>
+                    </div>}
+                    <div className='manage-lore' onClick={() => setManageLoreStatus(!isManageLore)}>
                         Add Lore
                     </div>
                     <div className={'plus-symbol'}>
