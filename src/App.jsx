@@ -17,14 +17,6 @@ export const proficiencyEnum = {
     L: 8
 }
 
-// export const proficiencyColourEnum = {
-//     'U': '#1880b7',
-//     'T': '#25a815',
-//     'E': '#d7bf59',
-//     'M': '#FE9920',
-//     'L': '#FA7921'
-// }
-
 export const proficiencyColourEnum = {
     'U': '#424242',
     'T': '#171f69',
