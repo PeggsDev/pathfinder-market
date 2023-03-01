@@ -252,7 +252,7 @@ export default function CharacterSheet() {
                                     <div className={'armor-proficiency-box'} key={index}>
                                         <div className={'armor-type'}>{armorType?.armorType}</div>
                                         <div className={'armor-proficiency'} style={
-                                            { color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}` }
+                                            { color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}`, filter: 'brightness(250%)' }
                                         }>
                                             {armorType?.proficiencyLevel}
                                         </div>

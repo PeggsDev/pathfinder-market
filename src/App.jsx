@@ -17,12 +17,20 @@ export const proficiencyEnum = {
     L: 8
 }
 
+// export const proficiencyColourEnum = {
+//     'U': '#1880b7',
+//     'T': '#25a815',
+//     'E': '#d7bf59',
+//     'M': '#FE9920',
+//     'L': '#FA7921'
+// }
+
 export const proficiencyColourEnum = {
-    'U': '#1880b7',
-    'T': '#25a815',
-    'E': '#d7bf59',
-    'M': '#FE9920',
-    'L': '#FA7921'
+    'U': '#424242',
+    'T': '#171f69',
+    'E': '#3c005e',
+    'M': '#640',
+    'L': '#5e0000'
 }
 
 export const proficiencies = [
