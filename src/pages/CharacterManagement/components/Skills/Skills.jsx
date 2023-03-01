@@ -85,21 +85,6 @@ export default function Skills(props) {
         </div>)
     }
 
-    const selectStyles = {
-        control: (styles) => ({
-            ...styles,
-            background: 'var(--clr-accent-dark)',
-            color: 'var(--clr-dice-roll-hover)',
-            outline: 'none',
-            border: '1px solid var(--clr-dice-roll-hover)',
-            height: '1rem'
-        }),
-        option: (styles) => ({
-            ...styles,
-            background: 'var(--clr-accent-dark)',
-            color: 'var(--clr-dice-roll-hover)'
-        }),
-    }
     return (
         <>
             <form className={'skill-block'}>
