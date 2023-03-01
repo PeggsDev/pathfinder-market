@@ -1,11 +1,11 @@
 import './Weapon.scss'
 
-import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
-import {ReactComponent as SwordsIcon} from '../../svg/swords.svg';
-import {ReactComponent as BowAndArrowIcon} from "../../svg/bow-and-arrow.svg";
-import {IDieType} from "dddice-js";
-import {rollDice} from "../../../../App";
-import {GiSaberSlash, GiHammerBreak, GiPiercedHeart} from 'react-icons/gi'
+import { ReactComponent as DiceIcon } from '../../svg/dice-d20-solid.svg';
+import { ReactComponent as SwordsIcon } from '../../svg/swords.svg';
+import { ReactComponent as BowAndArrowIcon } from "../../svg/bow-and-arrow.svg";
+import { IDieType } from "dddice-js";
+import { rollDice } from "../../../../App";
+import { GiSaberSlash, GiHammerBreak, GiPiercedHeart } from 'react-icons/gi'
 
 //TODO - Pass in item data directly
 export default function Weapon(props) {
@@ -17,15 +17,16 @@ export default function Weapon(props) {
         weaponTraits,
         weaponRarity,
         damageType,
+        keyAbility,
         die,
         dieCount,
         diceClient
     } = props
 
     const damageTypeEnum = {
-        S: <GiSaberSlash/>,
-        B: <GiHammerBreak/>,
-        P: <GiPiercedHeart/>
+        S: <GiSaberSlash />,
+        B: <GiHammerBreak />,
+        P: <GiPiercedHeart />
     }
     return (
         <div className={'weapon-component'}>
@@ -37,14 +38,14 @@ export default function Weapon(props) {
                         diceClient,
                         IDieType.D20,
                         1,
-                        'pink-skull-leddyaze')}/>}
+                        'pink-skull-leddyaze')} />}
                 {!weaponRange && <SwordsIcon
                     className={'weapon-icon-svg'}
                     onClick={() => rollDice(
                         diceClient,
                         IDieType.D20,
                         1,
-                        'pink-skull-leddyaze')}/>}
+                        'pink-skull-leddyaze')} />}
             </div>
 
             <div className={'action'}>
@@ -56,9 +57,9 @@ export default function Weapon(props) {
                     </div>
                 </div>
             </div>
-            {/*<div className={'to-hit-dice-formula'}>*/}
-            {/*    {dieCount + die + damageType}*/}
-            {/*</div>*/}
+            {/* <div className={'to-hit-dice-formula'}>
+                {die + keyAbility}
+            </div> */}
             <div className={'dice'}>
                 <div className={'action-damage-dice-roll'}>
                     <DiceIcon
@@ -67,7 +68,7 @@ export default function Weapon(props) {
                             die,
                             dieCount,
                             'pink-skull-leddyaze')}
-                        className={'dice-icon'}/>
+                        className={'dice-icon'} />
                 </div>
                 <div className={'dice-formula'}>
                     {dieCount + die + " "}
@@ -75,7 +76,7 @@ export default function Weapon(props) {
                         {damageTypeEnum[damageType?.charAt(0).toUpperCase()]}
                     </div>
                 </div>
-                <div className={'action-count-icon'}/>
+                <div className={'action-count-icon'} />
             </div>
             <div className={'weapon-rarity'}>
                 {weaponRarity}
@@ -87,6 +88,6 @@ export default function Weapon(props) {
                     )
                 })}
             </div>
-        </div>
+        </div >
     )
 }

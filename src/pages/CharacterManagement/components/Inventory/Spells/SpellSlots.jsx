@@ -4,7 +4,8 @@ export default function SpellSlots(props) {
 
     const {spells, triggerCharacterDataRefresh} = props
 
-    function burnSlot(spellSlot, slotId) {
+    function burnSlot(event) {
+        const slotId = event.target.id
         const requestOptions = {
             method: 'PUT', // TODO - Fix this - Should be a POST but backend seems not to support it at the moment
             headers: {'Content-Type': 'application/json'},
@@ -25,7 +26,7 @@ export default function SpellSlots(props) {
                         key={index}
                         className={`spell-slot ${spellSlot.burnt ? 'burnt' : ''}`}
                         id={spellSlot.spellSlotId}
-                        onClick={(e) => burnSlot(spellSlot, e.target.id)}/>
+                        onClick={burnSlot}/>
                 )
             })}
             <div className={'spell-slots-label'}>Slots</div>
