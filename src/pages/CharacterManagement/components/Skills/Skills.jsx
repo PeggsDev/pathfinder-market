@@ -1,17 +1,18 @@
 import './Skills.scss'
-import { proficiencyEnum, proficiencyColourEnum, proficiencies, abilities } from "../../../../App";
-import { calculateAbilityBasedModifier } from "../../CharacterSheet";
-import { ReactComponent as DiceIcon } from '../../svg/dice-d20-solid.svg';
+import {proficiencyEnum, proficiencyColourEnum, proficiencies, abilities} from "../../../../App";
+import {calculateAbilityBasedModifier} from "../../CharacterSheet";
+import {ReactComponent as DiceIcon} from '../../svg/dice-d20-solid.svg';
 
-import { IDieType } from "dddice-js";
-import { rollDice } from "../../../../App";
-import { useState } from "react";
-import { FaFeatherAlt } from "react-icons/fa";
+import {IDieType} from "dddice-js";
+import {rollDice} from "../../../../App";
+import {useState} from "react";
+import {FaFeatherAlt} from "react-icons/fa";
 import CustomSelect from "../../../../componenets/CustomSelect/CustomSelect";
+import {TiDelete} from "react-icons/ti";
 
 export default function Skills(props) {
 
-    const { characterData, skills, skillsCallback, diceClient, refreshData } = props
+    const {characterData, skills, skillsCallback, diceClient, refreshData} = props
 
     const [showManageLore, setManageLoreStatus] = useState(false)
 
@@ -31,16 +32,28 @@ export default function Skills(props) {
 
     function addLore(title, ability, proficiency) {
         skillsCallback([...skills,
-        {
-            "type": "Lore",
-            "skill": title,
-            "ability": ability,
-            "proficiencyLevel": proficiency
-        }])
+            {
+                "type": "Lore",
+                "skill": title,
+                "ability": ability,
+                "proficiencyLevel": proficiency
+            }])
         setManageLoreStatus(!showManageLore)
     }
 
-    function Skill({ type, skill, proficiencyIndicator, baseAbility, skillModifier, diceClient }) {
+    function removeLore(title) {
+
+        const index = skills.findIndex(
+            skill => skill.skill === title
+        );
+        skills.splice(index, 1)
+        skillsCallback(JSON.parse(JSON.stringify(skills)))
+
+        setManageLoreStatus(!showManageLore)
+    }
+
+
+    function Skill({type, skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
 
         return (<div className={'skill-box'}>
             <div className={'skill-title-proficiency'}>
@@ -48,7 +61,8 @@ export default function Skills(props) {
                     <label
                         style={{
                             color: `${proficiencyColourEnum[proficiencyIndicator]}`,
-                            filter: 'brightness(250%)'}}>
+                            filter: 'brightness(250%)'
+                        }}>
                         {proficiencyIndicator}
                     </label>
                 </div>
@@ -63,10 +77,10 @@ export default function Skills(props) {
             <div className={'skill'}>
                 <div className={'skill-name'}>
                     <label className={'skill-label-wrapper'}
-                        style={{
-                            color: type === '' ? '' : 'var(--clr-white)'
-                        }}>
-                        {type !== '' && <FaFeatherAlt />}
+                           style={{
+                               color: type === '' ? '' : 'var(--clr-white)'
+                           }}>
+                        {type !== '' && <FaFeatherAlt/>}
                         {skill}
                     </label>
                 </div>
@@ -77,7 +91,7 @@ export default function Skills(props) {
                             IDieType.D20,
                             1,
                             'pink-skull-leddyaze')
-                    }} />
+                    }}/>
                 </div>
                 <div className={'skill-title-bonus'}>
                     <div className={'skill-modifier'}>
@@ -105,14 +119,20 @@ export default function Skills(props) {
                     {skills?.sort(compareBySkill).map((skill, index) => {
                         const baseAbility = characterData?.abilityScores.find(item => item.ability === skill.ability)
                         return (
-                            <Skill
-                                key={index}
-                                diceClient={diceClient}
-                                type={skill?.type !== `Lore` ? '' : skill?.type}
-                                skill={skill?.skill}
-                                baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
-                                proficiencyIndicator={skill?.proficiencyLevel}
-                                skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])} />
+                            <div className={`current-skill ${showManageLore && skill?.type === 'Lore' ? 'show' : ''}`}>
+                                {
+                                    showManageLore && skill?.type === 'Lore' &&
+                                    <TiDelete className={'delete-lore'} onClick={() => removeLore(skill?.skill)} />
+                                }
+                                <Skill
+                                    key={index}
+                                    diceClient={diceClient}
+                                    type={skill?.type !== `Lore` ? '' : skill?.type}
+                                    skill={skill?.skill}
+                                    baseAbility={baseAbility?.ability.slice(0, 3).toUpperCase()}
+                                    proficiencyIndicator={skill?.proficiencyLevel}
+                                    skillModifier={calculateAbilityBasedModifier(baseAbility?.score, characterData?.level, proficiencyEnum[skill?.proficiencyLevel])}/>
+                            </div>
                         )
                     })}
                 </div>
@@ -122,15 +142,15 @@ export default function Skills(props) {
                     showManageLore &&
                     <div className={`lore-skill-panel ${showManageLore ? 'show' : ''}`}>
                         <CustomSelect
-                            placeHolder={'Ability'}
-                            data={abilities}
-                            onSelectItem={setLoreAbility} />
-                        <CustomSelect
                             placeHolder={'Proficiency'}
                             data={proficiencies}
-                            onSelectItem={setLoreProficiency} />
+                            onSelectItem={setLoreProficiency}/>
+                        <CustomSelect
+                            placeHolder={'Ability'}
+                            data={abilities}
+                            onSelectItem={setLoreAbility}/>
                         <input className={'lore-skill-title'}
-                               onChange={(event) => setLoreTitle(event.target.value)} />
+                               onChange={(event) => setLoreTitle(event.target.value)}/>
                         <div className='lore-skill-buttons'>
                             <button
                                 className={'lore-skill-save-btn'}
@@ -154,4 +174,3 @@ export default function Skills(props) {
         </>
     )
 }
-//onCLick push content up using transalte

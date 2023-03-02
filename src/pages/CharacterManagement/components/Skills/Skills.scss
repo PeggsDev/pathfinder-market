@@ -87,6 +87,7 @@
     justify-content: start;
     width: 18rem;
     height: 33.5rem;
+    overflow-x: hidden;
     overflow-y: auto;
 
     .skill-box {
@@ -262,4 +263,23 @@
 
 .skill-block.show {
   height: 26.5rem;
+}
+
+.current-skill {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  width: 20rem;
+}
+
+.delete-lore {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--clr-white);
+
+  &:hover {
+    cursor: pointer;
+    fill: var(--clr-remove-item-hover);
+  }
 }
