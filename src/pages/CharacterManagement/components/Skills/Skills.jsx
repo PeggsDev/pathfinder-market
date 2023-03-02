@@ -9,6 +9,7 @@ import {useState} from "react";
 import {FaFeatherAlt} from "react-icons/fa";
 import CustomSelect from "../../../../componenets/CustomSelect/CustomSelect";
 import {TiDelete} from "react-icons/ti";
+import {GoMortarBoard} from "react-icons/go";
 
 export default function Skills(props) {
 
@@ -79,7 +80,7 @@ export default function Skills(props) {
                            style={{
                                color: type === '' ? '' : 'var(--clr-white)'
                            }}>
-                        {type !== '' && <FaFeatherAlt/>}
+                        {type !== '' && <GoMortarBoard/>}
                         {skill}
                     </label>
                 </div>
