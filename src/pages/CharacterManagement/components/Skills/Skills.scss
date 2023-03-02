@@ -212,7 +212,6 @@
   }
 }
 
-
 .lore-skill-panel {
   display: flex;
   flex-direction: column;
@@ -227,7 +226,7 @@
   .lore-skill-title {
     color: var(--clr-white);
     background: transparent;
-    border: 1px solid var(--clr-accent-light);
+    border: 1px dashed var(--clr-accent-light);
     border-radius: 0.2rem;
   }
 
@@ -253,7 +252,7 @@
   .lore-skill-title {
     min-width: 12.2rem;
     font-size: 0.9rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0.9rem;
   }
 }
 

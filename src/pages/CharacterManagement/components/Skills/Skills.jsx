@@ -48,7 +48,6 @@ export default function Skills(props) {
         );
         skills.splice(index, 1)
         skillsCallback(JSON.parse(JSON.stringify(skills)))
-
         setManageLoreStatus(!showManageLore)
     }
 
@@ -142,15 +141,16 @@ export default function Skills(props) {
                     showManageLore &&
                     <div className={`lore-skill-panel ${showManageLore ? 'show' : ''}`}>
                         <CustomSelect
-                            placeHolder={'Proficiency'}
-                            data={proficiencies}
-                            onSelectItem={setLoreProficiency}/>
-                        <CustomSelect
                             placeHolder={'Ability'}
                             data={abilities}
                             onSelectItem={setLoreAbility}/>
                         <input className={'lore-skill-title'}
+                               placeHolder={'Description'}
                                onChange={(event) => setLoreTitle(event.target.value)}/>
+                        <CustomSelect
+                            placeHolder={'Proficiency'}
+                            data={proficiencies}
+                            onSelectItem={setLoreProficiency}/>
                         <div className='lore-skill-buttons'>
                             <button
                                 className={'lore-skill-save-btn'}
