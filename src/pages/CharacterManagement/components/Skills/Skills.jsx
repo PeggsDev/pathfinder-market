@@ -37,7 +37,7 @@ export default function Skills(props) {
             "ability": ability,
             "proficiencyLevel": proficiency
         }])
-
+        setManageLoreStatus(!showManageLore)
     }
 
     function Skill({ type, skill, proficiencyIndicator, baseAbility, skillModifier, diceClient }) {
@@ -45,7 +45,10 @@ export default function Skills(props) {
         return (<div className={'skill-box'}>
             <div className={'skill-title-proficiency'}>
                 <div className={'proficiency-indicator'}>
-                    <label style={{ color: `${proficiencyColourEnum[proficiencyIndicator]}` , filter: 'brightness(250%)'}}>
+                    <label
+                        style={{
+                            color: `${proficiencyColourEnum[proficiencyIndicator]}`,
+                            filter: 'brightness(250%)'}}>
                         {proficiencyIndicator}
                     </label>
                 </div>
@@ -61,8 +64,7 @@ export default function Skills(props) {
                 <div className={'skill-name'}>
                     <label className={'skill-label-wrapper'}
                         style={{
-                            fontStyle: type === '' ? '' : 'italic',
-                            color: type === '' ? '' : 'var(--clr-dice-roll-hover)'
+                            color: type === '' ? '' : 'var(--clr-white)'
                         }}>
                         {type !== '' && <FaFeatherAlt />}
                         {skill}
@@ -116,30 +118,33 @@ export default function Skills(props) {
                 </div>
             </div>
             <div className={'lore-wrapper'}>
-                <div className={`lore-skill-panel ${showManageLore ? 'show' : ''}`}>
-                    <CustomSelect
-                        placeHolder={'Ability'}
-                        data={abilities}
-                        onSelectItem={setLoreAbility} />
-                    <CustomSelect
-                        placeHolder={'Proficiency'}
-                        data={proficiencies}
-                        onSelectItem={setLoreProficiency} />
-                    <input className={'lore-skill-title'}
-                        onChange={(event) => setLoreTitle(event.target.value)} />
-                    <div className='lore-skill-buttons'>
-                        <button
-                            className={'lore-skill-save-btn'}
-                            onClick={() => addLore(loreTitle, loreAbility, loreProficiency)}>
-                            save
-                        </button>
-                        <button
-                            className={'lore-skill-save-btn'}
-                            onClick={() => setManageLoreStatus(!showManageLore)}>
-                            Close
-                        </button>
+                {
+                    showManageLore &&
+                    <div className={`lore-skill-panel ${showManageLore ? 'show' : ''}`}>
+                        <CustomSelect
+                            placeHolder={'Ability'}
+                            data={abilities}
+                            onSelectItem={setLoreAbility} />
+                        <CustomSelect
+                            placeHolder={'Proficiency'}
+                            data={proficiencies}
+                            onSelectItem={setLoreProficiency} />
+                        <input className={'lore-skill-title'}
+                               onChange={(event) => setLoreTitle(event.target.value)} />
+                        <div className='lore-skill-buttons'>
+                            <button
+                                className={'lore-skill-save-btn'}
+                                onClick={() => addLore(loreTitle, loreAbility, loreProficiency)}>
+                                save
+                            </button>
+                            <button
+                                className={'lore-skill-save-btn'}
+                                onClick={() => setManageLoreStatus(!showManageLore)}>
+                                Close
+                            </button>
+                        </div>
                     </div>
-                </div>
+                }
                 {
                     !showManageLore && <div className='manage-lore' onClick={() => setManageLoreStatus(!showManageLore)}>
                         Manage Lore
