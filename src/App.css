@@ -22,6 +22,8 @@ p {
 }
 
 :root {
+  font-size: 0.85rem;
+
   --clr-dark: #202936;
   --clr-light: #d5d5d5;
   --clr-white: #ffffff;
@@ -36,5 +38,7 @@ p {
 
 body {
   font-family: 'Poppins', sans-serif;
+  font-weight: lighter;
+  font-style: normal;
   display: grid;
 }
