@@ -26,19 +26,10 @@
     justify-content: center;
     align-items: center;
     min-height: 15rem;
-    height: 20rem;
+    max-height: 20rem;
     margin-bottom: 4rem;
     position: relative;
     transform-style: preserve-3d;
-  }
-
-  .background-circle {
-    height: 15rem;
-    width: 15rem;
-    background: #96f134;
-    position: absolute;
-    border-radius: 50%;
-    object-fit: cover;
   }
 
   .goblin {
