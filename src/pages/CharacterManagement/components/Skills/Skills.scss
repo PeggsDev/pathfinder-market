@@ -194,7 +194,7 @@
   font-weight: bolder;
 }
 
-.skill-box:nth-child(even) {
+.current-skill:nth-child(even) {
   background: #33333344;
 }
 
@@ -204,6 +204,7 @@
   align-items: center;
   justify-content: start;
   gap: 0.5rem;
+  margin-left: 0.5rem;
 
   & svg {
     width: 1.2rem;

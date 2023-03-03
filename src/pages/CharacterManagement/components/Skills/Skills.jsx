@@ -76,13 +76,7 @@ export default function Skills(props) {
             </div>
             <div className={'skill'}>
                 <div className={'skill-name'}>
-                    <label className={'skill-label-wrapper'}
-                           style={{
-                               color: type === '' ? '' : 'var(--clr-white)'
-                           }}>
-                        {type !== '' && <FaFeatherAlt/>}
-                        {skill}
-                    </label>
+                    {skill}
                 </div>
                 <div className={'skill-dice-roll'}>
                     <DiceIcon className={'dice-icon'} onClick={() => {
@@ -101,6 +95,12 @@ export default function Skills(props) {
                     </div>
                 </div>
             </div>
+            <label className={'skill-label-wrapper'}
+                   style={{
+                       color: type === '' ? '' : 'var(--clr-white)'
+                   }}>
+                {type !== '' && <FaFeatherAlt/>}
+            </label>
         </div>)
     }
 
@@ -122,7 +122,7 @@ export default function Skills(props) {
                             <div className={`current-skill ${showManageLore && skill?.type === 'Lore' ? 'show' : ''}`}>
                                 {
                                     showManageLore && skill?.type === 'Lore' &&
-                                    <TiDelete className={'delete-lore'} onClick={() => removeLore(skill?.skill)} />
+                                    <TiDelete className={'delete-lore'} onClick={() => removeLore(skill?.skill)}/>
                                 }
                                 <Skill
                                     key={index}
