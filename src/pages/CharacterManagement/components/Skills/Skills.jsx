@@ -9,7 +9,6 @@ import {useState} from "react";
 import {FaFeatherAlt} from "react-icons/fa";
 import CustomSelect from "../../../../componenets/CustomSelect/CustomSelect";
 import {TiDelete} from "react-icons/ti";
-import {GoMortarBoard} from "react-icons/go";
 
 export default function Skills(props) {
 
@@ -20,6 +19,7 @@ export default function Skills(props) {
     const [loreTitle, setLoreTitle] = useState('')
     const [loreAbility, setLoreAbility] = useState()
     const [loreProficiency, setLoreProficiency] = useState()
+    const [lore, updateLore] = useState()
 
     function compareBySkill(a, b) {
         if (a.skill.toLowerCase() < b.skill.toLowerCase()) {
@@ -43,7 +43,6 @@ export default function Skills(props) {
     }
 
     function removeLore(title) {
-
         const index = skills.findIndex(
             skill => skill.skill === title
         );
@@ -51,7 +50,6 @@ export default function Skills(props) {
         skillsCallback(JSON.parse(JSON.stringify(skills)))
         setManageLoreStatus(!showManageLore)
     }
-
 
     function Skill({type, skill, proficiencyIndicator, baseAbility, skillModifier, diceClient}) {
 
@@ -75,9 +73,16 @@ export default function Skills(props) {
                 </div>
             </div>
             <div className={'skill'}>
-                <div className={'skill-name'}>
-                    {skill}
-                </div>
+                <input
+                    type={'text'}
+                    className={'skill-name'}
+                    value={skill}
+                    style={{
+                        pointerEvents: type === '' ? 'none' : '',
+                        fontStyle: type === '' ? '' : 'italic'
+                    }}
+                    // onChange={(e) => updateLore(e.target.value)}
+                />
                 <div className={'skill-dice-roll'}>
                     <DiceIcon className={'dice-icon'} onClick={() => {
                         rollDice(
@@ -146,7 +151,7 @@ export default function Skills(props) {
                             data={abilities}
                             onSelectItem={setLoreAbility}/>
                         <input className={'lore-skill-title'}
-                               placeHolder={'Description'}
+                               placeholder={'Description'}
                                onChange={(event) => setLoreTitle(event.target.value)}/>
                         <CustomSelect
                             placeHolder={'Proficiency'}
