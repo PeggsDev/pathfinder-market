@@ -25,6 +25,8 @@ export default function HealthPoints(props) {
     }
 
     function removeConditionsAfterHealing() {
+        //TODO - Add all the other rules for dying here. It's complicated MUAHAHA
+
         const dying1 = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
         decrementConditionCount(dying1)
         const dying2 = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
