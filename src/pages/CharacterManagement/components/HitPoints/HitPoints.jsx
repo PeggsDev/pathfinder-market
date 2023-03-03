@@ -1,7 +1,6 @@
 import './HitPoints.scss'
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
-import TakeARest from "../../../../componenets/TakeARest/TakeARest";
 
 export default function HealthPoints(props) {
 
@@ -25,9 +24,31 @@ export default function HealthPoints(props) {
         applyConditions(JSON.parse(JSON.stringify([...currentConditions, dying, dying, blinded, flatFooted, unconscious])))
     }
 
+    function removeConditionsAfterHealing() {
+        //TODO - Add all the other rules for dying here. It's complicated MUAHAHA
+
+        const dying1 = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
+        decrementConditionCount(dying1)
+        const dying2 = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
+        decrementConditionCount(dying2)
+        const unconscious = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'unconscious'.toLowerCase())]
+        decrementConditionCount(unconscious)
+    }
+
+    function decrementConditionCount(condition) {
+        const index = currentConditions.findIndex(
+            currentCondition => currentCondition.name === condition.name
+        );
+        if(index >= 0) {
+            currentConditions.splice(index, 1)
+            applyConditions(JSON.parse(JSON.stringify(currentConditions)))
+        }
+    }
+
     function healHP() {
         const returnValue = current + Number(hp)
         updateCurrentHitPoints(returnValue <= max ? returnValue : max)
+        removeConditionsAfterHealing()
     }
 
     function takeDamage() {
