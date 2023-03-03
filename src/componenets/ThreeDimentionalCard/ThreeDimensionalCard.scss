@@ -1,10 +1,14 @@
 .container {
+  @media only screen and (min-width: 3600px) {
+    font-size: 1rem;
+  }
+
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: auto;
   margin-bottom: auto;
-  min-width: 35rem;
+  width: 35rem;
   perspective: 1000px;
 
   .three-d-card {
@@ -25,8 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 15rem;
-    max-height: 20rem;
+    height: 20rem;
     margin-bottom: 4rem;
     position: relative;
     transform-style: preserve-3d;
