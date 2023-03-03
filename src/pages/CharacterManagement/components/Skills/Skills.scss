@@ -215,16 +215,11 @@
 }
 
 .skill-label-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: start;
-  gap: 0.5rem;
-  margin-left: 0.25rem;
+  margin-left: 0.5rem;
 
   & svg {
-    width: 1.2rem;
-    height: 0.8rem;
+    width: 0.7rem;
+    height: 0.7rem;
     fill: var(--clr-white);
   }
 }
@@ -297,8 +292,9 @@
 }
 
 .delete-lore {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-left: 0.2rem;
   fill: var(--clr-white);
 
   &:hover {

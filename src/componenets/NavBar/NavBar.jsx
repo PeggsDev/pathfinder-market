@@ -71,7 +71,7 @@ export default function NavBar() {
                     </Link>
                 )}
                 {user && (
-                    <Link to={'/dashboard'}>
+                    <Link to={'/account/dashboard'}>
                         <img
                             className={'nav-bar-login-img'} src={user.photoURL}
                             alt={'avatar'}

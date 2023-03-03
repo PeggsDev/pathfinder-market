@@ -9,6 +9,7 @@ import CharacterSheet from "./pages/CharacterManagement/CharacterSheet";
 import AccountLogin from "./pages/AccountManagement/AccountLogin";
 import {ConditionsDataProvider} from "./contexts/ConditionsCtx";
 import AccountRegistration from "./pages/AccountManagement/AccountRegistration";
+import Dashboard from "./pages/AccountManagement/Dashboard";
 
 export default function Router() {
     return (
@@ -16,6 +17,7 @@ export default function Router() {
             <Route path={'/'} element={<HomePage/>}/>
             <Route path={'/account/login'} element={<AccountLogin/>}/>
             <Route path={'/account/registration'} element={<AccountRegistration/>}/>
+            <Route path={'/account/dashboard'} element={<Dashboard/>}/>
             <Route path={'/details'} element={<SourceBookDetailsPage/>}/>
             <Route path={'/goblins-cauldron/build'} element={<CharacterBuilder/>}/>
             <Route path={'/goblins-cauldron/character-sheet/:id'} element={
