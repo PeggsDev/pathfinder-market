@@ -80,7 +80,7 @@ export default function Skills(props) {
                            style={{
                                color: type === '' ? '' : 'var(--clr-white)'
                            }}>
-                        {type !== '' && <GoMortarBoard/>}
+                        {type !== '' && <FaFeatherAlt/>}
                         {skill}
                     </label>
                 </div>
