@@ -4,9 +4,9 @@
     font-size: 1rem;
   }
 
-  @media only screen and (min-width: 3600px) {
-    font-size: 1.2rem;
-  }
+  // @media only screen and (min-width: 3600px) {
+  //   font-size: 1.2rem;
+  // }
 
   //TODO - Update colour names so that Character sheet has its own
   //--clr-dark: #b0b0b0;
@@ -191,7 +191,7 @@
 
 /* Tabbed Content Actions and Inventory */
 .actions-and-Inventory {
-  width: 50rem;
+  min-width: 50rem;
 
   /* Scrollbar Styles */
   /* width */
