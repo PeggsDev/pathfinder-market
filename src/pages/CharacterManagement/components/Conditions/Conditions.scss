@@ -29,10 +29,23 @@
       cursor: pointer;
     }
 
+    .increase-condition-count {
+      justify-self: start;
+      width: 1rem;
+      margin-right: 0.2rem;
+      fill: var(--clr-accent-light);
+
+      &:hover {
+        fill: var(--clr-dice-roll-hover);
+        cursor: pointer;
+      }
+    }
+
     .condition-count {
       font-weight: bolder;
       color: var(--clr-dice-roll-hover);
       padding-right: 0.25rem;
+      width: 0.5rem;
     }
 
     .remove-condition-icon {

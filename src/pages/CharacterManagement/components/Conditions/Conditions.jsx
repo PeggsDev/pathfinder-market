@@ -3,18 +3,20 @@ import SearchableBox from "../../../../componenets/SearchableBox/SearchableBox";
 import {ReactComponent as RemoveConditionIcon} from "../../../../componenets/icons/xmark-solid.svg";
 import {useContext} from "react";
 import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
+import {FaMinus} from "react-icons/fa";
+import {GoPlus} from "react-icons/go";
 
 export default function Conditions() {
 
-   const  {conditionData, currentConditions, applyConditions} = useContext(ConditionsCtx)
+    const {conditionData, currentConditions, applyConditions} = useContext(ConditionsCtx)
 
     console.log(currentConditions)
 
-    function compareByName( a, b ) {
-        if ( a.name.toLowerCase() < b.name.toLowerCase() ){
+    function compareByName(a, b) {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
             return -1;
         }
-        if ( a.name.toLowerCase() > b.name.toLowerCase() ){
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
             return 1;
         }
         return 0;
@@ -62,13 +64,22 @@ export default function Conditions() {
                         <div
                             key={index}
                             className={'current-condition'}>
-                            <RemoveConditionIcon
-                                className={'remove-condition-icon'}
-                                onClick={() => decrementConditionCount(condition)}/>
-                            <div key={index} className={'condition'}
-                                 onClick={() => incrementConditionCount(condition)}>
+                            {
+                                condition.count === 0 ?
+                                    <RemoveConditionIcon
+                                        className={'remove-condition-icon'}
+                                        onClick={() => decrementConditionCount(condition)}/>
+                                    :
+                                    <FaMinus
+                                        className={'remove-condition-icon'}
+                                        onClick={() => decrementConditionCount(condition)}/>
+                            }
+                            <div key={index} className={'condition'}>
                                 {condition.name}
                             </div>
+                            <GoPlus
+                                onClick={() => incrementConditionCount(condition)}
+                                className={'increase-condition-count'}/>
                             <div className={'condition-count'}>
                                 {condition.count === 0 ? '' : condition.count}
                             </div>
