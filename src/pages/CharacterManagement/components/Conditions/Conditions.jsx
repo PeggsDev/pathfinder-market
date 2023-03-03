@@ -10,8 +10,6 @@ export default function Conditions() {
 
     const {conditionData, currentConditions, applyConditions} = useContext(ConditionsCtx)
 
-    console.log(currentConditions)
-
     function compareByName(a, b) {
         if (a.name.toLowerCase() < b.name.toLowerCase()) {
             return -1;
