@@ -22,30 +22,31 @@ export default function HealthPoints(props) {
 
     const [hp, setHp] = useState(0)
 
-    function applyZeroHitPointConditions() {
-        const dying = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
-        const blinded = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'blinded'.toLowerCase())]
-        const flatFooted = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'flat-footed'.toLowerCase())]
-        const unconscious = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'unconscious'.toLowerCase())]
+    const dying = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
+    const blinded = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'blinded'.toLowerCase())]
+    const unconscious = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'unconscious'.toLowerCase())]
+    const flatFooted = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'flat-footed'.toLowerCase())]
+    const wounded = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'wounded'.toLowerCase())]
 
+    function conditionsAtZeroHitPoints() {
         applyConditions(JSON.parse(JSON.stringify([...currentConditions, dying, dying, blinded, flatFooted, unconscious])))
     }
 
-    function removeConditionsAfterHealing() {
+    function conditionsAfterHealing() {
         //TODO - Add all the other rules for dying here. It's complicated MUAHAHA
-
-        const dying1 = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
-        decrementConditionCount(dying1)
-        const dying2 = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'dying'.toLowerCase())]
-        decrementConditionCount(dying2)
-        const unconscious = conditionData[conditionData.findIndex(condition => condition.name.toLowerCase() === 'unconscious'.toLowerCase())]
+        decrementConditionCount(dying)
+        decrementConditionCount(dying)
         decrementConditionCount(unconscious)
+        decrementConditionCount(blinded)
+        decrementConditionCount(flatFooted)
+
+        applyConditions(JSON.parse(JSON.stringify([...currentConditions, wounded, wounded])))
     }
 
     function healHP() {
         const returnValue = current + Number(hp)
         updateCurrentHitPoints(returnValue <= max ? returnValue : max)
-        removeConditionsAfterHealing()
+        conditionsAfterHealing()
     }
 
     function takeDamage() {
@@ -57,7 +58,7 @@ export default function HealthPoints(props) {
             updateTempHitPoints(0)
             let newTotal = total - Number(hp) <= 0 ? 0 : total - Number(hp)
             if (newTotal <= 0) {
-                applyZeroHitPointConditions()
+                conditionsAtZeroHitPoints()
             }
             updateCurrentHitPoints(newTotal)
         }
