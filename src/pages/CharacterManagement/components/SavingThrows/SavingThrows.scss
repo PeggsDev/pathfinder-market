@@ -1,0 +1,125 @@
+.saving-throws {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 2rem;
+  
+    h1 {
+      font-size: 1rem;
+      padding-top: 0.5rem;
+    }
+  
+    .save-block {
+
+      .save-block-titles {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-direction: row;
+  
+        div {
+          font-weight: bolder;
+          font-size: 0.7rem;
+          color: var(--clr-dice-roll-hover);
+        }
+  
+        .save-title-proficiency {
+          width: 1.6rem;
+        }
+  
+        .save-title-ability {
+          padding-left: 0.67rem;
+          width: 1.5rem;
+        }
+  
+        .save-title-save {
+          padding-left: 1.5rem;
+          width: 6.1rem;
+        }
+      }
+  
+  
+      .save-title-bonus.title {
+        padding-right: 0.4rem;
+      }
+  
+      .save-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+  
+        label {
+          font-size: 0.8rem;
+        }
+  
+        .base-ability-label {
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          color: var(--clr-accent-light);
+          font-weight: bolder;
+        }
+  
+        .proficiency-indicator {
+          width: 1.5rem;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-weight: bolder;
+        }
+  
+        .base-ability {
+          width: 3rem;
+        }
+  
+        .save {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: start;
+          border-bottom: 0.5px solid var(--clr-char-outline);
+  
+          .save-name {
+            width: 4.5rem;
+  
+            label {
+              font-size: 0.8rem;
+              display: flex;
+              text-transform: capitalize;
+            }
+          }
+  
+          .save-dice-roll {
+            width: 1.5rem;
+  
+            .dice-icon {
+              display: flex;
+              align-items: center;
+              fill: var(--clr-accent-light);
+              width: 1rem;
+            }
+          }
+  
+          .save-dice-roll :hover {
+            fill: var(--clr-dice-roll-hover);
+            cursor: pointer;
+          }
+  
+          .save-modifier {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            width: 1.2rem;
+            height: 2rem;
+            color: var(--clr-white);
+  
+            label {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }

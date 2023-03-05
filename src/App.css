@@ -2,6 +2,9 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  -webkit-user-select: text;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   margin: 0;
 }
@@ -13,7 +16,14 @@ p {
   margin: 0;
 }
 
+@font-face {
+  font-family: 'Pathfinder2eActions';
+  src: url('/public/fonts/Pathfinder2eActions.ttf') format('truetype');
+}
+
 :root {
+  font-size: 0.85rem;
+
   --clr-dark: #202936;
   --clr-light: #d5d5d5;
   --clr-white: #ffffff;
@@ -28,8 +38,7 @@ p {
 
 body {
   font-family: 'Poppins', sans-serif;
-  min-height: 100vh;
+  font-weight: lighter;
+  font-style: normal;
   display: grid;
-  background: var(--clr-dark);
-  color: var(--clr-white);
 }

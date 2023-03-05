@@ -1,6 +1,6 @@
 import './SourceBookDetails.scss'
-import BookBackgroundImg from '../img/sources-page-background.jpg'
-import CoreRulebookImg from '../img/pathfinder-2e-core-rulebook.jpg';
+import BookBackgroundImg from '../images/sources-page-background.jpg'
+import CoreRulebookImg from '../images/pathfinder-2e-core-rulebook.jpg';
 
 export default function SourceBookDetailsPage() {
 

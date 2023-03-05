@@ -1,15 +1,30 @@
 import {
-    Routes, Route
+    Routes, Route, useParams
 } from 'react-router-dom'
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import SourceBookDetailsPage from "./pages/SourceBookDetailsPage";
+import CharacterBuilder from "./pages/CharacterManagement/CharacterBuilder";
+import CharacterSheet from "./pages/CharacterManagement/CharacterSheet";
+import AccountLogin from "./pages/AccountManagement/AccountLogin";
+import {ConditionsDataProvider} from "./contexts/ConditionsCtx";
+import AccountRegistration from "./pages/AccountManagement/AccountRegistration";
+import Dashboard from "./pages/AccountManagement/Dashboard";
 
 export default function Router() {
     return (
         <Routes>
-            <Route exact path='/' element={<HomePage />} />
-            <Route exact path='/details' element={<SourceBookDetailsPage />} />
+            <Route path={'/'} element={<HomePage/>}/>
+            <Route path={'/account/login'} element={<AccountLogin/>}/>
+            <Route path={'/account/registration'} element={<AccountRegistration/>}/>
+            <Route path={'/account/dashboard'} element={<Dashboard/>}/>
+            <Route path={'/details'} element={<SourceBookDetailsPage/>}/>
+            <Route path={'/goblins-cauldron/build'} element={<CharacterBuilder/>}/>
+            <Route path={'/goblins-cauldron/character-sheet/:id'} element={
+                <ConditionsDataProvider>
+                    <CharacterSheet/>
+                </ConditionsDataProvider>
+            }/>
         </Routes>
     )
 }
