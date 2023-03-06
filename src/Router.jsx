@@ -10,6 +10,7 @@ import AccountLogin from "./pages/AccountManagement/AccountLogin";
 import {ConditionsDataProvider} from "./contexts/ConditionsCtx";
 import AccountRegistration from "./pages/AccountManagement/AccountRegistration";
 import Dashboard from "./pages/AccountManagement/Dashboard";
+import {ArmorClassCtx, ArmorClassDataProvider} from "./contexts/ArmorClassCtx";
 
 export default function Router() {
     return (
@@ -22,7 +23,9 @@ export default function Router() {
             <Route path={'/goblins-cauldron/build'} element={<CharacterBuilder/>}/>
             <Route path={'/goblins-cauldron/character-sheet/:id'} element={
                 <ConditionsDataProvider>
-                    <CharacterSheet/>
+                    <ArmorClassDataProvider>
+                        <CharacterSheet/>
+                    </ArmorClassDataProvider>
                 </ConditionsDataProvider>
             }/>
         </Routes>

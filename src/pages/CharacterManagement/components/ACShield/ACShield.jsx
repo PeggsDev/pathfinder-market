@@ -1,21 +1,29 @@
 import './ACShield.scss'
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import {ReactComponent as Armor} from "../../svg/armor-class.svg";
-import {calculateModifier} from '../../CharacterSheet';
+import {ArmorClassCtx} from "../../../../contexts/ArmorClassCtx";
+import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
 
-//TODO - Attach a context of some kind to subscribe to changes that affect AC i.e. new Armor
-function calculateArmorClass(armor, dexCap, shield, dexterity, additionalMods) {
-    return (10 + armor + shield + calculateModifier(dexterity) + additionalMods) - dexCap;
-}
+export default function ACShield({}) {
 
-export default function ACShield(props) {
     const {
-        armor,
-        shield,
-        dexterity,
-        additionalMods
-    } = props
+        armorClass,
+        dexBonus,
+        applyModifier,
+        removeModifier,
+    } = useContext(ArmorClassCtx)
 
+    const {
+        currentConditions,
+    } = useContext(ConditionsCtx)
+
+    useEffect(() => {
+        if (currentConditions.some(condition => condition.name.toLowerCase() === 'flat-footed')) {
+            applyModifier(-dexBonus)
+        } else {
+            removeModifier(-dexBonus)
+        }
+    },[currentConditions])
 
     return (
         <div className={'ac-wrapper'}>
@@ -24,15 +32,7 @@ export default function ACShield(props) {
                    type="text"
                    disabled="disabled"
                    placeholder="disabled"
-                   value={
-                       calculateArmorClass(
-                           armor?.acBonus,
-                           armor?.dexCap,
-                           shield?.acBonus,
-                           dexterity,
-                           additionalMods
-                       )
-                   }
+                   value={armorClass}
                    readOnly/>
         </div>
     )

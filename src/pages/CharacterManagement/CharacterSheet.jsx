@@ -1,7 +1,7 @@
 import './CharacterSheet.scss'
-import React, { useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import '../../componenets/SlidingCard/SlidingCard.scss'
-import { ThreeDDice, ThreeDDiceAPI } from 'dddice-js';
+import {ThreeDDice, ThreeDDiceAPI} from 'dddice-js';
 
 import CharacterSheetBackground from "../../images/character-sheet-background-b.jpg";
 //import CharacterSheetBackground from "../../images/andreas-rocha-theicecastle03.jpg";
@@ -13,18 +13,17 @@ import Weapon from "./components/Inventory/Weapon";
 import Skills from './components/Skills/Skills';
 import ACShield from "./components/ACShield/ACShield";
 import SavingThrows from './components/SavingThrows/SavingThrows';
-import { ReactComponent as CameraIcon } from './svg/camera-solid.svg'
+import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
 
 import Spell from "./components/Inventory/Spells/Spell";
 import SpellBlock from "./components/Inventory/Spells/SpellBlock";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import HealthPoints from "./components/HitPoints/HitPoints";
 import Conditions from "./components/Conditions/Conditions";
-import { proficiencyColourEnum } from "../../App";
+import {proficiencyColourEnum} from "../../App";
+import {ArmorClassCtx} from "../../contexts/ArmorClassCtx";
 
 import TakeARest from "../../componenets/TakeARest/TakeARest";
-
-import { GiCampfire, GiGoblinCamp } from "react-icons/gi";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -34,30 +33,30 @@ export function calculateAbilityBasedModifier(baseAbilityScore, level, proficien
     return calculateModifier(baseAbilityScore) + (proficiency > 0 ? level : 0) + proficiency
 }
 
-function AbilityScore({ ability, score }) {
+function AbilityScore({ability, score}) {
     const modifier = (calculateModifier(score))
     return (
         <div className={'ability'}>
             <h3>{ability.toUpperCase()}</h3>
             <input className={'modifier'}
-                type="text"
-                disabled="disabled"
-                placeholder="disabled"
-                value={modifier > 0 ? "+" + modifier : modifier.toString()}
-                readOnly />
+                   type="text"
+                   disabled="disabled"
+                   placeholder="disabled"
+                   value={modifier > 0 ? "+" + modifier : modifier.toString()}
+                   readOnly/>
             <input className={'score'}
-                type="text"
-                disabled="disabled"
-                placeholder="disabled"
-                value={score}
-                readOnly />
+                   type="text"
+                   disabled="disabled"
+                   placeholder="disabled"
+                   value={score}
+                   readOnly/>
         </div>
     )
 }
 
 export default function CharacterSheet() {
 
-    let { id } = useParams()
+    let {id} = useParams()
 
     const threeDDiceApiKey = process.env.REACT_APP_THREE_D_DICE_API_KEY
     const roomSlug = process.env.REACT_APP_THREE_D_DICE_ROOM_SLUG
@@ -70,7 +69,7 @@ export default function CharacterSheet() {
 
     useEffect(() => {
         try {
-            threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey, { dice: { drawOutlines: false } })
+            threeDDiceRef.current = new ThreeDDice(canvasRef.current, threeDDiceApiKey, {dice: {drawOutlines: false}})
             threeDDiceRef.current.start();
             threeDDiceRef.current.connect(roomSlug);
 
@@ -81,11 +80,10 @@ export default function CharacterSheet() {
         }
     }, [])
 
-    /** -----------------------End TODO---------------------------- */
-
     const [uploadImage, setImage] = useState(false)
     const [characterData, setCharacterData] = useState()
     const [characterName, setCharacterName] = useState('')
+
     const [skills, setSkills] = useState()
     const [refreshCharacterData, triggerCharacterDataRefresh] = useState(0)
     const [equipment, setEquipment] = useState([])
@@ -95,6 +93,14 @@ export default function CharacterSheet() {
     const [currentHitPoints, setCurrentHitPoints] = useState(0)
     const [maxHitPoints, setMaxHitPoints] = useState(0)
     const [tempHitPoints, setTempHitPoints] = useState(0)
+
+    const {
+        setArmorBonus,
+        setDexBonus,
+        setDexCap,
+        setShieldBonus,
+        applyModifier
+    } = useContext(ArmorClassCtx)
 
     useEffect(() => {
         (async () => {
@@ -108,7 +114,7 @@ export default function CharacterSheet() {
                 setCurrentHitPoints(json.hp.current)
                 setMaxHitPoints(json.hp.max)
                 setTempHitPoints(json.hp.temp)
-
+                setDexBonus(calculateModifier(json.abilityScores[1].score))
             } catch (error) {
                 console.log("error", error);
             }
@@ -127,31 +133,38 @@ export default function CharacterSheet() {
         })();
     }, []);
 
+    useEffect(() => {
+        setArmorBonus(5)
+        setDexCap(6)
+        setShieldBonus(2)
+        applyModifier(2)
+    }, [])
+
     return (
         <div className={'character-sheet'}>
 
             <section className={'character-sheet-grid'}>
-                <img className={'character-sheet-background'} src={CharacterSheetBackground} />
+                <img className={'character-sheet-background'} src={CharacterSheetBackground}/>
 
                 <section className={'character-sheet-component character-info-section'}>
                     <div className={'character-image-wrapper'}>
                         <img className={'character-info image'}
-                            onMouseEnter={() => {
-                                setImage(true)
-                            }}
-                            onMouseLeave={() => {
-                                setImage(false)
-                            }}
-                            src={characterData?.characterImage}
-                            alt={'avatar'}
-                            referrerPolicy={'no-referrer'} />
-                        <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`} />
+                             onMouseEnter={() => {
+                                 setImage(true)
+                             }}
+                             onMouseLeave={() => {
+                                 setImage(false)
+                             }}
+                             src={characterData?.characterImage}
+                             alt={'avatar'}
+                             referrerPolicy={'no-referrer'}/>
+                        <CameraIcon className={`upload-image-svg ${uploadImage ? 'show-icon' : ''}`}/>
                     </div>
                     <div className={'character-info-block'}>
                         <input className={'character-info character-name'}
-                            type={'text'}
-                            value={characterName}
-                            onChange={(e) => setCharacterName(e.target.value)} />
+                               type={'text'}
+                               value={characterName}
+                               onChange={(e) => setCharacterName(e.target.value)}/>
                         <div className={'character-info ancestry-and-heritage'}>
                             <div className={'ancestry-block'}>
                                 <div className={'character-info-entry-left'}>{characterData?.ancestry} </div>
@@ -166,7 +179,7 @@ export default function CharacterSheet() {
                         </div>
                         <div className={'character-info level'}>Level {characterData?.level}</div>
                         <div className={'hp-rest-button'}>
-                            <TakeARest />
+                            <TakeARest/>
                         </div>
                         {/* <div className={'character-info size'}>{characterData?.size}</div>
                         <div className={'character-info alignment'}>{characterData?.alignment}</div> */}
@@ -176,7 +189,7 @@ export default function CharacterSheet() {
                         {/*<GiChoppedSkull />*/}
 
                     </div>
-                    <div className='vertical-line' />
+                    <div className='vertical-line'/>
                     <section className={'character-sheet-component ability-scores'}>
                         <h1>Ability Scores</h1>
                         <form className={'score-block'}>
@@ -185,31 +198,26 @@ export default function CharacterSheet() {
                                     return <AbilityScore
                                         key={index}
                                         ability={ability.ability}
-                                        score={ability.score} />
+                                        score={ability.score}/>
                                 })
                             }
                         </form>
                     </section>
 
-                    <div className='vertical-line' />
+                    <div className='vertical-line'/>
 
                     <section className={'character-sheet-component saving-throws'}>
                         <SavingThrows
                             characterData={characterData}
-                            diceClient={threeDDiceRef} />
+                            diceClient={threeDDiceRef}/>
                     </section>
 
-                    <div className='vertical-line' />
+                    <div className='vertical-line'/>
 
                     <section className={'character-sheet-component armor-class'}>
                         <div className={'ac-section'}>
                             <div className={'ac-shield'}>
-                                <ACShield
-                                    armor={{ "acBonus": 5, "dexCap": 6 }}
-                                    shield={{ "acBonus": 2 }}
-                                    dexterity={characterData?.abilityScores[1].score}
-                                    additionalMods={2}
-                                    armorClass={characterData?.armorClass} />
+                                <ACShield/>
                             </div>
                             <div className={'ac-stats'}>
                                 <span className={'armor-class-stat'}>
@@ -252,7 +260,7 @@ export default function CharacterSheet() {
                                     <div className={'armor-proficiency-box'} key={index}>
                                         <div className={'armor-type'}>{armorType?.armorType}</div>
                                         <div className={'armor-proficiency'} style={
-                                            { color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}`, filter: 'brightness(250%)' }
+                                            {color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}`, filter: 'brightness(250%)'}
                                         }>
                                             {armorType?.proficiencyLevel}
                                         </div>
@@ -269,12 +277,12 @@ export default function CharacterSheet() {
                         updateCurrentHitPoints={setCurrentHitPoints}
                         max={maxHitPoints}
                         temp={tempHitPoints}
-                        updateTempHitPoints={setTempHitPoints} />
+                        updateTempHitPoints={setTempHitPoints}/>
 
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
-                    <Conditions />
+                    <Conditions/>
                 </section>
 
                 <section className={'character-sheet-component class-dc'}>
@@ -287,51 +295,51 @@ export default function CharacterSheet() {
                         skills={skills}
                         skillsCallback={setSkills}
                         refreshData={triggerCharacterDataRefresh}
-                        diceClient={threeDDiceRef} />
+                        diceClient={threeDDiceRef}/>
                 </section>
 
                 <section className={'character-sheet-component tabbed-component actions-and-Inventory'}>
                     <div className={'tab-block'}>
                         <div className={`tab ${activeTab === '1' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('1')
-                                localStorage.setItem('activeTab', '1');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('1')
+                                 localStorage.setItem('activeTab', '1');
+                             }}>
                             Armory
                         </div>
                         <div className={`tab ${activeTab === '2' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('2')
-                                localStorage.setItem('activeTab', '2');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('2')
+                                 localStorage.setItem('activeTab', '2');
+                             }}>
                             Spells
                         </div>
                         <div className={`tab ${activeTab === '3' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('3')
-                                localStorage.setItem('activeTab', '3');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('3')
+                                 localStorage.setItem('activeTab', '3');
+                             }}>
                             Equipment
                         </div>
                         <div className={`tab ${activeTab === '4' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('4')
-                                localStorage.setItem('activeTab', '4');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('4')
+                                 localStorage.setItem('activeTab', '4');
+                             }}>
                             Actions
                         </div>
                         <div className={`tab ${activeTab === '5' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('5')
-                                localStorage.setItem('activeTab', '5');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('5')
+                                 localStorage.setItem('activeTab', '5');
+                             }}>
                             Feats & Abilities
                         </div>
                         <div className={`tab ${activeTab === '6' ? 'active-tab' : ''}`}
-                            onClick={() => {
-                                setActiveTab('6')
-                                localStorage.setItem('activeTab', '6');
-                            }}>
+                             onClick={() => {
+                                 setActiveTab('6')
+                                 localStorage.setItem('activeTab', '6');
+                             }}>
                             Biography
                         </div>
                     </div>
@@ -375,7 +383,7 @@ export default function CharacterSheet() {
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
                                                 weaponRange={system.range}
-                                                damageType={system.damage.damageType} />
+                                                damageType={system.damage.damageType}/>
                                         )
                                     })}
                                 </div>
@@ -416,7 +424,7 @@ export default function CharacterSheet() {
                                                 die={system.damage.die}
                                                 dieCount={system.damage.dice}
                                                 weaponRange={system.range}
-                                                damageType={system.damage.damageType} />
+                                                damageType={system.damage.damageType}/>
                                         )
                                     })}
                                 </div>
@@ -442,14 +450,14 @@ export default function CharacterSheet() {
                                     return (
                                         spellsByLevel.level <= spellLevelByLevel &&
                                         <SpellBlock key={index}
-                                            spellBlockName={spellType}
-                                            spells={spellsByLevel}
-                                            triggerCharacterDataRefresh={triggerCharacterDataRefresh}>
+                                                    spellBlockName={spellType}
+                                                    spells={spellsByLevel}
+                                                    triggerCharacterDataRefresh={triggerCharacterDataRefresh}>
                                             {spellsByLevel.spells?.map((spell, index) => {
                                                 return (
                                                     <Spell key={index}
-                                                        spell={spell}
-                                                        diceClient={threeDDiceRef} />
+                                                           spell={spell}
+                                                           diceClient={threeDDiceRef}/>
                                                 )
                                             })}
                                         </SpellBlock>
@@ -476,23 +484,23 @@ export default function CharacterSheet() {
                                 </div>
                             </div>
                             <div contentEditable className={'tab-notes'}
-                                suppressContentEditableWarning={true}
-                                dangerouslySetInnerHTML={{ __html: characterData?.journal.locations }} />
+                                 suppressContentEditableWarning={true}
+                                 dangerouslySetInnerHTML={{__html: characterData?.journal.locations}}/>
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Allies</span>
                                 </div>
                             </div>
                             <div contentEditable className={'tab-notes'}
-                                suppressContentEditableWarning={true}
-                                dangerouslySetInnerHTML={{ __html: characterData?.journal.allies }} />
+                                 suppressContentEditableWarning={true}
+                                 dangerouslySetInnerHTML={{__html: characterData?.journal.allies}}/>
                             <div className={'title-underline'}>
                                 <div className={'tab-content notes title'}>
                                     <span>Enemies</span>
                                 </div>
                             </div>
                             <div contentEditable className={'tab-notes'}
-                                suppressContentEditableWarning={true}>
+                                 suppressContentEditableWarning={true}>
                                 {characterData?.journal.enemies}
                             </div>
 
@@ -502,7 +510,7 @@ export default function CharacterSheet() {
                                 </div>
                             </div>
                             <div contentEditable className={'tab-notes'}
-                                suppressContentEditableWarning={true}>
+                                 suppressContentEditableWarning={true}>
                                 {characterData?.journal.backstory}
                             </div>
 
@@ -512,13 +520,13 @@ export default function CharacterSheet() {
                                 </div>
                             </div>
                             <div contentEditable className={'tab-notes'}
-                                suppressContentEditableWarning={true}>
+                                 suppressContentEditableWarning={true}>
                                 {characterData?.journal.notes}
                             </div>
                         </div>
                     </div>
                 </section>
-                <canvas className={'dd-dice-canvas'} ref={canvasRef} />
+                <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
             </section>
         </div>
     )

@@ -36,7 +36,14 @@ export function ConditionsDataProvider({children}) {
     }, []);
 
     return (
-        <ConditionsCtx.Provider value={{conditionData, currentConditions, applyConditions, incrementConditionCount, decrementConditionCount}}>
+        <ConditionsCtx.Provider value={
+            {
+                conditionData,
+                currentConditions,
+                applyConditions,
+                incrementConditionCount,
+                decrementConditionCount
+            }}>
             {children}
         </ConditionsCtx.Provider>
     )
