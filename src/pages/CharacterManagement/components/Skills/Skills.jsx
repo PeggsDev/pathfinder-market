@@ -159,14 +159,14 @@ export default function Skills(props) {
                             onSelectItem={setLoreProficiency}/>
                         <div className='lore-skill-buttons'>
                             <button
-                                className={'lore-skill-save-btn'}
-                                onClick={() => addLore(loreTitle, loreAbility, loreProficiency)}>
-                                save
-                            </button>
-                            <button
-                                className={'lore-skill-save-btn'}
+                                className={'lore-skill-btn close'}
                                 onClick={() => setManageLoreStatus(!showManageLore)}>
                                 Close
+                            </button>
+                            <button
+                                className={'lore-skill-btn save'}
+                                onClick={() => addLore(loreTitle, loreAbility, loreProficiency)}>
+                                save
                             </button>
                         </div>
                     </div>

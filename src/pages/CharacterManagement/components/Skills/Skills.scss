@@ -251,7 +251,8 @@
     gap: 0.5rem;
   }
 
-  .lore-skill-save-btn {
+  .lore-skill-btn.save,
+  .lore-skill-btn.close {
     color: var(--clr-accent-dark);
     background: var(--clr-dice-roll-hover);
     border-radius: 0.2rem;
