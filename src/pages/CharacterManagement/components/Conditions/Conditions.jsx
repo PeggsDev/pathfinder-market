@@ -28,18 +28,18 @@ export default function Conditions() {
         return 0;
     }
 
-    function removeAndCountDuplicates(conditions) {
-        return Object.values(conditions.reduce((previous, current) => {
-            const reducedConditions = previous[current.name];
-            if (!reducedConditions)
-                previous[current.name] = {...current, count: 0};
-            else if (reducedConditions.sort > current.sort)
-                previous[current.name] = {...current, count: reducedConditions.count + 1};
-            else
-                previous[current.name].count++;
-            return previous;
-        }, {}));
-    }
+    // function removeAndCountDuplicates(conditions) {
+    //     return Object.values(conditions.reduce((previous, current) => {
+    //         const reducedConditions = previous[current.name];
+    //         if (!reducedConditions)
+    //             previous[current.name] = {...current, count: 0};
+    //         else if (reducedConditions.sort > current.sort)
+    //             previous[current.name] = {...current, count: reducedConditions.count + 1};
+    //         else
+    //             previous[current.name].count++;
+    //         return previous;
+    //     }, {}));
+    // }
 
     return (
         <div className={'conditions-wrapper'}>
@@ -48,10 +48,10 @@ export default function Conditions() {
                 placeHolder={'Search Conditions...'}
                 data={conditionData}
                 selectedItems={currentConditions}
-                addItems={applyConditions}/>
+                addItems={(e) => { incrementConditionCount(e)}}/>
 
             <div className={'current-conditions-wrapper'}>
-                {removeAndCountDuplicates(currentConditions)?.sort(compareByName).map((condition, index) => {
+                {Array.from(currentConditions).sort(compareByName).map((condition, index) => {
                     return (
                         <div
                             key={index}
@@ -67,7 +67,7 @@ export default function Conditions() {
                                         onClick={() => decrementConditionCount(condition)}/>
                             }
                             <div key={index} className={'condition'}>
-                                {condition.name}
+                                {condition?.name}
                             </div>
                             <GoPlus
                                 onClick={() => incrementConditionCount(condition)}
