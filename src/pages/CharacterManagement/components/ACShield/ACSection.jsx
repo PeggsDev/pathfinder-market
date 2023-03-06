@@ -56,7 +56,7 @@ export default function ACSection() {
                                         DEX
                                     </div>
                                     <div className={'armor-class-stat value'}>
-                                        {dexBonus}
+                                        {dexBonus >= 0 ? '+' + dexBonus : '-'}
                                     </div>
                                 </span>
                     <span className={'armor-class-stat'}>
@@ -64,7 +64,7 @@ export default function ACSection() {
                                         DEX CAP
                                     </div>
                                     <div className={'armor-class-stat value'}>
-                                        {dexCap}
+                                        {dexCap >= 0 ? '+' + dexCap : '-'}
                                     </div>
                                 </span>
                     <span className={'armor-class-stat'}>

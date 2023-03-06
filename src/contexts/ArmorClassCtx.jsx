@@ -4,10 +4,10 @@ export const ArmorClassCtx = createContext({})
 
 export function ArmorClassDataProvider({children}) {
 
-    const [armorBonus, setArmorBonus] = useState({"acBonus": 0})
-    const [dexCap, setDexCap] = useState({"dexCap": 0})
-    const [shieldBonus, setShieldBonus] = useState({"acBonus": 0})
-    const [dexBonus, setDexBonus] = useState({"dexBonus": 0})
+    const [armorBonus, setArmorBonus] = useState( 0)
+    const [dexCap, setDexCap] = useState(0)
+    const [shieldBonus, setShieldBonus] = useState(0)
+    const [dexBonus, setDexBonus] = useState(0)
     const [additionalModifiers, addModifier] = useState(new Set())
     const [acProficiencies, setArmorProficiencies] = useState()
     const armorClass = calculateArmorClass(armorBonus, dexBonus, dexCap, shieldBonus, additionalModifiers)
