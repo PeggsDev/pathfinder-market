@@ -21,7 +21,7 @@ export default function ACSection() {
     } = useContext(ConditionsCtx)
 
     useEffect(() => {
-        if (Array.from(currentConditions).some(condition => condition.name?.toLowerCase() === 'flat-footed')) {
+        if (currentConditions.some(condition => condition.name.toLowerCase() === 'flat-footed')) {
             applyModifier(-dexBonus)
         } else {
             removeModifier(-dexBonus)

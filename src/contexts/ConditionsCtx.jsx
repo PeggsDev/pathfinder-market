@@ -4,17 +4,23 @@ export const ConditionsCtx = createContext({})
 
 export function ConditionsDataProvider({children}) {
 
-    const [conditionData, setConditionData] = useState()
-    const [currentConditions, applyConditions] = useState(new Set())
+    const [conditionData, setConditionData] = useState([])
+    const [currentConditions, applyConditions] = useState([])
 
     function incrementConditionCount(condition) {
-        console.log(condition)
-        applyConditions(currentConditions => new Set([...currentConditions, condition]))
+        if (condition.count <= 8) {
+            applyConditions([...currentConditions, condition])
+        }
     }
 
     function decrementConditionCount(condition) {
-        console.log(condition)
-        applyConditions(currentConditions => new Set([...currentConditions].filter(x => x !== condition)))
+        const index = currentConditions.findIndex(
+            currentCondition => currentCondition.name === condition.name
+        );
+        if(index >= 0) {
+            currentConditions.splice(index, 1)
+            applyConditions(JSON.parse(JSON.stringify(currentConditions)))
+        }
     }
 
     useEffect(() => {
