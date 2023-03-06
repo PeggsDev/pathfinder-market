@@ -5,8 +5,6 @@ import {useContext, useState} from "react";
 import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
 import {FaMinus} from "react-icons/fa";
 import {GoPlus} from "react-icons/go";
-import {ArmorClassCtx} from "../../../../contexts/ArmorClassCtx";
-import {waitForElementToBeRemoved} from "@testing-library/react";
 
 export default function Conditions() {
 

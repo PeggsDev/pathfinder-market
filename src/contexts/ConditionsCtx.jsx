@@ -23,6 +23,16 @@ export function ConditionsDataProvider({children}) {
         }
     }
 
+    function addConditions(conditions) {
+        const updatedConditions = conditions.map((condition) => {
+            return (
+                conditionData[conditionData.findIndex(item => item.name.toLowerCase() === condition.toLowerCase())]
+            )
+        })
+
+        applyConditions(JSON.parse(JSON.stringify([...currentConditions, ...updatedConditions])))
+    } 
+
     useEffect(() => {
         (async () => {
             try {
@@ -40,9 +50,11 @@ export function ConditionsDataProvider({children}) {
             {
                 conditionData,
                 currentConditions,
-                applyConditions,
+                addConditions,
+                //removeConditions,
                 incrementConditionCount,
-                decrementConditionCount
+                decrementConditionCount,
+                applyConditions
             }}>
             {children}
         </ConditionsCtx.Provider>
