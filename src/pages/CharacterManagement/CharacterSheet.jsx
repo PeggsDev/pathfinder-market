@@ -11,7 +11,7 @@ import CharacterSheetBackground from "../../images/character-sheet-background-b.
 import Weapon from "./components/Inventory/Weapon";
 
 import Skills from './components/Skills/Skills';
-import ACShield from "./components/ACShield/ACShield";
+import ACShield from "./components/ACShield/ACSection";
 import SavingThrows from './components/SavingThrows/SavingThrows';
 import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
 
@@ -24,6 +24,7 @@ import {proficiencyColourEnum} from "../../App";
 import {ArmorClassCtx} from "../../contexts/ArmorClassCtx";
 
 import TakeARest from "../../componenets/TakeARest/TakeARest";
+import ACSection from "./components/ACShield/ACSection";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -99,6 +100,7 @@ export default function CharacterSheet() {
         setDexBonus,
         setDexCap,
         setShieldBonus,
+        setArmorProficiencies,
         applyModifier
     } = useContext(ArmorClassCtx)
 
@@ -114,6 +116,13 @@ export default function CharacterSheet() {
                 setCurrentHitPoints(json.hp.current)
                 setMaxHitPoints(json.hp.max)
                 setTempHitPoints(json.hp.temp)
+
+                setArmorProficiencies(json.armorProficiencies)
+
+                setArmorBonus(5)
+                setDexCap(6)
+                setShieldBonus(2)
+                //applyModifier()
                 setDexBonus(calculateModifier(json.abilityScores[1].score))
             } catch (error) {
                 console.log("error", error);
@@ -132,13 +141,6 @@ export default function CharacterSheet() {
             }
         })();
     }, []);
-
-    useEffect(() => {
-        setArmorBonus(5)
-        setDexCap(6)
-        setShieldBonus(2)
-        applyModifier(2)
-    }, [])
 
     return (
         <div className={'character-sheet'}>
@@ -215,59 +217,7 @@ export default function CharacterSheet() {
                     <div className='vertical-line'/>
 
                     <section className={'character-sheet-component armor-class'}>
-                        <div className={'ac-section'}>
-                            <div className={'ac-shield'}>
-                                <ACShield/>
-                            </div>
-                            <div className={'ac-stats'}>
-                                <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>
-                                        ITEM
-                                    </div>
-                                    <div className={'armor-class-stat value'}>
-                                        +1
-                                    </div>
-                                </span>
-                                <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>
-                                        DEX
-                                    </div>
-                                    <div className={'armor-class-stat value'}>
-                                        +5
-                                    </div>
-                                </span>
-                                <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>
-                                        DEX CAP
-                                    </div>
-                                    <div className={'armor-class-stat value'}>
-                                        +4
-                                    </div>
-                                </span>
-                                <span className={'armor-class-stat'}>
-                                    <div className={'armor-class-stat title'}>
-                                        PROF
-                                    </div>
-                                    <div className={'armor-class-stat value'}>
-                                        +3
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div className={'armor-proficiencies'}>
-                            {characterData?.armorProficiencies?.map((armorType, index) => {
-                                return (
-                                    <div className={'armor-proficiency-box'} key={index}>
-                                        <div className={'armor-type'}>{armorType?.armorType}</div>
-                                        <div className={'armor-proficiency'} style={
-                                            {color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}`, filter: 'brightness(250%)'}
-                                        }>
-                                            {armorType?.proficiencyLevel}
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
+                        <ACSection />
                     </section>
                 </section>
 
@@ -278,7 +228,6 @@ export default function CharacterSheet() {
                         max={maxHitPoints}
                         temp={tempHitPoints}
                         updateTempHitPoints={setTempHitPoints}/>
-
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
