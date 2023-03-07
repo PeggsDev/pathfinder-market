@@ -8,7 +8,6 @@ export function ConditionsDataProvider({children}) {
     const [currentConditions, applyConditions] = useState([])
 
     function incrementConditionCount(condition) {
-        console.log(JSON.stringify(condition))
         if (condition.count != null && condition.count <= 8) {
             applyConditions([...currentConditions, condition])
         }
@@ -18,7 +17,7 @@ export function ConditionsDataProvider({children}) {
         const index = currentConditions.findIndex(
             currentCondition => currentCondition.name === condition.name
         );
-        if(index >= 0) {
+        if (index >= 0) {
             currentConditions.splice(index, 1)
             applyConditions(JSON.parse(JSON.stringify(currentConditions)))
         }
@@ -26,17 +25,30 @@ export function ConditionsDataProvider({children}) {
 
     function addConditions(conditions) {
         const updatedConditions = conditions.map((condition) => {
-            return (
-                conditionData[conditionData.findIndex(item => item.name.toLowerCase() === condition.toLowerCase())]
-            )
+            return conditionData[conditionData.findIndex(item => item.name.toLowerCase() === condition.toLowerCase())]
         })
 
+       // const extraConditions =  updatedConditions.flatMap((con) => {
+       //      return con.system?.rules.map((rule) => {
+       //          console.log(rule.flag)
+       //          if(rule.flag !== undefined) {
+       //              return conditionData[conditionData.findIndex(item => item.name.toLowerCase() === rule.flag.toLowerCase())]
+       //          }
+       //      })
+       //  })
+       //
+       //
+       //  const cons = [...updatedConditions, ...extraConditions.filter(function( element ) {
+       //      return element !== undefined;
+       //  })]
+
+        //TODO - For each condition in updatedConditions add any other conditions found in condition.system.rules.flag[]
         //TODO - De-duplicate conditions with no count property
         applyConditions(JSON.parse(JSON.stringify([...currentConditions, ...updatedConditions])))
-    } 
+    }
 
     function removeConditions(conditions) {
-        
+
     }
 
     useEffect(() => {
