@@ -11,7 +11,7 @@ import CharacterSheetBackground from "../../images/character-sheet-background-b.
 import Weapon from "./components/Inventory/Weapon";
 
 import Skills from './components/Skills/Skills';
-import ACShield from "./components/ACShield/ACSection";
+import ACShield from "./components/ACSection/ACSection";
 import SavingThrows from './components/SavingThrows/SavingThrows';
 import {ReactComponent as CameraIcon} from './svg/camera-solid.svg'
 
@@ -24,7 +24,7 @@ import {proficiencyColourEnum} from "../../App";
 import {ArmorClassCtx} from "../../contexts/ArmorClassCtx";
 
 import TakeARest from "../../componenets/TakeARest/TakeARest";
-import ACSection from "./components/ACShield/ACSection";
+import ACSection from "./components/ACSection/ACSection";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)

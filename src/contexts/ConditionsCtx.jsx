@@ -1,4 +1,5 @@
 import {createContext, useEffect, useState} from "react"
+import { _ } from 'lodash'
 
 export const ConditionsCtx = createContext({})
 
@@ -33,6 +34,10 @@ export function ConditionsDataProvider({children}) {
         applyConditions(JSON.parse(JSON.stringify([...currentConditions, ...updatedConditions])))
     } 
 
+    function removeConditions(conditions) {
+        
+    }
+
     useEffect(() => {
         (async () => {
             try {
@@ -51,7 +56,7 @@ export function ConditionsDataProvider({children}) {
                 conditionData,
                 currentConditions,
                 addConditions,
-                //removeConditions,
+                removeConditions,
                 incrementConditionCount,
                 decrementConditionCount,
                 applyConditions

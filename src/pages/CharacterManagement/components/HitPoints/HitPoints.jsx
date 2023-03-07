@@ -7,6 +7,7 @@ export default function HealthPoints(props) {
     const {
         conditionData,
         addConditions,
+        removeConditions,
         decrementConditionCount
     } = useContext(ConditionsCtx)
 
@@ -20,12 +21,12 @@ export default function HealthPoints(props) {
 
     const [hp, setHp] = useState(0)
 
-    function removeConditions(conditions) {
+    function removeConditionsAfterHealing(conditions) {
         conditions.map((condition) => {
             const con = conditionData[conditionData.findIndex(item => item.name.toLowerCase() === condition.toLowerCase())]
-            console.log(con)
             decrementConditionCount(con)
         })
+        //removeConditions(conditions)
         if (current === 0) {
             addConditions(['wounded', 'wounded'])
         }
@@ -34,7 +35,7 @@ export default function HealthPoints(props) {
     function healHP() {
         const returnValue = current + Number(hp)
         updateCurrentHitPoints(returnValue <= max ? returnValue : max)
-        removeConditions(['dying', 'dying', 'blinded', 'flat-footed', 'unconscious'])
+        removeConditionsAfterHealing(['dying', 'dying', 'blinded', 'flat-footed', 'unconscious'])
     }
 
     function takeDamage() {
