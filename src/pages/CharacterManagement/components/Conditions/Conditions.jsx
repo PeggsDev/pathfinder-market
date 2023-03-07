@@ -30,7 +30,7 @@ export default function Conditions() {
         return Object.values(conditions.reduce((previous, current) => {
             const reducedConditions = previous[current.name];
             if (!reducedConditions)
-                previous[current.name] = {...current, count: 0};
+                previous[current.name] = current.count == null ? {...current} : {...current, count: 1 };
             else if (reducedConditions.sort > current.sort)
                 previous[current.name] = {...current, count: reducedConditions.count + 1};
             else
@@ -49,33 +49,38 @@ export default function Conditions() {
                 addItems={applyConditions}/>
 
             <div className={'current-conditions-wrapper'}>
-                {removeAndCountDuplicates(currentConditions)?.sort(compareByName).map((condition, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className={'current-condition'}>
-                            {
-                                condition.count === 0 ?
-                                    <RemoveConditionIcon
-                                        className={'remove-condition-icon'}
-                                        onClick={() => decrementConditionCount(condition)}/>
-                                    :
-                                    <FaMinus
-                                        className={'remove-condition-icon'}
-                                        onClick={() => decrementConditionCount(condition)}/>
-                            }
-                            <div key={index} className={'condition'}>
-                                {condition.name}
+                {
+                    removeAndCountDuplicates(currentConditions)?.sort(compareByName).map((condition, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={'current-condition'}>
+                                {
+                                    condition.count === 1 || condition.count == null ?
+                                        <RemoveConditionIcon
+                                            className={'remove-condition-icon'}
+                                            onClick={() => decrementConditionCount(condition)}/>
+                                        :
+                                        <FaMinus
+                                            className={'remove-condition-icon'}
+                                            onClick={() => decrementConditionCount(condition)}/>
+                                }
+                                <div key={index} className={'condition'}>
+                                    {condition.name}
+                                </div>
+                                {
+                                    condition.count != null &&
+                                    <GoPlus
+                                        onClick={() => incrementConditionCount(condition)}
+                                        className={'increase-condition-count'}/>
+                                }
+                                <div className={'condition-count'}>
+                                    {condition.count === 0 ? '' : condition.count}
+                                </div>
                             </div>
-                            <GoPlus
-                                onClick={() => incrementConditionCount(condition)}
-                                className={'increase-condition-count'}/>
-                            <div className={'condition-count'}>
-                                {condition.count === 0 ? '' : condition.count}
-                            </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })
+                }
             </div>
         </div>
     )

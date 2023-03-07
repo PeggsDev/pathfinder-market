@@ -9,7 +9,6 @@
 
 .current-conditions-wrapper {
   columns: auto 2;
-  
 
   .current-condition {
     display: flex;
@@ -18,7 +17,6 @@
     align-items: center;
     border-bottom: 1px solid var(--clr-char-outline);
     gap: 0.25rem;
-
 
     .condition {
       margin: 0.25rem;
@@ -57,7 +55,6 @@
 
       &:hover {
         fill: var(--clr-remove-item-hover);
-        scale: 1.1;
       }
     }
   }

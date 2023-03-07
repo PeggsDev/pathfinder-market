@@ -1,5 +1,4 @@
 import {createContext, useEffect, useState} from "react"
-import { _ } from 'lodash'
 
 export const ConditionsCtx = createContext({})
 
@@ -9,7 +8,8 @@ export function ConditionsDataProvider({children}) {
     const [currentConditions, applyConditions] = useState([])
 
     function incrementConditionCount(condition) {
-        if (condition.count <= 8) {
+        console.log(JSON.stringify(condition))
+        if (condition.count != null && condition.count <= 8) {
             applyConditions([...currentConditions, condition])
         }
     }
@@ -31,6 +31,7 @@ export function ConditionsDataProvider({children}) {
             )
         })
 
+        //TODO - De-duplicate conditions with no count property
         applyConditions(JSON.parse(JSON.stringify([...currentConditions, ...updatedConditions])))
     } 
 

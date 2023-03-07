@@ -11,24 +11,32 @@ export default function ACSection() {
         armorClass,
         dexBonus,
         dexCap,
-        applyModifier,
-        removeModifier,
+        applyACModifier,
+        removeACModifier,
         acProficiencies
     } = useContext(ArmorClassCtx)
 
     const {
         currentConditions,
+        conditionData
     } = useContext(ConditionsCtx)
 
-    //TODO - Look to move this to some kind of Conditions Sevice
+    //TODO - Look to move this to some kind of Conditions Service
     useEffect(() => {
-        if (currentConditions.some(condition => condition.name.toLowerCase() === 'flat-footed')) {
-            applyModifier(-2)
-        } else {
-            removeModifier(-2)
-        }
+        applyConditionModifier(conditionData.find(item => item.name.toLowerCase() === 'flat-footed'))
+        applyConditionModifier(conditionData.find(item => item.name.toLowerCase() === 'fatigued'))
+        applyConditionModifier(conditionData.find(item => item.name.toLowerCase() === 'unconscious'))
     }, [currentConditions])
 
+    function applyConditionModifier(condition){
+        const modifier = condition?.system.rules[0].value
+        if (currentConditions.some(item => item.name.toLowerCase() === condition.name.toLowerCase())) {
+            applyACModifier(modifier)
+        } else {
+            removeACModifier(modifier)
+        }
+    }
+    /* -------------- END OF TODO -------------------*/
     return (
         <>
             <div className={'ac-section'}>

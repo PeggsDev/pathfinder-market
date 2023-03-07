@@ -28,14 +28,14 @@ export default function HealthPoints(props) {
         })
         //removeConditions(conditions)
         if (current === 0) {
-            addConditions(['wounded', 'wounded'])
+            addConditions(['wounded'])
         }
     }
 
     function healHP() {
         const returnValue = current + Number(hp)
         updateCurrentHitPoints(returnValue <= max ? returnValue : max)
-        removeConditionsAfterHealing(['dying', 'dying', 'blinded', 'flat-footed', 'unconscious'])
+        removeConditionsAfterHealing(['dying', 'blinded', 'flat-footed', 'unconscious'])
     }
 
     function takeDamage() {
@@ -47,7 +47,7 @@ export default function HealthPoints(props) {
             updateTempHitPoints(0)
             let newTotal = total - Number(hp) <= 0 ? 0 : total - Number(hp)
             if (newTotal <= 0) {
-                addConditions(['dying', 'dying', 'blinded', 'flat-footed', 'unconscious'])
+                addConditions(['dying', 'blinded', 'flat-footed', 'unconscious'])
             }
             updateCurrentHitPoints(newTotal)
         }

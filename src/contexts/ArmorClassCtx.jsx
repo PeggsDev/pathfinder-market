@@ -12,15 +12,18 @@ export function ArmorClassDataProvider({children}) {
     const [acProficiencies, setArmorProficiencies] = useState()
     const armorClass = calculateArmorClass(armorBonus, dexBonus, dexCap, shieldBonus, additionalModifiers)
 
-    function applyModifier(mod) {
+    function applyACModifier(mod) {
         addModifier(additionalModifiers => new Set([...additionalModifiers, mod]))
     }
 
-    function removeModifier(mod) {
+    function removeACModifier(mod) {
         addModifier(additionalModifiers => new Set([...additionalModifiers].filter(x => x !== mod)))
     }
 
     function calculateArmorClass(armor, dex, dexCap, shield, otherMods) {
+
+        // const additional = Math.max(...Array.from(otherMods).map(mod => Number(mod)))
+
         const additional = Array.from(otherMods).reduce((acc, val) => {
             return acc + val
         }, 0)
@@ -38,8 +41,8 @@ export function ArmorClassDataProvider({children}) {
             setDexCap,
             shieldBonus,
             setShieldBonus,
-            applyModifier,
-            removeModifier,
+            applyACModifier,
+            removeACModifier,
             additionalModifiers,
             acProficiencies,
             setArmorProficiencies,
