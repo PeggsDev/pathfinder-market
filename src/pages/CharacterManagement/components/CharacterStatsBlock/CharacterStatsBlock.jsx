@@ -1,25 +1,34 @@
 import './CharacterStatsBlock.scss'
-import {GiCampfire} from "react-icons/gi";
+import { GiCampfire } from "react-icons/gi";
 import React from "react";
-import {proficiencyEnum, proficiencyColourEnum, proficiencies} from "../../../../App";
-import {calculateModifier} from "../../CharacterSheet";
+import { proficiencyEnum, proficiencyColourEnum, proficiencies } from "../../../../App";
+import { calculateModifier } from "../../CharacterSheet";
 
 export default function CharacterStatsBlock(props) {
 
-    const {characterData} = props
+    const { characterData } = props
     const keyAbility = characterData?.abilityScores.find(ability => ability.isKey === true)
     const proficiencyIndicator = characterData?.classDC.proficiencyLevel
-    const proficiency = proficiencies.find(proficiency => proficiency.value === proficiencyIndicator).label
+    const wisdom = characterData?.abilityScores.find(ability => ability.ability === 'wisdom')
+    const perception = calculatePerception(
+        characterData?.abilityScores.find(ability => ability.ability === 'wisdom')?.score,
+        characterData?.perception.proficiencyLevel
+    )
+
+    // const proficiency = proficiencies.find(proficiency => proficiency.value === proficiencyIndicator)?.label
 
     function calculateClassDC(abilityScore, proficiency, level) {
         return (10 + calculateModifier(abilityScore) + proficiencyEnum[proficiency] + level)
     }
 
+    function calculatePerception(wisdom, proficiency) {
+        return (calculateModifier(wisdom) + proficiencyEnum[proficiency])
+    }
     return (
         <>
             <div className={'character-stat-block-wrapper'}>
                 <div className={'rest-button'}>
-                    <GiCampfire className={'rest-button-svg'}/>
+                    <GiCampfire className={'rest-button-svg'} />
                     <h4 className={'rest-label'}>
                         Take a Rest
                     </h4>
@@ -43,19 +52,43 @@ export default function CharacterStatsBlock(props) {
                     </div>
                     <div className={'stat-block-stat class-dc'}>
                         <div className={'stat-block-stat-value'}>
-                            {calculateClassDC(keyAbility?.score, proficiencyIndicator, characterData.level)}
+                            {calculateClassDC(keyAbility?.score, proficiencyIndicator, characterData?.level)}
                         </div>
                     </div>
-                    <div className={'stat-block-stat-unit'}
-                         style={{color: `${proficiencyColourEnum[proficiencyIndicator]}` , filter: 'brightness(250%)'}}>
-                        {proficiencyIndicator}
-                    </div>
-                    <div className={'stat-block-stat-unit'}>
-                        {keyAbility?.ability.slice(0, 3).toUpperCase()}
+                    <div className={'stat-block-stat-unit-wrapper'}>
+                        <div className={'stat-block-stat-unit title'}>
+                            PROF
+                        </div>
+                        <div className={'stat-block-stat-unit indicator'}
+                            style={{ color: `${proficiencyColourEnum[proficiencyIndicator]}`, filter: 'brightness(250%)' }}>
+                            {proficiencyIndicator}
+                        </div>
+                        <div className={'stat-block-stat-unit ability'}>
+                            {keyAbility?.ability.slice(0, 3).toUpperCase()}
+                        </div>
                     </div>
                 </div>
-                <div>
-                    Perception
+                <div className={'stat-block-wrapper'}>
+                    <div className={'stat-block-label'}>
+                        Perception
+                    </div>
+                    <div className={'stat-block-stat class-dc'}>
+                        <div className={'stat-block-stat-value'}>
+                            {perception}
+                        </div>
+                    </div>
+                    <div className={'stat-block-stat-unit-wrapper'}>
+                        <div className={'stat-block-stat-unit title'}>
+                            PROF
+                        </div>
+                        <div className={'stat-block-stat-unit indicator'}
+                            style={{ color: `${proficiencyColourEnum[proficiencyIndicator]}`, filter: 'brightness(250%)' }}>
+                            {proficiencyIndicator}
+                        </div>
+                        <div className={'stat-block-stat-unit ability'}>
+                            {wisdom?.ability.slice(0, 3).toUpperCase()}
+                        </div>
+                    </div>
                 </div>
                 <div>
                     Initiative
@@ -65,7 +98,7 @@ export default function CharacterStatsBlock(props) {
                 Languages:
                 {
                     characterData?.languages.map((language, index) => {
-                        return <div className={'language'} key={index}>{language.language} </div>
+                        return <div className={'language'} key={index}>{language.language}</div>
                     })
                 }
             </div>
