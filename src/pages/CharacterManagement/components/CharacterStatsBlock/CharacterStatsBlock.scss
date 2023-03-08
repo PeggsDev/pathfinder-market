@@ -1,0 +1,70 @@
+.character-stat-block-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.rest-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  width: 5rem;
+
+  & h4 {
+    font-size: 0.7rem;
+    font-weight: normal;
+    color: var(--clr-dice-roll-hover);
+  }
+}
+
+.rest-button-svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  fill: var(--clr-accent-light);
+
+  &:hover {
+    fill: var(--clr-dice-roll-hover);
+  }
+}
+
+.stat-block-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.stat-block-label {
+  font-size: 0.7rem;
+  color: var(--clr-dice-roll-hover);
+  text-transform: uppercase;
+}
+
+.stat-block-stat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  gap: 0.25rem;
+
+  &.class-dc {
+    width: 6rem;
+  }
+
+  .stat-block-stat-value {
+    font-size: 1.5rem;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .stat-block-stat-unit {
+    font-size: 1.5rem;
+    color: var(--clr-dice-roll-hover);
+  }
+}

@@ -56,7 +56,7 @@ export default function Conditions() {
                                 key={index}
                                 className={'current-condition'}>
                                 {
-                                    condition.count === 1 || condition.count == null ?
+                                    condition.count === 1 || !condition?.system.value.isValued ?
                                         <RemoveConditionIcon
                                             className={'remove-condition-icon'}
                                             onClick={() => decrementConditionCount(condition)}/>

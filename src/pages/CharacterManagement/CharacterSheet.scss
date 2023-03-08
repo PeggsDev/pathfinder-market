@@ -108,7 +108,7 @@
     grid-row: 4 / span 2;
   }
 
-  .class-dc {
+  .stat-block-section {
     height: 13rem;
     background: var(--clr-dark-background);
     border: 2px solid var(--clr-char-outline);
@@ -402,6 +402,7 @@
   }
 
 
+  .stat-block,
   .ancestry-block,
   .background-block {
     height: 1rem;
@@ -410,6 +411,7 @@
     align-items: center;
     align-content: flex-start;
     color: var(--clr-dice-roll-hover);
+    text-transform: capitalize;
 
     .character-info-entry-left {
       min-width: 4rem;
@@ -421,6 +423,11 @@
       color: var(--clr-accent-light);
 
     }
+  }
+
+  .stat-block {
+    color: var(--clr-accent-light);
+    font-size: 0.8rem;
   }
 
   .character-name {

@@ -23,7 +23,7 @@ import Conditions from "./components/Conditions/Conditions";
 import {proficiencyColourEnum} from "../../App";
 import {ArmorClassCtx} from "../../contexts/ArmorClassCtx";
 
-import TakeARest from "../../componenets/TakeARest/TakeARest";
+import CharacterStatsBlock from "./components/CharacterStatsBlock/CharacterStatsBlock";
 import ACSection from "./components/ACSection/ACSection";
 
 export function calculateModifier(value) {
@@ -123,6 +123,7 @@ export default function CharacterSheet() {
                 setDexCap(6)
                 setShieldBonus(2)
                 //applyModifier()
+
                 setDexBonus(calculateModifier(json.abilityScores[1].score))
             } catch (error) {
                 console.log("error", error);
@@ -178,18 +179,14 @@ export default function CharacterSheet() {
                                 <div className={'character-info-entry-center'}>|</div>
                                 <div className={'character-info-entry-right'}> {characterData?.background}</div>
                             </div>
+                            <div className={'stat-block'}>
+                                <div className={'character-info-entry-left'}> {characterData?.size} </div>
+                                <div className={'character-info-entry-center'}>|</div>
+                                <div className={'character-info-entry-right'}> {characterData?.alignment}</div>
+                            </div>
                         </div>
                         <div className={'character-info level'}>Level {characterData?.level}</div>
-                        <div className={'hp-rest-button'}>
-                            <TakeARest/>
-                        </div>
-                        {/* <div className={'character-info size'}>{characterData?.size}</div>
-                        <div className={'character-info alignment'}>{characterData?.alignment}</div> */}
-                        {/*<div className={'character-info traits'}>Traits</div>*/}
                         {/*<div className={'character-info xp'}>Experience Points</div>*/}
-                        {/*Death Saves*/}
-                        {/*<GiChoppedSkull />*/}
-
                     </div>
                     <div className='vertical-line'/>
                     <section className={'character-sheet-component ability-scores'}>
@@ -217,7 +214,7 @@ export default function CharacterSheet() {
                     <div className='vertical-line'/>
 
                     <section className={'character-sheet-component armor-class'}>
-                        <ACSection />
+                        <ACSection/>
                     </section>
                 </section>
 
@@ -234,8 +231,8 @@ export default function CharacterSheet() {
                     <Conditions/>
                 </section>
 
-                <section className={'character-sheet-component class-dc'}>
-
+                <section className={'character-sheet-component stat-block-section'}>
+                    <CharacterStatsBlock characterData={characterData}/>
                 </section>
                 <section className={'character-sheet-component skill-modifiers'}>
                     <h1>Skills</h1>
