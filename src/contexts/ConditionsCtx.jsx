@@ -8,7 +8,7 @@ export function ConditionsDataProvider({children}) {
     const [currentConditions, applyConditions] = useState([])
 
     function incrementConditionCount(condition) {
-        if (condition.count != null && condition.count <= 8) {
+        if (condition?.system.value.isValued && condition.count <= 8) {
             applyConditions([...currentConditions, condition])
         }
     }

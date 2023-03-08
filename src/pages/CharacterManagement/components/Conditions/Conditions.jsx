@@ -30,7 +30,7 @@ export default function Conditions() {
         return Object.values(conditions.reduce((previous, current) => {
             const reducedConditions = previous[current.name];
             if (!reducedConditions)
-                previous[current.name] = current.count == null ? {...current} : {...current, count: 1 };
+                previous[current.name] = !current?.system.value.isValued ? {...current} : {...current, count: 1 };
             else if (reducedConditions.sort > current.sort)
                 previous[current.name] = {...current, count: reducedConditions.count + 1};
             else
@@ -69,13 +69,13 @@ export default function Conditions() {
                                     {condition.name}
                                 </div>
                                 {
-                                    condition.count != null &&
+                                    condition?.system.value.isValued &&
                                     <GoPlus
                                         onClick={() => incrementConditionCount(condition)}
                                         className={'increase-condition-count'}/>
                                 }
                                 <div className={'condition-count'}>
-                                    {condition.count === 0 ? '' : condition.count}
+                                    {condition?.system.value.isValued ? condition.count : ''}
                                 </div>
                             </div>
                         )
