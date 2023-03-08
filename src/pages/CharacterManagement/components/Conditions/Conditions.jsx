@@ -1,7 +1,7 @@
 import './Conditions.scss'
 import SearchableBox from "../../../../componenets/SearchableBox/SearchableBox";
 import {ReactComponent as RemoveConditionIcon} from "../../../../componenets/icons/xmark-solid.svg";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
 import {FaMinus} from "react-icons/fa";
 import {GoPlus} from "react-icons/go";
