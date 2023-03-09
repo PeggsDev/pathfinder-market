@@ -1,5 +1,5 @@
 import './CharacterStatsBlock.scss'
-import { GiCampfire } from "react-icons/gi";
+import {GiCampfire, GiGoblinCamp} from "react-icons/gi";
 import React from "react";
 import { proficiencyEnum, proficiencyColourEnum, proficiencies } from "../../../../App";
 import { calculateModifier } from "../../CharacterSheet";
@@ -87,7 +87,7 @@ export default function CharacterStatsBlock(props) {
                     </div>
                 </div>
                 <div className={'rest-button'}>
-                    <GiCampfire className={'rest-button-svg'} />
+                    <GiGoblinCamp className={'rest-button-svg'} />
                     <div className={'stat-block-label'}>
                         Take a Rest
                     </div>
