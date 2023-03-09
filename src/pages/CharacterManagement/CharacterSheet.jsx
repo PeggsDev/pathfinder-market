@@ -219,6 +219,7 @@ export default function CharacterSheet() {
                 </section>
 
                 <section className={'character-sheet-component hit-points'}>
+                    <CharacterStatsBlock characterData={characterData}/>
                     <HealthPoints
                         current={currentHitPoints}
                         updateCurrentHitPoints={setCurrentHitPoints}
@@ -228,11 +229,12 @@ export default function CharacterSheet() {
                 </section>
 
                 <section className={'character-sheet-component conditions'}>
+                    <h1>Conditions</h1>
                     <Conditions/>
                 </section>
 
                 <section className={'character-sheet-component stat-block-section'}>
-                    <CharacterStatsBlock characterData={characterData}/>
+
                 </section>
                 <section className={'character-sheet-component skill-modifiers'}>
                     <h1>Skills</h1>

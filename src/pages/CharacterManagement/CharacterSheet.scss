@@ -109,7 +109,7 @@
   }
 
   .stat-block-section {
-    height: 13rem;
+    height: 8rem;
     background: var(--clr-dark-background);
     border: 2px solid var(--clr-char-outline);
     padding: 0 0.5rem;
@@ -535,12 +535,19 @@
 /* Hit Points */
 .character-sheet-component.hit-points {
   padding: 0.5rem;
-  min-height: 8rem;
+  min-height: 14rem;
 }
 
 /* Conditions */
 .character-sheet-component.conditions {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
   padding: 0.5rem;
   overflow: hidden;
   overflow-y: auto;
+
+  & h1 {
+    align-self: center;
+  }
 }

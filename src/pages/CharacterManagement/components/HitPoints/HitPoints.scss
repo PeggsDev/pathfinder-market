@@ -55,7 +55,7 @@
     padding: 0.25rem 0;
     background: var(--clr-accent-dark);
     border: 1px dashed var(--clr-accent-light);
-    cursor: pointer;
+    cursor: text;
   }
 
   .hp-value.temp-hp-input:focus {
@@ -108,7 +108,7 @@
     color: var(--clr-white);
     background: var(--clr-accent-dark);
     border: 1px dashed var(--clr-accent-light);
-    cursor: pointer;
+    cursor: text;
   }
 
   .hit-point-input:focus {
