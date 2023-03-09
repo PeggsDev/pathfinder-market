@@ -8,11 +8,13 @@ export default function CharacterStatsBlock(props) {
 
     const { characterData } = props
     const keyAbility = characterData?.abilityScores.find(ability => ability.isKey === true)
-    const proficiencyIndicator = characterData?.classDC.proficiencyLevel
+    const classDCProficiencyIndicator = characterData?.classDC.proficiencyLevel
+    const perceptionProficiencyIndicator = characterData?.perception.proficiencyLevel
     const wisdom = characterData?.abilityScores.find(ability => ability.ability === 'wisdom')
+
     const perception = calculatePerception(
         characterData?.abilityScores.find(ability => ability.ability === 'wisdom')?.score,
-        characterData?.perception.proficiencyLevel
+        perceptionProficiencyIndicator
     )
 
     // const proficiency = proficiencies.find(proficiency => proficiency.value === proficiencyIndicator)?.label
@@ -52,7 +54,7 @@ export default function CharacterStatsBlock(props) {
                     </div>
                     <div className={'stat-block-stat class-dc'}>
                         <div className={'stat-block-stat-value'}>
-                            {calculateClassDC(keyAbility?.score, proficiencyIndicator, characterData?.level)}
+                            {calculateClassDC(keyAbility?.score, classDCProficiencyIndicator, characterData?.level)}
                         </div>
                     </div>
                     <div className={'stat-block-stat-unit-wrapper'}>
@@ -60,8 +62,8 @@ export default function CharacterStatsBlock(props) {
                             PROF
                         </div>
                         <div className={'stat-block-stat-unit indicator'}
-                            style={{ color: `${proficiencyColourEnum[proficiencyIndicator]}`, filter: 'brightness(250%)' }}>
-                            {proficiencyIndicator}
+                            style={{ color: `${proficiencyColourEnum[classDCProficiencyIndicator]}`, filter: 'brightness(250%)' }}>
+                            {classDCProficiencyIndicator}
                         </div>
                         <div className={'stat-block-stat-unit ability'}>
                             {keyAbility?.ability.slice(0, 3).toUpperCase()}
@@ -82,8 +84,8 @@ export default function CharacterStatsBlock(props) {
                             PROF
                         </div>
                         <div className={'stat-block-stat-unit indicator'}
-                            style={{ color: `${proficiencyColourEnum[proficiencyIndicator]}`, filter: 'brightness(250%)' }}>
-                            {proficiencyIndicator}
+                            style={{ color: `${proficiencyColourEnum[perceptionProficiencyIndicator]}`, filter: 'brightness(250%)' }}>
+                            {perceptionProficiencyIndicator}
                         </div>
                         <div className={'stat-block-stat-unit ability'}>
                             {wisdom?.ability.slice(0, 3).toUpperCase()}
