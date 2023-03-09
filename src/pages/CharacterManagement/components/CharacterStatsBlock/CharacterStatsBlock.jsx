@@ -27,12 +27,12 @@ export default function CharacterStatsBlock(props) {
     return (
         <>
             <div className={'character-stat-block-wrapper'}>
-                <div className={'rest-button'}>
+                {/* <div className={'rest-button'}>
                     <GiCampfire className={'rest-button-svg'} />
                     <h4 className={'rest-label'}>
                         Take a Rest
                     </h4>
-                </div>
+                </div> */}
                 <div className={'stat-block-wrapper'}>
                     <div className={'stat-block-label'}>
                         Speed
@@ -74,7 +74,7 @@ export default function CharacterStatsBlock(props) {
                     </div>
                     <div className={'stat-block-stat class-dc'}>
                         <div className={'stat-block-stat-value'}>
-                            {perception}
+                            {perception >= 0 ? "+" + perception : '-' + perception}
                         </div>
                     </div>
                     <div className={'stat-block-stat-unit-wrapper'}>
@@ -90,18 +90,18 @@ export default function CharacterStatsBlock(props) {
                         </div>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     Initiative
-                </div>
+                </div> */}
             </div>
-            <div className={'languages'}>
+            {/* <div className={'languages'}>
                 Languages:
                 {
                     characterData?.languages.map((language, index) => {
                         return <div className={'language'} key={index}>{language.language}</div>
                     })
                 }
-            </div>
+            </div> */}
         </>
     )
 }
