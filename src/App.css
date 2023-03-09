@@ -24,16 +24,42 @@ p {
 :root {
   font-size: 0.85rem;
 
-  --clr-dark: #202936;
-  --clr-light: #d5d5d5;
-  --clr-white: #ffffff;
-  --clr-accent-light: #6e6e73;
-  --clr-accent-dark: #262626;
-  --clr-dark-background: #181818;
-  --clr-dark-lowlight: #282828;
-
   --border-radius: 1em;
   --quadratic-transform: transform 100ms cubic-bezier(0.21, 0.1, 0.81, 0.1);
+
+  --clr-dark: #98c3e3;
+  --clr-light: #2a2a2a;
+  --clr-white: #000000;
+  --clr-accent-light: #484848;
+  --clr-accent-dark: #c5c5c5;
+  --clr-dark-background: #ffffff;
+  --clr-dark-lowlight: #949494;
+
+  --clr-char-outline: #980000;
+  --clr-dice-roll-hover: #000000;
+  --clr-skill-dice-roll-hover: #980000;
+
+  --clr-remove-item: #8a1204;
+  --clr-remove-item-hover: #b9301d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-dark: #202936;
+    --clr-light: #d5d5d5;
+    --clr-white: #ffffff;
+    --clr-accent-light: #6e6e73;
+    --clr-accent-dark: #262626;
+    --clr-dark-background: #181818;
+    --clr-dark-lowlight: #282828;
+
+    --clr-char-outline: #c777a8;
+    --clr-dice-roll-hover: #f5a623;
+    --clr-skill-dice-roll-hover: #96f134;
+
+    --clr-remove-item: #b91a08;
+    --clr-remove-item-hover: #ff422a;
+  }
 }
 
 body {
