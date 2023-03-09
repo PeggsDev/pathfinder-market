@@ -4,7 +4,7 @@
   align-items: start;
   justify-content: center;
   border-bottom: 1px dashed var(--clr-accent-light);
-  gap: 1.3rem;
+  margin: 0 0.7rem;
 }
 
 .rest-button {
@@ -78,7 +78,9 @@
   }
 
   .stat-block-stat-unit {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    align-self: end;
+    padding-bottom: 0.15rem;
     font-weight: lighter;
     color: var(--clr-dice-roll-hover);
   }
