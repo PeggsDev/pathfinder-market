@@ -29,12 +29,6 @@ export default function CharacterStatsBlock(props) {
     return (
         <>
             <div className={'character-stat-block-wrapper'}>
-                {/* <div className={'rest-button'}>
-                    <GiCampfire className={'rest-button-svg'} />
-                    <h4 className={'rest-label'}>
-                        Take a Rest
-                    </h4>
-                </div> */}
                 <div className={'stat-block-wrapper'}>
                     <div className={'stat-block-label'}>
                         Speed
@@ -90,6 +84,12 @@ export default function CharacterStatsBlock(props) {
                         <div className={'stat-block-stat-unit ability'}>
                             {wisdom?.ability.slice(0, 3).toUpperCase()}
                         </div>
+                    </div>
+                </div>
+                <div className={'rest-button'}>
+                    <GiCampfire className={'rest-button-svg'} />
+                    <div className={'stat-block-label'}>
+                        Take a Rest
                     </div>
                 </div>
                 {/* <div>

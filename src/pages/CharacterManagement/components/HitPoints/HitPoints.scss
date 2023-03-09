@@ -1,10 +1,10 @@
 .hp-section {
   display: flex;
   flex-direction: row;
-  align-content: center;
+  justify-content: center;
   text-align: center;
-  padding: 0.5rem;
-  gap: 1rem;
+  padding: 1rem 0.5rem;
+  gap: 1.8rem;
 }
 
 .hp-wrapper {

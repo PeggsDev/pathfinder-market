@@ -85,7 +85,7 @@
   }
 
   .hit-points {
-    width: 20rem;
+    width: 22rem;
     height: 7rem;
     background: var(--clr-dark-background);
     border: 2px solid var(--clr-char-outline);
@@ -97,7 +97,7 @@
   }
 
   .conditions {
-    width: 20rem;
+    width: 22rem;
     height: 20rem;
     background: var(--clr-dark-background);
     border: 2px solid var(--clr-char-outline);
@@ -117,12 +117,6 @@
     opacity: var(--opacity);
     grid-column: 9;
     grid-row: 6 / span 3;
-  }
-
-  .skill-modifiers {
-    width: 20rem;
-    grid-column: 4;
-    grid-row: 3 / span 6;
   }
 }
 
