@@ -205,7 +205,7 @@
 }
 
 .current-skill:nth-child(even) {
-  background: #33333344;
+  background: var(--clr-nth-child-list-highlight);
 }
 
 .manage-lore {

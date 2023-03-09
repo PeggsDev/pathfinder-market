@@ -126,5 +126,5 @@
 
 .weapon-component:nth-child(even) {
   align-items: center;
-  background: #33333344;
+  background: var(----clr-nth-child-list-highlight);
 }
