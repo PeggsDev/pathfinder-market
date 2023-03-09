@@ -27,44 +27,44 @@ p {
   --border-radius: 1em;
   --quadratic-transform: transform 100ms cubic-bezier(0.21, 0.1, 0.81, 0.1);
 
-  --clr-dark: #c7e8ff;
-  --clr-light: #2a2a2a;
-  --clr-white: #000000;
-  --clr-accent-light: #313131;
-  --clr-accent-dark: #d9d9d9;
-  --clr-dark-background: #ffffff;
-  --clr-dark-lowlight: #949494;
-  --clr-nth-child-list-highlight: rgb(234, 233, 233);
+  --clr-dark: #202936;
+  --clr-light: #d5d5d5;
+  --clr-white: #ffffff;
+  --clr-accent-light: #6e6e73;
+  --clr-accent-dark: #262626;
+  --clr-dark-background: #181818;
+  --clr-dark-lowlight: #282828;
+  --clr-nth-child-list-highlight: #33333344;
 
-  --clr-char-outline: #6e0101;
-  --clr-dice-roll-hover: #b40101;
-  --clr-skill-dice-roll-hover:#000000;
+  --clr-char-outline: #c777a8;
+  --clr-dice-roll-hover: #f5a623;
+  --clr-skill-dice-roll-hover: #96f134;
 
-  --clr-remove-item: #8a1204;
-  --clr-remove-item-hover: #b9301d;
+  --clr-remove-item: #b91a08;
+  --clr-remove-item-hover: #ff422a;
 
-  --opacity: 1;
+  --opacity: 0.85;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --clr-dark: #202936;
-    --clr-light: #d5d5d5;
-    --clr-white: #ffffff;
-    --clr-accent-light: #6e6e73;
-    --clr-accent-dark: #262626;
-    --clr-dark-background: #181818;
-    --clr-dark-lowlight: #282828;
-    --clr-nth-child-list-highlight: #33333344;
+    --clr-dark: #c7e8ff;
+    --clr-light: #2a2a2a;
+    --clr-white: #000000;
+    --clr-accent-light: #313131;
+    --clr-accent-dark: #d9d9d9;
+    --clr-dark-background: #ffffff;
+    --clr-dark-lowlight: #949494;
+    --clr-nth-child-list-highlight: rgb(234, 233, 233);
 
-    --clr-char-outline: #c777a8;
-    --clr-dice-roll-hover: #f5a623;
-    --clr-skill-dice-roll-hover: #96f134;
+    --clr-char-outline: #6e0101;
+    --clr-dice-roll-hover: #b40101;
+    --clr-skill-dice-roll-hover:#000000;
 
-    --clr-remove-item: #b91a08;
-    --clr-remove-item-hover: #ff422a;
+    --clr-remove-item: #8a1204;
+    --clr-remove-item-hover: #b9301d;
 
-    --opacity: 0.85;
+    --opacity: 1;
   }
 }
 
