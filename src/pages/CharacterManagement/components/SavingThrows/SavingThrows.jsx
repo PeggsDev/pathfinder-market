@@ -16,7 +16,7 @@ export default function SavingThrows({ characterData, diceClient }) {
                 <div className={'save-title-proficiency'}>
                     <div className={'proficiency-indicator'}>
                         <label style={
-                            {color: `${proficiencyColourEnum[proficiencyIndicator]}` , filter: 'brightness(250%)'}
+                            {color: `${proficiencyColourEnum[proficiencyIndicator]}`}
                         }>
                             {proficiencyIndicator}
                         </label>

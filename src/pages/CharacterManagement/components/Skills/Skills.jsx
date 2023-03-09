@@ -57,10 +57,7 @@ export default function Skills(props) {
             <div className={'skill-title-proficiency'}>
                 <div className={'proficiency-indicator'}>
                     <label
-                        style={{
-                            color: `${proficiencyColourEnum[proficiencyIndicator]}`,
-                            filter: 'brightness(250%)'
-                        }}>
+                        style={{color: `${proficiencyColourEnum[proficiencyIndicator]}`}}>
                         {proficiencyIndicator}
                     </label>
                 </div>

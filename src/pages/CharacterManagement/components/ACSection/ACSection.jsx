@@ -92,7 +92,7 @@ export default function ACSection() {
                         <div className={'armor-proficiency-box'} key={index}>
                             <div className={'armor-type'}>{armorType?.armorType}</div>
                             <div className={'armor-proficiency'} style={
-                                {color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}`, filter: 'brightness(250%)'}
+                                {color: `${proficiencyColourEnum[armorType?.proficiencyLevel]}`}
                             }>
                                 {armorType?.proficiencyLevel}
                             </div>

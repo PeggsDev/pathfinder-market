@@ -62,7 +62,7 @@ export default function CharacterStatsBlock(props) {
                             PROF
                         </div>
                         <div className={'stat-block-stat-unit indicator'}
-                            style={{ color: `${proficiencyColourEnum[classDCProficiencyIndicator]}`, filter: 'brightness(250%)' }}>
+                            style={{ color: `${proficiencyColourEnum[classDCProficiencyIndicator]}`}}>
                             {classDCProficiencyIndicator}
                         </div>
                         <div className={'stat-block-stat-unit ability'}>
@@ -84,7 +84,7 @@ export default function CharacterStatsBlock(props) {
                             PROF
                         </div>
                         <div className={'stat-block-stat-unit indicator'}
-                            style={{ color: `${proficiencyColourEnum[perceptionProficiencyIndicator]}`, filter: 'brightness(250%)' }}>
+                            style={{ color: `${proficiencyColourEnum[perceptionProficiencyIndicator]}` }}>
                             {perceptionProficiencyIndicator}
                         </div>
                         <div className={'stat-block-stat-unit ability'}>

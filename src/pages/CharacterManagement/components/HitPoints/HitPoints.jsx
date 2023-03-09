@@ -56,7 +56,7 @@ export default function HealthPoints(props) {
     return (
         <div className={'hp-section'}>
             <div className={'hp-wrapper'}>
-                <div className={'hp-section-title'}>Hit Points</div>
+                <h1>Hit Points</h1>
                 <div className={'hit-point-info-wrapper'}>
                     <div className={'hit-point current-hp'}>
                         <div className={'hp-label'}>Current</div>
