@@ -1,19 +1,20 @@
 import './Toast.scss'
 import {useMemo} from "react";
 
-export default function Toast({mode, onClose, message}) {
+export default function Toast({type, onClose, title, message}) {
 
     const toastType = useMemo(() => {
-        return 'mode'
-    }, [mode])
+        return 'type'
+    }, [type])
 
     return (
         <div
             className={`toast ${toastType}`}
             onClick={onClose}>
-            <div>
-                {message}
+            <div className={'toast-title'}>
+                {title}
             </div>
+            <div className={'toast-message'} dangerouslySetInnerHTML={{__html: `${message}`}}/>
         </div>
     )
 }

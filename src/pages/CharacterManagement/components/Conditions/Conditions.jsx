@@ -5,8 +5,13 @@ import {useContext} from "react";
 import {ConditionsCtx} from "../../../../contexts/ConditionsCtx";
 import {FaMinus} from "react-icons/fa";
 import {GoPlus} from "react-icons/go";
+import {ToastPortalCtx} from "../../../../contexts/ToastPortalCtx";
 
 export default function Conditions() {
+
+    const {
+        addToast
+    } = useContext(ToastPortalCtx)
 
     const {
         conditionData,
@@ -30,7 +35,7 @@ export default function Conditions() {
         return Object.values(conditions.reduce((previous, current) => {
             const reducedConditions = previous[current.name];
             if (!reducedConditions)
-                previous[current.name] = !current?.system.value.isValued ? {...current} : {...current, count: 1 };
+                previous[current.name] = !current?.system.value.isValued ? {...current} : {...current, count: 1};
             else if (reducedConditions.sort > current.sort)
                 previous[current.name] = {...current, count: reducedConditions.count + 1};
             else
@@ -65,7 +70,12 @@ export default function Conditions() {
                                             className={'remove-condition-icon'}
                                             onClick={() => decrementConditionCount(condition)}/>
                                 }
-                                <div key={index} className={'condition'}>
+                                <div key={index} className={'condition'}
+                                     onClick={() => addToast(
+                                         {
+                                             type: 'info',
+                                             title: condition?.name,
+                                             message: condition?.system.description.value})}>
                                     {condition.name}
                                 </div>
                                 {

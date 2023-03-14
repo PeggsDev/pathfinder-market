@@ -18,7 +18,7 @@ export function ToastPortalDataProvider({children}) {
     }
 
     return (
-        <ToastPortalCtx.Provider value={
+        <ToastPortalCtx.Provider value= {
             {
                 toasts,
                 addToast,

@@ -19,7 +19,8 @@ export default function ToastPortal() {
                     return (
                         <Toast
                             key={t.id}
-                            mode={t.mode}
+                            type={t.mode}
+                            title={t.title}
                             message={t.message}
                             onClose={() => removeToast(t.id)}/>
                     )
