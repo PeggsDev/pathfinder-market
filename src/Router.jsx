@@ -11,6 +11,7 @@ import {ConditionsDataProvider} from "./contexts/ConditionsCtx";
 import AccountRegistration from "./pages/AccountManagement/AccountRegistration";
 import Dashboard from "./pages/AccountManagement/Dashboard";
 import {ArmorClassCtx, ArmorClassDataProvider} from "./contexts/ArmorClassCtx";
+import {ToastPortalDataProvider} from "./contexts/ToastPortalCtx";
 
 export default function Router() {
     return (
@@ -22,11 +23,13 @@ export default function Router() {
             <Route path={'/details'} element={<SourceBookDetailsPage/>}/>
             <Route path={'/goblins-cauldron/build'} element={<CharacterBuilder/>}/>
             <Route path={'/goblins-cauldron/character-sheet/:id'} element={
-                <ConditionsDataProvider>
-                    <ArmorClassDataProvider>
-                        <CharacterSheet/>
-                    </ArmorClassDataProvider>
-                </ConditionsDataProvider>
+                <ToastPortalDataProvider>
+                    <ConditionsDataProvider>
+                        <ArmorClassDataProvider>
+                            <CharacterSheet/>
+                        </ArmorClassDataProvider>
+                    </ConditionsDataProvider>
+                </ToastPortalDataProvider>
             }/>
         </Routes>
     )

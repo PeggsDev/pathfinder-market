@@ -4,9 +4,15 @@ import { ReactComponent as DiceIcon } from '../../../svg/dice-d20-solid.svg';
 import { ReactComponent as SpellIcon } from '../../../svg/wand-sparkles-solid.svg';
 
 import { rollDice } from "../../../../../App";
+import {useContext} from "react";
+import {ToastPortalCtx} from "../../../../../contexts/ToastPortalCtx";
 
 //TODO - Pass in item data directly
 export default function Spell({ spell, diceClient }) {
+
+    const {
+        addToast
+    } = useContext(ToastPortalCtx)
 
     const spellDamage = spell.system.damage?.value[0]
     const damageDiceArray = spellDamage?.value.split('d');
@@ -26,7 +32,8 @@ export default function Spell({ spell, diceClient }) {
                     className={'spell-icon-svg'}
                     onClick={() => {
                         //TODO - Add functionality to burn a spell slot from here using context api
-                        console.log("Spell has been cast " + spell.name)
+                        addToast({message: spell?.name})
+                        console.log("Spell has been cast " + spell?.name)
                     }} />
             </div>
 
