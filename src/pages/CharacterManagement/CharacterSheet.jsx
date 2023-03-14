@@ -25,6 +25,7 @@ import {ArmorClassCtx} from "../../contexts/ArmorClassCtx";
 
 import CharacterStatsBlock from "./components/CharacterStatsBlock/CharacterStatsBlock";
 import ACSection from "./components/ACSection/ACSection";
+import ToastPortal from "../../componenets/ToastPortal/ToastPortal";
 
 export function calculateModifier(value) {
     return Math.floor((value - 10) / 2)
@@ -64,6 +65,9 @@ export default function CharacterSheet() {
 
     const threeDDiceRef = useRef(ThreeDDice)
     const canvasRef = useRef(null);
+
+    /* Toasts */
+    const toastRef = useRef()
 
     canvasRef.current = window.innerWidth;
     canvasRef.current = window.innerHeight;
@@ -145,7 +149,6 @@ export default function CharacterSheet() {
 
     return (
         <div className={'character-sheet'}>
-
             <section className={'character-sheet-grid'}>
                 <img className={'character-sheet-background'} src={CharacterSheetBackground}/>
 
@@ -243,7 +246,8 @@ export default function CharacterSheet() {
                         skills={skills}
                         skillsCallback={setSkills}
                         refreshData={triggerCharacterDataRefresh}
-                        diceClient={threeDDiceRef}/>
+                        diceClient={threeDDiceRef}
+                        toastRef={toastRef}/>
                 </section>
 
                 <section className={'character-sheet-component tabbed-component actions-and-Inventory'}>
@@ -475,6 +479,7 @@ export default function CharacterSheet() {
                     </div>
                 </section>
                 <canvas className={'dd-dice-canvas'} ref={canvasRef}/>
+                <ToastPortal ref={toastRef}/>
             </section>
         </div>
     )
